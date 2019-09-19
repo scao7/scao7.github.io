@@ -22,7 +22,6 @@
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Blog"/>
 <meta name="twitter:description" content=""/>
-<meta name="twitter:site" content="@example"/>
 
   
 
@@ -186,18 +185,12 @@
 
 
 
-<li><a href="//flickr.com/photos/example" target="_blank" rel="noopener" title="Flickr" class="fab fa-flickr"></a></li>
 
 
 
 
-<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-<li><a href="//linkedin.com/company/examplebusiness" target="_blank" rel="noopener" title="LinkedIn Company" class="fab fa-linkedin"></a></li>
 
-
-
-<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -205,20 +198,26 @@
 
 
 
-<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/example" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-
-<li><a href="//pinterest.com/example" target="_blank" rel="noopener" title="Pinterest" class="fab fa-pinterest-p"></a></li>
-<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
-<li><a href="//researchgate.net/profile/example" target="_blank" rel="noopener" title="Research Gate"><i class="ai ai-researchgate"></i></a></li>
-<li><a href="//keybase.io/example" target="_blank" rel="noopener" title="keybase" class="fab fa-keybase"></a></li>
-<li><a href="//example.com/@example" target="_blank" rel="noopener" title="mastodon" class="fab fa-mastodon"></a></li>
-<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:codescao7@gmailcom" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
     </footer>
@@ -390,6 +389,180 @@
 </article>
 
         
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/opencvbasiclibraryintroandroid/">Android Development -- Image Tools</a></h2>
+    
+    
+        <p>Some image processing tools</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-06-04 00:00:00 &#43;0000 UTC">
+      June 4, 2019
+    </time>
+    <span class="author">Shengting Cao</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-java">private void imageGradient(){
+     Mat grayMat = new Mat();
+     Mat sobel = new Mat();
+     Mat grad_x = new Mat();
+     Mat abs_grad_x = new Mat();
+     Mat grad_y = new Mat();
+     Mat abs_grad_y = new Mat();
+     Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+     Mat originalMat = new Mat();
+     Utils.bitmapToMat(bitmap,originalMat);
+     Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY);&hellip;</code></pre>
+  <footer>
+    <a href="/blog/opencvbasiclibraryintroandroid/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/android-development">Android Development</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/ostuthreshold/">Android Development ---- Ostu threshold</a></h2>
+    
+    
+        <p>Using Ostu threshold measure hight of person</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-06-01 00:00:00 &#43;0000 UTC">
+      June 1, 2019
+    </time>
+    <span class="author">Shengting Cao</span>
+    
+      <p>6 minutes read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p>I am facing the problem to build an Android App to measure a person&rsquo;s waistline, height and hip data. The first step is to find a correct threshold method to generate a good picture for us to build further algorithms.</p>
+  <footer>
+    <a href="/blog/ostuthreshold/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/android-development">Android Development</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/importopencv/">Android Development ---- Import OpenCV</a></h2>
+    
+    
+        <p>Make OpenCV works on Android</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-05-17 00:00:00 &#43;0000 UTC">
+      May 17, 2019
+    </time>
+    <span class="author">Shengting Cao</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p>Check YouTube link with the video
+<a href="https://youtu.be/m7YBiLmEuME">YouTube link first half</a>
+<a href="https://youtu.be/dFC6cfmfTSI">YouTube link last half</a></p>
+  <footer>
+    <a href="/blog/importopencv/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/android-development">Android Development</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+        
         
 <div class="pagination">
   
@@ -463,6 +636,39 @@
         </header>
       </article>
       
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/importopencv/">Android Development ---- Import OpenCV</a></h1>
+          <time class="published" datetime="">May 17, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/androidcanvas/">Android Development ---- Pick Up Picture</a></h1>
+          <time class="published" datetime="">May 1, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/graphicstexture/">Computer Graphics -- Texture</a></h1>
+          <time class="published" datetime="">March 31, 2019</time>
+        </header>
+      </article>
+      
       
         <a href="/blog/" class="button">See more</a>
       
@@ -520,7 +726,7 @@
     <header>
       <h1>About</h1>
     </header>
-    <p>test</p>
+    <p>Welcome to my page, hope you can get what you want!</p>
     <footer>
       <a href="/about" class="button">Learn More</a>
     </footer>
@@ -531,9 +737,6 @@
   
       <ul class="socnet-icons">
         
-    <li><a href="/blog/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
-
         <li><a href="//github.com/scao7" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
 
 
@@ -541,18 +744,12 @@
 
 
 
-<li><a href="//flickr.com/photos/example" target="_blank" rel="noopener" title="Flickr" class="fab fa-flickr"></a></li>
 
 
 
 
-<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-<li><a href="//linkedin.com/company/examplebusiness" target="_blank" rel="noopener" title="LinkedIn Company" class="fab fa-linkedin"></a></li>
 
-
-
-<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -560,20 +757,26 @@
 
 
 
-<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/example" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-
-<li><a href="//pinterest.com/example" target="_blank" rel="noopener" title="Pinterest" class="fab fa-pinterest-p"></a></li>
-<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
-<li><a href="//researchgate.net/profile/example" target="_blank" rel="noopener" title="Research Gate"><i class="ai ai-researchgate"></i></a></li>
-<li><a href="//keybase.io/example" target="_blank" rel="noopener" title="keybase" class="fab fa-keybase"></a></li>
-<li><a href="//example.com/@example" target="_blank" rel="noopener" title="mastodon" class="fab fa-mastodon"></a></li>
-<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:codescao7@gmailcom" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
   

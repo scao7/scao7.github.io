@@ -52,13 +52,13 @@
     <lastmod>2019-09-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -204,10 +204,21 @@
   
   <url>
     <loc>https://shengtingcao.top/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/contact/_index.de/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/contact/"
+                />
   </url>
   
   <url>

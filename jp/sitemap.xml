@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://shengtingcao.top/jp/categories/japanese/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://shengtingcao.top/jp/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -60,11 +65,6 @@
                 hreflang="jp"
                 href="https://shengtingcao.top/jp/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/jp/categories/japanese/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -89,6 +89,25 @@
                 rel="alternate"
                 hreflang="jp"
                 href="https://shengtingcao.top/jp/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/jp/contact/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/contact/"
                 />
   </url>
   
