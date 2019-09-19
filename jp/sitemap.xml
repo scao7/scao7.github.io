@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://scao7.github.io/cn/about/</loc>
+    <loc>https://scao7.github.io/jp/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -12,18 +12,18 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="jp"
-                href="https://scao7.github.io/jp/about/"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/about/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cn"
-                href="https://scao7.github.io/cn/about/"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/about/"
                 />
   </url>
   
   <url>
-    <loc>https://scao7.github.io/cn/categories/</loc>
+    <loc>https://scao7.github.io/jp/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -31,18 +31,18 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="jp"
-                href="https://scao7.github.io/jp/categories/"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cn"
-                href="https://scao7.github.io/cn/categories/"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://scao7.github.io/cn/</loc>
+    <loc>https://scao7.github.io/jp/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -50,18 +50,18 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="jp"
-                href="https://scao7.github.io/jp/"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cn"
-                href="https://scao7.github.io/cn/"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/"
                 />
   </url>
   
   <url>
-    <loc>https://scao7.github.io/cn/tags/</loc>
+    <loc>https://scao7.github.io/jp/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -69,13 +69,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="jp"
-                href="https://scao7.github.io/jp/tags/"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cn"
-                href="https://scao7.github.io/cn/tags/"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/tags/"
                 />
   </url>
   
