@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LaTex on Shengting Cao&#39;s Note Book</title>
-    <link>https://scao7.github.io/categories/latex/</link>
+    <link>https://shengtingcao.top/categories/latex/</link>
     <description>Recent content in LaTex on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://scao7.github.io/categories/latex/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://shengtingcao.top/categories/latex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using LaTex</title>
-      <link>https://scao7.github.io/blog/latexsyntax/</link>
+      <link>https://shengtingcao.top/blog/latexsyntax/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/latexsyntax/</guid>
+      <guid>https://shengtingcao.top/blog/latexsyntax/</guid>
       <description>Enable the LaTex expression in MarkDown files for github page Add this HTML code into the template that you will use for every website. I choose to put it into site-footer.html
 &amp;lt;!-- enable math in the blog --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&amp;quot; integrity=&amp;quot;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;!-- The loading of KaTeX is deferred to speed up page rendering --&amp;gt; &amp;lt;script defer src=&amp;quot;https://cdn.</description>
     </item>

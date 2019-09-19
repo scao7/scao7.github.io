@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Shengting Cao&#39;s Note Book</title>
-    <link>https://scao7.github.io/blog/</link>
+    <link>https://shengtingcao.top/blog/</link>
     <description>Recent content in Blog on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://scao7.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://shengtingcao.top/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using LaTex</title>
-      <link>https://scao7.github.io/blog/latexsyntax/</link>
+      <link>https://shengtingcao.top/blog/latexsyntax/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/latexsyntax/</guid>
+      <guid>https://shengtingcao.top/blog/latexsyntax/</guid>
       <description>Enable the LaTex expression in MarkDown files for github page Add this HTML code into the template that you will use for every website. I choose to put it into site-footer.html
 &amp;lt;!-- enable math in the blog --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&amp;quot; integrity=&amp;quot;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;!-- The loading of KaTeX is deferred to speed up page rendering --&amp;gt; &amp;lt;script defer src=&amp;quot;https://cdn.</description>
     </item>
     
     <item>
       <title>Notes on SSH and AWS</title>
-      <link>https://scao7.github.io/blog/somenotesaboutssh/</link>
+      <link>https://shengtingcao.top/blog/somenotesaboutssh/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/somenotesaboutssh/</guid>
+      <guid>https://shengtingcao.top/blog/somenotesaboutssh/</guid>
       <description>Connecting the AWS service using BASH on Windows When connecting AWS using BASH, we should notice that the bash program should be run as administrator otherwise it will deny the connection and report 0555 code.
 Root of Ubuntu on Windows The Root of Ubuntu on Windows will be located in
  &amp;quot;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;quot;  using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>
@@ -34,29 +34,29 @@ Root of Ubuntu on Windows The Root of Ubuntu on Windows will be located in
     
     <item>
       <title>Android Development -- K-mean</title>
-      <link>https://scao7.github.io/blog/kmeanopencv4android/</link>
+      <link>https://shengtingcao.top/blog/kmeanopencv4android/</link>
       <pubDate>Fri, 07 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/kmeanopencv4android/</guid>
+      <guid>https://shengtingcao.top/blog/kmeanopencv4android/</guid>
       <description>Understand K-mean Algorithms K-mean clustering method originally from signal processing, this method is the popular for cluster analysis in data mining. The goal of this algorithms is to partition n observations into K clusters in which each observation belongs to the cluster with the nearest mean.
 What I use K-mean for In my projects, I need to analysis human body shape and get some health information. I need to distinguish the cloth and human body.</description>
     </item>
     
     <item>
       <title>Android Development -- Image Tools</title>
-      <link>https://scao7.github.io/blog/opencvbasiclibraryintroandroid/</link>
+      <link>https://shengtingcao.top/blog/opencvbasiclibraryintroandroid/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/opencvbasiclibraryintroandroid/</guid>
+      <guid>https://shengtingcao.top/blog/opencvbasiclibraryintroandroid/</guid>
       <description>Image Gradient private void imageGradient(){ Mat grayMat = new Mat(); Mat sobel = new Mat(); Mat grad_x = new Mat(); Mat abs_grad_x = new Mat(); Mat grad_y = new Mat(); Mat abs_grad_y = new Mat(); Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.bitmapToMat(bitmap,originalMat); Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY); Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0); Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0); Core.convertScaleAbs(grad_x,abs_grad_x); Core.convertScaleAbs(grad_y,abs_grad_y); Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel); Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565); Utils.matToBitmap(sobel,currentBitmap); imageView.setImageBitmap(currentBitmap); }  Canny Contours private void cannyContours(){ Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.</description>
     </item>
     
     <item>
       <title>Android Development ---- Ostu threshold</title>
-      <link>https://scao7.github.io/blog/ostuthreshold/</link>
+      <link>https://shengtingcao.top/blog/ostuthreshold/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/ostuthreshold/</guid>
+      <guid>https://shengtingcao.top/blog/ostuthreshold/</guid>
       <description>Problem Description I am facing the problem to build an Android App to measure a person&amp;rsquo;s waistline, height and hip data. The first step is to find a correct threshold method to generate a good picture for us to build further algorithms.
 Theory All the Theory of Ostu Threshold is from this paper: Ostu&amp;rsquo;s paper. And the reference JavaScript page.
 implementation First, I tried to implement the basic code for threshold of a certain value for example: 100.</description>
@@ -64,10 +64,10 @@ implementation First, I tried to implement the basic code for threshold of a cer
     
     <item>
       <title>Android Development ---- Import OpenCV</title>
-      <link>https://scao7.github.io/blog/importopencv/</link>
+      <link>https://shengtingcao.top/blog/importopencv/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/importopencv/</guid>
+      <guid>https://shengtingcao.top/blog/importopencv/</guid>
       <description>Check YouTube link with the video YouTube link first half YouTube link last half
 Download OpenCV SDK OpenCV Release Page
 Import Module File --&amp;gt; New -&amp;gt; Import Module  Import the java fold
@@ -77,10 +77,10 @@ Add dependency File --&amp;gt; Project Structure --&amp;gt; App --&amp;gt; Add d
     
     <item>
       <title>Android Development ---- Pick Up Picture</title>
-      <link>https://scao7.github.io/blog/androidcanvas/</link>
+      <link>https://shengtingcao.top/blog/androidcanvas/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/androidcanvas/</guid>
+      <guid>https://shengtingcao.top/blog/androidcanvas/</guid>
       <description>Problem Description This document is to demonstrate one function in Android Development &amp;ndash; Pick Up Picture from the gallery. This is the first time write about android development, so I would like to illustrate the interface design and interface logic too.
 YouTube Link
 Tool I used Android Studio to develop my app. It is a mature technology that helps me to build app easily.
@@ -89,40 +89,40 @@ Create UI First we need have a UI in this project.</description>
     
     <item>
       <title>Computer Graphics -- Texture</title>
-      <link>https://scao7.github.io/blog/graphicstexture/</link>
+      <link>https://shengtingcao.top/blog/graphicstexture/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/graphicstexture/</guid>
+      <guid>https://shengtingcao.top/blog/graphicstexture/</guid>
       <description>Problem Description We want to draw three walls and put texture on them.At the same time we want to create a TV that we can change the frame on the screen every 1 second. You are able to turn on and off the TV.
 In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.</description>
     </item>
     
     <item>
       <title>Computer Graphics -- Lighting</title>
-      <link>https://scao7.github.io/blog/graphicslight/</link>
+      <link>https://shengtingcao.top/blog/graphicslight/</link>
       <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/graphicslight/</guid>
+      <guid>https://shengtingcao.top/blog/graphicslight/</guid>
       <description>Problem Description There are two different way to mimic a light on the material. One is vertex shader the other is fragment shader. In this project we need to create a spotlight aiming on a dark square stage. We should be able to switch the different shading method and also moving the light.
 Simply saying that, switch from fragment shader to vertex shader just simply do all the calculation in the vertex shader instead of fragment shader by using varying variables.</description>
     </item>
     
     <item>
       <title>Programming Language Design</title>
-      <link>https://scao7.github.io/blog/proglangdesignenv/</link>
+      <link>https://shengtingcao.top/blog/proglangdesignenv/</link>
       <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/proglangdesignenv/</guid>
+      <guid>https://shengtingcao.top/blog/proglangdesignenv/</guid>
       <description>Problem Description The environment is a tree to store all the value we need for future use. In the environment file it will have five basic functions
  create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);  create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); }  extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); }  make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); }  lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
     </item>
     
     <item>
       <title>WebGL 3D Modeling and Transformation</title>
-      <link>https://scao7.github.io/blog/modeling/</link>
+      <link>https://shengtingcao.top/blog/modeling/</link>
       <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/modeling/</guid>
+      <guid>https://shengtingcao.top/blog/modeling/</guid>
       <description>Problem Description In this project, we need to use webGL to model a 3D screen with display a paragrapgh you will be able to rotate the screen either by using the button on the screen or the arrow key on the keyboard.
 Approach using 16 segment display method to display the character.
 left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.</description>
@@ -130,69 +130,69 @@ left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var insta
     
     <item>
       <title>Programming language design</title>
-      <link>https://scao7.github.io/blog/proglangdesignparser/</link>
+      <link>https://shengtingcao.top/blog/proglangdesignparser/</link>
       <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/proglangdesignparser/</guid>
+      <guid>https://shengtingcao.top/blog/proglangdesignparser/</guid>
       <description>Problem Description A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.
 Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; }  parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
     </item>
     
     <item>
       <title>Programming language design</title>
-      <link>https://scao7.github.io/blog/proglangdesignlexical/</link>
+      <link>https://shengtingcao.top/blog/proglangdesignlexical/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/proglangdesignlexical/</guid>
+      <guid>https://shengtingcao.top/blog/proglangdesignlexical/</guid>
       <description>Problem Description When implementing a programming language, the first step is reading in the source code of a program written in that language. Typically, the source code is stored as a file of characters. To read in a source code file, one groups the important individual characters into tokens and discards the unimportant characters. For example, consider the Python program:
 print &#39;Hello World!&#39;  There are two tokens in this program, print and &amp;lsquo;Hello World!</description>
     </item>
     
     <item>
       <title>WebGL basic block operation</title>
-      <link>https://scao7.github.io/blog/buildblock/</link>
+      <link>https://shengtingcao.top/blog/buildblock/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/buildblock/</guid>
+      <guid>https://shengtingcao.top/blog/buildblock/</guid>
       <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks. 1. Red disk 2. Green disk 3. Blue disk 4. Magenta square 5. Cyan square 6. Yellow square
 To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
     </item>
     
     <item>
       <title>Math Typesetting</title>
-      <link>https://scao7.github.io/blog/latexinmd/</link>
+      <link>https://shengtingcao.top/blog/latexinmd/</link>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/latexinmd/</guid>
+      <guid>https://shengtingcao.top/blog/latexinmd/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Programming Language Design</title>
-      <link>https://scao7.github.io/blog/programminglanguagedesigngrammar/</link>
+      <link>https://shengtingcao.top/blog/programminglanguagedesigngrammar/</link>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/programminglanguagedesigngrammar/</guid>
+      <guid>https://shengtingcao.top/blog/programminglanguagedesigngrammar/</guid>
       <description>Problem Description The task is to build an interpreter for a general purpose programming language of my own design. The language must - support the following features:
  comments integers and strings dynamically typed (like Scheme and Python) classes/objects arrays with O(1) access time conditionals recursion iteration convenient means to access command line arguments convenient means to print to the console convenient means to read integers from a file an adequate set of operators anonymous functions functions as first-class objects (i.</description>
     </item>
     
     <item>
       <title>webGL for Koch snowflake</title>
-      <link>https://scao7.github.io/blog/snoflake/</link>
+      <link>https://shengtingcao.top/blog/snoflake/</link>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/snoflake/</guid>
+      <guid>https://shengtingcao.top/blog/snoflake/</guid>
       <description>Problem Description Draw the Koch snowflake using recursive method!
 calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; }  divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
     </item>
     
     <item>
       <title>VIM Note</title>
-      <link>https://scao7.github.io/blog/vimnote/</link>
+      <link>https://shengtingcao.top/blog/vimnote/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/blog/vimnote/</guid>
+      <guid>https://shengtingcao.top/blog/vimnote/</guid>
       <description>reference 1, vim cheat sheet
 reference 2, vim command summary
 multi-window lmuti-window basic operations   :e filename - edit another file :split filename - split window and load another file ctrl-w up arrow - move cursor up a window ctrl-w ctrl-w - move cursor to another window (cycle) ctrl-w_ - maximize current window ctrl-w= - make all equal size 10 ctrl-w+ - increase window size by 10 lines :vsplit file - vertical split :sview file - same as split, but readonly :hide - close current window :only - keep only this window open :ls - show current buffers :b 2 - open buffer #2 in this window :bnext or :bn - go to the next buffer :bprev or :bp - go to the previous buffer :bd - delete a buffer (close a file) :ls - list all open buffers :sp file - open a file in a new buffer and split window :vsp file - open a file in a new buffer and vertically split window Ctrl + ws - split window Ctrl + ww - switch windows Ctrl + wq - quit a window Ctrl + wv - split window vertically Ctrl + wh - move cursor to the left window (vertical split) Ctrl + wl - move cursor to the right window (vertical split) Ctrl + wj - move cursor to the window below (horizontal split) Ctrl + wk - move cursor to the window above (horizontal split)  cursor movement cursor movement h - move cursor left j - move cursor down k - move cursor up l - move cursor right H - move to top of screen M - move to middle of screen L - move to bottom of screen w - jump forwards to the start of a word W - jump forwards to the start of a word (words can contain punctuation) e - jump forwards to the end of a word E - jump forwards to the end of a word (words can contain punctuation) b - jump backwards to the start of a word B - jump backwards to the start of a word (words can contain punctuation) % - move to matching character (default supported pairs: &#39;()&#39;, &#39;{}&#39;, &#39;[]&#39; - use &amp;lt;code&amp;gt;:h matchpairs&amp;lt;/code&amp;gt; in vim for more info) 0 - jump to the start of the line ^ - jump to the first non-blank character of the line $ - jump to the end of the line g_ - jump to the last non-blank character of the line gg - go to the first line of the document G - go to the last line of the document 5G - go to line 5 fx - jump to next occurrence of character x tx - jump to before next occurrence of character x Fx - jump to previous occurence of character x Tx - jump to after previous occurence of character x ; - repeat previous f, t, F or T movement , - repeat previous f, t, F or T movement, backwards } - jump to next paragraph (or function/block, when editing code) { - jump to previous paragraph (or function/block, when editing code) zz - center cursor on screen Ctrl + e - move screen down one line (without moving cursor) Ctrl + y - move screen up one line (without moving cursor) Ctrl + b - move back one full screen Ctrl + f - Ctrl + d - Ctrl + u -  Search and replace Search and replace /pattern - search for pattern ?</description>

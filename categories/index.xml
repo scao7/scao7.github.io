@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Shengting Cao&#39;s Note Book</title>
-    <link>https://scao7.github.io/categories/</link>
+    <link>https://shengtingcao.top/categories/</link>
     <description>Recent content in Categories on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://scao7.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://shengtingcao.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LaTex</title>
-      <link>https://scao7.github.io/categories/latex/</link>
+      <link>https://shengtingcao.top/categories/latex/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/latex/</guid>
+      <guid>https://shengtingcao.top/categories/latex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Internet, SSH</title>
-      <link>https://scao7.github.io/categories/internet-ssh/</link>
+      <link>https://shengtingcao.top/categories/internet-ssh/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/internet-ssh/</guid>
+      <guid>https://shengtingcao.top/categories/internet-ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Android Development</title>
-      <link>https://scao7.github.io/categories/android-development/</link>
+      <link>https://shengtingcao.top/categories/android-development/</link>
       <pubDate>Fri, 07 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/android-development/</guid>
+      <guid>https://shengtingcao.top/categories/android-development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Computer Graphics</title>
-      <link>https://scao7.github.io/categories/computer-graphics/</link>
+      <link>https://shengtingcao.top/categories/computer-graphics/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/computer-graphics/</guid>
+      <guid>https://shengtingcao.top/categories/computer-graphics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming Languages</title>
-      <link>https://scao7.github.io/categories/programming-languages/</link>
+      <link>https://shengtingcao.top/categories/programming-languages/</link>
       <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/programming-languages/</guid>
+      <guid>https://shengtingcao.top/categories/programming-languages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://scao7.github.io/categories/linux/</link>
+      <link>https://shengtingcao.top/categories/linux/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://scao7.github.io/categories/linux/</guid>
+      <guid>https://shengtingcao.top/categories/linux/</guid>
       <description></description>
     </item>
     
