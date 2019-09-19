@@ -4,12 +4,27 @@
   
   <url>
     <loc>https://scao7.github.io/blog/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://scao7.github.io/blog/"
+                />
   </url>
   
   <url>
     <loc>https://scao7.github.io/categories/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -28,28 +43,13 @@
   </url>
   
   <url>
-    <loc>https://scao7.github.io/categories/computer-graphics/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://scao7.github.io/blog/latexinmd/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://scao7.github.io/blog/programminglanguagedesigngrammar/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://scao7.github.io/categories/programming-languages/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    <loc>https://scao7.github.io/categories/latex/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://scao7.github.io/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -65,6 +65,106 @@
                 hreflang="en"
                 href="https://scao7.github.io/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/latexsyntax/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/categories/internet-ssh/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/somenotesaboutssh/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/categories/android-development/</loc>
+    <lastmod>2019-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/kmeanopencv4android/</loc>
+    <lastmod>2019-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/opencvbasiclibraryintroandroid/</loc>
+    <lastmod>2019-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/ostuthreshold/</loc>
+    <lastmod>2019-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/importopencv/</loc>
+    <lastmod>2019-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/androidcanvas/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/categories/computer-graphics/</loc>
+    <lastmod>2019-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/graphicstexture/</loc>
+    <lastmod>2019-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/graphicslight/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/proglangdesignenv/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/categories/programming-languages/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/modeling/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/proglangdesignparser/</loc>
+    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/proglangdesignlexical/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/buildblock/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/latexinmd/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/blog/programminglanguagedesigngrammar/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>

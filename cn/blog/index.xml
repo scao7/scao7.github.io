@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Hugo Future Imperfect Slim auf deutsch</title>
+    <link>https://scao7.github.io/cn/blog/</link>
+    <description>Recent content in Blog on Hugo Future Imperfect Slim auf deutsch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://scao7.github.io/cn/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何制作HugoPage</title>
+      <link>https://scao7.github.io/cn/blog/chinese/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://scao7.github.io/cn/blog/chinese/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

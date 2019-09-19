@@ -3,27 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://scao7.github.io/jp/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+    <loc>https://scao7.github.io/jp/blog/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://scao7.github.io/about/"
+                href="https://scao7.github.io/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://scao7.github.io/cn/about/"
+                href="https://scao7.github.io/cn/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="jp"
-                href="https://scao7.github.io/jp/about/"
+                href="https://scao7.github.io/jp/blog/"
                 />
   </url>
   
   <url>
     <loc>https://scao7.github.io/jp/categories/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -43,6 +44,7 @@
   
   <url>
     <loc>https://scao7.github.io/jp/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -57,6 +59,36 @@
                 rel="alternate"
                 hreflang="jp"
                 href="https://scao7.github.io/jp/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/jp/categories/japanese/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/jp/blog/japanese/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scao7.github.io/jp/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://scao7.github.io/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://scao7.github.io/cn/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://scao7.github.io/jp/about/"
                 />
   </url>
   

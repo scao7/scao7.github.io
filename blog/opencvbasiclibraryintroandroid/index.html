@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Android Development -- Image Tools - Shengting Cao&#39;s Note Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <meta name="generator" content="Hugo 0.58.2" />
+  <meta itemprop="name" content="Android Development -- Image Tools">
+<meta itemprop="description" content="Some image processing tools">
+
+
+<meta itemprop="datePublished" content="2019-06-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="185">
+
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Android Development -- Image Tools" />
+<meta property="og:description" content="Some image processing tools" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scao7.github.io/blog/opencvbasiclibraryintroandroid/" />
+<meta property="article:published_time" content="2019-06-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-04T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android Development -- Image Tools"/>
+<meta name="twitter:description" content="Some image processing tools"/>
+<meta name="twitter:site" content="@example"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      
+      
+      <link rel="stylesheet" href="/css/main.min.0a64f3eede6e78edc2d8b2ca7051e4d9a6379f472dac76b1168733b88d27146a.css" integrity="sha256-CmTz7t5ueO3C2LLKcFHk2aY3n0ctrHaxFoczuI0nFGo=">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/cn" lang="cn" class="no-lang link">中文 (cn)</a>
+      
+    
+      
+        <a href="/jp" lang="jp" class="no-lang link">日本語 (jp)</a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Android%20Development%20--%20Image%20Tools&amp;url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;title=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;title=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;description=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="100" alt="Debug the world! Touch the theory!" /></a>
+  <header>
+    <h1>Shengting Cao's Note Book</h1>
+  </header>
+  <main>
+    <p>Debug the world! Touch the theory!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+        <li><a href="//github.com/scao7" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/example" target="_blank" rel="noopener" title="Flickr" class="fab fa-flickr"></a></li>
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/company/examplebusiness" target="_blank" rel="noopener" title="LinkedIn Company" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/example" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+<li><a href="//pinterest.com/example" target="_blank" rel="noopener" title="Pinterest" class="fab fa-pinterest-p"></a></li>
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+<li><a href="//researchgate.net/profile/example" target="_blank" rel="noopener" title="Research Gate"><i class="ai ai-researchgate"></i></a></li>
+<li><a href="//keybase.io/example" target="_blank" rel="noopener" title="keybase" class="fab fa-keybase"></a></li>
+<li><a href="//example.com/@example" target="_blank" rel="noopener" title="mastodon" class="fab fa-mastodon"></a></li>
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/opencvbasiclibraryintroandroid/">Android Development -- Image Tools</a></h2>
+    
+    
+        <p>Some image processing tools</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-06-04 00:00:00 &#43;0000 UTC">
+      June 4, 2019
+    </time>
+    <span class="author">Shengting Cao</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Android%20Development%20--%20Image%20Tools&amp;url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;title=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;title=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f&amp;description=Android%20Development%20--%20Image%20Tools" target="_blank" rel="noopener" class="share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fscao7.github.io%2fblog%2fopencvbasiclibraryintroandroid%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+
+  <div class="content">
+    
+
+<h4 id="image-gradient">Image Gradient</h4>
+
+<pre><code class="language-java">private void imageGradient(){
+     Mat grayMat = new Mat();
+     Mat sobel = new Mat();
+     Mat grad_x = new Mat();
+     Mat abs_grad_x = new Mat();
+     Mat grad_y = new Mat();
+     Mat abs_grad_y = new Mat();
+     Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+     Mat originalMat = new Mat();
+     Utils.bitmapToMat(bitmap,originalMat);
+     Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY);
+     Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0);
+     Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0);
+     Core.convertScaleAbs(grad_x,abs_grad_x);
+     Core.convertScaleAbs(grad_y,abs_grad_y);
+     Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel);
+     Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565);
+     Utils.matToBitmap(sobel,currentBitmap);
+     imageView.setImageBitmap(currentBitmap);
+ }
+</code></pre>
+
+<h4 id="canny-contours">Canny Contours</h4>
+
+<pre><code class="language-java">private void cannyContours(){
+     Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+     Mat originalMat = new Mat();
+     Utils.bitmapToMat(originalbitmap,originalMat);
+
+     Mat grayMat = new Mat();
+     Mat cannyEdges = new Mat();
+     Mat hierarchy = new Mat();
+
+     List&lt;MatOfPoint&gt; contourList = new ArrayList&lt;MatOfPoint&gt;();
+
+     Imgproc.cvtColor(originalMat,grayMat,Imgproc.COLOR_RGBA2GRAY);
+     Imgproc.Canny(grayMat,cannyEdges,10,100);
+     Imgproc.findContours(cannyEdges,contourList,hierarchy,Imgproc.RETR_LIST,Imgproc.CHAIN_APPROX_SIMPLE);
+
+     Mat contours = new Mat();
+     contours.create(cannyEdges.rows(),cannyEdges.cols(),CvType.CV_8UC3);
+     Random r = new Random();
+
+     for (int i = 0; i&lt; contourList.size();i++){
+         Imgproc.drawContours(contours,contourList,i,new Scalar(r.nextInt(255),r.nextInt(255),r.nextInt(255)),-1);
+     }
+
+     Bitmap currentBitmap = Bitmap.createBitmap(originalbitmap.getWidth(),originalbitmap.getHeight(),Bitmap.Config.RGB_565);
+     Utils.matToBitmap(contours,currentBitmap);
+     imageView.setImageBitmap(currentBitmap);
+ }
+</code></pre>
+
+<h4 id="blur">Blur</h4>
+
+<pre><code class="language-java">private void blur(){
+        Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+        Mat mat = new Mat();
+        Utils.bitmapToMat(originalbitmap,mat);
+        Imgproc.blur(mat,mat,new Size(10,10));
+        Utils.matToBitmap(mat,originalbitmap);
+        imageView.setImageBitmap(originalbitmap);
+    }
+</code></pre>
+
+<h4 id="median-blur">Median Blur</h4>
+
+<pre><code class="language-java">private void medianBlur(){
+    Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+    Mat mat = new Mat();
+    Utils.bitmapToMat(originalbitmap,mat);
+    Imgproc.medianBlur(mat,mat,3);
+    Utils.matToBitmap(mat,originalbitmap);
+    imageView.setImageBitmap(originalbitmap);
+}
+</code></pre>
+
+<h4 id="dilate">Dilate</h4>
+
+<pre><code class="language-java">private void dilate(){
+    Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
+    Mat mat = new Mat();
+    Utils.bitmapToMat(originalbitmap,mat);
+    Imgproc.dilate(mat,mat,Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(3,3)));
+    Utils.matToBitmap(mat,originalbitmap);
+    imageView.setImageBitmap(originalbitmap);
+}
+</code></pre>
+
+<p>to be continue</p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://scao7.github.io/categories/android-development">Android Development</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<div class="pagination">
+  
+    <a href="/blog/ostuthreshold/" class="button big previous"><i class="fas fa-angle-left"></i> Android Development ---- Ostu threshold</a>
+  
+  
+    <a href="/blog/kmeanopencv4android/" class="button big next">Android Development -- K-mean <i class="fas fa-angle-right"></i></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/latexsyntax/">Using LaTex</a></h1>
+          <time class="published" datetime="">September 18, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/somenotesaboutssh/">Notes on SSH and AWS</a></h1>
+          <time class="published" datetime="">August 14, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/kmeanopencv4android/">Android Development -- K-mean</a></h1>
+          <time class="published" datetime="">June 7, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/opencvbasiclibraryintroandroid/">Android Development -- Image Tools</a></h1>
+          <time class="published" datetime="">June 4, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/ostuthreshold/">Android Development ---- Ostu threshold</a></h1>
+          <time class="published" datetime="">June 1, 2019</time>
+        </header>
+      </article>
+      
+      
+        <a href="/blog/" class="button">See more</a>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/computer-graphics/">computer-graphics<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/android-development/">android-development<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/programming-languages/">programming-languages<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/internet-ssh/">internet-ssh<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  <section id="mini-bio">
+    <header>
+      <h1>About</h1>
+    </header>
+    <p>test</p>
+    <footer>
+      <a href="/about" class="button">Learn More</a>
+    </footer>
+  </section>
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/scao7" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/example" target="_blank" rel="noopener" title="Flickr" class="fab fa-flickr"></a></li>
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/company/examplebusiness" target="_blank" rel="noopener" title="LinkedIn Company" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/example" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+<li><a href="//pinterest.com/example" target="_blank" rel="noopener" title="Pinterest" class="fab fa-pinterest-p"></a></li>
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+<li><a href="//researchgate.net/profile/example" target="_blank" rel="noopener" title="Research Gate"><i class="ai ai-researchgate"></i></a></li>
+<li><a href="//keybase.io/example" target="_blank" rel="noopener" title="keybase" class="fab fa-keybase"></a></li>
+<li><a href="//example.com/@example" target="_blank" rel="noopener" title="mastodon" class="fab fa-mastodon"></a></li>
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019
+      
+        Shengting Cao&#39;s Note Book
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+  ...
+</html>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+
+
+    </div>
+  </body>
+</html>
