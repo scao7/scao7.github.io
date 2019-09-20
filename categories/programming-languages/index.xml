@@ -32,15 +32,6 @@ print &#39;Hello World!&#39;  There are two tokens in this program, print and &a
     </item>
     
     <item>
-      <title>Math Typesetting</title>
-      <link>https://shengtingcao.top/blog/latexinmd/</link>
-      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/latexinmd/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Programming Language Design</title>
       <link>https://shengtingcao.top/blog/programminglanguagedesigngrammar/</link>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
