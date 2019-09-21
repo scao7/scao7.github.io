@@ -21,7 +21,7 @@
 Use logistic regression in deep learning: Given an image \(x\) and we want an algorithm to output \(\hat{y}\) 1 represents cat and 0 represents non-cat.
 Given \(x\), want \(\hat{y} = p(y=1|x)\) and \( x \in \R^{\smash{n_x}} \)
 Parameters: \(w \in \R^{\smash{n_x}}\) and \(b \in \R^{\smash{n}}\)
-Output: \({\hat{y} = w^T + b} \) (this one is linear regression, but this is not a good algorithm for binary classification because you want the \(\hat{y}\) to be the chance that if the image is cat.</description>
+Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is not a good algorithm for binary classification because you want the \(\hat{y}\) to be the chance that if the image is cat.</description>
     </item>
     
   </channel>

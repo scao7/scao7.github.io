@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-09-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="228">
+<meta itemprop="wordCount" content="461">
 
 
 
@@ -256,7 +256,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -325,13 +325,13 @@
 
 <p>Parameters: <span  class="math">\(w \in \R^{\smash{n_x}}\)</span> and <span  class="math">\(b \in \R^{\smash{n}}\)</span></p>
 
-<p>Output: <span  class="math">\({\hat{y} = w^T + b} \)</span> (this one is linear regression, but this is not
+<p>Output: <span  class="math">\({\hat{y} = w^Tx + b} \)</span> (this one is linear regression, but this is not
  a good algorithm for binary classification because you want the <span  class="math">\(\hat{y}\)</span> to
  be the chance that if the image is cat. So <span  class="math">\(\hat{y}\)</span> should between 0 and 1.
- And it is difficult to enforce that <span  class="math">\(w^T + b\)</span> can be much bigger than 1 and
+ And it is difficult to enforce that <span  class="math">\(w^Tx + b\)</span> can be much bigger than 1 and
  might be negative. Which doesn't make sense for probability.)</p>
 
-<p><strong>So for the logistic regression the output should be <span  class="math">\(\\ \hat{y} = \sigma(w^T + b)\)</span></strong></p>
+<p><strong>So for the logistic regression the output should be <span  class="math">\(\\ \hat{y} = \sigma(w^Tx + b)\)</span></strong></p>
 
 <p>The sigmoid function looks like this:</p>
 
@@ -347,6 +347,45 @@ If <span  class="math">\(z\)</span> very small <span  class="math">\(\sigma (z) 
 <p>when you implement the logistic regression the <span  class="math">\(\hat{y}\)</span> can be a good estimate of the chance that output is 0 or 1.</p>
 
 <h4 id="cost-function-vs-loss-function">Cost Function VS Loss function</h4>
+
+<p>To learn the parameters of your model.</p>
+
+<p>We given <span  class="math">\(\{ (x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \},\)</span> want <span  class="math">\( \hat{y}^{(i)} \approx y^{(i)}\)</span>.
+you have m sample training set and you want the output prediction approximately equal to the ground truth.</p>
+
+<p>we can have more detail formula according to the logistic regression formulas.</p>
+
+<p><strong><span  class="math">\(\\ \hat{y}^{(i)} = \sigma(w^Tx^{(i)} + b^{(i)})\ \)</span>, where <span  class="math">\(\ \sigma(z^{(i)}) = \frac 1 {1 + e^{-z^{(i)}}}\)</span></strong></p>
+
+<p>Now we can have the loss function to measure how well our estimation.</p>
+
+<p><strong>Loss Function</strong></p>
+
+<p>Intuitively you could define a function like this: <span  class="math">\(\mathscr{L}(\hat{y},y) = \frac 1 2 (\hat{y},y)^2\)</span></p>
+
+<p><strong>But this formula is not convex and makes gradient descent may not find a global optimal.</strong></p>
+
+<p>The formula we really use is</p>
+
+<p><span  class="math">\[\bold{\mathscr{L}(\hat{y},y) = -(y\log \hat{y} + (1-y)\log(1-\hat{y}))}\]</span></p>
+
+<p>we want the loss function as small as possible. In this formula</p>
+
+<p>If <span  class="math">\(y = 1 : \mathscr{L}(\hat{y}, y) = -\log \hat{y} \larr \)</span> want <span  class="math">\(\, \log \hat{y} \)</span> large, want <span  class="math">\(\hat{y}\)</span> large.</p>
+
+<p>If <span  class="math">\(y = 0 : \mathscr{L}(\hat{y}, y) = -\log (1- \hat{y}) \larr \)</span> want <span  class="math">\(\, \log(1-\hat{y}) \)</span> large, want <span  class="math">\( \hat{y}\)</span> small.</p>
+
+<p><strong>Loss function is define as the loss on a single training sample</strong></p>
+
+<p><strong>Cost Function</strong></p>
+
+<p><span  class="math">\[ J(w,b)= \frac 1 m \sum_{i=1}^m \mathscr{L}(\hat{y}^{(i)}, y^{(i)}) = - \frac 1 m \sum_{i=1}^m [ y^{(i)}\log \hat{y}^{(i)} + (1-y^{(i)})\log(1-\hat{y}^{(i)})]\]</span></p>
+
+<p><strong>Cost function is define as the loss of entire training samples</strong></p>
+
+<p>Finally we are trying to minimize the overall loss <span  class="math">\(J\)</span>of our model.</p>
+
+<h4 id="gradient-descent">Gradient Descent</h4>
 
   </div>
   <footer>
