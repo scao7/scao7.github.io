@@ -9,19 +9,19 @@
 
   <meta name="generator" content="Hugo 0.58.2" />
   <meta itemprop="name" content="Neuron Network Basics">
-<meta itemprop="description" content="Talk about logistic regression in deep learning ">
+<meta itemprop="description" content="Talk about neuron network basics, logistic regress, loss funciton, cost funciton ... ">
 
 
 <meta itemprop="datePublished" content="2019-09-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-09-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="461">
+<meta itemprop="wordCount" content="674">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="Neuron Network Basics" />
-<meta property="og:description" content="Talk about logistic regression in deep learning " />
+<meta property="og:description" content="Talk about neuron network basics, logistic regress, loss funciton, cost funciton ... " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/logisticregression/" />
 <meta property="article:published_time" content="2019-09-21T00:00:00+00:00" />
@@ -29,7 +29,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Neuron Network Basics"/>
-<meta name="twitter:description" content="Talk about logistic regression in deep learning "/>
+<meta name="twitter:description" content="Talk about neuron network basics, logistic regress, loss funciton, cost funciton ... "/>
 
   
 
@@ -247,7 +247,7 @@
         <h2><a href="/blog/logisticregression/">Neuron Network Basics</a></h2>
     
     
-        <p>Talk about logistic regression in deep learning </p>
+        <p>Talk about neuron network basics, logistic regress, loss funciton, cost funciton ... </p>
     
 </div>
   <div class="meta">
@@ -256,7 +256,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>3 minutes read</p>
+      <p>4 minutes read</p>
     
   </div>
 </header>
@@ -341,8 +341,8 @@
 
 <p><span  class="math">\[ \sigma (z) = \frac 1 {1 + e^{-z}}\]</span></p>
 
-<p>If <span  class="math">\(z\)</span> very large <span  class="math">\(\sigma (z) \)</span> is closer to 1.
-If <span  class="math">\(z\)</span> very small <span  class="math">\(\sigma (z) \)</span> is closer to 0.</p>
+<p>If <span  class="math">\(z\)</span> is very large <span  class="math">\(\sigma (z) \)</span> is closer to 1.
+If <span  class="math">\(z\)</span> is very small <span  class="math">\(\sigma (z) \)</span> is closer to 0.</p>
 
 <p>when you implement the logistic regression the <span  class="math">\(\hat{y}\)</span> can be a good estimate of the chance that output is 0 or 1.</p>
 
@@ -361,9 +361,15 @@ you have m sample training set and you want the output prediction approximately 
 
 <p><strong>Loss Function</strong></p>
 
-<p>Intuitively you could define a function like this: <span  class="math">\(\mathscr{L}(\hat{y},y) = \frac 1 2 (\hat{y},y)^2\)</span></p>
+<p>Intuitively you could define a function like this: <span  class="math">\(\mathscr{L}(\hat{y},y) = \frac 1 2 (\hat{y}-y)^2\)</span></p>
 
 <p><strong>But this formula is not convex and makes gradient descent may not find a global optimal.</strong></p>
+
+<p>We are not simply use the mean square error function is that it's a non-convex function.</p>
+
+<p>Examples of convex and non-convex function:
+ <figure><img src="/img/2019/09/pic03.jpg" alt="convex and non convex"></figure>
+ Our cost function is a convex one. No matter how we initialize our training it will eventually go to the same point.</p>
 
 <p>The formula we really use is</p>
 
@@ -383,9 +389,37 @@ you have m sample training set and you want the output prediction approximately 
 
 <p><strong>Cost function is define as the loss of entire training samples</strong></p>
 
-<p>Finally we are trying to minimize the overall loss <span  class="math">\(J\)</span>of our model.</p>
+<p>Finally we are trying to find <span  class="math">\(w\)</span> and <span  class="math">\(b\)</span> to minimize cost <span  class="math">\(J(w,b)\)</span>.</p>
 
 <h4 id="gradient-descent">Gradient Descent</h4>
+
+<p>Gradient Descent is a first-order iterative optimization algorithm for finding the minimum of a function.</p>
+
+<p>Gradient Descent will take the next several step to find the deepest point of the convex surface:</p>
+
+<p>To illustrate how Gradient works, we can draw a graph like this (ignore the <span  class="math">\(b\)</span>):</p>
+
+<p><strong>Repeat {</strong></p>
+
+<p><span  class="math">\( {w:= w - \alpha \frac {\partial J(w)} {\partial w}}\)</span>;</p>
+
+<p><strong>}</strong></p>
+
+<p>If the slop of this function is positive the <span  class="math">\(w\)</span> will move to the left, if slop is negative the <span  class="math">\(w\)</span> will move to the right. By doing this several times, we will find a global minimum of <span  class="math">\(J(w)\)</span>.</p>
+
+<p><img src = "/img/2019/09/pic04.png" width = 50%\></p>
+
+<p><span  class="math">\(\boxed{\alpha}\)</span> is the learning rate and controls how big a step we take on each iteration of gradient descent.</p>
+
+<p><span  class="math">\(\boxed{\partial w}\)</span> is the derivative update the change you want to make to the parameters <span  class="math">\(w\)</span>.</p>
+
+<p><span  class="math">\(\boxed{\partial J(w)}\)</span> is the derivative of <span  class="math">\(J(w)\)</span>.</p>
+
+<h4 id="computational-graph">computational graph</h4>
+
+<p><strong>Forward Propagation</strong></p>
+
+<p>Given funciton <span  class="math">\(J(a,b,c) = 5 a(b + c)\)</span> Let's say <span  class="math">\(u = b + c, v = au, J = 5v\)</span></p>
 
   </div>
   <footer>
