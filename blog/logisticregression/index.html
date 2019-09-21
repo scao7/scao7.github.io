@@ -2,34 +2,34 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Programming Language Design - Shengting Cao&#39;s Note Book</title>
+<title>Logistic Regression - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="Programming Language Design">
-<meta itemprop="description" content="Environment design">
+  <meta itemprop="name" content="Logistic Regression">
+<meta itemprop="description" content="Talk about logistic regression in deep learning">
 
 
-<meta itemprop="datePublished" content="2019-02-26T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-02-26T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="274">
+<meta itemprop="datePublished" content="2019-09-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-09-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="154">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Programming Language Design" />
-<meta property="og:description" content="Environment design" />
+  <meta property="og:title" content="Logistic Regression" />
+<meta property="og:description" content="Talk about logistic regression in deep learning" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/blog/proglangdesignenv/" />
-<meta property="article:published_time" content="2019-02-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-02-26T00:00:00+00:00" />
+<meta property="og:url" content="https://shengtingcao.top/blog/logisticregression/" />
+<meta property="article:published_time" content="2019-09-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-21T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Programming Language Design"/>
-<meta name="twitter:description" content="Environment design"/>
+<meta name="twitter:title" content="Logistic Regression"/>
+<meta name="twitter:description" content="Talk about logistic regression in deep learning"/>
 
   
 
@@ -140,37 +140,37 @@
 
   
     
-    <a href="//twitter.com/share?text=Programming%20Language%20Design&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Logistic%20Regression&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" rel="noopener" class="share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" rel="noopener" class="share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;title=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;title=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;title=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;title=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;description=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;description=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" class="share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -244,19 +244,19 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/proglangdesignenv/">Programming Language Design</a></h2>
+        <h2><a href="/blog/logisticregression/">Logistic Regression</a></h2>
     
     
-        <p>Environment design</p>
+        <p>Talk about logistic regression in deep learning</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-02-26 00:00:00 &#43;0000 UTC">
-      February 26, 2019
+    <time class="published" datetime="2019-09-21 00:00:00 &#43;0000 UTC">
+      September 21, 2019
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
@@ -269,37 +269,37 @@
 
   
     
-    <a href="//twitter.com/share?text=Programming%20Language%20Design&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Logistic%20Regression&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" rel="noopener" class="share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" rel="noopener" class="share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;title=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;title=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;title=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;title=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f&amp;description=Programming%20Language%20Design" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f&amp;description=Logistic%20Regression" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2fproglangdesignenv%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2flogisticregression%2f" target="_blank" class="share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -309,121 +309,24 @@
   
 
   <div class="content">
-    
+    <h4 id="what-is-logistic-regression">What is logistic regression</h4>
 
-<h4 id="problem-description">Problem Description</h4>
+<p><strong>Logistic regression</strong> is the appropriate regression analysis to conduct when the dependent variable is binary.</p>
 
-<p>The environment is a tree to store all the value we need for future use.
-In the environment file it will have five basic functions</p>
+<h4 id="use-logistic-regression-in-deep-learning">Use logistic regression in deep learning:</h4>
 
-<ul>
-<li>create</li>
-<li>extend</li>
-<li>lookup</li>
-<li>insert</li>
-<li>update</li>
-</ul>
+<p>Given an image <strong><span  class="math">\(x\)</span></strong> and we want an algorithm to output <strong><span  class="math">\(\hat{y}\)</span></strong> 1 represents cat and 0 represents non-cat.</p>
 
-<h4 id="functions">functions</h4>
+<p>Given <span  class="math">\(x\)</span>, want <span  class="math">\(\hat{y} = p(y=1|x)\)</span> and <span  class="math">\( x \in \R^{\smash{n_x}} \)</span></p>
 
-<h5 id="span-style-color-blue-function-define-span"><span style="color:blue"> function define </span></h5>
+<p>Parameters: <span  class="math">\(w \in \R^{\smash{n_x}}\)</span> and <span  class="math">\(b \in \R^{\smash{n}}\)</span></p>
 
-<pre><code>extern Lexeme *createEnv();
-extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals);
-extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals);
-extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env);
-extern int sameVariable(Lexeme *x, Lexeme *y);
-extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env);
-extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
-</code></pre>
+<p>Output: <span  class="math">\({\hat{y} = w^T + b} \)</span> (this one is linear regression, but this is not a good algorithm for binary classification because you want the <span  class="math">\(\hat{y}\)</span> to be the chance that if the image is cat. So <span  class="math">\(\hat{y}\)</span> should between 0 and 1. And it is difficult to enforce that <span  class="math">\(w^T + b\)</span> can be much bigger than 1 and might be negative.Which doesn't make sense for probability.)</p>
 
-<h5 id="span-style-color-blue-create-environment-span"><span style="color:blue">create environment </span></h5>
+<p><strong>So for the logistic regression the output should be <span  class="math">\(\\ \hat{y} = \sigma(w^T + b)\)</span></strong>
+the sigmoid function looks like this</p>
 
-<pre><code>Lexeme *createEnv()
-{
-    return extendEnv(NULL, NULL, NULL);
-}
-</code></pre>
-
-<h5 id="span-style-color-blue-extend-environment-span"><span style="color:blue">extend environment </span></h5>
-
-<pre><code>Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals)
-{
-    return cons(ENVIRONMENT, makeTable(vars, vals), env);
-}
-</code></pre>
-
-<h5 id="span-style-color-blue-make-table-span"><span style="color:blue">make table </span></h5>
-
-<pre><code>Lexeme *makeTable(Lexeme *vars, Lexeme *vals)
-{
-    return cons(TABLE, vars, vals);
-}
-</code></pre>
-
-<h5 id="span-style-color-blue-lookup-environment-span"><span style="color:blue">lookup environment </span></h5>
-
-<pre><code>Lexeme *lookupEnv(Lexeme *var, Lexeme *env)
-{
-    while (env != NULL)
-    {
-        Lexeme *table = car(env);
-        Lexeme *vars = car(table);
-        Lexeme *vals = cdr(table);
-        while (vars != NULL)
-        {
-            if (sameVariable(var, car(vars)))
-            {
-                return car(vals);
-            }
-            //walk the lists in parallel
-            vars = cdr(vars);
-            vals = cdr(vals);
-        }
-        env = cdr(env);
-    }
-    fprintf(stderr, &quot;FATAL: variable, %s, is undefined.&quot;, var-&gt;stringVal);
-    return NULL;
-}
-</code></pre>
-
-<h5 id="span-style-color-blue-insert-environment-span"><span style="color:blue">insert environment </span></h5>
-
-<pre><code>Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env)
-{
-    Lexeme *table = car(env);
-    setCar(table, cons(GLUE, var, car(table)));
-    setCdr(table, cons(GLUE, val, cdr(table)));
-    return val;
-}
-</code></pre>
-
-<h5 id="span-style-color-blue-update-environment-span"><span style="color:blue">update environment </span></h5>
-
-<pre><code>Lexeme *updateEnv(Lexeme *var, Lexeme *val, Lexeme *env)
-{
-     while (env != NULL)
-    {
-        Lexeme *table = car(env);
-        Lexeme *vars = car(table);
-        Lexeme *vals = cdr(table);
-        while (vars != NULL)
-        {
-            if (sameVariable(var, car(vars)))
-            {   
-                setCar(var, val);
-                return val;
-            }
-            //walk the lists in parallel
-            vars = cdr(vars);
-            vals = cdr(vals);
-        }
-        env = cdr(env);
-    }
-    fprintf(stderr, &quot;FATAL: variable, %s, is undefined.&quot;, var-&gt;stringVal);
-    return NULL;
-}
-</code></pre>
+<p><figure><img src="img/2019/09/pic01.png" alt="sigmoid"></figure></p>
 
   </div>
   <footer>
@@ -435,7 +338,7 @@ extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
         <ul>
           
             
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/programming-languages">Programming Languages</a></li>
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/deep-learning">Deep Learning</a></li>
           
         </ul>
       </li>
@@ -456,10 +359,8 @@ extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
 
 <div class="pagination">
   
-    <a href="/blog/modeling/" class="button big previous"><i class="fas fa-angle-left"></i> WebGL 3D Modeling and Transformation</a>
+    <a href="/blog/latexsyntax/" class="button big previous"><i class="fas fa-angle-left"></i> LaTex Tutorial</a>
   
-  
-    <a href="/blog/graphicslight/" class="button big next">Computer Graphics -- Lighting <i class="fas fa-angle-right"></i></a>
   
 </div>
 
