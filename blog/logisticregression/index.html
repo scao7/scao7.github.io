@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-09-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="674">
+<meta itemprop="wordCount" content="1049">
 
 
 
@@ -256,7 +256,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>4 minutes read</p>
+      <p>5 minutes read</p>
     
   </div>
 </header>
@@ -420,6 +420,53 @@ you have m sample training set and you want the output prediction approximately 
 <p><strong>Forward Propagation</strong></p>
 
 <p>Given funciton <span  class="math">\(J(a,b,c) = 5 a(b + c)\)</span> Let's say <span  class="math">\(u = b + c, v = au, J = 5v\)</span></p>
+
+<p><span  class="math">\( \boxed{a = 5} \)</span> ------------------------------------- <span  class="math">\(\searrow\)</span></p>
+
+<p><span  class="math">\( \boxed{b = 3} \)</span> -----------&gt;<span  class="math">\( \boxed{u=bc} \longrightarrow \boxed{v = a + u} \longrightarrow \boxed{J= 3v}\)</span></p>
+
+<p><span  class="math">\( \boxed{c = 2} \)</span> ---------- <span  class="math">\(\nearrow\)</span></p>
+
+<p>In this case we calculate from left to right and it's forward propagation.</p>
+
+<p><strong>Backward Propagation</strong></p>
+
+<p><img src = "/img/2019/09/pic05.png" width = "50%" /></p>
+
+<p>According to chain rules for calculus</p>
+
+<p><span  class="math">\(\frac {\partial J} {\partial a} = \frac{\partial J}{\partial v} \cdot \frac{\partial v}{\partial a} \)</span>
+, <span  class="math">\(\ \frac{\partial J}{\partial b}  = \frac{\partial J}{\partial v} \cdot \frac{\partial v}{\partial b}\)</span>,
+<span  class="math">\( \frac {\partial J}{\partial c} = \frac{\partial J}{\partial v} \cdot  \frac{\partial v}{\partial u} \cdot \frac{\partial u}{\partial c}\)</span></p>
+
+<p>By using this Backward Propagation we can end up this <span  class="math">\( \frac {\partial FindOutputVar}{\partial Var} \)</span></p>
+
+<h4 id="logistic-regression-derivative">logistic regression derivative</h4>
+
+<p>Now let's go back to the original example of the logistic regression.</p>
+
+<p><img src = "/img/2019/09/pic06.png" width = 50%/></p>
+
+<p>We can take the formula of loss function and take the derivative:</p>
+
+<p><span  class="math">\( \frac {\partial \mathscr{L}(a,y)}{\partial a} = -\frac{y}{a} + \frac {1-y}{1-a} \)</span>
+,<span  class="math">\( \frac {\partial a}{\partial z} = a(1-a) \)</span>
+<span  class="math">\( \Longrightarrow\)</span> <span  class="math">\( \partial z =\frac{\partial \mathscr{L}}{\partial a } \cdot \frac{\partial a}{\partial z} = \frac{ \partial \mathscr{L}}{\partial z}  =  \frac{\partial \mathscr{L}(a,y)}{\partial z} = a - y \)</span></p>
+
+<p>Now we know <span  class="math">\(\partial z = a - y\)</span>. We can further know <span  class="math">\( \frac {\partial \mathscr{L}} {\partial w} = x_1 \cdot \partial z , \partial b = \partial z\)</span>.</p>
+
+<p>You can update <span  class="math">\(w_1 := w_1 - \alpha \cdot \partial w_1\)</span> and <span  class="math">\( w_2 = w_2 - \alpha \cdot w_2\)</span>.</p>
+
+<h4 id="apply-the-logistic-derivative-to-m-training-set">Apply the logistic derivative to m training set</h4>
+
+<p><span  class="math">\[J = 0; \partial w_1 = 0; \partial w_2 = 0 ;\partial b = 0; \newline For \ i = 1\ to\ m \newline z^{(i)} = w^Tx{(i)}+b \newline a^{(i)} = \sigma(z^{(i)}) \newline J+=-[y{(i)}\log a^{(i)} +(1-y{(i)})\log(1-a{(i)})] \newline \partial z^{(i)} = a^{(i)}-y^{(i)} \newline \partial w_1 += x^{(i)}_1\partial z^{(i)} \newline \partial w_2 += x^{(i)}_2\partial z^{(i)} \newline \partial b += \partial z^{(i)}\]</span></p>
+
+<p>After the loop we need divide by m
+<span  class="math">\(\newline  J/=m , \partial w_1 / m, \partial w_2 / m, \partial b / m.\)</span></p>
+
+<p>The same as previous example, you need update the  <span  class="math">\(w_1 := w_1 - \alpha \cdot \partial w_1\)</span> and <span  class="math">\( w_2 := w_2 - \alpha \cdot \partial w_2, b = b - \alpha \cdot \partial b\)</span></p>
+
+<p>This post illustrate the basic ideas of logistic regression, I wiil post more about code implementation later.</p>
 
   </div>
   <footer>
