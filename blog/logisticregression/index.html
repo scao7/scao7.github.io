@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-09-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1049">
+<meta itemprop="wordCount" content="1067">
 
 
 
@@ -256,7 +256,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>5 minutes read</p>
+      <p>6 minutes read</p>
     
   </div>
 </header>
@@ -319,7 +319,7 @@
 
 <h4 id="use-logistic-regression-in-deep-learning">Use logistic regression in deep learning:</h4>
 
-<p>Given an image <strong><span  class="math">\(x\)</span></strong> and we want an algorithm to output <strong><span  class="math">\(\hat{y}\)</span></strong> 1 represents cat and 0 represents non-cat.</p>
+<p>Given an image <strong><span  class="math">\(x\)</span></strong> and we want an algorithm to output <strong><span  class="math">\(\hat{y}\)</span></strong>, 1 represents cat and 0 represents non-cat.</p>
 
 <p>Given <span  class="math">\(x\)</span>, want <span  class="math">\(\hat{y} = p(y=1|x)\)</span> and <span  class="math">\( x \in \R^{\smash{n_x}} \)</span></p>
 
@@ -328,8 +328,8 @@
 <p>Output: <span  class="math">\({\hat{y} = w^Tx + b} \)</span> (this one is linear regression, but this is not
  a good algorithm for binary classification because you want the <span  class="math">\(\hat{y}\)</span> to
  be the chance that if the image is cat. So <span  class="math">\(\hat{y}\)</span> should between 0 and 1.
- And it is difficult to enforce that <span  class="math">\(w^Tx + b\)</span> can be much bigger than 1 and
- might be negative. Which doesn't make sense for probability.)</p>
+ And it is difficult to enforce that, <span  class="math">\(w^Tx + b\)</span> can be much bigger than 1 and
+ might be negative. Which doesn't make sense in probability.)</p>
 
 <p><strong>So for the logistic regression the output should be <span  class="math">\(\\ \hat{y} = \sigma(w^Tx + b)\)</span></strong></p>
 
@@ -357,7 +357,7 @@ you have m sample training set and you want the output prediction approximately 
 
 <p><strong><span  class="math">\(\\ \hat{y}^{(i)} = \sigma(w^Tx^{(i)} + b^{(i)})\ \)</span>, where <span  class="math">\(\ \sigma(z^{(i)}) = \frac 1 {1 + e^{-z^{(i)}}}\)</span></strong></p>
 
-<p>Now we can have the loss function to measure how well our estimation.</p>
+<p>Now we can have the loss function to measure how well is our estimation.</p>
 
 <p><strong>Loss Function</strong></p>
 
@@ -365,13 +365,13 @@ you have m sample training set and you want the output prediction approximately 
 
 <p><strong>But this formula is not convex and makes gradient descent may not find a global optimal.</strong></p>
 
-<p>We are not simply use the mean square error function is that it's a non-convex function.</p>
+<p>We are not simply use the mean square error function because it's a non-convex function.</p>
 
 <p>Examples of convex and non-convex function:
  <figure><img src="/img/2019/09/pic03.jpg" alt="convex and non convex"></figure>
  Our cost function is a convex one. No matter how we initialize our training it will eventually go to the same point.</p>
 
-<p>The formula we really use is</p>
+<p>The formula we really use is:</p>
 
 <p><span  class="math">\[\bold{\mathscr{L}(\hat{y},y) = -(y\log \hat{y} + (1-y)\log(1-\hat{y}))}\]</span></p>
 
@@ -395,9 +395,11 @@ you have m sample training set and you want the output prediction approximately 
 
 <p>Gradient Descent is a first-order iterative optimization algorithm for finding the minimum of a function.</p>
 
-<p>Gradient Descent will take the next several step to find the deepest point of the convex surface:</p>
+<p>Gradient Descent will take the next several steps to find the deepest point of the convex surface:</p>
 
 <p>To illustrate how Gradient works, we can draw a graph like this (ignore the <span  class="math">\(b\)</span>):</p>
+
+<p><img src = "/img/2019/09/pic04.png" width = 50%\></p>
 
 <p><strong>Repeat {</strong></p>
 
@@ -407,13 +409,13 @@ you have m sample training set and you want the output prediction approximately 
 
 <p>If the slop of this function is positive the <span  class="math">\(w\)</span> will move to the left, if slop is negative the <span  class="math">\(w\)</span> will move to the right. By doing this several times, we will find a global minimum of <span  class="math">\(J(w)\)</span>.</p>
 
-<p><img src = "/img/2019/09/pic04.png" width = 50%\></p>
-
 <p><span  class="math">\(\boxed{\alpha}\)</span> is the learning rate and controls how big a step we take on each iteration of gradient descent.</p>
 
 <p><span  class="math">\(\boxed{\partial w}\)</span> is the derivative update the change you want to make to the parameters <span  class="math">\(w\)</span>.</p>
 
-<p><span  class="math">\(\boxed{\partial J(w)}\)</span> is the derivative of <span  class="math">\(J(w)\)</span>.</p>
+<p><span  class="math">\(\boxed{\partial J(w)}\)</span> is the changes related to <span  class="math">\(\partial w\)</span> of <span  class="math">\(J(w)\)</span>.</p>
+
+<p><span  class="math">\(\boxed{\frac {\partial J(w)} {\partial w}}\)</span> is the slop of this curve.</p>
 
 <h4 id="computational-graph">computational graph</h4>
 
@@ -459,14 +461,20 @@ you have m sample training set and you want the output prediction approximately 
 
 <h4 id="apply-the-logistic-derivative-to-m-training-set">Apply the logistic derivative to m training set</h4>
 
-<p><span  class="math">\[J = 0; \partial w_1 = 0; \partial w_2 = 0 ;\partial b = 0; \newline For \ i = 1\ to\ m \newline z^{(i)} = w^Tx{(i)}+b \newline a^{(i)} = \sigma(z^{(i)}) \newline J+=-[y{(i)}\log a^{(i)} +(1-y{(i)})\log(1-a{(i)})] \newline \partial z^{(i)} = a^{(i)}-y^{(i)} \newline \partial w_1 += x^{(i)}_1\partial z^{(i)} \newline \partial w_2 += x^{(i)}_2\partial z^{(i)} \newline \partial b += \partial z^{(i)}\]</span></p>
+<p><strong>Initialize the data:</strong></p>
 
-<p>After the loop we need divide by m
+<p><span  class="math">\[J = 0; \partial w_1 = 0; \partial w_2 = 0 ;\partial b = 0; \newline \]</span></p>
+
+<p><strong>For i = 1 to m:</strong></p>
+
+<p><span  class="math">\[ z^{(i)} = w^Tx{(i)}+b \newline a^{(i)} = \sigma(z^{(i)}) \newline J+=-[y{(i)}\log a^{(i)} +(1-y{(i)})\log(1-a{(i)})] \newline \partial z^{(i)} = a^{(i)}-y^{(i)} \newline \partial w_1 += x^{(i)}_1\partial z^{(i)} \newline \partial w_2 += x^{(i)}_2\partial z^{(i)} \newline \partial b += \partial z^{(i)}\]</span></p>
+
+<p><strong>After the loop we need divide by m:</strong>
 <span  class="math">\(\newline  J/=m , \partial w_1 / m, \partial w_2 / m, \partial b / m.\)</span></p>
 
 <p>The same as previous example, you need update the  <span  class="math">\(w_1 := w_1 - \alpha \cdot \partial w_1\)</span> and <span  class="math">\( w_2 := w_2 - \alpha \cdot \partial w_2, b = b - \alpha \cdot \partial b\)</span></p>
 
-<p>This post illustrate the basic ideas of logistic regression, I wiil post more about code implementation later.</p>
+<p>This post illustrated the basic ideas of logistic regression, I will post more about code implementation later.</p>
 
   </div>
   <footer>
