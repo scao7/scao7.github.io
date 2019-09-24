@@ -9,19 +9,19 @@
 
   <meta name="generator" content="Hugo 0.58.2" />
   <meta itemprop="name" content="如何制作HugoPage">
-<meta itemprop="description" content="中文笔记">
+<meta itemprop="description" content="这一篇文章是讲解如何用Hugo网页自动生成器来做一个这样的博客网址。并且部署到Github上。">
 
 
 <meta itemprop="datePublished" content="2019-01-25T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-01-25T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="131">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="如何制作HugoPage" />
-<meta property="og:description" content="中文笔记" />
+<meta property="og:description" content="这一篇文章是讲解如何用Hugo网页自动生成器来做一个这样的博客网址。并且部署到Github上。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/cn/blog/chinese/" />
 <meta property="article:published_time" content="2019-01-25T00:00:00+00:00" />
@@ -29,7 +29,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="如何制作HugoPage"/>
-<meta name="twitter:description" content="中文笔记"/>
+<meta name="twitter:description" content="这一篇文章是讲解如何用Hugo网页自动生成器来做一个这样的博客网址。并且部署到Github上。"/>
 
   
 
@@ -247,7 +247,7 @@
         <h2><a href="/cn/blog/chinese/">如何制作HugoPage</a></h2>
     
     
-        <p>中文笔记</p>
+        <p>这一篇文章是讲解如何用Hugo网页自动生成器来做一个这样的博客网址。并且部署到Github上。</p>
     
 </div>
   <div class="meta">
@@ -256,7 +256,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>0 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
@@ -310,6 +310,92 @@
 
   <div class="content">
     
+
+<h4 id="下载hugo以及安装">下载Hugo以及安装</h4>
+
+<p>工具：<a href="https://gohugo.io/getting-started/quick-start/">Hugo 下载界面</a>
+,<a href="https://brew.sh/">Homebrew</a></p>
+
+<p>从上面的链接点进去就到来Hugo的下载,我使用的是Mac系统的安装方法。Mac 是通过brew来获取安装工具的所以点击上面Homebrew 链接来进行安装如果你之前没有安装过brew的话。</p>
+
+<pre><code class="language-shell">
+brew install hugo
+
+hugo version
+
+hugo new site yourProject # 你的工程文件名
+
+cd yourProject
+
+git init
+
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke # 自行在github 上找主题，没有主题文件hugo是不能创建网页的。或者你可以自己创作主题。
+
+echo theme = &quot;ananke&quot; &gt;&gt; config.toml #将主题名写入config文件。
+
+</code></pre>
+
+<p>在Hugo的下载界面有详细的教程来指导你如何安装并使用Hugo。我这里就不重复的说明了。</p>
+
+<h4 id="编辑网页">编辑网页</h4>
+
+<p>打开文件的structure，每一个主题都会有自己的格式的控制每一个post显示的内容。Hugo的网页内容基本是用.md 后缀的文档来渲染网页的。
+首先用<code>hugo new posts/my-first-post.md</code> 这个指令来创建一个新的文章。
+用你喜欢的编辑器打开，然后加入文章标题等一些header的信息。我使用的主题的header信息就是以下图片所显示的。</p>
+
+<p><img src="/img/2019/01/pic02.png" alt="example" /></p>
+
+<p>下面这张截图来告诉我们如何去寻找这种header的信息
+在themes &mdash;- yourtheme &mdash;- exampleSite &mdash;- content &mdash;- blog 下找到一个示范的.md文件。通过查看他就可以找到如何为你的文章添加标签。或者你可以直接把content文件夹复制粘贴到yourProject 文件夹下。然后通过修改.md来生成自己想要的内容。</p>
+
+<p>如何编辑网页内容就需要参考markdown 的各种文档了。</p>
+
+<h4 id="编辑网页跟渲染">编辑网页跟渲染</h4>
+
+<p>打开terminal在yourProject文件夹下输入指令<code>hugo server</code> 然后你就可以在网页上输入链接 <a href="http://localhost:1313">http://localhost:1313</a> 来进入网页的preview。</p>
+
+<h4 id="使用github来host你的网站">使用Github来host你的网站</h4>
+
+<p>工具：<a href="https://pages.github.com/">Github Page</a></p>
+
+<p>通过以上Github Page 的教程页来对Github Page有个基本的了解。然后我们指导只要把html文档放到Github上然后设置Github pages.
+那么我们的Hugo是一个网页生成器通过<code>hugo</code>指令我们的文件会多一个文件夹public。Public 下面存放的就是我们网址所以的html文件。只要你把这个里面的文件放到github上就可以直接用github page 的链接来打开这个网站了。</p>
+
+<p>当然你肯定也想保存一下你的工程文件到GitHub。所以最简单的做法就是需要两个Github仓库来分别存放我们的Hugo工程文件和生成的html文件。当你成功的config好这两个文件之后，我写来一个简单的shell文档来实现一键部署你的网站。</p>
+
+<p>将一下代码复制，创建一个deploy.sh 的文档然后将以下代码放到Hugo工程文件夹下。你可能需要<code>chmod +x deploy.sh</code>来给他权限。
+当每次编辑完你的网站之后你可以使用<code>./deploy.sh</code>来一键上传到github了。</p>
+
+<pre><code class="language-shell">hugo -d ../scao7.github.io/ # scao7.github.io 是我的Github Page 通过这个网站也可以访问我的博客。
+git add .
+git commit -m &quot;update&quot;
+git push
+cd ../scao7.github.io/
+git add .
+git commit -m &quot;update by automation&quot;
+git push
+cd ../MyNoteBook/ #MyNoteBook 是我的文件夹用来存放所以Hugo工程文件的文件夹。
+
+</code></pre>
+
+<h4 id="让你的网站拥有自定义域名">让你的网站拥有自定义域名</h4>
+
+<p>工具：<a href="https://help.github.com/en/articles/setting-up-an-apex-domain">可用ip Github Page</a></p>
+
+<p>自定义域名需要你从域名服务商处购买一个域名，我的就是 <a href="https://shengtingcao.top">shengtingcao.top</a>。给域名添加一个ip记录。查看上面网站看有哪些ip可用用于添加记录。我这里列出了一些：</p>
+
+<pre><code>185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+</code></pre>
+
+<p>添加一个到记录里面然后如图设置域名：</p>
+
+<p><img src="/img/2019/01/pic03.png" alt="df" /></p>
+
+<p>点击保存后你网站就上线了！ 真正制作网页的时候会碰到各种个样的问题，我这篇文章是一个简单的介绍，但是我几乎把我所以参考的网站工具还有闻到都放在这里，希望能对你有帮助。</p>
+
   </div>
   <footer>
     <ul class="stats">
@@ -320,7 +406,7 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://shengtingcao.top/cn/categories/chinese">Chinese</a></li>
+            <li><a class="article-category-link" href="https://shengtingcao.top/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C">网页制作</a></li>
           
         </ul>
       </li>
@@ -381,7 +467,7 @@
           
           <li>
             
-              <a href="/cn/categories/chinese/">chinese<span class="count">1</span></a>
+              <a href="/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/">网页制作<span class="count">1</span></a>
             
           
           </li>
