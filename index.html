@@ -230,6 +230,64 @@
   <header>
   <div class="title">
     
+        <h2><a href="/blog/classifier/">Classifier Implementation and Problems</a></h2>
+    
+    
+        <p>Talk about Classifier basics and how to implement them in Matlab without use the build-in classifier function</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-09-25 00:00:00 &#43;0000 UTC">
+      September 25, 2019
+    </time>
+    <span class="author">Shengting Cao</span>
+    
+      <p>3 minutes read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p><a href="/img/2019/09/Probability.pdf">Probability</a>,
+<a href="/img/2019/09/BayesianDecisionTheory.pdf">Bayesian Decision Theory</a>,
+<a href="/img/2019/09/ParametricMethod.pdf">Parametric Methods</a>,
+<a href="/img/2019/09/MultivariateMethod.pdf">Multivariate Parametric Methods</a>,
+<a href="/img/2019/09/AssessClassifier.pdf">Assesses Classifier</a></p>
+  <footer>
+    <a href="/blog/classifier/" class="button big">Read more</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/machine-learning">Machine Learning</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
         <h2><a href="/blog/probabilitybasics/">Probability Basics</a></h2>
     
     
@@ -250,7 +308,8 @@
   
 
   
-  <p><a href="/img/2019/09/Probability.pdf">Probability Documentation PDF</a></p>
+  <p><a href="/img/2019/09/Probability.pdf">Probability Documentation PDF</a>,
+<a href="/img/2019/09/MultivariateMethod.pdf">Multivariate Methods PDF</a></p>
   <footer>
     <a href="/blog/probabilitybasics/" class="button big">Read more</a>
     <ul class="stats">
@@ -500,70 +559,6 @@
 </article>
 
         
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/opencvbasiclibraryintroandroid/">Android Development -- Image Tools</a></h2>
-    
-    
-        <p>Some image processing tools</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-06-04 00:00:00 &#43;0000 UTC">
-      June 4, 2019
-    </time>
-    <span class="author">Shengting Cao</span>
-    
-      <p>1 minute read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <pre><code class="language-java">private void imageGradient(){
-     Mat grayMat = new Mat();
-     Mat sobel = new Mat();
-     Mat grad_x = new Mat();
-     Mat abs_grad_x = new Mat();
-     Mat grad_y = new Mat();
-     Mat abs_grad_y = new Mat();
-     Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]);
-     Mat originalMat = new Mat();
-     Utils.bitmapToMat(bitmap,originalMat);
-     Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY);&hellip;</code></pre>
-  <footer>
-    <a href="/blog/opencvbasiclibraryintroandroid/" class="button big">Read more</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/android-development">Android Development</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
-</ul>
-
-  </footer>
-</article>
-
-        
         
 <div class="pagination">
   
@@ -581,6 +576,17 @@
       <header>
         <h1>Recent posts</h1>
       </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/classifier/">Classifier Implementation and Problems</a></h1>
+          <time class="published" datetime="">September 25, 2019</time>
+        </header>
+      </article>
       
       <article class="mini-post">
         <section>
@@ -663,17 +669,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/importopencv/">Android Development -- Import OpenCV</a></h1>
-          <time class="published" datetime="">May 17, 2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">See more</a>
       
@@ -724,6 +719,11 @@
           <li>
             
               <a href="/categories/linux/">linux<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
             
           
           <li>
