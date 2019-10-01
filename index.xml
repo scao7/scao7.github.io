@@ -235,10 +235,10 @@ multi-window lmuti-window basic operations   :e filename - edit another file :sp
     
     <item>
       <title></title>
-      <link>https://shengtingcao.top/search/</link>
+      <link>https://shengtingcao.top/searchgoogle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/search/</guid>
+      <guid>https://shengtingcao.top/searchgoogle/</guid>
       <description>{{ if .Site.Params.highlightjs }} {{ end }} {{ range .Site.Params.cssFiles }} {{ if eq . &#34;default&#34; }} {{ $mainCSSOptions := (dict &#34;targetPath&#34; &#34;css/main.min.css&#34; &#34;outputStyle&#34; &#34;compressed&#34;) }} {{ $style := resources.Get &#34;scss/main.scss&#34; | resources.ToCSS $mainCSSOptions | resources.Fingerprint }} {{ end }} {{ end }}  {{ with .Site.Params.intro.pic }}{{ end }}  {{ with .Site.Params.intro.header }}{{ . | safeHTML }}{{ end }}   {{ with .Site.Params.intro.paragraph }}{{ . | safeHTML }}</description>
     </item>
     
