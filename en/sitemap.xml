@@ -203,11 +203,6 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/search/index.json</loc>
-    <lastmod>2018-09-04T15:32:54+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://shengtingcao.top/categories/linux/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
@@ -238,7 +233,7 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/searchgoogle/</loc>
+    <loc>https://shengtingcao.top/search/</loc>
     <priority>0</priority>
   </url>
   
