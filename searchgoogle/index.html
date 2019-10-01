@@ -74,3 +74,77 @@
 
 <script async src="https://cse.google.com/cse.js?cx=018350193954619334226:c7lkyn20qyy"></script>
 <div id = "head" class="gcse-search"></div>
+
+
+<div class="search" id="search">
+    <input type="text" placeholder="Search site..." v-model="txt" @keyup="search()" @blur="close()" maxlength="50">
+    <div class="search-results" :style="{'display': showresult?'block':'none'}">
+        <a v-for="item in result" :href="item.url">{{ item.title }}</a>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+
+<script>
+let vuesearch = new Vue({
+    el: '#search', 
+    data: {
+        txt: '', 
+        timeoutID: 0, 
+        showresult: false, 
+        result: {}, 
+        bdd: [] 
+        },
+    mounted: function() {
+        
+        axios.get('https:\/\/shengtingcao.top\/search\/index.json')
+        .then(function (response) {
+            vuesearch.bdd = response.data.results;
+            })
+        .catch(function (error) {
+            console.log(error);
+            });
+        },
+    methods: {
+        close: function() {
+            
+            
+            setTimeout(function() {
+                vuesearch.showresult = false;
+                vuesearch.txt = '';
+                }, 300);
+            },
+        search: function() {
+            
+            clearTimeout(this.timeoutID);
+            this.timeoutID = setTimeout(this.dosearch, 500);
+            },
+        dosearch: function() {
+            
+            this.result = []; 
+            let words = this.txt.split(' '); 
+            let words2 = []; 
+            words.forEach(function(element) { 
+                if(element) {words2.push(element);}
+                });
+            let r;
+            let resultmp;
+            words2.forEach(function(e) { 
+                r = vuesearch.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+                if(vuesearch.result.length===0) {vuesearch.result = r.slice(); return;}
+                resultmp = [];
+                vuesearch.result.forEach(function(all1) {
+                    r.forEach(function(all2) { 
+                        if(all1.url===all2.url) {resultmp.push(all1);}
+                        });
+                    });
+                vuesearch.result = resultmp.slice();
+                });
+            this.result = this.result.slice(0, 10); 
+            this.showresult = (this.result.length>0); 
+            } 
+        } 
+    }); 
+</script>

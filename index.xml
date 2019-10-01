@@ -223,6 +223,15 @@ calculate the point for the Koch lines function calculatePoint(center, p){ var a
     </item>
     
     <item>
+      <title>Search</title>
+      <link>https://shengtingcao.top/search/index.json</link>
+      <pubDate>Tue, 04 Sep 2018 15:32:54 +0200</pubDate>
+      
+      <guid>https://shengtingcao.top/search/index.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>VIM Note</title>
       <link>https://shengtingcao.top/blog/vimnote/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
