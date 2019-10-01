@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on Shengting Cao&#39;s Note Book</title>
+    <link>https://shengtingcao.top/categories/deep-learning/</link>
+    <description>Recent content in Deep Learning on Shengting Cao&#39;s Note Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neuron Network Basics</title>
+      <link>https://shengtingcao.top/blog/logisticregression/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/logisticregression/</guid>
+      <description>What is logistic regression Logistic regression is the appropriate regression analysis to conduct when the dependent variable is binary.
+Use logistic regression in deep learning: Given an image \(x\) and we want an algorithm to output \(\hat{y}\), 1 represents cat and 0 represents non-cat.
+Given \(x\), want \(\hat{y} = p(y=1|x)\) and \( x \in \R^{\smash{n_x}} \)
+Parameters: \(w \in \R^{\smash{n_x}}\) and \(b \in \R^{\smash{n}}\)
+Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is not a good algorithm for binary classification because you want the \(\hat{y}\) to be the chance that if the image is cat.</description>
+    </item>
+    
+  </channel>
+</rss>

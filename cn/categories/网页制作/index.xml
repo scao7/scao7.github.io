@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网页制作 on 欢迎来到我博客中文界面</title>
+    <link>https://shengtingcao.top/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/</link>
+    <description>Recent content in 网页制作 on 欢迎来到我博客中文界面</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何制作HugoPage</title>
+      <link>https://shengtingcao.top/cn/blog/chinese/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/cn/blog/chinese/</guid>
+      <description>下载Hugo以及安装 工具：Hugo 下载界面 ,Homebrew
+从上面的链接点进去就到来Hugo的下载,我使用的是Mac系统的安装方法。Mac 是通过brew来获取安装工具的所以点击上面Homebrew 链接来进行安装如果你之前没有安装过brew的话。
+brew install hugo hugo version hugo new site yourProject # 你的工程文件名 cd yourProject git init git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke # 自行在github 上找主题，没有主题文件hugo是不能创建网页的。或者你可以自己创作主题。 echo theme = &amp;quot;ananke&amp;quot; &amp;gt;&amp;gt; config.toml #将主题名写入config文件。  在Hugo的下载界面有详细的教程来指导你如何安装并使用Hugo。我这里就不重复的说明了。
+编辑网页 打开文件的structure，每一个主题都会有自己的格式的控制每一个post显示的内容。Hugo的网页内容基本是用.md 后缀的文档来渲染网页的。 首先用hugo new posts/my-first-post.md 这个指令来创建一个新的文章。 用你喜欢的编辑器打开，然后加入文章标题等一些header的信息。我使用的主题的header信息就是以下图片所显示的。
+下面这张截图来告诉我们如何去寻找这种header的信息 在themes &amp;mdash;- yourtheme &amp;mdash;- exampleSite &amp;mdash;- content &amp;mdash;- blog 下找到一个示范的.md文件。通过查看他就可以找到如何为你的文章添加标签。或者你可以直接把content文件夹复制粘贴到yourProject 文件夹下。然后通过修改.md来生成自己想要的内容。
+如何编辑网页内容就需要参考markdown 的各种文档了。
+编辑网页跟渲染 打开terminal在yourProject文件夹下输入指令hugo server 然后你就可以在网页上输入链接 http://localhost:1313 来进入网页的preview。
+使用Github来host你的网站 工具：Github Page</description>
+    </item>
+    
+  </channel>
+</rss>

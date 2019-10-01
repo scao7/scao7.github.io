@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Graphics on Shengting Cao&#39;s Note Book</title>
+    <link>https://shengtingcao.top/categories/computer-graphics/</link>
+    <description>Recent content in Computer Graphics on Shengting Cao&#39;s Note Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 31 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/categories/computer-graphics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Computer Graphics -- Texture</title>
+      <link>https://shengtingcao.top/blog/graphicstexture/</link>
+      <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/graphicstexture/</guid>
+      <description>Problem Description We want to draw three walls and put texture on them.At the same time we want to create a TV that we can change the frame on the screen every 1 second. You are able to turn on and off the TV.
+In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.</description>
+    </item>
+    
+    <item>
+      <title>Computer Graphics -- Lighting</title>
+      <link>https://shengtingcao.top/blog/graphicslight/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/graphicslight/</guid>
+      <description>Problem Description There are two different way to mimic a light on the material. One is vertex shader the other is fragment shader. In this project we need to create a spotlight aiming on a dark square stage. We should be able to switch the different shading method and also moving the light.
+Simply saying that, switch from fragment shader to vertex shader just simply do all the calculation in the vertex shader instead of fragment shader by using varying variables.</description>
+    </item>
+    
+    <item>
+      <title>WebGL 3D Modeling and Transformation</title>
+      <link>https://shengtingcao.top/blog/modeling/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/modeling/</guid>
+      <description>Problem Description In this project, we need to use webGL to model a 3D screen with display a paragrapgh you will be able to rotate the screen either by using the button on the screen or the arrow key on the keyboard.
+Approach using 16 segment display method to display the character.
+left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.</description>
+    </item>
+    
+    <item>
+      <title>Programming language design</title>
+      <link>https://shengtingcao.top/blog/proglangdesignparser/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/proglangdesignparser/</guid>
+      <description>Problem Description A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.
+Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; }  parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
+    </item>
+    
+    <item>
+      <title>WebGL basic block operation</title>
+      <link>https://shengtingcao.top/blog/buildblock/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/buildblock/</guid>
+      <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks. 1. Red disk 2. Green disk 3. Blue disk 4. Magenta square 5. Cyan square 6. Yellow square
+To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
+    </item>
+    
+    <item>
+      <title>webGL for Koch snowflake</title>
+      <link>https://shengtingcao.top/blog/snoflake/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/snoflake/</guid>
+      <description>Problem Description Draw the Koch snowflake using recursive method!
+calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; }  divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
+    </item>
+    
+  </channel>
+</rss>
