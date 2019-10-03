@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2019-09-25T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-09-25T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="506">
+<meta itemprop="wordCount" content="1036">
 
 
 
@@ -252,7 +252,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>3 minutes read</p>
+      <p>5 minutes read</p>
     
   </div>
 </header>
@@ -352,12 +352,12 @@ are training set. Pseudocode looks like this :</p>
 end
 </code></pre>
 
-<h4 id="multiclass-classifier">MultiClass Classifier</h4>
+<h4 id="classification-with-probability">Classification with Probability</h4>
 
 <p>We know binary classifier works by find a threshold to distinguish two classes. How we find a classifier that is able to distinguish
 among 3 classes or more? Simply by find threshold can't solve this problem. So we need another model that involve probability to solve this problem.</p>
 
-<p><strong>Bayesian Decision (classifier)</strong></p>
+<p>✨✨<strong>Bayesian Decision (classifier)</strong>✨✨</p>
 
 <p>Instead of optimize the threshold, the MultiClass Classifier is trying to predict the probability of output.
 For example, if we want to build a classifier to estimate tomorrow is sunny or rainy. We use different data to calculate the probability. If P(sunny|parameters) &gt; 0.5 we say it's sunny. If P(rainy|parameters)&gt;0.5 we say it will
@@ -365,8 +365,65 @@ Here I need explain several terms in this graph:</p>
 
 <p><img src = /img/2019/09/pic10.png width = 50% /></p>
 
-<p><strong>prior</strong> is the probability
-continue...</p>
+<p>Use the <a href="/img/2019/09/AssessClassifier.pdf">sea bass and salmon</a> example:</p>
+
+<p><strong>prior(probability)</strong> is the prior knowledge of how likely is to get a sea bass or a salmon.</p>
+
+<p><strong>evidence(probability density function)</strong> is how frequently we will measure a
+pattern with feature value x. (e.g.,x corresponds to lightness)</p>
+
+<p><strong>likelihood(conditional probability density function)</strong> is how frequently we
+will measure a pattern with feature value x given that pattern belongs to class <span  class="math">\(C_i\)</span>.</p>
+
+<p><strong>posterior(conditional probability)</strong> is the probability that the fish belongs to class <span  class="math">\(C_i\)</span>.</p>
+
+<p><strong>Bayes' Rule: K &gt; 2 Classes</strong></p>
+
+<p><span  class="math">\[P(C_i | \bold x) = \frac {p(\bold x | C_i) P(C_i)} {p(\bold x)} = \frac {p(\bold x|C_i)P(C_i)}{\sum^k_{k=1}p(\bold x|C_k)P(C_k)} \]</span></p>
+
+<p>To distinguish more than two classes we need to analysis the losses and risk of the data. We can calculate the risk according to the following formula:</p>
+
+<p><span  class="math">\[R(\alpha_i|\bold x) = \sum_{k=1}^K \lambda_{ik}P(C_k|\bold x)\]</span></p>
+
+<p>In this formula,<span  class="math">\(\alpha_i\)</span> is the action (assign input to different classes)，<span  class="math">\(\lambda_{ik} = \lambda(\alpha_i | C_k)\)</span>. This <strong>Risk Function</strong> says the expected (&quot;average&quot;) loss for taking an action(choosing a class) given an input vector, for a given conditional loss function <span  class="math">\(\lambda\)</span></p>
+
+<p>We can define <span  class="math">\(\lambda_{ik} = \begin{cases} 0 &\text{if } i = k &\text{Good decisions have no loss}\\ 1 &\text{if } i \not = k &\text{Bad decisions are equally costly}\end{cases}\)</span>. This is called <strong>zero/one loss</strong>. After calculating the risk of each classes, we choose the action that minimizes the risk:</p>
+
+<p>Choose <span  class="math">\(\alpha_i \)</span> if <span  class="math">\( R(\alpha_i | \bold x) = min_k R(\alpha_k | \bold x)\)</span>. In <strong>zero/one loss</strong> we can simplify it like this:</p>
+
+<p><span  class="math">\[R(\alpha_i | \bold x) = \sum_{k=1}^K \lambda_{ik}P(C_k|\bold x) = \sum_{k\not = i}P(C_k|\bold x)=1 - P(C_i|\bold x)\]</span></p>
+
+<p>We always need a better classifier because misclassifications are costly, one way to reduce the misclassification are add <strong>Reject</strong> to your algorithm.
+We can modify the <span  class="math">\(\lambda_{ik}\)</span> function to achieve this functionality.</p>
+
+<p><span  class="math">\[\lambda_{ik} = \begin{cases} 0 &\text{if } i = k \\ \lambda &\text{if } i = K + 1, 0 < \lambda < 1 &\text{Reject action} \ \alpha_{K+1} \\ 1 &\text{otherwise}& \text{Cost of misclassification} \end{cases}\]</span></p>
+
+<p>We can simply file the risk function by the following:</p>
+
+<p><span  class="math">\[R(\alpha_{k+1}|\bold x) = \sum_{k=1}^K\lambda P(C_k|\bold x) = \lambda\]</span></p>
+
+<p><span  class="math">\[R(\alpha_i | \bold x) = \sum_{k \not = i}P(C_k|\bold x) = 1 - P(C_i |\bold x)\]</span></p>
+
+<p>We choose <span  class="math">\(C_i\)</span> if <span  class="math">\(P(C_i|\bold x) > P(C_k|\bold x) \forall k \not = i \)</span> and <span  class="math">\( P(C_i|\bold x)>1-\lambda\)</span> Otherwise reject.</p>
+
+<p><figure><img src="/img/2019/10/pic02.png" alt="pic01"></figure></p>
+
+<p>After this we define a function called <strong>Discriminant Function</strong> (notation is <span  class="math">\(g_i(\bold x)\)</span>), we choose <span  class="math">\(C_i\)</span> if <span  class="math">\(g_i(\bold x) = max_kg_k(\bold x)\)</span>. Therefore we could define a Discriminant Function
+<span  class="math">\(g_i(\bold x) = -R(\alpha |\bold x)\)</span>. So we have the max discriminant corresponds to min risk.</p>
+
+<p>As a result, we can get <span  class="math">\(g_i(\bold x) = P(C_i|\bold x)\)</span> for zero/one loss function and finally get <span  class="math">\(g_i(\bold x)= p(\bold x|C_i)P(C_i) \)</span> neglecting common evidence.</p>
+
+<p>✨✨<strong>Parametric Classifier</strong> ✨✨
+With those knowledge in Bayesian decision. We understand how the classifier works in the sense of probability.
+Before go through the concepts, I put the notation here in advance.</p>
+
+<p><span  class="math">\(\chi\)</span> is the sample, <span  class="math">\(\chi = \{\bold x^t \}_t\)</span> where <span  class="math">\(\bold x^t \sim p(\bold x)\)</span>, <span  class="math">\(\theta\)</span> defined as an estimate with this form <span  class="math">\(p(\bold x | \theta )\)</span> (e.g.,<span  class="math">\(N(\mu, \sigma^2 )\)</span> where <span  class="math">\(\theta = \{\mu,\sigma^2 \}\)</span>)</p>
+
+<p><strong>likelihood</strong> of <span  class="math">\( \theta\)</span> given the sample <span  class="math">\(\chi\)</span> <span  class="math">\(l(\theta |\chi) = p(\chi |\theta) = \Pi_tp(\bold x^t|\theta)\)</span></p>
+
+<p>We want to fine <span  class="math">\(\theta\)</span> that make <span  class="math">\(\chi\)</span></p>
+
+<p>continue...</p>
 
   </div>
   <footer>
@@ -666,6 +723,7 @@ continue...</p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/vbscript-html.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/matlab.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 
