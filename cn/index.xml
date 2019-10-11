@@ -18,7 +18,7 @@
       
       <guid>https://shengtingcao.top/cn/blog/wordpresssite/</guid>
       <description>写在最前面，自己做好的worpdress网站一定要创建一个snapshot来备份，不然就很好玩了！！！！
-有用的插件 ELEMENTOR, Polylang, Profile Builder, Really Simple SSL, Simple Local Avatars, WP Mail SMTP
+有用的插件 ELEMENTOR, Polylang, Profile Builder, Really Simple SSL, Simple Local Avatars, WP Mail SMTP，ninja forms
 用Gmail SMTP 作为邮件发送的host 在创建一个EC2 实例之后Wordpress 默认的是user@example.com 这个显然不能够发邮件，我的解决方法是用WP Mail SMTP插件来通过Gmail发送邮件。
 第一步是要在Google API console 创建一个发送邮件的应用并且记住他的client id和secret key。在插件中setting里面填入就行了。有时候发现在邮件里无法更爱user@example.com这个时候可以改成SMTP来更改邮箱然后再返回Google SMTP 设置。
 SSL Certificate 这个永远是一个很麻烦的问题，我第一个网站就是因为SSL的问题崩了，我第一次使用的是Binami 的 Wordpress没有Wordpress的套件。我用AWS certificate manager 创建SSL。使用Really Simple SSL 插件来强制使用https来访问。
