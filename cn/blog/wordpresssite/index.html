@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2019-10-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="136">
+<meta itemprop="wordCount" content="139">
 
 
 
@@ -328,7 +328,7 @@
 
 <h4 id="ssl-certificate">SSL Certificate</h4>
 
-<p>这个永远是一个很麻烦的问题，我第一个网站就是因为SSL的问题崩了，我第一次使用的是Binami 的 Wordpress没有Wordpress的套件。我用AWS certificate manager 创建SSL。使用Really Simple SSL 插件来强制使用https来访问。</p>
+<p>这个永远是一个很麻烦的问题，我第一个网站就是因为SSL的问题崩了，我第一次使用的是Binami 的Wordpress套件。我<del>用AWS certificate manager 创建SSL。</del> AWS 的SSL一点都不好用，有时候还乱收费。推荐使用<a href="https://letsencrypt.org/">letsencrypt</a> 和 Really Simple SSL 插件来强制使用https来访问。</p>
 
 <p>重新制作网站之后我使用letsencrypt 工具配合Really Simple SSL 实现了强制https访问。
 简单的使用代码如下：</p>
@@ -346,8 +346,8 @@ sudo chmod 777 /opt/bitnami/apps/wordpress/htdocs/wp-content
 
 <p>给予权限之后来恢复原来的权限:</p>
 
-<pre><code class="language-shell">sudo chmod 660 /opt/bitnami/apps/wordpress/htdocs/wp-config.php
-sudo chmod 777 /opt/bitnami/apps/wordpress/htdocs/wp-content
+<pre><code class="language-shell">sudo chmod 640 /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+sudo chmod 775 /opt/bitnami/apps/wordpress/htdocs/wp-content
 </code></pre>
 
 <p>这一套应该是最快速设置SSL认证跟强制https安全访问的方法了。</p>
