@@ -6,10 +6,21 @@
     <description>Recent content on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Computer vision problem and step by step to approach the problem</title>
+      <link>https://shengtingcao.top/blog/computervisionnote1/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/computervisionnote1/</guid>
+      <description>Vertical edge detection Before know how to do the vertical edge detection, we could first know how the convolution operation works in image processing.
+we can have a convolution operation like this * means convolution:
+$$\begin{bmatrix} 3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 7 &amp;amp; 4 \\ 1 &amp;amp; 5 &amp;amp; 8 &amp;amp; 9 &amp;amp; 3 &amp;amp; 1 \\ 2 &amp;amp; 7 &amp;amp; 2 &amp;amp; 5 &amp;amp; 1 &amp;amp;3 \\ 0 &amp;amp; 1 &amp;amp; 3 &amp;amp; 1 &amp;amp; 7 &amp;amp; 8 \\ 4 &amp;amp;2&amp;amp;1&amp;amp;6&amp;amp;2&amp;amp;8 \\ 4&amp;amp; 2&amp;amp; 1&amp;amp; 6&amp;amp; 2&amp;amp; 8\\2&amp;amp; 4&amp;amp; 5&amp;amp; 2&amp;amp; 3&amp;amp; 9 \end{bmatrix} * \begin{bmatrix} 1 &amp;amp; 0 &amp;amp;-1 \\ 1 &amp;amp; 0 &amp;amp; -1 \\ 1 &amp;amp; 0 &amp;amp; -1 \end{bmatrix} = \begin{bmatrix} -5 &amp;amp; -4 &amp;amp; 0 &amp;amp; 8 \\ -10 &amp;amp; -2 &amp;amp; 2 &amp;amp; 3 \\ 0 &amp;amp; -2 &amp;amp; -4 &amp;amp; -7 \\ -3 &amp;amp; -2 &amp;amp; -3 &amp;amp; -16 \end{bmatrix} $$</description>
+    </item>
     
     <item>
       <title>Classifier Implementation and Problems</title>

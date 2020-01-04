@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://shengtingcao.top/blog/</loc>
-    <lastmod>2019-09-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
-    <lastmod>2019-09-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -39,6 +39,36 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://shengtingcao.top/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/categories/computer-vision/</loc>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/computervisionnote1/</loc>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/</loc>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/"
                 />
   </url>
   
@@ -60,26 +90,6 @@
   <url>
     <loc>https://shengtingcao.top/blog/probabilitybasics/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/</loc>
-    <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/"
-                />
   </url>
   
   <url>
