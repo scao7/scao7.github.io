@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-01-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="963">
+<meta itemprop="wordCount" content="1025">
 
 
 
@@ -375,8 +375,9 @@ n*n image apply f*f filter it will end up with output image size:</p>
 <p>$$\begin{bmatrix} 3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4  \\ 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1 \\ 2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3 \\ 0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 \\ 4 &amp;2&amp;1&amp;6&amp;2&amp;8 \\ 4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8\\2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9   \end{bmatrix} =&gt; \begin{bmatrix}0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0 \\ 0&amp;3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4&amp;0  \\ 0&amp; 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1&amp;0 \\ 0&amp;2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3&amp;0 \\ 0&amp;0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 &amp;0\\ 0&amp;4 &amp;2&amp;1&amp;6&amp;2&amp;8 &amp;0\\ 0&amp;4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8&amp;0\\0&amp;2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9 &amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0  \end{bmatrix} * \begin{bmatrix} 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \end{bmatrix} $$</p>
 
 <p>For example, first pad the 6*6 image to 8*8 and then apply the filter then you could get the 6*6 images. If padding are added then the size of the image becomes:
- $$(n+2p-f+1) * (n+2p-f+1)$$.
-In terms of how many pixel padding to choose, we have some terms &lsquo;valid convolutions&rsquo; and &lsquo;same convolutions&rsquo;. The first one is just no padding, the second means add padding and after the convolutions out put image would be the same as input size.</p>
+ $$(n+2p-f+1) * (n+2p-f+1)$$</p>
+
+<p>In terms of how many pixel padding to choose, we have some terms &lsquo;valid convolutions&rsquo; and &lsquo;same convolutions&rsquo;. The first one is just no padding, the second means add padding and after the convolutions out put image would be the same as input size.</p>
 
 <p>note: &lsquo;f is usually odd&rsquo;</p>
 
@@ -386,6 +387,17 @@ In terms of how many pixel padding to choose, we have some terms &lsquo;valid co
 
 <p>When we have n*n image and use f*f filter and a stride = s. The output imagesize is equal to
 $$ \lfloor {(n+2p-f)/s +1} \rfloor * \lfloor {(n+2p-f)/s +1} \rfloor$$</p>
+
+<h4 id="summary-of-convolutions">summary of convolutions</h4>
+
+<p>Convolution in math textbook is different !!!</p>
+
+<p>We need to flip filter apply the convolutions</p>
+
+<p>For examples
+$$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{bmatrix} =&gt; \begin{bmatrix} 7 &amp;2 &amp;5 \\ 9 &amp;0 &amp;4 \\ -1 &amp;1 &amp;3  \end{bmatrix}$$</p>
+
+<p>In computer science we just skipped the flip operation, this operation is called cross-correlation.</p>
 
   </div>
   <footer>
