@@ -6,10 +6,22 @@
     <description>Recent content on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Computer vision problem and step by step to approach the problem II</title>
+      <link>https://shengtingcao.top/blog/computervisionnote2/</link>
+      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/computervisionnote2/</guid>
+      <description>Convolutions on RGB images In the previous 2D convolution, we used the example of applying 33 filters in 66 images.
+In a RGB image, we usually have 3 channel. So we will have a 663 size image and we need a 333 filter.
+After the operation we get a 4*4 output.
+For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</description>
+    </item>
     
     <item>
       <title>Computer vision problem and step by step to approach the problem I</title>
@@ -20,18 +32,6 @@
       <description>Vertical edge detection Before know how to do the vertical edge detection, we could first know how the convolution operation works in image processing.
 we can have a convolution operation like this * means convolution:
 $$\begin{bmatrix} 3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 7 &amp;amp; 4 \\ 1 &amp;amp; 5 &amp;amp; 8 &amp;amp; 9 &amp;amp; 3 &amp;amp; 1 \\ 2 &amp;amp; 7 &amp;amp; 2 &amp;amp; 5 &amp;amp; 1 &amp;amp;3 \\ 0 &amp;amp; 1 &amp;amp; 3 &amp;amp; 1 &amp;amp; 7 &amp;amp; 8 \\ 4 &amp;amp;2&amp;amp;1&amp;amp;6&amp;amp;2&amp;amp;8 \\ 4&amp;amp; 2&amp;amp; 1&amp;amp; 6&amp;amp; 2&amp;amp; 8\\2&amp;amp; 4&amp;amp; 5&amp;amp; 2&amp;amp; 3&amp;amp; 9 \end{bmatrix} * \begin{bmatrix} 1 &amp;amp; 0 &amp;amp;-1 \\ 1 &amp;amp; 0 &amp;amp; -1 \\ 1 &amp;amp; 0 &amp;amp; -1 \end{bmatrix} = \begin{bmatrix} -5 &amp;amp; -4 &amp;amp; 0 &amp;amp; 8 \\ -10 &amp;amp; -2 &amp;amp; 2 &amp;amp; 3 \\ 0 &amp;amp; -2 &amp;amp; -4 &amp;amp; -7 \\ -3 &amp;amp; -2 &amp;amp; -3 &amp;amp; -16 \end{bmatrix} $$</description>
-    </item>
-    
-    <item>
-      <title>Computer vision problem and step by step to approach the problem II</title>
-      <link>https://shengtingcao.top/blog/computervisionnote2/</link>
-      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/computervisionnote2/</guid>
-      <description>Convolutions on RGB images In the previous 2D convolution, we used the example of applying 3*3 filters in 6*6 images.
-In a RGB image, we usually have 3 channel. So we will have a 6*6*3 size image and we need a 3*3*3 filter.
-After the operation we get a 4*4 output.
-continue ..</description>
     </item>
     
     <item>

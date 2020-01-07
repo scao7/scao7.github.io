@@ -9,27 +9,27 @@
 
   <meta name="generator" content="Hugo 0.58.2" />
   <meta itemprop="name" content="Computer vision problem and step by step to approach the problem II">
-<meta itemprop="description" content="Computer Vision problem step by step">
+<meta itemprop="description" content="Computer Vision problem step by step -- convolution on volumes">
 
 
-<meta itemprop="datePublished" content="2020-01-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="53">
+<meta itemprop="datePublished" content="2020-01-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="216">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="Computer vision problem and step by step to approach the problem II" />
-<meta property="og:description" content="Computer Vision problem step by step" />
+<meta property="og:description" content="Computer Vision problem step by step -- convolution on volumes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/computervisionnote2/" />
-<meta property="article:published_time" content="2020-01-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-01-04T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-01-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-07T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Computer vision problem and step by step to approach the problem II"/>
-<meta name="twitter:description" content="Computer Vision problem step by step"/>
+<meta name="twitter:description" content="Computer Vision problem step by step -- convolution on volumes"/>
 
   
 
@@ -243,16 +243,16 @@
         <h2><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h2>
     
     
-        <p>Computer Vision problem step by step</p>
+        <p>Computer Vision problem step by step -- convolution on volumes</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2020-01-04 00:00:00 &#43;0000 UTC">
-      January 4, 2020
+    <time class="published" datetime="2020-01-07 00:00:00 &#43;0000 UTC">
+      January 7, 2020
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -305,17 +305,29 @@
   
 
   <div class="content">
-    
+    <h4 id="convolutions-on-rgb-images">Convolutions on RGB images</h4>
 
-<h4 id="convolutions-on-rgb-images">Convolutions on RGB images</h4>
+<p>In the previous 2D convolution, we used the example of applying 3<em>3 filters in 6</em>6 images.</p>
 
-<p>In the previous 2D convolution, we used the example of applying 3*3 filters in 6*6 images.</p>
-
-<p>In a RGB image, we usually have 3 channel. So we will have a 6*6*3 size image and we need a 3*3*3 filter.</p>
+<p>In a RGB image, we usually have 3 channel. So we will have a 6<em>6</em>3 size image and we need a 3<em>3</em>3 filter.</p>
 
 <p>After the operation we get a 4*4 output.</p>
 
 <p><img src = "/img/2020/01/pic02.png" width = "70%" /></p>
+
+<p>For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
+
+<p>R: <span  class="math">\( \begin{bmatrix} 1& 0& -1 \\\ 1 &0 &-1\\\ 1 &0 &-1 \end{bmatrix}\)</span> G: <span  class="math">\( \begin{bmatrix} 0& 0& 0 \\\ 0 &0 &0\\\ 0 &0 &0 \end{bmatrix}\)</span> B: <span  class="math">\( \begin{bmatrix} 0& 0& 0 \\\ 0 &0 &0\\\ 0 &0 &0 \end{bmatrix}\)</span></p>
+
+<p>This kind of convolutional filter only detect edges on red channel. If you want to detect edges on every channel just change the G,B channel to the same as the R channel.</p>
+
+<p>Note: If we apply a 3 channel image on a 3 channel filter, we will end up with 1 channel image as a output. If we want to detect multiple image features, we could convolute the image with multiple image and stack together to get a multiple channel image.</p>
+
+<p>summary: If we have <span  class="math">\( n*n*n_c *  f*f*f_c = (n-f+1) * (n-f+1) * n_{filters} \)</span></p>
+
+<h4 id="one-layer-of-convolutional-network">one layer of convolutional network</h4>
+
+<p><img src = "/img/2020/01/pic03.png" width = "70%" /></p>
 
 <p>continue ..</p>
 
@@ -350,10 +362,8 @@
 
 <div class="pagination">
   
-    <a href="/blog/classifier/" class="button big previous"><i class="fas fa-angle-left"></i> Classifier Implementation and Problems</a>
+    <a href="/blog/computervisionnote1/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step to approach the problem I</a>
   
-  
-    <a href="/blog/computervisionnote1/" class="button big next">Computer vision problem and step by step to approach the problem I <i class="fas fa-angle-right"></i></a>
   
 </div>
 
@@ -372,8 +382,8 @@
 
         </section>
         <header>
-          <h1><a href="/blog/computervisionnote1/">Computer vision problem and step by step to approach the problem I</a></h1>
-          <time class="published" datetime="">January 4, 2020</time>
+          <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
+          <time class="published" datetime="">January 7, 2020</time>
         </header>
       </article>
       
@@ -383,7 +393,7 @@
 
         </section>
         <header>
-          <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
+          <h1><a href="/blog/computervisionnote1/">Computer vision problem and step by step to approach the problem I</a></h1>
           <time class="published" datetime="">January 4, 2020</time>
         </header>
       </article>

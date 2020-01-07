@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://shengtingcao.top/blog/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -44,22 +44,17 @@
   
   <url>
     <loc>https://shengtingcao.top/categories/computer-vision/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/blog/computervisionnote1/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://shengtingcao.top/blog/computervisionnote2/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://shengtingcao.top/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -75,6 +70,11 @@
                 hreflang="en"
                 href="https://shengtingcao.top/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/computervisionnote1/</loc>
+    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
