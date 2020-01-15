@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-01-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1025">
+<meta itemprop="wordCount" content="1394">
 
 
 
@@ -252,7 +252,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>5 minutes read</p>
+      <p>7 minutes read</p>
     
   </div>
 </header>
@@ -399,6 +399,61 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
 
 <p>In computer science we just skipped the flip operation, this operation is called cross-correlation.</p>
 
+<h4 id="convolutions-on-rgb-images">Convolutions on RGB images</h4>
+
+<p>In the previous 2D convolution, we used the example of applying 3*3 filters in 6*6 images.</p>
+
+<p>In a RGB image, we usually have 3 channel. So we will have a 6*6*3 size image and we need a 3*3*3 filter.</p>
+
+<p>After the operation we get a 4*4 output.</p>
+
+<p><img src = "/img/2020/01/pic02.png" width = "70%" /></p>
+
+<p>For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
+
+<p>R: $$ \begin{bmatrix} 1&amp; 0&amp; -1 \\ 1 &amp;0 &amp;-1\\ 1 &amp;0 &amp;-1 \end{bmatrix}$$ G: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$ B: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$</p>
+
+<p>This kind of convolutional filter only detect edges on red channel. If you want to detect edges on every channel just change the G,B channel to the same as the R channel.</p>
+
+<p>Note: If we apply a 3 channel image on a 3 channel filter, we will end up with 1 channel image as a output. If we want to detect multiple image features, we could convolute the image with multiple image and stack together to get a multiple channel image.</p>
+
+<p>summary:  $$ n*n*n_c *  f*f*f_c = (n-f+1) * (n-f+1) * n_f$$</p>
+
+<h4 id="one-layer-of-convolutional-network">one layer of convolutional network</h4>
+
+<p><img src = "/img/2020/01/pic03.png" width = "70%" /></p>
+
+<p>In the above graph it shows one layer of convolutional netwrok. There are two filters after apply the filter we can add bias and do a relu activation for both outpu and stacked together. So we can get a 4 * 4 * 2 image.
+There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} $$ and $$a^{[1]} = g(z^{[1]})$$</p>
+
+<p><strong>practice question:</strong></p>
+
+<p>If you have 10 filter that 3 * 3 * 3 in one layer of network, how many parameters that layer have?</p>
+
+<p><strong>answer</strong></p>
+
+<p>3 * 3 * 3 filter can have 27 parameters and in one layer we need add a bias. So there is 28 for one filter, there is 10 filters we need 280 parameters.</p>
+
+<p><strong>Notations</strong></p>
+
+<p>If layer l is a convolution layer:</p>
+
+<p>$$f^{[l]} = filter size$$</p>
+
+<p>$$p^{[l]} = padding $$</p>
+
+<p>$$s^{[l]} = stride $$</p>
+
+<p>$$n_c^{[l]} = number of filters$$</p>
+
+<h4 id="types-of-layer-in-a-convolutional-network">types of layer in a convolutional network</h4>
+
+<p><strong>convolution (conv)</strong></p>
+
+<p><strong>polling (pool)</strong></p>
+
+<p><strong>fully connected (FC)</strong></p>
+
   </div>
   <footer>
     <ul class="stats">
@@ -433,7 +488,7 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
     <a href="/blog/classifier/" class="button big previous"><i class="fas fa-angle-left"></i> Classifier Implementation and Problems</a>
   
   
-    <a href="/blog/computervisionnote2/" class="button big next">Computer vision problem and step by step to approach the problem II <i class="fas fa-angle-right"></i></a>
+    <a href="/blog/computervisionnote3/" class="button big next">Computer vision problem and step by step to approach the problem III <i class="fas fa-angle-right"></i></a>
   
 </div>
 
@@ -453,7 +508,18 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
         </section>
         <header>
           <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
-          <time class="published" datetime="">January 7, 2020</time>
+          <time class="published" datetime="">January 15, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h1>
+          <time class="published" datetime="">January 15, 2020</time>
         </header>
       </article>
       
@@ -527,17 +593,6 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/kmeanopencv4android/">Android Development -- K-mean</a></h1>
-          <time class="published" datetime="">June 7, 2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">See more</a>
       
@@ -567,12 +622,12 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
           
           <li>
             
-              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
+              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>

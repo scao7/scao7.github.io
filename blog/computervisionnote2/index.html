@@ -12,9 +12,9 @@
 <meta itemprop="description" content="Computer Vision problem step by step -- convolution on volumes">
 
 
-<meta itemprop="datePublished" content="2020-01-07T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="334">
+<meta itemprop="datePublished" content="2020-01-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="322">
 
 
 
@@ -24,8 +24,8 @@
 <meta property="og:description" content="Computer Vision problem step by step -- convolution on volumes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/computervisionnote2/" />
-<meta property="article:published_time" content="2020-01-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-01-07T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-01-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-15T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Computer vision problem and step by step to approach the problem II"/>
@@ -247,8 +247,8 @@
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2020-01-07 00:00:00 &#43;0000 UTC">
-      January 7, 2020
+    <time class="published" datetime="2020-01-15 00:00:00 &#43;0000 UTC">
+      January 15, 2020
     </time>
     <span class="author">Shengting Cao</span>
     
@@ -305,40 +305,60 @@
   
 
   <div class="content">
-    <h4 id="convolutions-on-rgb-images">Convolutions on RGB images</h4>
+    
 
-<p>In the previous 2D convolution, we used the example of applying 3<em>3 filters in 6</em>6 images.</p>
+<h4 id="max-pooling">Max Pooling</h4>
 
-<p>In a RGB image, we usually have 3 channel. So we will have a 6<em>6</em>3 size image and we need a 3<em>3</em>3 filter.</p>
+<p>Hyper-parameters: f = 2 , s = 2</p>
 
-<p>After the operation we get a 4*4 output.</p>
+<p>no parameters to learn</p>
 
-<p><img src = "/img/2020/01/pic02.png" width = "70%" /></p>
+<p>$$\begin{bmatrix} 1 &amp; 3 &amp; 2 &amp; 1  \\ 2 &amp; 9 &amp; 1 &amp; 1 \\ 1 &amp; 3 &amp; 2 &amp; 3  \\ 5 &amp; 6 &amp; 1 &amp; 2   \end{bmatrix} =&gt; \begin{bmatrix} 9&amp;2\\ 6&amp;3 \end{bmatrix} $$</p>
 
-<p>For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
+<p>Divide the 4*4 to 4 area and pick the largest number to get a 2 * 2 data.</p>
 
-<p>R: <span  class="math">\( \begin{bmatrix} 1& 0& -1 \\\ 1 &0 &-1\\\ 1 &0 &-1 \end{bmatrix}\)</span> G: <span  class="math">\( \begin{bmatrix} 0& 0& 0 \\\ 0 &0 &0\\\ 0 &0 &0 \end{bmatrix}\)</span> B: <span  class="math">\( \begin{bmatrix} 0& 0& 0 \\\ 0 &0 &0\\\ 0 &0 &0 \end{bmatrix}\)</span></p>
+<p>Hyper-parameters: f = 3 , s = 1</p>
 
-<p>This kind of convolutional filter only detect edges on red channel. If you want to detect edges on every channel just change the G,B channel to the same as the R channel.</p>
+<p>no parameters to learn</p>
 
-<p>Note: If we apply a 3 channel image on a 3 channel filter, we will end up with 1 channel image as a output. If we want to detect multiple image features, we could convolute the image with multiple image and stack together to get a multiple channel image.</p>
+<p>$$\begin{bmatrix} 1 &amp; 3 &amp; 2 &amp; 1 &amp; 3  \\ 2 &amp; 9 &amp; 1 &amp; 1 &amp; 5\\ 1 &amp; 3 &amp; 2 &amp; 3 &amp;2\\8&amp;3&amp;5&amp;1&amp;0 \\ 5 &amp; 6 &amp; 1 &amp; 2&amp;9   \end{bmatrix} =&gt; \begin{bmatrix} 9&amp;9&amp;5\\ 9&amp;9&amp;5 \\8&amp;6&amp;9 \end{bmatrix} $$</p>
 
-<p>summary: If we have <span  class="math">\( n*n*n_c *  f*f*f_c = (n-f+1) * (n-f+1) * n_{filters} \)</span></p>
+<h4 id="average-pooling">Average pooling</h4>
 
-<h4 id="one-layer-of-convolutional-network">one layer of convolutional network</h4>
+<p>same as the previous operation just pick average instead of maximum.</p>
 
-<p><img src = "/img/2020/01/pic03.png" width = "70%" /></p>
+<h4 id="hyper-parameters">Hyper-parameters</h4>
 
-<p>In the above graph it shows one layer of convolutional netwrok. There are two filters after apply the filter we can add bias and do a relu activation for both outpu and stacked together. So we can get a 4 * 4 * 2 image.
-There are two formulas to denote the process <span  class="math">\(z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} \)</span> and $$a^{[1]} = g(z^{[1</p>
+<p>f: filter size</p>
 
-<p><strong>practice question:</strong></p>
+<p>s: stride</p>
 
-<p>if you have 10 filter that 3 * 3 * 3 in one layer of network, how many parameters that layer have?</p>
+<p>Max or average pooling</p>
 
-<p><strong>answer</strong></p>
+<h4 id="lenet-5">LeNet-5</h4>
 
-<p>3 * 3 * 3 filter can have 27 parameters and in one layer we need add a bias. So there is 28 for one filter, there is 10 filters we need 280 parameters.</p>
+<p>Here is a example of neural network:</p>
+
+<p><img src = "/img/2020/01/pic04.png" width = "90%" /></p>
+
+<p>First we have a 32 * 32 * 3 input image, we perform a convolute using f = 5 and s = 1 then we do a maxpooling using f = 2 s = 2. This is called first layer. then we apply the same thing as the second layer.
+after go through the second layer we convert the matrix to a vector with 400 numbers and connect it to a fully convolutional layer and then do a second fully convolutional layer. Last step we do a softmax to get the clarification result.</p>
+
+<p>This is a kind of CNN.</p>
+
+<p><img src = "/img/2020/01/pic05.png" width = "100%" /></p>
+
+<p>This image shows the network learn the most parameters in the fully convolutional part.Activation size go smaller and smaller.</p>
+
+<h4 id="advantages-of-convolutions">advantages of convolutions</h4>
+
+<p>Saving work</p>
+
+<p>Less parameters</p>
+
+<p>Parameter sharing: A feature detector that&rsquo;s useful in one part of the image is probably useful in another part of the image.</p>
+
+<p>Sparsity of connections: in each layer each output value depends only on a small number of inputs</p>
 
   </div>
   <footer>
@@ -371,7 +391,7 @@ There are two formulas to denote the process <span  class="math">\(z^{[1]} = w^{
 
 <div class="pagination">
   
-    <a href="/blog/computervisionnote1/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step to approach the problem I</a>
+    <a href="/blog/computervisionnote3/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step to approach the problem III</a>
   
   
 </div>
@@ -392,7 +412,18 @@ There are two formulas to denote the process <span  class="math">\(z^{[1]} = w^{
         </section>
         <header>
           <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
-          <time class="published" datetime="">January 7, 2020</time>
+          <time class="published" datetime="">January 15, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h1>
+          <time class="published" datetime="">January 15, 2020</time>
         </header>
       </article>
       
@@ -466,17 +497,6 @@ There are two formulas to denote the process <span  class="math">\(z^{[1]} = w^{
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/kmeanopencv4android/">Android Development -- K-mean</a></h1>
-          <time class="published" datetime="">June 7, 2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">See more</a>
       
@@ -506,12 +526,12 @@ There are two formulas to denote the process <span  class="math">\(z^{[1]} = w^{
           
           <li>
             
-              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
+              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>

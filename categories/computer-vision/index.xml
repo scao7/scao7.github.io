@@ -6,7 +6,7 @@
     <description>Recent content in Computer Vision on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,34 @@
     <item>
       <title>Computer vision problem and step by step to approach the problem II</title>
       <link>https://shengtingcao.top/blog/computervisionnote2/</link>
-      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/computervisionnote2/</guid>
-      <description>Convolutions on RGB images In the previous 2D convolution, we used the example of applying 33 filters in 66 images.
-In a RGB image, we usually have 3 channel. So we will have a 663 size image and we need a 333 filter.
-After the operation we get a 4*4 output.
-For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</description>
+      <description>Max Pooling Hyper-parameters: f = 2 , s = 2
+no parameters to learn
+$$\begin{bmatrix} 1 &amp;amp; 3 &amp;amp; 2 &amp;amp; 1 \\ 2 &amp;amp; 9 &amp;amp; 1 &amp;amp; 1 \\ 1 &amp;amp; 3 &amp;amp; 2 &amp;amp; 3 \\ 5 &amp;amp; 6 &amp;amp; 1 &amp;amp; 2 \end{bmatrix} =&amp;gt; \begin{bmatrix} 9&amp;amp;2\\ 6&amp;amp;3 \end{bmatrix} $$
+Divide the 4*4 to 4 area and pick the largest number to get a 2 * 2 data.</description>
+    </item>
+    
+    <item>
+      <title>Computer vision problem and step by step to approach the problem III</title>
+      <link>https://shengtingcao.top/blog/computervisionnote3/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/computervisionnote3/</guid>
+      <description>LeNet-5 This network use 60k parameters, relative small network.
+Network get deeper hight, width get smaller, channels larger.
+Note: sigmoid/tanh , non-linear in avg pool, II and III of the paper.
+AlexNet using Relu
+Multiple GPUs
+local response normalization (doesn&#39;t help much)
+VGG -16 Uniform
+large network
+VGG-19 is a bigger version of network
+ResNet Residual blocks
+skip connection
+why do residual networks work?
+Inception </description>
     </item>
     
     <item>
