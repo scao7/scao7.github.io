@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-01-15T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-15T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="65">
+<meta itemprop="wordCount" content="200">
 
 
 
@@ -346,6 +346,26 @@ using Relu</p>
 <p><strong>why do residual networks work?</strong></p>
 
 <h4 id="inception">Inception</h4>
+
+<p><img src = "/img/2020/01/pic11.png" width = "90%" /></p>
+
+<p>Basically, inception just apply different filter and output a final volume with all the data and combined together.</p>
+
+<p>The network can choose which size of filter they use and what kind of filter they use. The drawback is it require much more computational power.</p>
+
+<p><strong>solve problem of computational cost</strong></p>
+
+<p>Using a 1 * 1 convolution to reduce the volume and do further operation.</p>
+
+<p><img src = "/img/2020/01/pic12.png" width = "90%" /></p>
+
+<h4 id="convolutional-implementation-of-sliding-windows">convolutional implementation of sliding windows</h4>
+
+<p><img src = "/img/2020/01/pic13.png" width = "90%" /></p>
+
+<p>In object detection, if we want to draw a box around the object. We could do sliding window for the full image and then once we find the object we drew the box.</p>
+
+<p>To implement this in a convolutional way, we just do the convolution on the big image. The final result will automatically represent each sliding window. In this case, we save a lot of time.</p>
 
   </div>
   <footer>

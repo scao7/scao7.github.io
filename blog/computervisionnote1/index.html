@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-01-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1394">
+<meta itemprop="wordCount" content="1484">
 
 
 
@@ -387,6 +387,12 @@ n*n image apply f*f filter it will end up with output image size:</p>
 
 <p>When we have n*n image and use f*f filter and a stride = s. The output imagesize is equal to
 $$ \lfloor {(n+2p-f)/s +1} \rfloor * \lfloor {(n+2p-f)/s +1} \rfloor$$</p>
+
+<h4 id="why-does-a-1-1-convolution-do">why does a 1 * 1 convolution do?</h4>
+
+<p>There is no such meaning that do a 1 * 1 convolution in a single channel image. For example, a 6* 6* 1 image conv with 2 just simply multiply the matrix by 2.</p>
+
+<p>For images with channel, 1 * 1 convolution make more sense. For example, a 6 * 6 * 32 image conv with 1 * 1 * 32 filter, it will end up with a 6 * 6 * #filters output. It&rsquo;s used to shrink the number of channels.</p>
 
 <h4 id="summary-of-convolutions">summary of convolutions</h4>
 

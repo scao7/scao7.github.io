@@ -41,7 +41,7 @@ VGG-19 is a bigger version of network
 ResNet Residual blocks
 skip connection
 why do residual networks work?
-Inception </description>
+Inception Basically, inception just apply different filter and output a final volume with all the data and combined together.</description>
     </item>
     
     <item>
