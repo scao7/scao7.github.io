@@ -7,11 +7,9 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.64.0" />
   <meta itemprop="name" content="Programming language design">
 <meta itemprop="description" content="Recognizer">
-
-
 <meta itemprop="datePublished" content="2019-02-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-09T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="252">
@@ -19,7 +17,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Programming language design" />
 <meta property="og:description" content="Recognizer" />
 <meta property="og:type" content="article" />
@@ -201,7 +198,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -209,7 +206,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -305,14 +302,9 @@
   
 
   <div class="content">
-    
-
-<h4 id="problem-description">Problem Description</h4>
-
+    <h4 id="problem-description">Problem Description</h4>
 <p>A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.</p>
-
 <h4 id="recognizer-approach">Recognizer Approach</h4>
-
 <ul>
 <li>Recursive descent parsing</li>
 <li>Transforming grammars</li>
@@ -320,11 +312,8 @@
 <li>Recognizing expressions</li>
 <li>Conditionals and iterations</li>
 </ul>
-
 <h4 id="read-file-and-construct">Read file and construct</h4>
-
-<h5 id="span-style-color-blue-parse-span"><span style="color:blue">parse</span></h5>
-
+<h5 id="span-stylecolorblueparsespan"><!-- raw HTML omitted -->parse<!-- raw HTML omitted --></h5>
 <pre><code>Lexeme *parse(FILE *inputFile)
 {
     Parser *p = malloc(sizeof(Parser));
@@ -334,12 +323,8 @@
     p-&gt;tree = program(p);
     return p-&gt;tree;
 }
-</code></pre>
-
-<h4 id="parser-rule">parser rule</h4>
-
-<h5 id="span-style-color-blue-primary-span"><span style="color:blue">primary</span></h5>
-
+</code></pre><h4 id="parser-rule">parser rule</h4>
+<h5 id="span-stylecolorblueprimaryspan"><!-- raw HTML omitted -->primary<!-- raw HTML omitted --></h5>
 <pre><code>Lexeme *primary(Parser *p)
 {
     Lexeme *x, *y = NULL;
@@ -408,9 +393,7 @@
     }
     return NULL;
 }
-</code></pre>
-
-<p>To be continue! last revise 2/26/2019</p>
+</code></pre><p>To be continue! last revise 2/26/2019</p>
 
   </div>
   <footer>
@@ -651,7 +634,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -659,7 +642,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -689,7 +672,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.64.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

@@ -7,11 +7,9 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.64.0" />
   <meta itemprop="name" content="Computer vision problem and step by step to approach the problem I">
 <meta itemprop="description" content="Computer Vision problem step by step">
-
-
 <meta itemprop="datePublished" content="2020-01-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-04T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="1484">
@@ -19,7 +17,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Computer vision problem and step by step to approach the problem I" />
 <meta property="og:description" content="Computer Vision problem step by step" />
 <meta property="og:type" content="article" />
@@ -201,7 +198,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -209,7 +206,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -305,159 +302,86 @@
   
 
   <div class="content">
-    
-
-<h4 id="vertical-edge-detection">Vertical edge detection</h4>
-
+    <h4 id="vertical-edge-detection">Vertical edge detection</h4>
 <p>Before know how to do the vertical edge detection, we could first know how the convolution operation works in image processing.</p>
-
 <p>we can have a convolution operation like this * means convolution:</p>
-
 <p>$$\begin{bmatrix} 3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4  \\ 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1 \\ 2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3 \\ 0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 \\ 4 &amp;2&amp;1&amp;6&amp;2&amp;8 \\ 4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8\\2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9   \end{bmatrix} * \begin{bmatrix} 1 &amp; 0 &amp;-1 \\ 1 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; -1 \end{bmatrix} = \begin{bmatrix} -5 &amp; -4 &amp; 0 &amp; 8 \\ -10 &amp; -2 &amp; 2 &amp; 3 \\ 0 &amp; -2 &amp; -4 &amp; -7 \\ -3 &amp; -2 &amp; -3 &amp; -16  \end{bmatrix} $$</p>
-
-<p>The convolution operation is to do a elements wise multiplication for the fist 3*3 elements to the filter. And them do the next 3*3 filter. For example, the first number -5 is equal to $$3*1+0 * 0+1*-1+ 1 * 1 + 5 * 0 + 8 * -1 + 2 * 1 + 7 * 0 + 2 * -1$$</p>
-
-<pre><code class="language-python">#in python the conv operation:
-conv-forward()
-#in tensorflow
-tf.nn.conv2d()
-#in keras
+<p>The convolution operation is to do a elements wise multiplication for the fist 3<em>3 elements to the filter. And them do the next 3</em>3 filter. For example, the first number -5 is equal to $$3<em>1+0 * 0+1</em>-1+ 1 * 1 + 5 * 0 + 8 * -1 + 2 * 1 + 7 * 0 + 2 * -1$$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#in python the conv operation:</span>
+conv<span style="color:#f92672">-</span>forward()
+<span style="color:#75715e">#in tensorflow</span>
+tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>conv2d()
+<span style="color:#75715e">#in keras</span>
 Conv2D()
-</code></pre>
-
-<p>Why we use the convolution method to detect the vertical edge, let&rsquo;s have a example of vertical image edges</p>
-
+</code></pre></div><p>Why we use the convolution method to detect the vertical edge, let&rsquo;s have a example of vertical image edges</p>
 <p>$$ \begin{bmatrix} 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10&amp; 10&amp; 0&amp; 0&amp; 0 \\ 10 &amp;10&amp; 10&amp; 0 &amp;0 &amp;0 \\ 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0 &amp;0 \end{bmatrix} * \begin{bmatrix} 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \end{bmatrix} =\begin{bmatrix} 0 &amp;30 &amp;30&amp; 0 \\ 0 &amp;30 &amp;30 &amp;0\\ 0&amp; 30 &amp;30 &amp;0 \end{bmatrix}$$</p>
-
 <p>By the convolution operation, we see that in the middle is a number of 30s and that means we find the edges.</p>
-
 <p>We can not only detect the edges but also detect it transact from white to gray or gray to white:</p>
-
-<p><img src = "/img/2020/01/pic01.png" width = "70%" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h4 id="horizontal-edge-detection">Horizontal Edge Detection</h4>
-
 <p>For the horizontal edge detection just simply use the filter as the following.</p>
-
 <p>$$ \begin{bmatrix} 1 &amp;1&amp; 1 \\ 0 &amp;0&amp; 0 \\ -1 &amp;-1&amp; -1 \end{bmatrix} $$</p>
-
 <h4 id="choose-a-good-filter-for-the-edges-detection">choose a good filter for the edges detection</h4>
-
 <p>We already know how to detect the vertical or horizontal edges, now we can discuss some good filter for the edge detection.</p>
-
 <p>$$ Sobel filter :$$</p>
-
 <p>$$ \begin{bmatrix} 1&amp; 0&amp; -1 \\ 1 &amp;0 &amp;-2 \\ 1 &amp;0 &amp;-1 \end{bmatrix}$$</p>
-
 <p>$$ Schar filter :$$</p>
-
 <p>$$ \begin{bmatrix} 3 &amp;0 &amp;-3 \\ 10 &amp;0 &amp;-10 \\ 3 &amp;0 &amp;-3 \end{bmatrix} $$</p>
-
 <p>Those filters are for vertical edges if you want to detect horizontal edges, just flip the numbers in the filters.</p>
-
 <h4 id="learn-a-good-filter-from-complicated-images">learn a good filter from complicated images</h4>
-
 <p>For example:</p>
-
 <p>$$\begin{bmatrix} 3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4  \\ 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1 \\ 2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3 \\ 0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 \\ 4 &amp;2&amp;1&amp;6&amp;2&amp;8 \\ 4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8\\2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9   \end{bmatrix} * \begin{bmatrix} w1 &amp; w2 &amp;w3 \\ w4 &amp; w5 &amp; w6 \\ w7 &amp; w8 &amp; w9 \end{bmatrix} = \begin{bmatrix} -5 &amp; -4 &amp; 0 &amp; 8 \\ -10 &amp; -2 &amp; 2 &amp; 3 \\ 0 &amp; -2 &amp; -4 &amp; -7 \\ -3 &amp; -2 &amp; -3 &amp; -16  \end{bmatrix} $$</p>
-
 <h4 id="padding">padding</h4>
-
-<p>In previous examples, we found that the image is from 6*6 apply 3*3 filters and end up with 4*4 image output.
-n*n image apply f*f filter it will end up with output image size:</p>
-
+<p>In previous examples, we found that the image is from 6<em>6 apply 3</em>3 filters and end up with 4<em>4 image output.
+n</em>n image apply f*f filter it will end up with output image size:</p>
 <p>$$(n-f+1) * (n-f+1)$$</p>
-
 <p>There are two drawbacks. Every time you detect edges you could shrink images and there are a lot overlap in the middle.</p>
-
 <p>padding is the method to solve those two problems.</p>
-
 <p>$$\begin{bmatrix} 3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4  \\ 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1 \\ 2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3 \\ 0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 \\ 4 &amp;2&amp;1&amp;6&amp;2&amp;8 \\ 4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8\\2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9   \end{bmatrix} =&gt; \begin{bmatrix}0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0 \\ 0&amp;3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4&amp;0  \\ 0&amp; 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1&amp;0 \\ 0&amp;2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3&amp;0 \\ 0&amp;0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 &amp;0\\ 0&amp;4 &amp;2&amp;1&amp;6&amp;2&amp;8 &amp;0\\ 0&amp;4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8&amp;0\\0&amp;2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9 &amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0  \end{bmatrix} * \begin{bmatrix} 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \end{bmatrix} $$</p>
-
-<p>For example, first pad the 6*6 image to 8*8 and then apply the filter then you could get the 6*6 images. If padding are added then the size of the image becomes:
- $$(n+2p-f+1) * (n+2p-f+1)$$</p>
-
+<p>For example, first pad the 6<em>6 image to 8</em>8 and then apply the filter then you could get the 6*6 images. If padding are added then the size of the image becomes:
+$$(n+2p-f+1) * (n+2p-f+1)$$</p>
 <p>In terms of how many pixel padding to choose, we have some terms &lsquo;valid convolutions&rsquo; and &lsquo;same convolutions&rsquo;. The first one is just no padding, the second means add padding and after the convolutions out put image would be the same as input size.</p>
-
 <p>note: &lsquo;f is usually odd&rsquo;</p>
-
 <h4 id="striding">striding</h4>
-
 <p>Striding is just when you use your filter to conv a image, if stride is 2 you conv jumps by 2 instead of 1. The normal convolution stride is equal to 1.</p>
-
-<p>When we have n*n image and use f*f filter and a stride = s. The output imagesize is equal to
+<p>When we have n<em>n image and use f</em>f filter and a stride = s. The output imagesize is equal to
 $$ \lfloor {(n+2p-f)/s +1} \rfloor * \lfloor {(n+2p-f)/s +1} \rfloor$$</p>
-
-<h4 id="why-does-a-1-1-convolution-do">why does a 1 * 1 convolution do?</h4>
-
+<h4 id="why-does-a-1--1-convolution-do">why does a 1 * 1 convolution do?</h4>
 <p>There is no such meaning that do a 1 * 1 convolution in a single channel image. For example, a 6* 6* 1 image conv with 2 just simply multiply the matrix by 2.</p>
-
 <p>For images with channel, 1 * 1 convolution make more sense. For example, a 6 * 6 * 32 image conv with 1 * 1 * 32 filter, it will end up with a 6 * 6 * #filters output. It&rsquo;s used to shrink the number of channels.</p>
-
 <h4 id="summary-of-convolutions">summary of convolutions</h4>
-
 <p>Convolution in math textbook is different !!!</p>
-
 <p>We need to flip filter apply the convolutions</p>
-
 <p>For examples
 $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{bmatrix} =&gt; \begin{bmatrix} 7 &amp;2 &amp;5 \\ 9 &amp;0 &amp;4 \\ -1 &amp;1 &amp;3  \end{bmatrix}$$</p>
-
 <p>In computer science we just skipped the flip operation, this operation is called cross-correlation.</p>
-
 <h4 id="convolutions-on-rgb-images">Convolutions on RGB images</h4>
-
-<p>In the previous 2D convolution, we used the example of applying 3*3 filters in 6*6 images.</p>
-
-<p>In a RGB image, we usually have 3 channel. So we will have a 6*6*3 size image and we need a 3*3*3 filter.</p>
-
+<p>In the previous 2D convolution, we used the example of applying 3<em>3 filters in 6</em>6 images.</p>
+<p>In a RGB image, we usually have 3 channel. So we will have a 6<em>6</em>3 size image and we need a 3<em>3</em>3 filter.</p>
 <p>After the operation we get a 4*4 output.</p>
-
-<p><img src = "/img/2020/01/pic02.png" width = "70%" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
-
 <p>R: $$ \begin{bmatrix} 1&amp; 0&amp; -1 \\ 1 &amp;0 &amp;-1\\ 1 &amp;0 &amp;-1 \end{bmatrix}$$ G: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$ B: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$</p>
-
 <p>This kind of convolutional filter only detect edges on red channel. If you want to detect edges on every channel just change the G,B channel to the same as the R channel.</p>
-
 <p>Note: If we apply a 3 channel image on a 3 channel filter, we will end up with 1 channel image as a output. If we want to detect multiple image features, we could convolute the image with multiple image and stack together to get a multiple channel image.</p>
-
-<p>summary:  $$ n*n*n_c *  f*f*f_c = (n-f+1) * (n-f+1) * n_f$$</p>
-
+<p>summary:  $$ n<em>n</em>n_c *  f<em>f</em>f_c = (n-f+1) * (n-f+1) * n_f$$</p>
 <h4 id="one-layer-of-convolutional-network">one layer of convolutional network</h4>
-
-<p><img src = "/img/2020/01/pic03.png" width = "70%" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>In the above graph it shows one layer of convolutional netwrok. There are two filters after apply the filter we can add bias and do a relu activation for both outpu and stacked together. So we can get a 4 * 4 * 2 image.
 There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} $$ and $$a^{[1]} = g(z^{[1]})$$</p>
-
 <p><strong>practice question:</strong></p>
-
 <p>If you have 10 filter that 3 * 3 * 3 in one layer of network, how many parameters that layer have?</p>
-
 <p><strong>answer</strong></p>
-
 <p>3 * 3 * 3 filter can have 27 parameters and in one layer we need add a bias. So there is 28 for one filter, there is 10 filters we need 280 parameters.</p>
-
 <p><strong>Notations</strong></p>
-
 <p>If layer l is a convolution layer:</p>
-
 <p>$$f^{[l]} = filter size$$</p>
-
 <p>$$p^{[l]} = padding $$</p>
-
 <p>$$s^{[l]} = stride $$</p>
-
 <p>$$n_c^{[l]} = number of filters$$</p>
-
 <h4 id="types-of-layer-in-a-convolutional-network">types of layer in a convolutional network</h4>
-
 <p><strong>convolution (conv)</strong></p>
-
 <p><strong>polling (pool)</strong></p>
-
 <p><strong>fully connected (FC)</strong></p>
 
   </div>
@@ -699,7 +623,7 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -707,7 +631,7 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -737,7 +661,7 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.64.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

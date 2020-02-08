@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Shengting Cao&#39;s Note Book</title>
@@ -61,7 +61,7 @@ $$\begin{bmatrix} 3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 7 &amp;amp; 4 
       <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/deeplearningpaper1/</guid>
-      <description> Three fundamental paper in classification </description>
+      <description>Three fundamental paper in classification </description>
     </item>
     
     <item>
@@ -106,7 +106,7 @@ Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is no
       
       <guid>https://shengtingcao.top/blog/latexsyntax/</guid>
       <description>Enable LaTax on webpage Add this HTML code into site-footer.html file because I use this template for every posts page.
-&amp;lt;!-- enable math in the blog --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&amp;quot; integrity=&amp;quot;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;!-- The loading of KaTeX is deferred to speed up page rendering --&amp;gt; &amp;lt;script defer src=&amp;quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js&amp;quot; integrity=&amp;quot;sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!</description>
+&amp;lt;!--enable math in the blog --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;!--KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;!--The loading of KaTeX is deferred to speed up page rendering --&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!--To automatically render math in text elements, include the auto-render extension: --&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@ Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is no
       <guid>https://shengtingcao.top/blog/somenotesaboutssh/</guid>
       <description>Connecting the AWS service using BASH on Windows When connecting AWS using BASH, we should notice that the bash program should be run as administrator otherwise it will deny the connection and report 0555 code.
 Root of Ubuntu on Windows The Root of Ubuntu on Windows will be located in
- &amp;quot;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;quot;  using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>
+ &amp;quot;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;quot; using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>
     </item>
     
     <item>
@@ -136,7 +136,7 @@ What I use K-mean for In my projects, I need to analysis human body shape and ge
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/opencvbasiclibraryintroandroid/</guid>
-      <description>Image Gradient private void imageGradient(){ Mat grayMat = new Mat(); Mat sobel = new Mat(); Mat grad_x = new Mat(); Mat abs_grad_x = new Mat(); Mat grad_y = new Mat(); Mat abs_grad_y = new Mat(); Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.bitmapToMat(bitmap,originalMat); Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY); Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0); Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0); Core.convertScaleAbs(grad_x,abs_grad_x); Core.convertScaleAbs(grad_y,abs_grad_y); Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel); Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565); Utils.matToBitmap(sobel,currentBitmap); imageView.setImageBitmap(currentBitmap); }  Canny Contours private void cannyContours(){ Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.</description>
+      <description>Image Gradient private void imageGradient(){ Mat grayMat = new Mat(); Mat sobel = new Mat(); Mat grad_x = new Mat(); Mat abs_grad_x = new Mat(); Mat grad_y = new Mat(); Mat abs_grad_y = new Mat(); Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.bitmapToMat(bitmap,originalMat); Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY); Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0); Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0); Core.convertScaleAbs(grad_x,abs_grad_x); Core.convertScaleAbs(grad_y,abs_grad_y); Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel); Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565); Utils.matToBitmap(sobel,currentBitmap); imageView.setImageBitmap(currentBitmap); } Canny Contours private void cannyContours(){ Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.</description>
     </item>
     
     <item>
@@ -158,9 +158,10 @@ implementation First, I tried to implement the basic code for threshold of a cer
       <guid>https://shengtingcao.top/blog/importopencv/</guid>
       <description>Check YouTube link with the video YouTube link first half YouTube link last half
 Download OpenCV SDK OpenCV Release Page
-Import Module File --&amp;gt; New -&amp;gt; Import Module  Import the java fold
+Import Module File --&amp;gt; New -&amp;gt; Import Module Import the java fold
 Compare the configure information Make sure the minSdkVersion and targetSdkVersion matches
-Add dependency File --&amp;gt; Project Structure --&amp;gt; App --&amp;gt; Add dependency --&amp;gt; OpenCV  Copy library file to App folder Copy files in this directory</description>
+Add dependency File --&amp;gt; Project Structure --&amp;gt; App --&amp;gt; Add dependency --&amp;gt; OpenCV Copy library file to App folder Copy files in this directory
+Create a folder named &amp;ldquo;jniLibs&amp;rdquo; and paste the files under the directory</description>
     </item>
     
     <item>
@@ -182,7 +183,8 @@ Create UI First we need have a UI in this project.</description>
       
       <guid>https://shengtingcao.top/blog/graphicstexture/</guid>
       <description>Problem Description We want to draw three walls and put texture on them.At the same time we want to create a TV that we can change the frame on the screen every 1 second. You are able to turn on and off the TV.
-In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.</description>
+In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.
+fragment shader  &amp;lt;script id=&amp;#34;fragment-shader&amp;#34; type=&amp;#34;x-shader/x-fragment&amp;#34;&amp;gt; precision mediump float; varying vec4 fColor; varying vec2 fTexCoord; // a texture coordinate uniform sampler2D texture; //2D images  void main() { gl_FragColor = fColor * texture2D( texture, fTexCoord ); } &amp;lt;/script&amp;gt; In the HTML file we also need to include the image that we used.</description>
     </item>
     
     <item>
@@ -202,7 +204,7 @@ Simply saying that, switch from fragment shader to vertex shader just simply do 
       
       <guid>https://shengtingcao.top/blog/proglangdesignenv/</guid>
       <description>Problem Description The environment is a tree to store all the value we need for future use. In the environment file it will have five basic functions
- create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);  create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); }  extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); }  make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); }  lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
+ create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable); create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); } extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); } make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); } lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
     </item>
     
     <item>
@@ -213,7 +215,7 @@ Simply saying that, switch from fragment shader to vertex shader just simply do 
       <guid>https://shengtingcao.top/blog/modeling/</guid>
       <description>Problem Description In this project, we need to use webGL to model a 3D screen with display a paragrapgh you will be able to rotate the screen either by using the button on the screen or the arrow key on the keyboard.
 Approach using 16 segment display method to display the character.
-left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.</description>
+left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.75, 0.</description>
     </item>
     
     <item>
@@ -223,7 +225,7 @@ left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var insta
       
       <guid>https://shengtingcao.top/blog/proglangdesignparser/</guid>
       <description>Problem Description A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.
-Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; }  parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
+Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; } parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
     </item>
     
     <item>
@@ -242,8 +244,8 @@ print &#39;Hello World!&#39;  There are two tokens in this program, print and &a
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/buildblock/</guid>
-      <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks. 1. Red disk 2. Green disk 3. Blue disk 4. Magenta square 5. Cyan square 6. Yellow square
-To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
+      <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks.
+ Red disk Green disk Blue disk Magenta square Cyan square Yellow square  To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
     </item>
     
     <item>
@@ -283,7 +285,7 @@ calculate the point for the Koch lines function calculatePoint(center, p){ var a
       <guid>https://shengtingcao.top/blog/vimnote/</guid>
       <description>reference 1, vim cheat sheet
 reference 2, vim command summary
-multi-window lmuti-window basic operations   :e filename - edit another file :split filename - split window and load another file ctrl-w up arrow - move cursor up a window ctrl-w ctrl-w - move cursor to another window (cycle) ctrl-w_ - maximize current window ctrl-w= - make all equal size 10 ctrl-w+ - increase window size by 10 lines :vsplit file - vertical split :sview file - same as split, but readonly :hide - close current window :only - keep only this window open :ls - show current buffers :b 2 - open buffer #2 in this window :bnext or :bn - go to the next buffer :bprev or :bp - go to the previous buffer :bd - delete a buffer (close a file) :ls - list all open buffers :sp file - open a file in a new buffer and split window :vsp file - open a file in a new buffer and vertically split window Ctrl + ws - split window Ctrl + ww - switch windows Ctrl + wq - quit a window Ctrl + wv - split window vertically Ctrl + wh - move cursor to the left window (vertical split) Ctrl + wl - move cursor to the right window (vertical split) Ctrl + wj - move cursor to the window below (horizontal split) Ctrl + wk - move cursor to the window above (horizontal split)  cursor movement cursor movement h - move cursor left j - move cursor down k - move cursor up l - move cursor right H - move to top of screen M - move to middle of screen L - move to bottom of screen w - jump forwards to the start of a word W - jump forwards to the start of a word (words can contain punctuation) e - jump forwards to the end of a word E - jump forwards to the end of a word (words can contain punctuation) b - jump backwards to the start of a word B - jump backwards to the start of a word (words can contain punctuation) % - move to matching character (default supported pairs: &#39;()&#39;, &#39;{}&#39;, &#39;[]&#39; - use &amp;lt;code&amp;gt;:h matchpairs&amp;lt;/code&amp;gt; in vim for more info) 0 - jump to the start of the line ^ - jump to the first non-blank character of the line $ - jump to the end of the line g_ - jump to the last non-blank character of the line gg - go to the first line of the document G - go to the last line of the document 5G - go to line 5 fx - jump to next occurrence of character x tx - jump to before next occurrence of character x Fx - jump to previous occurence of character x Tx - jump to after previous occurence of character x ; - repeat previous f, t, F or T movement , - repeat previous f, t, F or T movement, backwards } - jump to next paragraph (or function/block, when editing code) { - jump to previous paragraph (or function/block, when editing code) zz - center cursor on screen Ctrl + e - move screen down one line (without moving cursor) Ctrl + y - move screen up one line (without moving cursor) Ctrl + b - move back one full screen Ctrl + f - Ctrl + d - Ctrl + u -  Search and replace Search and replace /pattern - search for pattern ?</description>
+multi-window lmuti-window basic operations   :e filename - edit another file :split filename - split window and load another file ctrl-w up arrow - move cursor up a window ctrl-w ctrl-w - move cursor to another window (cycle) ctrl-w_ - maximize current window ctrl-w= - make all equal size 10 ctrl-w+ - increase window size by 10 lines :vsplit file - vertical split :sview file - same as split, but readonly :hide - close current window :only - keep only this window open :ls - show current buffers :b 2 - open buffer #2 in this window :bnext or :bn - go to the next buffer :bprev or :bp - go to the previous buffer :bd - delete a buffer (close a file) :ls - list all open buffers :sp file - open a file in a new buffer and split window :vsp file - open a file in a new buffer and vertically split window Ctrl + ws - split window Ctrl + ww - switch windows Ctrl + wq - quit a window Ctrl + wv - split window vertically Ctrl + wh - move cursor to the left window (vertical split) Ctrl + wl - move cursor to the right window (vertical split) Ctrl + wj - move cursor to the window below (horizontal split) Ctrl + wk - move cursor to the window above (horizontal split) cursor movement cursor movement h - move cursor left j - move cursor down k - move cursor up l - move cursor right H - move to top of screen M - move to middle of screen L - move to bottom of screen w - jump forwards to the start of a word W - jump forwards to the start of a word (words can contain punctuation) e - jump forwards to the end of a word E - jump forwards to the end of a word (words can contain punctuation) b - jump backwards to the start of a word B - jump backwards to the start of a word (words can contain punctuation) % - move to matching character (default supported pairs: &#39;()&#39;, &#39;{}&#39;, &#39;[]&#39; - use &amp;lt;code&amp;gt;:h matchpairs&amp;lt;/code&amp;gt; in vim for more info) 0 - jump to the start of the line ^ - jump to the first non-blank character of the line $ - jump to the end of the line g_ - jump to the last non-blank character of the line gg - go to the first line of the document G - go to the last line of the document 5G - go to line 5 fx - jump to next occurrence of character x tx - jump to before next occurrence of character x Fx - jump to previous occurence of character x Tx - jump to after previous occurence of character x ; - repeat previous f, t, F or T movement , - repeat previous f, t, F or T movement, backwards } - jump to next paragraph (or function/block, when editing code) { - jump to previous paragraph (or function/block, when editing code) zz - center cursor on screen Ctrl + e - move screen down one line (without moving cursor) Ctrl + y - move screen up one line (without moving cursor) Ctrl + b - move back one full screen Ctrl + f - Ctrl + d - Ctrl + u - Search and replace Search and replace /pattern - search for pattern ?</description>
     </item>
     
   </channel>

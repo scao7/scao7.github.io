@@ -7,11 +7,9 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.64.0" />
   <meta itemprop="name" content="Programming Language Design">
 <meta itemprop="description" content="Grammar Design">
-
-
 <meta itemprop="datePublished" content="2019-01-25T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-01-25T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="561">
@@ -19,7 +17,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Programming Language Design" />
 <meta property="og:description" content="Grammar Design" />
 <meta property="og:type" content="article" />
@@ -201,7 +198,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -209,7 +206,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -305,12 +302,8 @@
   
 
   <div class="content">
-    
-
-<h4 id="problem-description">Problem Description</h4>
-
+    <h4 id="problem-description">Problem Description</h4>
 <p>The task is to build an interpreter for a general purpose programming language of my own design. The language must - support the following features:</p>
-
 <ul>
 <li>comments</li>
 <li>integers and strings</li>
@@ -328,24 +321,15 @@
 <li>functions as first-class objects (i.e. functions can be manipulated as in Scheme - e.g. local functions)</li>
 <li>(graduate only) an inheritance system and detection of variables used before definition</li>
 </ul>
-
 <p>The only basic types you need to provide are integer and string and you do not need to provide methods for coercing one type to another (although you may find it convenient to do so). The efficiency of your interpreter is not particularly important, as long as you can solve the test problem in a reasonable amount of time. Your language also does not need to support reclamation of memory that is no longer needed. You are to write your program in a statically-typed, imperative language such as C, C++, or Java. Check with me first if you wish to use some other host language.</p>
-
 <h4 id="bnf-programming-language-design-style">BNF programming language design style</h4>
-
 <p>Example:</p>
-
 <pre><code>unary : NUMBER
       | VARIABLE
-</code></pre>
-
-<p>Left is the general rule, right is the specific. The syle describe how the no-terminal is broken down to a small pieces.
+</code></pre><p>Left is the general rule, right is the specific. The syle describe how the no-terminal is broken down to a small pieces.
 The lower case name is the non-terminal words, capitalized case is the terminal words.</p>
-
 <h4 id="bnf-grammar-design-for-my-language">BNF grammar design for my language</h4>
-
 <h5 id="the-name-of-the-operator-and-symbol-define">The name of the operator and symbol define:</h5>
-
 <pre><code>QUATE              &quot;&quot;&quot;
 ASSIGN             &quot;=&quot;
 OPREN              &quot;(&quot;
@@ -373,10 +357,7 @@ OR                 &quot;||&quot;
 CARET              &quot;^&quot;
 POUND              &quot;#&quot;
 NOT                &quot;!&quot;
-</code></pre>
-
-<h5 id="span-style-color-blue-reserved-keywords-span"><span style="color:blue">reserved keywords</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluereserved-keywordsspan"><!-- raw HTML omitted -->reserved keywords<!-- raw HTML omitted --></h5>
 <pre><code>keywords : show
          | if
          | goto
@@ -387,20 +368,14 @@ NOT                &quot;!&quot;
          | func
          | loop
          | when
-</code></pre>
-
-<h5 id="span-style-color-blue-unary-span"><span style="color:blue">unary</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueunaryspan"><!-- raw HTML omitted -->unary<!-- raw HTML omitted --></h5>
 <pre><code>unary : VARIABLE
       | NUMBER
       | OPREN expression CPREN
       | STRING
       | VARIABLE OBRAKET optExpression CBRAKET
       | NULL
-</code></pre>
-
-<h5 id="span-style-color-blue-operators-span"><span style="color:blue">operators</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueoperatorsspan"><!-- raw HTML omitted -->operators<!-- raw HTML omitted --></h5>
 <pre><code>operator : PLUS
          | SUBTRACT
          | TIMES
@@ -408,10 +383,7 @@ NOT                &quot;!&quot;
          | CARET
          | ASSIGN
          | condition
-</code></pre>
-
-<h5 id="span-style-color-blue-condition-span"><span style="color:blue">condition</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueconditionspan"><!-- raw HTML omitted -->condition<!-- raw HTML omitted --></h5>
 <pre><code>condition : LESSTAN
           | GREATERTHAN
           | GREATEROREQUA
@@ -420,110 +392,59 @@ NOT                &quot;!&quot;
           | EQUALS
           | OR
           | AND
-</code></pre>
-
-<h5 id="span-style-color-blue-expression-span"><span style="color:blue">expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueexpressionspan"><!-- raw HTML omitted -->expression<!-- raw HTML omitted --></h5>
 <pre><code>expression : unary
            | unary oprator expression
            | printExp
            | functionDefExp
            | functionCallExp
            | variableDefExp
-</code></pre>
-
-<h5 id="span-style-color-blue-print-expression-span"><span style="color:blue">print expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueprint-expressionspan"><!-- raw HTML omitted -->print expression<!-- raw HTML omitted --></h5>
 <pre><code>printExp : show unary 					 
-</code></pre>
-
-<h5 id="span-style-color-blue-expression-list-span"><span style="color:blue">expression list</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueexpression-listspan"><!-- raw HTML omitted -->expression list<!-- raw HTML omitted --></h5>
 <pre><code>expressionList : expression
                | expression COMMA expressionList
-</code></pre>
-
-<h5 id="span-style-color-blue-optional-expression-span"><span style="color:blue">optional expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueoptional-expressionspan"><!-- raw HTML omitted -->optional expression<!-- raw HTML omitted --></h5>
 <pre><code>optExpression : expressionList
               | *empty*
-</code></pre>
-
-<h5 id="span-style-color-blue-statement-span"><span style="color:blue">statement</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluestatementspan"><!-- raw HTML omitted -->statement<!-- raw HTML omitted --></h5>
 <pre><code>statement : expression SEMICOLON
           | loopStatment
           | ifStatment
-</code></pre>
-
-<h5 id="span-style-color-blue-statements-span"><span style="color:blue">statements</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluestatementsspan"><!-- raw HTML omitted -->statements<!-- raw HTML omitted --></h5>
 <pre><code>statements : statement
            | statement statements
-</code></pre>
-
-<h5 id="span-style-color-blue-parameter-list-span"><span style="color:blue">parameter list</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueparameter-listspan"><!-- raw HTML omitted -->parameter list<!-- raw HTML omitted --></h5>
 <pre><code>parameterList : unary
               | unary COMMA parameterList
-</code></pre>
-
-<h5 id="span-style-color-blue-optional-parameter-list-span"><span style="color:blue">optional parameter list</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueoptional-parameter-listspan"><!-- raw HTML omitted -->optional parameter list<!-- raw HTML omitted --></h5>
 <pre><code>optParameterList : parameterList
                  | *empty*
-</code></pre>
-
-<h5 id="span-style-color-blue-function-define-expression-span"><span style="color:blue">function define expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluefunction-define-expressionspan"><!-- raw HTML omitted -->function define expression<!-- raw HTML omitted --></h5>
 <pre><code>functionDefExp : func VARIABLE OPREN optExpression CPREN block
-</code></pre>
-
-<h5 id="span-style-color-blue-function-call-expression-span"><span style="color:blue">function call expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluefunction-call-expressionspan"><!-- raw HTML omitted -->function call expression<!-- raw HTML omitted --></h5>
 <pre><code>functionCallExp : call VARIABLE
                 | call VARIABLE OPREN optExpression CPREN
-</code></pre>
-
-<h5 id="span-style-color-blue-variable-define-expression-span"><span style="color:blue">variable define expression</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluevariable-define-expressionspan"><!-- raw HTML omitted -->variable define expression<!-- raw HTML omitted --></h5>
 <pre><code>variableDefExp : var VARIABLE
                | var VARIABLE ASSIGN unary
-</code></pre>
-
-<h5 id="span-style-color-blue-if-statement-span"><span style="color:blue">if statement</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueif-statementspan"><!-- raw HTML omitted -->if statement<!-- raw HTML omitted --></h5>
 <pre><code>ifStatment : if OPREN expression CPREN block
            | elseStatement
-</code></pre>
-
-<h5 id="span-style-color-blue-else-statement-span"><span style="color:blue">else statement</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueelse-statementspan"><!-- raw HTML omitted -->else statement<!-- raw HTML omitted --></h5>
 <pre><code>elseStatement : else block
               | else ifStatment
               | *empty*
-</code></pre>
-
-<h5 id="span-style-color-blue-return-statement-span"><span style="color:blue">return statement</span></h5>
-
+</code></pre><h5 id="span-stylecolorbluereturn-statementspan"><!-- raw HTML omitted -->return statement<!-- raw HTML omitted --></h5>
 <pre><code>returnStatement : return SEMICOLON
                 | return unary SEMICOLON
-</code></pre>
-
-<h5 id="span-style-color-blue-program-span"><span style="color:blue">program</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueprogramspan"><!-- raw HTML omitted -->program<!-- raw HTML omitted --></h5>
 <pre><code>program : statements
-</code></pre>
-
-<h5 id="span-style-color-blue-block-span"><span style="color:blue">block</span></h5>
-
+</code></pre><h5 id="span-stylecolorblueblockspan"><!-- raw HTML omitted -->block<!-- raw HTML omitted --></h5>
 <pre><code>block : OBRACE statements CBRACE
       | OBRACE *empty* CBRACE
-</code></pre>
-
-<p><a href="https://github.com/scao7/cs403">Project Link</a></p>
-
-<p>to be continue! last revise <sup>2</sup>&frasl;<sub>72019</sub></p>
+</code></pre><p><a href="https://github.com/scao7/cs403">Project Link</a></p>
+<p>to be continue! last revise 2/72019</p>
 
   </div>
   <footer>
@@ -764,7 +685,7 @@ NOT                &quot;!&quot;
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -772,7 +693,7 @@ NOT                &quot;!&quot;
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -802,7 +723,7 @@ NOT                &quot;!&quot;
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.64.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

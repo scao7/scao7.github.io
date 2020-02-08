@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android Development on Shengting Cao&#39;s Note Book</title>
@@ -27,7 +27,7 @@ What I use K-mean for In my projects, I need to analysis human body shape and ge
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/opencvbasiclibraryintroandroid/</guid>
-      <description>Image Gradient private void imageGradient(){ Mat grayMat = new Mat(); Mat sobel = new Mat(); Mat grad_x = new Mat(); Mat abs_grad_x = new Mat(); Mat grad_y = new Mat(); Mat abs_grad_y = new Mat(); Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.bitmapToMat(bitmap,originalMat); Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY); Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0); Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0); Core.convertScaleAbs(grad_x,abs_grad_x); Core.convertScaleAbs(grad_y,abs_grad_y); Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel); Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565); Utils.matToBitmap(sobel,currentBitmap); imageView.setImageBitmap(currentBitmap); }  Canny Contours private void cannyContours(){ Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.</description>
+      <description>Image Gradient private void imageGradient(){ Mat grayMat = new Mat(); Mat sobel = new Mat(); Mat grad_x = new Mat(); Mat abs_grad_x = new Mat(); Mat grad_y = new Mat(); Mat abs_grad_y = new Mat(); Bitmap bitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.bitmapToMat(bitmap,originalMat); Imgproc.cvtColor(originalMat, grayMat,Imgproc.COLOR_RGBA2GRAY); Imgproc.Sobel(grayMat,grad_x,CvType.CV_16S,1,0,3,1,0); Imgproc.Sobel(grayMat,grad_y,CvType.CV_16S,0,1,3,1,0); Core.convertScaleAbs(grad_x,abs_grad_x); Core.convertScaleAbs(grad_y,abs_grad_y); Core.addWeighted(abs_grad_x,0.5,abs_grad_y,0.5,1,sobel); Bitmap currentBitmap = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),Bitmap.Config.RGB_565); Utils.matToBitmap(sobel,currentBitmap); imageView.setImageBitmap(currentBitmap); } Canny Contours private void cannyContours(){ Bitmap originalbitmap = BitmapFactory.decodeResource(getResources(),images[current_image]); Mat originalMat = new Mat(); Utils.</description>
     </item>
     
     <item>
@@ -49,9 +49,10 @@ implementation First, I tried to implement the basic code for threshold of a cer
       <guid>https://shengtingcao.top/blog/importopencv/</guid>
       <description>Check YouTube link with the video YouTube link first half YouTube link last half
 Download OpenCV SDK OpenCV Release Page
-Import Module File --&amp;gt; New -&amp;gt; Import Module  Import the java fold
+Import Module File --&amp;gt; New -&amp;gt; Import Module Import the java fold
 Compare the configure information Make sure the minSdkVersion and targetSdkVersion matches
-Add dependency File --&amp;gt; Project Structure --&amp;gt; App --&amp;gt; Add dependency --&amp;gt; OpenCV  Copy library file to App folder Copy files in this directory</description>
+Add dependency File --&amp;gt; Project Structure --&amp;gt; App --&amp;gt; Add dependency --&amp;gt; OpenCV Copy library file to App folder Copy files in this directory
+Create a folder named &amp;ldquo;jniLibs&amp;rdquo; and paste the files under the directory</description>
     </item>
     
     <item>

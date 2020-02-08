@@ -7,11 +7,9 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.64.0" />
   <meta itemprop="name" content="Bitnami Wordpress 套件 &#43; AWS ： 一些坑跟一些tips">
 <meta itemprop="description" content="一些wordpress建站必须知道的事情，不然及其浪费时间">
-
-
 <meta itemprop="datePublished" content="2019-10-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-09T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="139">
@@ -19,7 +17,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Bitnami Wordpress 套件 &#43; AWS ： 一些坑跟一些tips" />
 <meta property="og:description" content="一些wordpress建站必须知道的事情，不然及其浪费时间" />
 <meta property="og:type" content="article" />
@@ -208,7 +205,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -216,7 +213,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -312,60 +309,33 @@
   
 
   <div class="content">
-    
-
-<p>写在最前面，自己做好的worpdress网站一定要创建一个snapshot来备份，不然就很好玩了！！！！</p>
-
+    <p>写在最前面，自己做好的worpdress网站一定要创建一个snapshot来备份，不然就很好玩了！！！！</p>
 <h4 id="有用的插件">有用的插件</h4>
-
 <p>ELEMENTOR, Polylang, Profile Builder, Really Simple SSL, Simple Local Avatars, WP Mail SMTP，ninja forms</p>
-
 <h4 id="用gmail-smtp-作为邮件发送的host">用Gmail SMTP 作为邮件发送的host</h4>
-
 <p>在创建一个EC2 实例之后Wordpress 默认的是user@example.com 这个显然不能够发邮件，我的解决方法是用WP Mail SMTP插件来通过Gmail发送邮件。</p>
-
 <p>第一步是要在Google API console 创建一个发送邮件的应用并且记住他的<strong>client id</strong>和<strong>secret key</strong>。在插件中setting里面填入就行了。有时候发现在邮件里无法更爱user@example.com这个时候可以改成SMTP来更改邮箱然后再返回Google SMTP 设置。</p>
-
 <h4 id="ssl-certificate">SSL Certificate</h4>
-
 <p>这个永远是一个很麻烦的问题，我第一个网站就是因为SSL的问题崩了，我第一次使用的是Binami 的Wordpress套件。我<del>用AWS certificate manager 创建SSL。</del> AWS 的SSL一点都不好用，有时候还乱收费。推荐使用<a href="https://letsencrypt.org/">letsencrypt</a> 和 Really Simple SSL 插件来强制使用https来访问。</p>
-
 <p>重新制作网站之后我使用letsencrypt 工具配合Really Simple SSL 实现了强制https访问。
 简单的使用代码如下：</p>
-
-<pre><code class="language-shell">sudo /opt/bitnami/letsencrypt/scripts/generate-certificate.sh -m YOURMAIL -d YOURDOMAIN
-</code></pre>
-
-<p>你可以在后面添加多个-d DOMAIN 来进行认证。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /opt/bitnami/letsencrypt/scripts/generate-certificate.sh -m YOURMAIL -d YOURDOMAIN
+</code></pre></div><p>你可以在后面添加多个-d DOMAIN 来进行认证。</p>
 <p>使用Really Simple SSL 你可能需要给<code>wp-config.php</code>文档授予权限。</p>
-
-<pre><code class="language-shell">sudo chmod 660 /opt/bitnami/apps/wordpress/htdocs/wp-config.php
-sudo chmod 777 /opt/bitnami/apps/wordpress/htdocs/wp-content
-</code></pre>
-
-<p>给予权限之后来恢复原来的权限:</p>
-
-<pre><code class="language-shell">sudo chmod 640 /opt/bitnami/apps/wordpress/htdocs/wp-config.php
-sudo chmod 775 /opt/bitnami/apps/wordpress/htdocs/wp-content
-</code></pre>
-
-<p>这一套应该是最快速设置SSL认证跟强制https安全访问的方法了。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo chmod <span style="color:#ae81ff">660</span> /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+sudo chmod <span style="color:#ae81ff">777</span> /opt/bitnami/apps/wordpress/htdocs/wp-content
+</code></pre></div><p>给予权限之后来恢复原来的权限:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo chmod <span style="color:#ae81ff">640</span> /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+sudo chmod <span style="color:#ae81ff">775</span> /opt/bitnami/apps/wordpress/htdocs/wp-content
+</code></pre></div><p>这一套应该是最快速设置SSL认证跟强制https安全访问的方法了。</p>
 <h4 id="检查硬盘容量">检查硬盘容量</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">df command – Shows the amount of disk space used and available on Linux file systems.
+du command – Display the amount of disk space used by the specified files and <span style="color:#66d9ef">for</span> each subdirectory.
+btrfs <span style="color:#66d9ef">fi</span> df /device/ – Show disk space usage information <span style="color:#66d9ef">for</span> a btrfs based mount point/file system.
 
-<pre><code class="language-shell">df command – Shows the amount of disk space used and available on Linux file systems.
-du command – Display the amount of disk space used by the specified files and for each subdirectory.
-btrfs fi df /device/ – Show disk space usage information for a btrfs based mount point/file system.
-
-</code></pre>
-
-<h4 id="检查cpu使用情况">检查cpu使用情况</h4>
-
-<pre><code class="language-shell">top
-</code></pre>
-
-<p>先写到这，以后再补充。</p>
+</code></pre></div><h4 id="检查cpu使用情况">检查cpu使用情况</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">top
+</code></pre></div><p>先写到这，以后再补充。</p>
 
   </div>
   <footer>
@@ -567,7 +537,7 @@ btrfs fi df /device/ – Show disk space usage information for a btrfs based mou
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -575,7 +545,7 @@ btrfs fi df /device/ – Show disk space usage information for a btrfs based mou
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -605,7 +575,7 @@ btrfs fi df /device/ – Show disk space usage information for a btrfs based mou
         欢迎来到我博客中文界面
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.64.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 
