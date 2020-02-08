@@ -6,18 +6,20 @@
     <description>Recent content in Deep Learning on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Deep Learning Road Map Papers -- Classification </title>
+      <title>Deep Learning Road Map Papers: Classification </title>
       <link>https://shengtingcao.top/blog/deeplearningpaper1/</link>
-      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/deeplearningpaper1/</guid>
-      <description>Three fundamental paper in classification </description>
+      <description>Three fundamental paper in classification   Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &amp;ldquo;Imagenet classification with deep convolutional neural networks.&amp;rdquo; Advances in neural information processing systems. 2012. pdf (AlexNet, Deep Learning Breakthrough)
+  Simonyan, Karen, and Andrew Zisserman. &amp;ldquo;Very deep convolutional networks for large-scale image recognition.&amp;rdquo; arXiv preprint arXiv:1409.1556 (2014). pdf (VGGNet,Neural Networks become very deep!)
+  Szegedy, Christian, et al. &amp;ldquo;Going deeper with convolutions.&amp;rdquo; Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</description>
     </item>
     
     <item>
