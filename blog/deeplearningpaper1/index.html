@@ -12,7 +12,7 @@
 <meta itemprop="description" content="Paper reading">
 <meta itemprop="datePublished" content="2020-02-08T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="353">
+<meta itemprop="wordCount" content="591">
 
 
 
@@ -249,7 +249,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -303,7 +303,7 @@
 
   <div class="content">
     <p><strong>Papers are listed at the end of this blog.</strong></p>
-<h4 id="alexnet">Alexnet</h4>
+<h2 id="alexnet">Alexnet</h2>
 <p>Before the deep learning network came out, the normal step to do a image classification following this steps:</p>
 <blockquote>
 <ol>
@@ -358,7 +358,7 @@ presence of particular other neurons.”</li>
 </ul>
 </blockquote>
 </blockquote>
-<h4 id="vggnet">VGGNet</h4>
+<h2 id="vggnet">VGGNet</h2>
 <p>VGGNet just make AlexNet deeper</p>
 <p><strong>Architecture:</strong></p>
 <blockquote>
@@ -372,7 +372,125 @@ convolutional layers (using small 3x3 filters w/ stride of
 hidden layers followed by ReLU)</li>
 </ul>
 </blockquote>
-<h4 id="fundamental-papers-in-classification">fundamental papers in classification</h4>
+<p><strong>Good Ideas:</strong></p>
+<blockquote>
+<ul>
+<li>Network Initialization Strategy</li>
+</ul>
+<blockquote>
+<ul>
+<li>Bad initialization can stall learning due to the
+instability of gradient in deep nets</li>
+<li>This paper trained the more shallow configuration
+(A) w/ random initialization and then used these as
+the first 4 Convo layers and final three FC layers
+when initializing bigger networks</li>
+</ul>
+</blockquote>
+<ul>
+<li>Dense Evaluation (opposed to multi-crop)</li>
+</ul>
+<blockquote>
+<ul>
+<li>Dense evaluation entails doing 1 pass of the CNN
+over an entire scaled image at test time (and its
+horizontal flip) then doing sum-pooling at the end to
+get 1 score per channel</li>
+<li>Key finding: Dense Evaluation and Multi-Crop are complementary!</li>
+</ul>
+</blockquote>
+<ul>
+<li>&ldquo;Scale Jittering</li>
+</ul>
+<blockquote>
+<ul>
+<li>During training, they randomly cropped 224x224
+patches from rescaled training images (sized
+anywhere between 256x256 to 512x512)</li>
+<li>During testing, they passed in different scales of
+images and sum-pooled the output to arrive at a
+fixed-size vector of class scores</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="googlenet">GoogleNet</h2>
+<p><strong>Architecture:</strong></p>
+<blockquote>
+<ul>
+<li>22 layers deep, but 12x fewer parameters than
+AlexNet (8 layers deep) while being much more
+accurate</li>
+<li><a href="https://shengtingcao.top/blog/computervisionnote3/">Inception module</a></li>
+</ul>
+<blockquote>
+<ul>
+<li>started as a case study
+for an algorithm to build sparse networks
+<img src="/img/2020/02/pic04.png" alt="full iamge"></li>
+<li></li>
+</ul>
+</blockquote>
+<ul>
+<li><a href="/img/2020/02/pic03.png">Full architecture</a>
+<img src="/img/2020/02/pic03.png" alt="full iamge"></li>
+</ul>
+</blockquote>
+<p><strong>Good Ideas</strong></p>
+<blockquote>
+<ul>
+<li>Go deeper</li>
+</ul>
+<blockquote>
+<p><img src="/img/2020/02/pic02.jpg" alt="go deeper"></p>
+</blockquote>
+<ul>
+<li>Auxiliary Classifiers</li>
+</ul>
+<blockquote>
+<ul>
+<li>Used auxiliary classifiers connected to intermediate
+layers to combat the vanishing gradient problem
+during training</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>ResNet:</strong></p>
+<p><strong>Architecture:</strong></p>
+<blockquote>
+<ul>
+<li>Residual Block</li>
+</ul>
+<blockquote>
+<ul>
+<li>To solve “The Degradation Problem” - Deeper Networks were more difficult to train!</li>
+<li><img src="/img/2020/02/pic06.png" alt="resnet"></li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>Good Ideas:</strong></p>
+<blockquote>
+<ul>
+<li>Projection shortcut</li>
+</ul>
+<blockquote>
+<ul>
+<li><img src="/img/2020/02/pic05.png" alt="resnet"></li>
+</ul>
+</blockquote>
+<ul>
+<li>Bottleneck building block</li>
+</ul>
+<blockquote>
+<ul>
+<li>The middle layer has smaller input/output
+dimensions, so we can train faster b/c there are
+fewer params
+s <img src="/img/2020/02/pic07.png" alt="resnet"></li>
+</ul>
+</blockquote>
+</blockquote>
+<p>more udpate next time!.</p>
+<h2 id="fundamental-papers-in-classification">fundamental papers in classification</h2>
 <ul>
 <li>
 <p>Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &ldquo;Imagenet classification with deep convolutional neural networks.&rdquo; Advances in neural information processing systems. 2012. <a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf"><strong>pdf</strong></a> (AlexNet, Deep Learning Breakthrough)</p>
