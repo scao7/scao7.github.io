@@ -17,9 +17,10 @@
       <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/deeplearningpaper1/</guid>
-      <description>Three fundamental paper in classification   Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &amp;ldquo;Imagenet classification with deep convolutional neural networks.&amp;rdquo; Advances in neural information processing systems. 2012. pdf (AlexNet, Deep Learning Breakthrough)
-  Simonyan, Karen, and Andrew Zisserman. &amp;ldquo;Very deep convolutional networks for large-scale image recognition.&amp;rdquo; arXiv preprint arXiv:1409.1556 (2014). pdf (VGGNet,Neural Networks become very deep!)
-  Szegedy, Christian, et al. &amp;ldquo;Going deeper with convolutions.&amp;rdquo; Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</description>
+      <description>Papers are listed at the end of this blog.
+Alexnet Before the deep learning network came out, the normal step to do a image classification following this steps:
+  Run SIFT (Scale-Invariant Feature Transform) feature detection algorithm Encode these features into a feature vector Run an SVM classifier on the feature vector   Architecture of AlexNet:
+  5 convolutional layers followed by 3 fully-connected layers. 1000-way Softmax applied at the end 60 million total parameters AlexNet was trained on 1.</description>
     </item>
     
     <item>

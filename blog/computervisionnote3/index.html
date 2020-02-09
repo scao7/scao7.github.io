@@ -2,31 +2,31 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Computer vision problem and step by step to approach the problem III - Shengting Cao&#39;s Note Book</title>
+<title>Computer vision problem and step by step - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.64.0" />
-  <meta itemprop="name" content="Computer vision problem and step by step to approach the problem III">
-<meta itemprop="description" content="Computer Vision problem step by step -- case study">
-<meta itemprop="datePublished" content="2020-01-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-15T00:00:00&#43;00:00" />
+  <meta itemprop="name" content="Computer vision problem and step by step">
+<meta itemprop="description" content="Alexnet, VGG, ResNet,inception and sliding window">
+<meta itemprop="datePublished" content="2020-01-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-17T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="200">
 
 
 
 <meta itemprop="keywords" content="" />
-  <meta property="og:title" content="Computer vision problem and step by step to approach the problem III" />
-<meta property="og:description" content="Computer Vision problem step by step -- case study" />
+  <meta property="og:title" content="Computer vision problem and step by step" />
+<meta property="og:description" content="Alexnet, VGG, ResNet,inception and sliding window" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/computervisionnote3/" />
-<meta property="article:published_time" content="2020-01-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-01-15T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-17T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Computer vision problem and step by step to approach the problem III"/>
-<meta name="twitter:description" content="Computer Vision problem step by step -- case study"/>
+<meta name="twitter:title" content="Computer vision problem and step by step"/>
+<meta name="twitter:description" content="Alexnet, VGG, ResNet,inception and sliding window"/>
 
   
 
@@ -133,7 +133,7 @@
 
   
     
-    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
@@ -145,19 +145,19 @@
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
@@ -237,15 +237,15 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h2>
+        <h2><a href="/blog/computervisionnote3/">Computer vision problem and step by step</a></h2>
     
     
-        <p>Computer Vision problem step by step -- case study</p>
+        <p>Alexnet, VGG, ResNet,inception and sliding window</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2020-01-15 00:00:00 &#43;0000 UTC">
-      January 15, 2020
+    <time class="published" datetime="2020-01-17 00:00:00 &#43;0000 UTC">
+      January 17, 2020
     </time>
     <span class="author">Shengting Cao</span>
     
@@ -262,7 +262,7 @@
 
   
     
-    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
+    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
@@ -274,19 +274,19 @@
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step" target="_blank" rel="noopener" class="share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
@@ -313,7 +313,7 @@ This network use 60k parameters, relative small network.</p>
 
 <h4 id="alexnet">AlexNet</h4>
 
-<p><img src = "/img/2020/01/pic07.png" width = "90%" />
+<p><figure><img src="/img/2020/01/pic07.png" alt="pic11"></figure>
 using Relu</p>
 
 <p>Multiple GPUs</p>
@@ -393,10 +393,10 @@ Uniform</p>
 
 <div class="pagination">
   
-    <a href="/blog/computervisionnote1/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step to approach the problem I</a>
+    <a href="/blog/computervisionnote2/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step</a>
   
   
-    <a href="/blog/computervisionnote2/" class="button big next">Computer vision problem and step by step to approach the problem II <i class="fas fa-angle-right"></i></a>
+    <a href="/blog/deeplearningpaper1/" class="button big next">Deep Learning Road Map Papers: Classification  <i class="fas fa-angle-right"></i></a>
   
 </div>
 
@@ -426,7 +426,18 @@ Uniform</p>
 
         </section>
         <header>
-          <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
+          <h1><a href="/blog/computervisionnote3/">Computer vision problem and step by step</a></h1>
+          <time class="published" datetime="">January 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step</a></h1>
           <time class="published" datetime="">January 15, 2020</time>
         </header>
       </article>
@@ -437,18 +448,7 @@ Uniform</p>
 
         </section>
         <header>
-          <h1><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h1>
-          <time class="published" datetime="">January 15, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/computervisionnote1/">Computer vision problem and step by step to approach the problem I</a></h1>
+          <h1><a href="/blog/computervisionnote1/">Computer Vision problem step by step</a></h1>
           <time class="published" datetime="">January 4, 2020</time>
         </header>
       </article>
