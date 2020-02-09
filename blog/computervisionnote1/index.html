@@ -317,7 +317,7 @@ Conv2D()
 <p>$$ \begin{bmatrix} 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10&amp; 10&amp; 0&amp; 0&amp; 0 \\ 10 &amp;10&amp; 10&amp; 0 &amp;0 &amp;0 \\ 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0 &amp;0 \end{bmatrix} * \begin{bmatrix} 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \end{bmatrix} =\begin{bmatrix} 0 &amp;30 &amp;30&amp; 0 \\ 0 &amp;30 &amp;30 &amp;0\\ 0&amp; 30 &amp;30 &amp;0 \end{bmatrix}$$</p>
 <p>By the convolution operation, we see that in the middle is a number of 30s and that means we find the edges.</p>
 <p>We can not only detect the edges but also detect it transact from white to gray or gray to white:</p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/img/2020/01/pic01.png" alt="pic01"></p>
 <h4 id="horizontal-edge-detection">Horizontal Edge Detection</h4>
 <p>For the horizontal edge detection just simply use the filter as the following.</p>
 <p>$$ \begin{bmatrix} 1 &amp;1&amp; 1 \\ 0 &amp;0&amp; 0 \\ -1 &amp;-1&amp; -1 \end{bmatrix} $$</p>
@@ -359,8 +359,8 @@ $$ \begin{bmatrix} 3 &amp;4 &amp;5 \\ 1 &amp;0 &amp;2 \\ -1 &amp;9 &amp;7 \end{b
 <p>In the previous 2D convolution, we used the example of applying 3<em>3 filters in 6</em>6 images.</p>
 <p>In a RGB image, we usually have 3 channel. So we will have a 6<em>6</em>3 size image and we need a 3<em>3</em>3 filter.</p>
 <p>After the operation we get a 4*4 output.</p>
-<p><!-- raw HTML omitted --></p>
-<p>For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
+<p><img src="/img/2020/01/pic02.png" alt="pic02">
+For this convolution filter, we need R,G,B 3 different filter together. One way to have such a filter is :</p>
 <p>R: $$ \begin{bmatrix} 1&amp; 0&amp; -1 \\ 1 &amp;0 &amp;-1\\ 1 &amp;0 &amp;-1 \end{bmatrix}$$ G: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$ B: $$ \begin{bmatrix} 0&amp; 0&amp; 0 \\ 0 &amp;0 &amp;0\\ 0 &amp;0 &amp;0 \end{bmatrix}$$</p>
 <p>This kind of convolutional filter only detect edges on red channel. If you want to detect edges on every channel just change the G,B channel to the same as the R channel.</p>
 <p>Note: If we apply a 3 channel image on a 3 channel filter, we will end up with 1 channel image as a output. If we want to detect multiple image features, we could convolute the image with multiple image and stack together to get a multiple channel image.</p>

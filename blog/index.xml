@@ -40,19 +40,20 @@ Divide the 4*4 to 4 area and pick the largest number to get a 2 * 2 data.</descr
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/computervisionnote3/</guid>
-      <description>LeNet-5 This network use 60k parameters, relative small network.
+      <description>LeNet-5  This network use 60k parameters, relative small network.
 Network get deeper hight, width get smaller, channels larger.
 Note: sigmoid/tanh , non-linear in avg pool, II and III of the paper.
 AlexNet using Relu
 Multiple GPUs
 local response normalization (doesn&#39;t help much)
-VGG -16 Uniform
+VGG -16  Uniform
 large network
 VGG-19 is a bigger version of network
-ResNet Residual blocks
+ResNet  
+Residual blocks
 skip connection
 why do residual networks work?
-Inception Basically, inception just apply different filter and output a final volume with all the data and combined together.</description>
+Inception</description>
     </item>
     
     <item>
