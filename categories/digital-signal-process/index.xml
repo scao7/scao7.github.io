@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digital signal process on Shengting Cao&#39;s Note Book</title>
+    <link>https://shengtingcao.top/categories/digital-signal-process/</link>
+    <description>Recent content in Digital signal process on Shengting Cao&#39;s Note Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/categories/digital-signal-process/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Convolution in digital signal processing</title>
+      <link>https://shengtingcao.top/blog/digitalsignalproecess/</link>
+      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/digitalsignalproecess/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

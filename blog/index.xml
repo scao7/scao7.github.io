@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Convolution in digital signal processing</title>
+      <link>https://shengtingcao.top/blog/digitalsignalproecess/</link>
+      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/digitalsignalproecess/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Deep Learning Road Map Papers: Classification </title>
       <link>https://shengtingcao.top/blog/deeplearningpaper1/</link>
       <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
@@ -39,7 +48,8 @@ Chen LC, Papandreou G, Kokkinos I, Murphy K, Yuille AL. Deeplab: Semantic image 
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/blog/computervisionnote3/</guid>
-      <description>LeNet-5  This network use 60k parameters, relative small network.
+      <description>This post is review some cases in computer vision problem. How all the method constructed.
+LeNet-5  This network use 60k parameters, relative small network.
 Network get deeper hight, width get smaller, channels larger.
 Note: sigmoid/tanh , non-linear in avg pool, II and III of the paper.
 AlexNet  using Relu
@@ -47,12 +57,7 @@ Multiple GPUs
 local response normalization (doesn&#39;t help much)
 VGG -16  Uniform
 large network
-VGG-19 is a bigger version of network
-ResNet  
-Residual blocks
-skip connection
-why do residual networks work?
-Inception</description>
+VGG-19 is a bigger version of network</description>
     </item>
     
     <item>
