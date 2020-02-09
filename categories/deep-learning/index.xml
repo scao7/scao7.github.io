@@ -6,32 +6,10 @@
     <description>Recent content in Deep Learning on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 08 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Deep Learning Road Map Papers: Classification </title>
-      <link>https://shengtingcao.top/blog/deeplearningpaper1/</link>
-      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/deeplearningpaper1/</guid>
-      <description>fundamental papers in classification   Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &amp;ldquo;Imagenet classification with deep convolutional neural networks.&amp;rdquo; Advances in neural information processing systems. 2012. pdf (AlexNet, Deep Learning Breakthrough)
-  Simonyan, Karen, and Andrew Zisserman. &amp;ldquo;Very deep convolutional networks for large-scale image recognition.&amp;rdquo; arXiv preprint arXiv:1409.1556 (2014). pdf (VGGNet,Neural Networks become very deep!)
-  Szegedy, Christian, et al. &amp;ldquo;Going deeper with convolutions.&amp;rdquo; Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</description>
-    </item>
-    
-    <item>
-      <title>Deep Learning Road Map Papers: Segmentation </title>
-      <link>https://shengtingcao.top/blog/deeplearningpaper2/</link>
-      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/deeplearningpaper2/</guid>
-      <description>fundamental papers in classification J. Long, E. Shelhamer, and T. Darrell, “Fully convolutional networks for semantic segmentation.” in CVPR, 2015. pdf
-Ronneberger O, Fischer P, Brox T. U-net: Convolutional networks for biomedical image segmentation. InInternational Conference on Medical image computing and computer-assisted intervention 2015 Oct 5 (pp. 234-241). Springer, Cham. pdf
-Chen LC, Papandreou G, Kokkinos I, Murphy K, Yuille AL. Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs.</description>
-    </item>
     
     <item>
       <title>Neuron Network Basics</title>
