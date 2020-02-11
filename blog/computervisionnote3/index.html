@@ -2,34 +2,34 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Computer vision problem and step by step to approach the problem III - Shengting Cao&#39;s Note Book</title>
+<title>Computer vision problem and step by step - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="Computer vision problem and step by step to approach the problem III">
-<meta itemprop="description" content="Computer Vision problem step by step -- case study">
+  <meta itemprop="name" content="Computer vision problem and step by step">
+<meta itemprop="description" content="Alexnet, VGG, ResNet,inception and sliding window">
 
 
-<meta itemprop="datePublished" content="2020-01-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-15T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="200">
+<meta itemprop="datePublished" content="2020-01-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="215">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Computer vision problem and step by step to approach the problem III" />
-<meta property="og:description" content="Computer Vision problem step by step -- case study" />
+  <meta property="og:title" content="Computer vision problem and step by step" />
+<meta property="og:description" content="Alexnet, VGG, ResNet,inception and sliding window" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/computervisionnote3/" />
-<meta property="article:published_time" content="2020-01-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-01-15T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-17T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Computer vision problem and step by step to approach the problem III"/>
-<meta name="twitter:description" content="Computer Vision problem step by step -- case study"/>
+<meta name="twitter:title" content="Computer vision problem and step by step"/>
+<meta name="twitter:description" content="Alexnet, VGG, ResNet,inception and sliding window"/>
 
   
 
@@ -134,43 +134,6 @@
 
 
 
-  
-    
-    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" class="share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
 
     </menu>
   
@@ -201,7 +164,7 @@
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -209,7 +172,7 @@
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -240,19 +203,19 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h2>
+        <h2><a href="/blog/computervisionnote3/">Computer vision problem and step by step</a></h2>
     
     
-        <p>Computer Vision problem step by step -- case study</p>
+        <p>Alexnet, VGG, ResNet,inception and sliding window</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2020-01-15 00:00:00 &#43;0000 UTC">
-      January 15, 2020
+    <time class="published" datetime="2020-01-17 00:00:00 &#43;0000 UTC">
+      January 17, 2020
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -263,53 +226,17 @@
 
 
 
-  
-    
-    <a href="//twitter.com/share?text=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III&amp;url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" rel="noopener" class="share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;title=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f&amp;description=Computer%20vision%20problem%20and%20step%20by%20step%20to%20approach%20the%20problem%20III" target="_blank" rel="noopener" class="share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check out this post by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fshengtingcao.top%2fblog%2fcomputervisionnote3%2f" target="_blank" class="share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
 
   </section>
   
 
   <div class="content">
-    <h4 id="lenet5">LeNet-5</h4>
+    <p>This post is review some cases in computer vision problem. How all the method constructed.</p>
 
-<p><img src = "/img/2020/01/pic06.png" width = "90%" /></p>
+<h4 id="lenet5">LeNet-5</h4>
 
-<p>This network use 60k parameters, relative small network.</p>
+<p><figure><img src="/img/2020/01/pic06.png" alt="pic11"></figure>
+This network use 60k parameters, relative small network.</p>
 
 <p>Network get deeper hight, width get smaller, channels larger.</p>
 
@@ -317,7 +244,7 @@
 
 <h4 id="alexnet">AlexNet</h4>
 
-<p><img src = "/img/2020/01/pic07.png" width = "90%" />
+<p><figure><img src="/img/2020/01/pic07.png" alt="pic11"></figure>
 using Relu</p>
 
 <p>Multiple GPUs</p>
@@ -326,9 +253,8 @@ using Relu</p>
 
 <h4 id="vgg-16">VGG -16</h4>
 
-<p><img src = "/img/2020/01/pic08.png" width = "90%" /></p>
-
-<p>Uniform</p>
+<p><figure><img src="/img/2020/01/pic08.png" alt="pic08"></figure>
+Uniform</p>
 
 <p>large network</p>
 
@@ -336,8 +262,8 @@ using Relu</p>
 
 <h4 id="resnet">ResNet</h4>
 
-<p><img src = "/img/2020/01/pic09.png" width = "90%" />
-<img src = "/img/2020/01/pic10.png" width = "90%" /></p>
+<p><figure><img src="/img/2020/01/pic09.png" alt="pic09"></figure>
+<figure><img src="/img/2020/01/pic10.png" alt="pic10"></figure></p>
 
 <p>Residual blocks</p>
 
@@ -347,7 +273,7 @@ using Relu</p>
 
 <h4 id="inception">Inception</h4>
 
-<p><img src = "/img/2020/01/pic11.png" width = "90%" /></p>
+<p><figure><img src="/img/2020/01/pic11.png" alt="pic11"></figure></p>
 
 <p>Basically, inception just apply different filter and output a final volume with all the data and combined together.</p>
 
@@ -357,11 +283,11 @@ using Relu</p>
 
 <p>Using a 1 * 1 convolution to reduce the volume and do further operation.</p>
 
-<p><img src = "/img/2020/01/pic12.png" width = "90%" /></p>
+<p><figure><img src="/img/2020/01/pic12.png" alt="pic11"></figure></p>
 
 <h4 id="convolutional-implementation-of-sliding-windows">convolutional implementation of sliding windows</h4>
 
-<p><img src = "/img/2020/01/pic13.png" width = "90%" /></p>
+<p><figure><img src="/img/2020/01/pic13.png" alt="pic13"></figure></p>
 
 <p>In object detection, if we want to draw a box around the object. We could do sliding window for the full image and then once we find the object we drew the box.</p>
 
@@ -398,118 +324,16 @@ using Relu</p>
 
 <div class="pagination">
   
-    <a href="/blog/computervisionnote1/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step to approach the problem I</a>
+    <a href="/blog/computervisionnote2/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step</a>
   
   
-    <a href="/blog/computervisionnote2/" class="button big next">Computer vision problem and step by step to approach the problem II <i class="fas fa-angle-right"></i></a>
+    <a href="/blog/deeplearningpaper1/" class="button big next">Deep Learning Road Map Papers: Classification  <i class="fas fa-angle-right"></i></a>
   
 </div>
 
 
       </main>
       <section id="site-sidebar">
-  
-    <section id="recent-posts">
-      <header>
-        <h1>Recent posts</h1>
-      </header>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/computervisionnote2/">Computer vision problem and step by step to approach the problem II</a></h1>
-          <time class="published" datetime="">January 15, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/computervisionnote3/">Computer vision problem and step by step to approach the problem III</a></h1>
-          <time class="published" datetime="">January 15, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/computervisionnote1/">Computer vision problem and step by step to approach the problem I</a></h1>
-          <time class="published" datetime="">January 4, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/deeplearningpaper1/">Deep Learning Road Map Papers -- Classification </a></h1>
-          <time class="published" datetime="">January 4, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/classifier/">Classifier Implementation and Problems</a></h1>
-          <time class="published" datetime="">September 25, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/probabilitybasics/">Probability Basics</a></h1>
-          <time class="published" datetime="">September 25, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/blog/logisticregression/" class="image featured">
-    <img src="/img/2019/09/pic02.jpg" alt="deeplearning">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/logisticregression/">Neuron Network Basics</a></h1>
-          <time class="published" datetime="">September 21, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/blog/latexsyntax/">LaTex Tutorial</a></h1>
-          <time class="published" datetime="">September 18, 2019</time>
-        </header>
-      </article>
-      
-      
-        <a href="/blog/" class="button">See more</a>
-      
-    </section>
   
 
   
@@ -525,12 +349,12 @@ using Relu</p>
           
           <li>
             
-              <a href="/categories/computer-graphics/">computer-graphics<span class="count">6</span></a>
+              <a href="/categories/android-development/">android-development<span class="count">5</span></a>
             
           
           <li>
             
-              <a href="/categories/android-development/">android-development<span class="count">5</span></a>
+              <a href="/categories/computer-graphics/">computer-graphics<span class="count">6</span></a>
             
           
           <li>
@@ -540,22 +364,22 @@ using Relu</p>
           
           <li>
             
-              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
+              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
             
           
           <li>
             
-              <a href="/categories/deep-learning/">deep-learning<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
+              <a href="/categories/digital-signal-process/">digital-signal-process<span class="count">1</span></a>
             
           
           <li>
             
               <a href="/categories/internet-ssh/">internet-ssh<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/latex/">latex<span class="count">2</span></a>
             
           
           <li>
@@ -570,7 +394,17 @@ using Relu</p>
           
           <li>
             
+              <a href="/categories/paper-reading/">paper-reading<span class="count">3</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/probability/">probability<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           </li>
@@ -606,7 +440,7 @@ using Relu</p>
 
 
 
-<li><a href="//linkedin.com/in/https://www.linkedin.com/in/shengting-steven-cao-aa5672136/" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//linkedin.com/in//shengting-steven-cao-aa5672136" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -614,7 +448,7 @@ using Relu</p>
 
 
 
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+<li><a href="//youtube.com/channel/UCDItL8_wS1VLYaSrT6m9BFA" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
 
 
 
@@ -663,6 +497,7 @@ using Relu</p>
     
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
+
   </head>
 </html>
 

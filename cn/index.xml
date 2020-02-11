@@ -6,25 +6,10 @@
     <description>Recent content on 欢迎来到我博客中文界面</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/cn/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>深度学习之--图片分类识别</title>
-      <link>https://shengtingcao.top/cn/blog/paperreview/</link>
-      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/cn/blog/paperreview/</guid>
-      <description>写在前面 这个主题是我新开的坑，主要是自己读一些深度学习的论文然后做一下笔记把精华都提取出来，并且会贴上原文的链接。算是我的一个学习过程，我这个坑的顺序主要会由容易到难。每一个主题大概会调3-4篇论文出来来看看他们的创新点和处理的问题。 除了有一些文章是跟我自己的研究相关的我会拿出来讲引用会少一些，一般这里挑出来的文章一般引用都是上万的。然后我会在这里尽量用中文，有些名词不是很好翻译或者专业术语我都会直接用英语原文。
-ImageNet Classification with Deep Convolutional Neural Networks (图片网络识别：用深度卷积神经网络) [论文链接]（http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf） 这篇文章是2012年关于图片分类的论文，里面提出来的网络现在又叫AlexNet。这个网络实现了前1 和前5 错误率37.5% 和17.0%比以前state of art要好。 网络包含6千万个参数，和650，000个节点。5个卷积层，某些卷积层有max-pooling层3个full-connected层， 一共有1000 softmax。 为了防止overfitting加了dropout。
-数据集
-1500万标记过得高清图，22000个不同种类。
-网络结构
-第一个卷积层是224*224*3 的输入，96 个11*11*3kernel，4的stride。
-第一个卷积层的输出会输入第二个卷积层，第二个卷积层有256个5*5*8个kernel，第三，第四，第五个卷积层直接连接在一起。 第三个有384个3*3*256个kernel</description>
-    </item>
     
     <item>
       <title>逆雨 第二章</title>

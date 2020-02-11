@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://shengtingcao.top/blog/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -43,23 +43,18 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/categories/computer-vision/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/blog/deeplearningpaper3/</loc>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/blog/computervisionnote2/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/blog/computervisionnote3/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/categories/paper-reading/</loc>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://shengtingcao.top/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -78,17 +73,42 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/blog/computervisionnote1/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/blog/deeplearningpaper2/</loc>
+    <lastmod>2020-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/categories/deep-learning/</loc>
-    <lastmod>2020-01-04T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/blog/digitalsignalproecess/</loc>
+    <lastmod>2020-02-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://shengtingcao.top/blog/deeplearningpaper1/</loc>
+    <lastmod>2020-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/categories/digital-signal-process/</loc>
+    <lastmod>2020-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/categories/computer-vision/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/computervisionnote3/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/computervisionnote2/</loc>
+    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/computervisionnote1/</loc>
     <lastmod>2020-01-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -110,6 +130,11 @@
   <url>
     <loc>https://shengtingcao.top/blog/probabilitybasics/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/categories/deep-learning/</loc>
+    <lastmod>2019-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
