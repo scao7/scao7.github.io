@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-02-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="121">
+<meta itemprop="wordCount" content="527">
 
 
 
@@ -215,7 +215,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>1 minute read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -248,6 +248,146 @@
 
 <li><p>He, Gkioxari, et al. &ldquo;Mask R-CNN&rdquo; arXiv preprint arXiv:1703.06870 (2017). <a href="https://arxiv.org/abs/1703.06870">pdf</a></p></li>
 </ul>
+
+<h2 id="r-cnn-regions-with-cnn-features">R-CNN (Regions with CNN features)</h2>
+
+<p><strong>Architecture:</strong>
+Simple and scalable detection algorithm that improves mean average precision (mAP)</p>
+
+<p>Our approach combines two key insights:
+(1) one can apply high-capacity convolutional neural networks (CNNs) to bottom-up region proposals in order to
+localize and segment objects and (2) when labeled training
+data is scarce, supervised pre-training for an auxiliary task,
+followed by domain-specific fine-tuning, yields a significant performance boost</p>
+
+<blockquote>
+<p><img src="/img/2020/02/pic20.png" alt="" /></p>
+
+<ul>
+<li>Region proposal</li>
+</ul>
+
+<blockquote>
+<ul>
+<li><a href="https://staff.fnwi.uva.nl/th.gevers/pub/GeversIJCV2013.pdf">Selective search</a></li>
+</ul>
+
+<blockquote>
+<ul>
+<li><p><strong>Algorithm 1: Hierarchical Grouping Algorithm</strong>(part of the selective search method in this <a href="https://staff.fnwi.uva.nl/th.gevers/pub/GeversIJCV2013.pdf">paper</a>)</p>
+
+<pre><code>Input: (colour) image
+Output: Set of object location hypotheses L
+Obtain initial regions R = {r1, ··· ,rn} using Felzenszwalb and
+Huttenlocher (2004) Initialise similarity set S = ∅;
+</code></pre>
+
+<pre><code>foreach Neighbouring region pair (ri,rj) do
+Calculate similarity s(ri,rj);
+S = S ∪ s(ri,rj);
+</code></pre>
+
+<pre><code>while S = ∅ do
+Get highest similarity s(ri,rj) = max(S);
+Merge corresponding regions rt = ri ∪ rj ;
+Remove similarities regarding ri : S = S \ s(ri,r∗);
+Remove similarities regarding rj : S = S \ s(r∗,rj);
+Calculate similarity set St between rt and its neighbours;
+S = S ∪ St ;
+R = R ∪ rt ;
+</code></pre>
+
+<pre><code>Extract object location boxes L from all regions in R;
+</code></pre></li>
+</ul>
+</blockquote>
+</blockquote>
+
+<ul>
+<li>Feature extraction</li>
+</ul>
+
+<blockquote>
+<ul>
+<li><p>CNN: 5 convolution layers, 2 fully connected layers (pre-train)</p></li>
+
+<li><p>Domain specific fine tuning</p></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Classification</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>Classify using SVM</li>
+</ul>
+</blockquote>
+</blockquote>
+
+<p><strong>Good ideas:</strong></p>
+
+<blockquote>
+<ul>
+<li><p>Using pre-trained CNN to do the auxiliary task (classification)</p></li>
+
+<li><p>Fine tune network when the data is scarce (detection)</p></li>
+</ul>
+</blockquote>
+
+<h2 id="fast-r-cnn">Fast R-CNN</h2>
+
+<p>Increase training speed while increase the accuracy</p>
+
+<p>Fast R-CNN trains the very
+deep VGG16 network 9× faster than R-CNN, is 213× faster
+at test-time, and achieves a higher mAP on PASCAL VOC
+2012. Compared to SPPnet, Fast R-CNN trains VGG16 3×
+faster, tests 10× faster, and is more accurate.</p>
+
+<p><strong>Drawbacks of R-CNN</strong></p>
+
+<blockquote>
+<ul>
+<li><p>Training is a multi-stage pipeline.</p></li>
+
+<li><p>Training is expensive in space and time.</p></li>
+
+<li><p>Object detection is slow</p></li>
+</ul>
+</blockquote>
+
+<p><strong>Architecture:</strong></p>
+
+<blockquote>
+<p><img src="/img/2020/02/pic21.png" alt="" /></p>
+
+<ul>
+<li><p>Process whole image with convolution and maxpooling layer to produce a conv feature map</p></li>
+
+<li><p>For each object proposal a region of interest (RoI) pooling layer extracts a fixed-length feature vector from the feature map.</p></li>
+</ul>
+
+<blockquote>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Each feature vector is fed into a sequence of fully connected (fc) layers that finally branch into two sibling output layers:</li>
+</ul>
+
+<blockquote>
+<ul>
+<li><p>one that produces softmax probability estimates over K object classes plus a catch-all “background” class</p></li>
+
+<li><p>another layer that outputs four real-valued numbers for each of the K object classes. Each set of 4 values encodes refined
+bounding-box positions for one of the K classes.</p></li>
+</ul>
+</blockquote>
+</blockquote>
 
 <p>reading &hellip;.</p>
 
