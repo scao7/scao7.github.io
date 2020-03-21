@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2020-03-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="942">
+<meta itemprop="wordCount" content="1108">
 
 
 
@@ -215,7 +215,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>5 minutes read</p>
+      <p>6 minutes read</p>
     
   </div>
 </header>
@@ -391,9 +391,21 @@ In this section, we want if the zombie overlapped with the human we need do dama
 
 <h3 id="weapon-blueprint">weapon blueprint</h3>
 
-<p>For the weapon we need to set u</p>
+<p>For the weapon we need to have three functions: pullTrigger, Release Trigger and Fire:</p>
 
-<p>continue!&hellip;</p>
+<p><img src="/img/2020/03/pic10.png" alt="weapon blueprint pic10" /></p>
+
+<p>First, when a fire event triggered spawn a sound and attach to the gun mesh then spawn a projectile out. When pull trigger , we run the set timer by function once to avoid multiple shooting when only pull trigger once.</p>
+
+<h3 id="projectile-blueprint">projectile blueprint</h3>
+
+<p>Projectile is just the bullet that shoot out, we can define some property and behavior of the projectile.</p>
+
+<p><img src="/img/2020/03/pic11.png" alt="projectile pic11" /></p>
+
+<p>When projectile overlapped with the actor, call the iDamgeable interface which means the projectile can damage both enemies and our main character. If we don&rsquo;t want to damage friend character, we can setup a tag for the character. For example, I run a check if the actor has tag. If no tag, we can call the damage function and spawn the sound. In the end delete the enemy.</p>
+
+<p>That is all the logic blueprint for enemy and main charcter behavior and our weapon system. Next blog I will talk about animation and how to setup those assets in the game.</p>
 
   </div>
   <footer>
