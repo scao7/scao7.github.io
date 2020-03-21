@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://shengtingcao.top/blog/</loc>
-    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
-    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -43,18 +43,13 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/blog/deeplearningpaper3/</loc>
-    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/categories/paper-reading/</loc>
-    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/categories/game-development/</loc>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://shengtingcao.top/</loc>
-    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
@@ -70,6 +65,21 @@
                 hreflang="en"
                 href="https://shengtingcao.top/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/zombiegamedesign/</loc>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/blog/deeplearningpaper3/</loc>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/categories/paper-reading/</loc>
+    <lastmod>2020-02-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>

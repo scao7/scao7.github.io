@@ -6,10 +6,19 @@
     <description>Recent content on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unreal Zombie Game Development</title>
+      <link>https://shengtingcao.top/blog/zombiegamedesign/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/zombiegamedesign/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Deep Learning Road Map Papers: Object Detection from 2D Images</title>

@@ -2,34 +2,26 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Probability Basics - Shengting Cao&#39;s Note Book</title>
+<title>Game Development - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="Probability Basics">
-<meta itemprop="description" content="This post will take about the basic probability method to prepare the machine learning knowledge.">
+  <meta itemprop="name" content="Game Development">
+<meta itemprop="description" content="">
 
 
-<meta itemprop="datePublished" content="2019-09-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-09-25T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="370">
+  <meta property="og:title" content="Game Development" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://shengtingcao.top/categories/game-development/" />
 
-
-
-<meta itemprop="keywords" content="" />
-
-  <meta property="og:title" content="Probability Basics" />
-<meta property="og:description" content="This post will take about the basic probability method to prepare the machine learning knowledge." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/blog/probabilitybasics/" />
-<meta property="article:published_time" content="2019-09-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-09-25T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-03-20T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Probability Basics"/>
-<meta name="twitter:description" content="This post will take about the basic probability method to prepare the machine learning knowledge."/>
+<meta name="twitter:title" content="Game Development"/>
+<meta name="twitter:description" content=""/>
 
   
 
@@ -61,7 +53,7 @@
       <a href="/">
         
           
-            Blog
+            Categories
           
         
       </a>
@@ -199,143 +191,36 @@
 </section>
 
       <main id="site-main">
-        <article class="post">
+        <h1>Game Development</h1>
+        
+        
+            <article class="post">
   <header>
   <div class="title">
     
-        <h2><a href="/blog/probabilitybasics/">Probability Basics</a></h2>
+        <h2><a href="/blog/zombiegamedesign/">Unreal Zombie Game Development</a></h2>
     
     
-        <p>This post will take about the basic probability method to prepare the machine learning knowledge.</p>
+        <p>My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it.</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-09-25 00:00:00 &#43;0000 UTC">
-      September 25, 2019
+    <time class="published" datetime="2020-03-20 00:00:00 &#43;0000 UTC">
+      March 20, 2020
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>2 minutes read</p>
+      <p>0 minutes read</p>
     
   </div>
 </header>
 
-  <section id="socnet-share">
-    
-
-
-
-
-
-  </section>
   
 
-  <div class="content">
-    <p><a href="/img/2019/09/Probability.pdf">Probability Documentation PDF</a>,
-<a href="/img/2019/09/MultivariateMethod.pdf">Multivariate Methods PDF</a></p>
-
-<p>Recently I have been through a hard time to understand the classification methods in Machine Learning. I feel the probability basics is very important to the Machine Learning. In this post, I will write down the formula about probability calculation. I will combine them with Matlab code expression and Matrix manipulate to help me better understand those concept.</p>
-
-<h4 id="bays-formula">Bay's formula</h4>
-
-<p>Most frequent used theory in probability.</p>
-
-<p><span  class="math">\[P(E|F) = \frac {P(E\cap F)} {P(E)} , P(E \cap F) = P(E|F)P(F) = P(F|E)P(E) \Longrightarrow  P(F|E)=\frac {P(E|F)P(F)}{P(E)}\]</span></p>
-
-<h4 id="notations">Notations</h4>
-
-<p><span  class="math">\(\boxed{x}\)</span> Scalar value</p>
-
-<p><span  class="math">\(\boxed{\bold{x}} \)</span> Vector</p>
-
-<p><span  class="math">\(\boxed{\bold{X}} \)</span> Matrix</p>
-
-<p><span  class="math">\(\boxed{\bold{x}^T}\)</span> Transpose</p>
-
-<p><span  class="math">\(\boxed{X}\)</span> Random variable</p>
-
-<p><span  class="math">\(\boxed{P(X)}\)</span> Probability mass function when <span  class="math">\(X\)</span> is discrete</p>
-
-<p><span  class="math">\(\boxed{\rho(X)}\)</span> Probability density function when <span  class="math">\(X\)</span> is continuous</p>
-
-<p><span  class="math">\(\boxed{P(X|Y)}\)</span> Conditional probability of <span  class="math">\(X\)</span> given <span  class="math">\(Y\)</span></p>
-
-<p><span  class="math">\(\boxed{E[X]}\)</span> Expected value of the random variable <span  class="math">\(X\)</span></p>
-
-<p><span  class="math">\(\boxed{Var(X)} \)</span> Variance of X</p>
-
-<p><span  class="math">\(\boxed{Cov(X,Y)}\)</span> Covariance of X and Y</p>
-
-<p><span  class="math">\(\boxed{Corr(X,Y)}\)</span> Correlation of X and Y</p>
-
-<p><span  class="math">\(\boxed{\mu}\)</span> Mean,</p>
-
-<p><span  class="math">\(\boxed{\sigma^2}\)</span> Variance</p>
-
-<p><span  class="math">\(\boxed{\varSigma}\)</span>  Covariance matrix</p>
-
-<p><span  class="math">\(\boxed{m}\)</span> Estimator to the mean</p>
-
-<p><span  class="math">\(\boxed{s^2}\)</span> Estimator to the variance</p>
-
-<p><span  class="math">\(\boxed{\bold{s}}\)</span> Estimator to the covariance matrix</p>
-
-<p><span  class="math">\(\boxed{N(\mu,\sigma^2)}\)</span> Univariate normal distribution with mean <span  class="math">\(\mu\)</span> and variance <span  class="math">\(\sigma^2\)</span></p>
-
-<p><span  class="math">\(\boxed{Z}\)</span> Unit normal distribution <span  class="math">\(N(0,1)\)</span></p>
-
-<p><span  class="math">\(\boxed{N_d(\bold{\mu},\bold{\varSigma)}}\)</span> d-variate normal distribution with mean vector <span  class="math">\(\mu\)</span>and covariance matrix <span  class="math">\(\varSigma\)</span></p>
-
-<hr>
-
-<p><span  class="math">\(\boxed{x}\)</span> Input</p>
-
-<p><span  class="math">\(\boxed{d}\)</span> Number of inputs (input dimensionality)</p>
-
-<p><span  class="math">\(\boxed{\gamma}\)</span> Output</p>
-
-<p><span  class="math">\(\boxed{r}\)</span> required output</p>
-
-<p><span  class="math">\(\boxed{K}\)</span> Number of outputs (classes)</p>
-
-<p><span  class="math">\(\boxed{N}\)</span> Number of training instances</p>
-
-<p><span  class="math">\(\boxed{z}\)</span> Hidden value ,intrinsic dimension, latent factor</p>
-
-<p><span  class="math">\(\boxed{k}\)</span> Number of hidden dimensions , latent factors</p>
-
-<p><span  class="math">\(\boxed{C_i}\)</span> Class <span  class="math">\(i\)</span></p>
-
-<p><span  class="math">\(\boxed{\chi}\)</span> Training sample</p>
-
-<p><span  class="math">\(\boxed{{x^t}^N_{t=1}}\)</span> Set of <span  class="math">\(x\)</span> with index <span  class="math">\(t\)</span> ranging from 1 to N</p>
-
-<p><span  class="math">\(\boxed{{\{x^t,r^t}_t\}}\)</span> Set of ordered pairs of input and desired output with index t</p>
-
-<hr>
-
-<p><span  class="math">\(\boxed{g(x|\theta)}\)</span> Function of x defined up to a set of parameters <span  class="math">\(\theta\)</span></p>
-
-<p><span  class="math">\(\boxed{arg \ max_\theta g(x|\theta)}\)</span> The argument <span  class="math">\(\theta\)</span> for which g has its maximum value</p>
-
-<p><span  class="math">\(\boxed{arg \ min_\theta g(x|\theta)}\)</span> The argument <span  class="math">\(\theta\)</span> for which <span  class="math">\(g\)</span> has its minimum value</p>
-
-<p><span  class="math">\(\boxed{E(\theta|\chi)}\)</span> Error function with parameters <span  class="math">\(\theta\)</span> on the sample <span  class="math">\(\chi\)</span></p>
-
-<p><span  class="math">\(\boxed{l(\theta|\chi)}\)</span> Likelihood of parameters <span  class="math">\(\theta\)</span> on the sample <span  class="math">\(\chi\)</span></p>
-
-<p><span  class="math">\(\boxed{\mathscr{L}(\theta|\chi)} \)</span> Log likelihood of parameters <span  class="math">\(\theta\)</span> on the sample <span  class="math">\(\chi\)</span></p>
-
-<hr>
-
-<p><span  class="math">\(\boxed{1(c)}\)</span> 1 if c is true , 0 otherwise</p>
-
-<p><span  class="math">\(\boxed{\# \{ c\}}\)</span> Number of elements for which c is true</p>
-
-<p><span  class="math">\(\boxed{\delta_{ij}}\)</span> Kronecker delta: 1 if i = j, 0 otherwise</p>
-
-  </div>
+  
+  
   <footer>
+    <a href="/blog/zombiegamedesign/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -344,7 +229,7 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/probability">Probability</a></li>
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/game-development">Game Development</a></li>
           
         </ul>
       </li>
@@ -362,16 +247,16 @@
   </footer>
 </article>
 
-
+        
+        
 <div class="pagination">
   
-    <a href="/blog/logisticregression/" class="button big previous"><i class="fas fa-angle-left"></i> Neuron Network Basics</a>
+    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
   
   
-    <a href="/blog/classifier/" class="button big next">Classifier Implementation and Problems <i class="fas fa-angle-right"></i></a>
+    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
-
 
       </main>
       <section id="site-sidebar">
