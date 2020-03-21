@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Unreal Zombie Game Development</title>
+      <title>Unreal Zombie Game Development I</title>
       <link>https://shengtingcao.top/blog/zombiegamedesign/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       
@@ -20,8 +20,8 @@
       <description>First I will list some resource website I got from the internet:
 Unreal Engine Official Tutorial Site Need account to access.
 Mixamo This is the website I got my 3D character and animation, you can upload your own model to get it animated.
-Create a character First go to create a project using C++ without any start content. In the C++ Class folder create a &amp;ldquo;BaseCharacter&amp;rdquo; class.
-In the &amp;ldquo;BaseCharacter.</description>
+This blog is going to illustrate the logic for the game, for other animation or project setup will be described in next blog.
+Create a character First go to create a project using C++ without any start content.</description>
     </item>
     
     <item>

@@ -2,25 +2,25 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Unreal Zombie Game Development - Shengting Cao&#39;s Note Book</title>
+<title>Unreal Zombie Game Development I - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="Unreal Zombie Game Development">
+  <meta itemprop="name" content="Unreal Zombie Game Development I">
 <meta itemprop="description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it.">
 
 
 <meta itemprop="datePublished" content="2020-03-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="909">
+<meta itemprop="wordCount" content="942">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Unreal Zombie Game Development" />
+  <meta property="og:title" content="Unreal Zombie Game Development I" />
 <meta property="og:description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shengtingcao.top/blog/zombiegamedesign/" />
@@ -28,7 +28,7 @@
 <meta property="article:modified_time" content="2020-03-20T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Unreal Zombie Game Development"/>
+<meta name="twitter:title" content="Unreal Zombie Game Development I"/>
 <meta name="twitter:description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it."/>
 
   
@@ -203,7 +203,7 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/zombiegamedesign/">Unreal Zombie Game Development</a></h2>
+        <h2><a href="/blog/zombiegamedesign/">Unreal Zombie Game Development I</a></h2>
     
     
         <p>My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it.</p>
@@ -238,6 +238,8 @@
 <p><a href="https://learn.unrealengine.com/">Unreal Engine Official Tutorial Site</a> Need account to access.</p>
 
 <p><a href="https://learn.unrealengine.com/">Mixamo</a> This is the website I got my 3D character and animation, you can upload your own model to get it animated.</p>
+
+<p>This blog is going to illustrate the logic for the game, for other animation or project setup will be described in next blog.</p>
 
 <h3 id="create-a-character">Create a character</h3>
 
@@ -352,7 +354,7 @@ Right click our c++ class and create a bluprint, we can call it newCharacter</p>
 
 <p>This is the blueprint logic for the movement and rotation</p>
 
-<p><img src="/img/2020/0/pic4.png" alt="newCharacter movement and rotation logic pic4" /></p>
+<p><img src="/img/2020/03/pic4.png" alt="newCharacter movement and rotation logic pic4" /></p>
 
 <p>This is the blueprint logic for the damage the the character:</p>
 
@@ -386,6 +388,10 @@ In this section, we want if the zombie overlapped with the human we need do dama
 <p><img src="/img/2020/03/pic9.png" alt="affect health in enemy blueprint pic9" /></p>
 
 <p>First it will calculate the health and check if zombie dead. If it is dead, we need ignore the collision of the zombie and upgrade the score in game mode. In the end deactivate the movement of zombies and destroy it. We set delay here to play an animation.</p>
+
+<h3 id="weapon-blueprint">weapon blueprint</h3>
+
+<p>For the weapon we need to set u</p>
 
 <p>continue!&hellip;</p>
 
