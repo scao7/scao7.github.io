@@ -14,7 +14,7 @@
 
 <meta itemprop="datePublished" content="2021-01-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="162">
+<meta itemprop="wordCount" content="552">
 
 
 
@@ -215,7 +215,7 @@
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>1 minute read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -252,6 +252,101 @@ and the focal length need achieve proper focus by varing the shape of the lens.<
 <p>Human visual system can adapt is enormous: on the order of <span  class="math">\(10^{10}\)</span>. In photopic vision, the range is about <span  class="math">\(10^6\)</span></p>
 
 <p><figure><img src="/img/2021/01/pic2.png" alt=""></figure></p>
+
+<p>The figure shows the perceived brightness is not a simple function of intensity. The first is based on the fact that the visual
+system tends to undershoot or overshoot around the boundary of regionsof different intensities.
+We actually perceive a brightness pattern that is strongly scalloped near the boundaries.</p>
+
+<h6 id="optical-illusions">optical illusions:</h6>
+
+<p>Human visual system is trying to filling nonexisting details or wrongly perceives geometrical properties.
+<figure><img src="/img/2021/01/pic3.png" alt=""></figure></p>
+
+<p>a) the outline of a square is seen clearly, despite the fact that no lines defining such a figuere are part of the image.
+b) human system view a circle in the center.
+c) two line with same length.
+d) equidsitant and parallel.</p>
+
+<h6 id="electromagnetic-spectrum">Electromagnetic Spectrum:</h6>
+
+<p>In 1666, Isaac Newton discovered that  a beam of sunlight passes through a glass prim, the emerging beam of light is ot white but consist
+instead of a continuous spectrum of colors ranging from violet at one end to red at the other.
+<figure><img src="/img/2021/01/pic4.png" alt=""></figure></p>
+
+<p>The electromagnetic spectrum can be expressed in terms of wavelength, frequency, or energy.
+Wavelength(<span  class="math">\( \lambda \)</span>) and frequency (<span  class="math">\( v \)</span>) are related by the expression. <span  class="math">\(c\)</span> is the speed of light (<span  class="math">\(2.998 \times 10^8 m/s\)</span>).</p>
+
+<p><span  class="math">\[ \lambda = \frac{c}{v}  \]</span></p>
+
+<h2 id="image-sensing-and-acquisition">Image Sensing and Acquisition</h2>
+
+<p><figure><img src="/img/2021/01/pic5.png" alt=""></figure></p>
+
+<p><figure><img src="/img/2021/01/pic6.png" alt=""></figure></p>
+
+<h6 id="simple-image-formation-model">simple image formation model:</h6>
+
+<ol>
+<li><p>Image intensities can be negative during processing. Example: in radar images, objects moving toward the radar often are interpreted as having negative velocities
+while objets moving away are interpreted as having positive velocities.</p></li>
+
+<li><p>We normally sale the smallest negative value to zero</p></li>
+</ol>
+
+<p><span  class="math">\[ 0 \leq f(x,y) < \infty \]</span></p>
+
+<p><span  class="math">\(f(x,y)\)</span> is characterized by two components: 1) the amount of source illumination incident on the scene being viewed, and 2) the amount of illumination reflected by the objects in the scence.
+called illumination and reflectance componets, denoted by <span  class="math">\(i(x,y)\)</span> and <span  class="math">\(r(x,y)\)</span>.</p>
+
+<p><span  class="math">\[ f(x,y) = i(x,y) r(x,y)\]</span></p>
+
+<p>where</p>
+
+<p><span  class="math">\[ 0 \leq i(x,y) < \infty \]</span></p>
+
+<p>and</p>
+
+<p><span  class="math">\[ 0 \leq r(x,y)  \leq 1\]</span></p>
+
+<h2 id="image-sampling-and-quantization">image sampling and quantization</h2>
+
+<h6 id="basic-concepts-in-sampling-and-quantization">basic concepts in sampling and quantization:</h6>
+
+<p>Digitizing the coordinate values is called sampling.</p>
+
+<p>Converting the intensity values to discrete quantities is called quantization.</p>
+
+<p><figure><img src="/img/2021/01/pic7.png" alt=""></figure></p>
+
+<h6 id="result">result:</h6>
+
+<p><figure><img src="/img/2021/01/pic8.png" alt=""></figure></p>
+
+<h2 id="representing-digital-image">representing digital image</h2>
+
+<p><figure><img src="/img/2021/01/pic9.png" alt=""></figure></p>
+
+<p><figure><img src="/img/2021/01/pic10.png" alt=""></figure></p>
+
+<h6 id="linear-vs-coordinate-indexing">Linear vs coordinate indexing:</h6>
+
+<p>The formula to convert the coordinate system to linear system:</p>
+
+<p><span  class="math">\[ \alpha = M y + x \]</span></p>
+
+<p>The formula convert linear to coordinate system :</p>
+
+<p><span  class="math">\[ x = \alpha \  mod \ M\]</span></p>
+
+<p><span  class="math">\[ y = (\alpha - x) / M \]</span></p>
+
+<hr>
+
+<p><figure><img src="/img/2021/01/pic11.png" alt=""></figure></p>
+
+<h2 id="spatial-and-intensity-resolution">spatial and intensity resolution</h2>
+
+<p>continue ...</p>
 
   </div>
   <footer>
