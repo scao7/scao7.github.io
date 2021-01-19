@@ -2,26 +2,34 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>LaTex - Shengting Cao&#39;s Note Book</title>
+<title>Image Processing Concepts - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="LaTex">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Image Processing Concepts">
+<meta itemprop="description" content="Basic Image Processing Concept explain">
 
 
-  <meta property="og:title" content="LaTex" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shengtingcao.top/categories/latex/" />
+<meta itemprop="datePublished" content="2021-01-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="162">
 
-<meta property="og:updated_time" content="2019-09-18T00:00:00+00:00" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Image Processing Concepts" />
+<meta property="og:description" content="Basic Image Processing Concept explain" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/blog/imageprocessing/" />
+<meta property="article:published_time" content="2021-01-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-19T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LaTex"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Image Processing Concepts"/>
+<meta name="twitter:description" content="Basic Image Processing Concept explain"/>
 
   
 
@@ -53,7 +61,7 @@
       <a href="/">
         
           
-            Categories
+            Blog
           
         
       </a>
@@ -191,22 +199,19 @@
 </section>
 
       <main id="site-main">
-        <h1>LaTex</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2><a href="/blog/latexsyntax/">LaTex Tutorial</a></h2>
+        <h2><a href="/blog/imageprocessing/">Image Processing Concepts</a></h2>
     
     
-        <p>some notes about Latex syntax and how to write formulas in Markdown files.</p>
+        <p>Basic Image Processing Concept explain</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-09-18 00:00:00 &#43;0000 UTC">
-      September 18, 2019
+    <time class="published" datetime="2021-01-19 00:00:00 &#43;0000 UTC">
+      January 19, 2021
     </time>
     <span class="author">Shengting Cao</span>
     
@@ -215,66 +220,41 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
 
-  
-  <p>Add this HTML code into <strong>site-footer.html</strong> file because I use this template for every posts page.</p>
-  <footer>
-    <a href="/blog/latexsyntax/" class="button big">Read more</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/latex">LaTex</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
-</ul>
+  <div class="content">
+    <p>One picture is worth more than ten thousand words -- Anonymous</p>
 
-  </footer>
-</article>
+<h2 id="what-is-a-digital-image">What is a digital image?</h2>
 
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/latexinmd/">Enable Math Mathjax</a></h2>
-    
-    
-        <p>Describe the programming language design</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-01-25 00:00:00 &#43;0000 UTC">
-      January 25, 2019
-    </time>
-    <span class="author">Autor eines Themas</span>
-    
-      <p>1 minute read</p>
-    
+<p>An image can be defined as a two-demensional function, <span  class="math">\(f(x,y)\)</span>, where <span  class="math">\(x\)</span> and <span  class="math">\(y\)</span> aer spatial coordinates
+the amplitude of <span  class="math">\(f\)</span> at any pair of coordinates <span  class="math">\((x,y)\)</span> is called intensity. When <span  class="math">\(x,y\)</span>, and the intensity values of f are all finite, discrete quantities, we call the image a digital image.</p>
+
+<h6 id="a-generalpurpose-image-processing-system">A general-purpose image processing system:</h6>
+
+<p><figure><img src="/img/2021/01/pic1.png" alt="General-puporse of Image Processing System"></figure></p>
+
+<h2 id="photographic-camera-vs-human-eyes">Photographic camera vs Human Eyes</h2>
+
+<p>In an ordinary photographic camera, the lens has a fixed focal length. Focusing at various distances is achieved by avarying the distance between the ens and the imageing plane. In the human eyes, the distance between te center of the lens and the image sensor is fixed
+and the focal length need achieve proper focus by varing the shape of the lens.</p>
+
+<h6 id="brightness-adaption-and-discrimination">Brightness adaption and discrimination:</h6>
+
+<p>Human visual system can adapt is enormous: on the order of <span  class="math">\(10^{10}\)</span>. In photopic vision, the range is about <span  class="math">\(10^6\)</span></p>
+
+<p><figure><img src="/img/2021/01/pic2.png" alt="fdf"></figure></p>
+
   </div>
-</header>
-
-  
-
-  
-  <p>Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.</p>
   <footer>
-    <a href="/blog/latexinmd/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -283,7 +263,7 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/latex">LaTex</a></li>
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/image-processing">Image Processing</a></li>
           
         </ul>
       </li>
@@ -301,16 +281,14 @@
   </footer>
 </article>
 
-        
-        
+
 <div class="pagination">
   
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/blog/datascience1/" class="button big previous"><i class="fas fa-angle-left"></i> Data Science Start Package</a>
   
-  
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
