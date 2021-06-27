@@ -2,26 +2,34 @@
 <html lang="cn">
   <head>
   <meta charset="utf-8">
-<title>深度学习 - 欢迎来到我博客中文界面</title>
+<title>深度学习工具tensorflow介绍以及安装 - 欢迎来到我博客中文界面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.58.2" />
-  <meta itemprop="name" content="深度学习">
-<meta itemprop="description" content="这个是我的中文博客 ">
+  <meta itemprop="name" content="深度学习工具tensorflow介绍以及安装">
+<meta itemprop="description" content="Windows 上 anaconda，tensorflow的安装，以及如何调用英伟达GPU">
 
 
-  <meta property="og:title" content="深度学习" />
-<meta property="og:description" content="这个是我的中文博客 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shengtingcao.top/cn/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" />
+<meta itemprop="datePublished" content="2021-06-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-06-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="93">
 
-<meta property="og:updated_time" content="2021-06-27T00:00:00+00:00" /><meta property="og:site_name" content="欢迎来到我博客中文界面" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="深度学习工具tensorflow介绍以及安装" />
+<meta property="og:description" content="Windows 上 anaconda，tensorflow的安装，以及如何调用英伟达GPU" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/cn/blog/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/" />
+<meta property="article:published_time" content="2021-06-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-27T00:00:00+00:00" /><meta property="og:site_name" content="欢迎来到我博客中文界面" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="深度学习"/>
-<meta name="twitter:description" content="这个是我的中文博客 "/>
+<meta name="twitter:title" content="深度学习工具tensorflow介绍以及安装"/>
+<meta name="twitter:description" content="Windows 上 anaconda，tensorflow的安装，以及如何调用英伟达GPU"/>
 
   
 
@@ -53,7 +61,7 @@
       <a href="/cn/">
         
           
-            Categories
+            Blog
           
         
       </a>
@@ -198,10 +206,7 @@
 </section>
 
       <main id="site-main">
-        <h1>深度学习</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
@@ -222,12 +227,84 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
 
-  
-  <p>现在深度学习已经越来越火，身边的不少人都有深度学习编程都需求，为了方便大家学习同时也尽量避免我一个一个的教他们安装。这个博客会一步一步的教大家怎么在Windows上安装上Anaconda， tensorflow-gpu。</p>
+  <div class="content">
+    
+
+<p>现在深度学习已经越来越火，身边的不少人都有深度学习编程都需求，为了方便大家学习同时也尽量避免我一个一个的教他们安装。这个博客会一步一步的教大家怎么在Windows上安装上Anaconda， tensorflow-gpu。</p>
+
+<p>Anaconda(<a href="https://www.anaconda.com/">https://www.anaconda.com/</a>) 是一个python包的管理软件，他能帮助你一键创建你的python运行环境并管理python相关的第三方模块。</p>
+
+<h1 id="进入官网安装anaconda-windows版">进入官网安装anaconda Windows版</h1>
+
+<p><img src="/img/2021/06/anaconda.png" alt="anaconda" /></p>
+
+<p>在anaconda 安装好之后我们在Windows 开始菜单搜索anaconda,我们会发现有两个终端程序可以打开。 第一种是Anaconda Powershell Prompt, 另一个是Anaconda Prompt. Anaconda Powershell Prompt 的指令是类似Linux终端的指令，而Anaconda Prompt是类似Dos系统的操作指令。我一般使用Anaconda Powershell Prompt.</p>
+
+<h1 id="打开anaconda-powershell-prompt-开始以下指令">打开Anaconda Powershell Prompt,开始以下指令</h1>
+
+<p>(<a href="/img/2021/06/conda-cheatsheet.pdf">cheatsheet下载</a>)</p>
+
+<pre><code class="language-shell">conda create -n 你的环境名 python=你想安装的python版本 #创建环境
+conda activate 你的环境名 #进入你的环境
+</code></pre>
+
+<p>因为现在深度学习相关内容版本更行很快所以导致有很多项目之间版本不兼容，最好的办法就是用以上的指令为不同的项目创建不同的环境</p>
+
+<h1 id="检查电脑是否有gpu以及是否正确安装好了驱动">检查电脑是否有GPU以及是否正确安装好了驱动</h1>
+
+<pre><code class="language-shell">nvidia-smi # 检查GPU
+</code></pre>
+
+<p>如果你的电脑有GPU并且驱动正常，你会得到下面类似的信息,如果没有首先检查电脑有没有安装GPU并且更行GPU驱动。注意到你的右上角有个CUDA version 11.3. 如果我们想要tensorflow支持GPU我们需要下载并且安装两个工具：CUDA toolkit 和cuDNN.</p>
+
+<p><img src="/img/2021/06/gpucheck.png" alt="" /></p>
+
+<h1 id="安装cuda-toolkit">安装CUDA toolkit</h1>
+
+<p>官网下载：<a href="https://developer.nvidia.com/cuda-toolkit">https://developer.nvidia.com/cuda-toolkit</a>
+选择和你GPU适配的版本，我的是11.3 所以需要安装11.x 版本。
+安装选项全选默认即可。</p>
+
+<p><img src="/img/2021/06/cudatoolkit.png" alt="" /></p>
+
+<h1 id="安装cudnn库">安装cuDNN库</h1>
+
+<p>官网下载 <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a>
+下载cuDNN需要注册一个英伟达账户。 下载下来后是一个zip压缩文件包，解压文件包并且复制里面的所有文件到CUDA toolkit 目录下。</p>
+
+<p>目录位置在</p>
+
+<pre><code>C:\Program Files\ NVIDIA GPU Computing Toolkit\CUDA\v11.3\
+</code></pre>
+
+<h1 id="安装tensorflow-gpu-并检查gpu是否用上">安装tensorflow-gpu 并检查gpu是否用上</h1>
+
+<pre><code>conda activate 你的环境名 #进入你的环境
+pip install tensorflow-gpu # 使用pip安装tensorflow gpu版本
+python # 进入python对话式编程
+import tensorflow #导入tensorflow包
+</code></pre>
+
+<p>如果如下图所示出现了
+<code>
+Successfuly opened dynamic librarry ...
+</code>
+的字样表示你的GPU版本的tensorflow 安装成功。下一步就是跑一个小代码并且用<code>nvidia-smi</code>实时监控GPU的使用情况了。</p>
+
+<p><img src="/img/2021/06/tensorflowgpu.png" alt="" /></p>
+
+  </div>
   <footer>
-    <a href="/cn/blog/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -254,16 +331,14 @@
   </footer>
 </article>
 
-        
-        
+
 <div class="pagination">
   
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/cn/blog/filerecovery/" class="button big previous"><i class="fas fa-angle-left"></i> 使用testdisk来回复gopro数据文件</a>
   
-  
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
