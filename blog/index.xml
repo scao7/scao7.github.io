@@ -6,31 +6,10 @@
     <description>Recent content in Blog on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Image Processing Concepts</title>
-      <link>https://shengtingcao.top/blog/imageprocessing/</link>
-      <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/imageprocessing/</guid>
-      <description>One picture is worth more than ten thousand words -- Anonymous
-What is a digital image? An image can be defined as a two-demensional function, \(f(x,y)\), where \(x\) and \(y\) aer spatial coordinates the amplitude of \(f\) at any pair of coordinates \((x,y)\) is called intensity. When \(x,y\), and the intensity values of f are all finite, discrete quantities, we call the image a digital image.
-A general-purpose image processing system:</description>
-    </item>
-    
-    <item>
-      <title>Data Science Start Package</title>
-      <link>https://shengtingcao.top/blog/datascience1/</link>
-      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/datascience1/</guid>
-      <description>Nowadays people want to start learning data science but they don&amp;rsquo;t know how to start it. Maybe they know statistic concepts and what language to use. In this article, I will list some simple package for new player in the data science to learn.
-Numpy pandas matplotlib seaborn</description>
-    </item>
     
     <item>
       <title>Unreal Zombie Game Development I</title>
@@ -43,48 +22,6 @@ Unreal Engine Official Tutorial Site Need account to access.
 Mixamo This is the website I got my 3D character and animation, you can upload your own model to get it animated.
 This blog is going to illustrate the logic for the game, for other animation or project setup will be described in next blog.
 Create a character First go to create a project using C++ without any start content.</description>
-    </item>
-    
-    <item>
-      <title>Deep Learning Road Map Papers: Object Detection from 2D Images</title>
-      <link>https://shengtingcao.top/blog/deeplearningpaper3/</link>
-      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/deeplearningpaper3/</guid>
-      <description>fundamental papers in object detection from 2D image  Girshick, Ross, et al. &amp;ldquo;Rich feature hierarchies for accurate object detection and semantic segmentation.&amp;rdquo; Proceedings of the IEEE conference on computer vision and pattern recognition. 2014. pdf (RCNN)
- Girshick, Ross. &amp;ldquo;Fast r-cnn.&amp;rdquo; Proceedings of the IEEE International Conference on Computer Vision. 2015. pdf
- Ren, Shaoqing, et al. &amp;ldquo;Faster R-CNN: Towards real-time object detection with region proposal networks.&amp;rdquo; Advances in neural information processing systems.</description>
-    </item>
-    
-    <item>
-      <title>Deep Learning Road Map Papers: Segmentation </title>
-      <link>https://shengtingcao.top/blog/deeplearningpaper2/</link>
-      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/deeplearningpaper2/</guid>
-      <description>fundamental papers in classification  J. Long, E. Shelhamer, and T. Darrell, “Fully convolutional networks for semantic segmentation.” in CVPR, 2015. pdf
- Ronneberger O, Fischer P, Brox T. U-net: Convolutional networks for biomedical image segmentation. InInternational Conference on Medical image computing and computer-assisted intervention 2015 Oct 5 (pp. 234-241). Springer, Cham. pdf
- Chen LC, Papandreou G, Kokkinos I, Murphy K, Yuille AL. Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs.</description>
-    </item>
-    
-    <item>
-      <title>Convolution in digital signal processing</title>
-      <link>https://shengtingcao.top/blog/digitalsignalproecess/</link>
-      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/digitalsignalproecess/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deep Learning Road Map Papers: Classification </title>
-      <link>https://shengtingcao.top/blog/deeplearningpaper1/</link>
-      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/blog/deeplearningpaper1/</guid>
-      <description>fundamental papers in classification  Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &amp;ldquo;Imagenet classification with deep convolutional neural networks.&amp;rdquo; Advances in neural information processing systems. 2012. pdf (AlexNet, Deep Learning Breakthrough)
- Simonyan, Karen, and Andrew Zisserman. &amp;ldquo;Very deep convolutional networks for large-scale image recognition.&amp;rdquo; arXiv preprint arXiv:1409.1556 (2014). pdf (VGGNet,Neural Networks become very deep!)
- Szegedy, Christian, et al. &amp;ldquo;Going deeper with convolutions.&amp;rdquo; Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</description>
     </item>
     
     <item>

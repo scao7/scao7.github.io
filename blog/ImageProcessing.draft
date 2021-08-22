@@ -1,0 +1,169 @@
++++
+author = "Shengting Cao"
+categories = ["Image Processing"]
+date = "2021-01-19"
+description = "Basic Image Processing Concept explain"
+featured = ""
+featuredalt = "Pic 3"
+featuredpath = "date"
+linktitle = ""
+title = "Image Processing Concepts"
+type = "post"
++++
+
+One picture is worth more than ten thousand words -- Anonymous
+
+## What is a digital image?
+
+An image can be defined as a two-demensional function, $$f(x,y)$$, where $$x$$ and $$y$$ aer spatial coordinates 
+the amplitude of $$f$$ at any pair of coordinates $$(x,y)$$ is called intensity. When $$x,y$$, and the intensity values of f are all finite, discrete quantities, we call the image a digital image. 
+
+
+###### A general-purpose image processing system:
+
+![General-puporse of Image Processing System](/img/2021/01/pic1.png)
+
+## Photographic camera vs Human Eyes
+
+In an ordinary photographic camera, the lens has a fixed focal length. Focusing at various distances is achieved by avarying the distance between the ens and the imageing plane. In the human eyes, the distance between te center of the lens and the image sensor is fixed 
+and the focal length need achieve proper focus by varing the shape of the lens. 
+
+
+###### Brightness adaption and discrimination:
+
+Human visual system can adapt is enormous: on the order of $$10^{10}$$. In photopic vision, the range is about $$10^6$$
+
+![](/img/2021/01/pic2.png)
+
+The figure shows the perceived brightness is not a simple function of intensity. The first is based on the fact that the visual 
+system tends to undershoot or overshoot around the boundary of regionsof different intensities. 
+We actually perceive a brightness pattern that is strongly scalloped near the boundaries.
+
+###### optical illusions:
+Human visual system is trying to filling nonexisting details or wrongly perceives geometrical properties.
+![](/img/2021/01/pic3.png)
+
+a) the outline of a square is seen clearly, despite the fact that no lines defining such a figuere are part of the image.
+b) human system view a circle in the center.
+c) two line with same length. 
+d) equidsitant and parallel. 
+
+###### Electromagnetic Spectrum:
+
+In 1666, Isaac Newton discovered that  a beam of sunlight passes through a glass prim, the emerging beam of light is ot white but consist 
+instead of a continuous spectrum of colors ranging from violet at one end to red at the other. 
+![](/img/2021/01/pic4.png)
+
+The electromagnetic spectrum can be expressed in terms of wavelength, frequency, or energy. 
+Wavelength($$ \lambda $$) and frequency ($$ v $$) are related by the expression. $$c$$ is the speed of light ($$2.998 \times 10^8 m/s$$).
+
+$$ \lambda = \frac{c}{v}  $$
+
+## Image Sensing and Acquisition 
+
+![](/img/2021/01/pic5.png)
+
+![](/img/2021/01/pic6.png)
+
+###### simple image formation model:
+
+1. Image intensities can be negative during processing. Example: in radar images, objects moving toward the radar often are interpreted as having negative velocities
+while objets moving away are interpreted as having positive velocities. 
+
+2. We normally sale the smallest negative value to zero
+
+$$ 0 \leq f(x,y) < \infty $$
+
+$$f(x,y)$$ is characterized by two components: 1) the amount of source illumination incident on the scene being viewed, and 2) the amount of illumination reflected by the objects in the scence. 
+called illumination and reflectance componets, denoted by $$i(x,y)$$ and $$r(x,y)$$.
+
+$$ f(x,y) = i(x,y) r(x,y)$$
+
+where 
+
+$$ 0 \leq i(x,y) < \infty $$
+
+and 
+
+$$ 0 \leq r(x,y)  \leq 1$$
+
+
+## image sampling and quantization
+
+
+###### basic concepts in sampling and quantization:
+
+Digitizing the coordinate values is called sampling. 
+
+Converting the intensity values to discrete quantities is called quantization. 
+
+![](/img/2021/01/pic7.png)
+
+###### result: 
+![](/img/2021/01/pic8.png)
+
+
+## representing digital image
+
+![](/img/2021/01/pic9.png)
+
+![](/img/2021/01/pic10.png)
+
+###### Linear vs coordinate indexing: 
+
+The formula to convert the coordinate system to linear system:
+
+$$ \alpha = M y + x $$
+
+The formula convert linear to coordinate system : 
+
+$$ x = \alpha \  mod \ M$$ 
+
+$$ y = (\alpha - x) / M $$
+
+---
+![](/img/2021/01/pic11.png)
+
+## spatial and intensity resolution
+
+Intutively, spacial resolution is a measure of the smallest discernible details in a image. 
+Quantitatively, spacial resuolution can be staed in several ways: 
+> line pair per unit distance
+
+> pixel per unit distance: in the US, dpi (dots per inch)
+
+
+
+###### Effect of reducing the spatial resolution of digital image:
+
+![](/img/2021/03/pic1.png)
+
+###### Effect of varing the number intensity level of in digital image
+
+
+![](/img/2021/03/pic2.png)
+
+
+![](/img/2021/03/pic3.png)
+
+
+## image interpolation
+
+Interpolation is used in tasks such as zooming, shrinking, rotating, and geometrically correcting digital images.
+
+######  nearest neighbor interpolation 
+
+When mapping a smaller image to a larger image, it assign the new location the intensity of it's 
+nearest neighbor. This approach is simple but it may produce undesired artifacts. Such as severe distorsion of straight line.
+
+###### Bilinear interpolation 
+
+Bilinear interpolation is not linear operation
+
+Let's denote the $$ (x,y) $$ is the location we want to assign value. $$v(x,y) $$ is the 
+intensity. The $$ a, b, c, d$$ can be wrriten in terms of four nearest neighbor 
+
+$$ v(x,y) = ax + by + cxy + d$$
+
+
+continue ...

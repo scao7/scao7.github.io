@@ -6,28 +6,10 @@
     <description>Recent content in Categories on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shengtingcao.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Image Processing</title>
-      <link>https://shengtingcao.top/categories/image-processing/</link>
-      <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/categories/image-processing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Science</title>
-      <link>https://shengtingcao.top/categories/data-science/</link>
-      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/categories/data-science/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Game Development</title>
@@ -35,24 +17,6 @@
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shengtingcao.top/categories/game-development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Paper Reading</title>
-      <link>https://shengtingcao.top/categories/paper-reading/</link>
-      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/categories/paper-reading/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Digital signal process</title>
-      <link>https://shengtingcao.top/categories/digital-signal-process/</link>
-      <pubDate>Sat, 08 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/categories/digital-signal-process/</guid>
       <description></description>
     </item>
     
