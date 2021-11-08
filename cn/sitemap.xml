@@ -3,26 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://shengtingcao.top/cn/blog/</loc>
-    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/blog/"
-                />
-  </url>
-  
-  <url>
     <loc>https://shengtingcao.top/cn/categories/</loc>
     <lastmod>2021-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -43,8 +23,63 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/cn/</loc>
+    <loc>https://shengtingcao.top/cn/projects/</loc>
     <lastmod>2021-06-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/projects/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/projects/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/projects/filerecovery/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/categories/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/projects/wordpresssite/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/projects/chinese/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/cn/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -63,71 +98,16 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/cn/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/blog/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-06-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/blog/filerecovery/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/categories/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/blog/wordpresssite/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/categories/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/blog/chinese/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/cn/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/about/"
-                />
-  </url>
-  
-  <url>
     <loc>https://shengtingcao.top/cn/contact/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/contact/"
-                />
     <xhtml:link
                 rel="alternate"
                 hreflang="jp"
                 href="https://shengtingcao.top/jp/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/contact/"
                 />
     <xhtml:link
                 rel="alternate"

@@ -13,10 +13,10 @@
     
     <item>
       <title>Notes on SSH and AWS</title>
-      <link>https://shengtingcao.top/blog/somenotesaboutssh/</link>
+      <link>https://shengtingcao.top/projects/somenotesaboutssh/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/blog/somenotesaboutssh/</guid>
+      <guid>https://shengtingcao.top/projects/somenotesaboutssh/</guid>
       <description>Connecting the AWS service using BASH on Windows When connecting AWS using BASH, we should notice that the bash program should be run as administrator otherwise it will deny the connection and report 0555 code.
 Root of Ubuntu on Windows The Root of Ubuntu on Windows will be located in
  &amp;quot;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;quot;  using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>

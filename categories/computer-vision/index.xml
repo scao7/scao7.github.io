@@ -13,10 +13,10 @@
     
     <item>
       <title>Computer vision problem and step by step</title>
-      <link>https://shengtingcao.top/blog/computervisionnote3/</link>
+      <link>https://shengtingcao.top/projects/computervisionnote3/</link>
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/blog/computervisionnote3/</guid>
+      <guid>https://shengtingcao.top/projects/computervisionnote3/</guid>
       <description>This post is review some cases in computer vision problem. How all the method constructed.
 LeNet-5  This network use 60k parameters, relative small network.
 Network get deeper hight, width get smaller, channels larger.
@@ -31,10 +31,10 @@ VGG-19 is a bigger version of network</description>
     
     <item>
       <title>Computer vision problem and step by step</title>
-      <link>https://shengtingcao.top/blog/computervisionnote2/</link>
+      <link>https://shengtingcao.top/projects/computervisionnote2/</link>
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/blog/computervisionnote2/</guid>
+      <guid>https://shengtingcao.top/projects/computervisionnote2/</guid>
       <description>Max Pooling Hyper-parameters: f = 2 , s = 2
 no parameters to learn
 $$\begin{bmatrix} 1 &amp;amp; 3 &amp;amp; 2 &amp;amp; 1 \\ 2 &amp;amp; 9 &amp;amp; 1 &amp;amp; 1 \\ 1 &amp;amp; 3 &amp;amp; 2 &amp;amp; 3 \\ 5 &amp;amp; 6 &amp;amp; 1 &amp;amp; 2 \end{bmatrix} =&amp;gt; \begin{bmatrix} 9&amp;amp;2\\ 6&amp;amp;3 \end{bmatrix} $$
@@ -43,10 +43,10 @@ Divide the 4*4 to 4 area and pick the largest number to get a 2 * 2 data.</descr
     
     <item>
       <title>Computer Vision problem step by step</title>
-      <link>https://shengtingcao.top/blog/computervisionnote1/</link>
+      <link>https://shengtingcao.top/projects/computervisionnote1/</link>
       <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/blog/computervisionnote1/</guid>
+      <guid>https://shengtingcao.top/projects/computervisionnote1/</guid>
       <description>Vertical edge detection Before know how to do the vertical edge detection, we could first know how the convolution operation works in image processing.
 we can have a convolution operation like this * means convolution:
 $$\begin{bmatrix} 3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 7 &amp;amp; 4 \\ 1 &amp;amp; 5 &amp;amp; 8 &amp;amp; 9 &amp;amp; 3 &amp;amp; 1 \\ 2 &amp;amp; 7 &amp;amp; 2 &amp;amp; 5 &amp;amp; 1 &amp;amp;3 \\ 0 &amp;amp; 1 &amp;amp; 3 &amp;amp; 1 &amp;amp; 7 &amp;amp; 8 \\ 4 &amp;amp;2&amp;amp;1&amp;amp;6&amp;amp;2&amp;amp;8 \\ 4&amp;amp; 2&amp;amp; 1&amp;amp; 6&amp;amp; 2&amp;amp; 8\\2&amp;amp; 4&amp;amp; 5&amp;amp; 2&amp;amp; 3&amp;amp; 9 \end{bmatrix} * \begin{bmatrix} 1 &amp;amp; 0 &amp;amp;-1 \\ 1 &amp;amp; 0 &amp;amp; -1 \\ 1 &amp;amp; 0 &amp;amp; -1 \end{bmatrix} = \begin{bmatrix} -5 &amp;amp; -4 &amp;amp; 0 &amp;amp; 8 \\ -10 &amp;amp; -2 &amp;amp; 2 &amp;amp; 3 \\ 0 &amp;amp; -2 &amp;amp; -4 &amp;amp; -7 \\ -3 &amp;amp; -2 &amp;amp; -3 &amp;amp; -16 \end{bmatrix} $$</description>

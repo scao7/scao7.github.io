@@ -3,26 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://shengtingcao.top/jp/blog/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/blog/"
-                />
-  </url>
-  
-  <url>
     <loc>https://shengtingcao.top/jp/categories/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -48,8 +28,33 @@
   </url>
   
   <url>
-    <loc>https://shengtingcao.top/jp/</loc>
+    <loc>https://shengtingcao.top/jp/projects/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://shengtingcao.top/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://shengtingcao.top/cn/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://shengtingcao.top/jp/projects/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/jp/projects/japanese/</loc>
+    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shengtingcao.top/jp/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -64,31 +69,6 @@
                 rel="alternate"
                 hreflang="jp"
                 href="https://shengtingcao.top/jp/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/jp/blog/japanese/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/jp/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://shengtingcao.top/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://shengtingcao.top/cn/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://shengtingcao.top/jp/about/"
                 />
   </url>
   

@@ -13,10 +13,10 @@
     
     <item>
       <title>深度学习工具tensorflow介绍以及安装</title>
-      <link>https://shengtingcao.top/cn/blog/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</link>
+      <link>https://shengtingcao.top/cn/projects/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/cn/blog/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://shengtingcao.top/cn/projects/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</guid>
       <description>现在深度学习已经越来越火，身边的不少人都有深度学习编程都需求，为了方便大家学习同时也尽量避免我一个一个的教他们安装。这个博客会一步一步的教大家怎么在Windows上安装上Anaconda， tensorflow-gpu。
 Anaconda(https://www.anaconda.com/) 是一个python包的管理软件，他能帮助你一键创建你的python运行环境并管理python相关的第三方模块。
 进入官网安装anaconda Windows版 在anaconda 安装好之后我们在Windows 开始菜单搜索anaconda,我们会发现有两个终端程序可以打开。 第一种是Anaconda Powershell Prompt, 另一个是Anaconda Prompt. Anaconda Powershell Prompt 的指令是类似Linux终端的指令，而Anaconda Prompt是类似Dos系统的操作指令。我一般使用Anaconda Powershell Prompt.

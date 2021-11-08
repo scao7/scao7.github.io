@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on 欢迎来到我博客中文界面</title>
+    <link>https://shengtingcao.top/cn/projects/</link>
+    <description>Recent content in Projects on 欢迎来到我博客中文界面</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/cn/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>深度学习工具tensorflow介绍以及安装</title>
+      <link>https://shengtingcao.top/cn/projects/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/cn/projects/%E5%87%86%E5%A4%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7/</guid>
+      <description>现在深度学习已经越来越火，身边的不少人都有深度学习编程都需求，为了方便大家学习同时也尽量避免我一个一个的教他们安装。这个博客会一步一步的教大家怎么在Windows上安装上Anaconda， tensorflow-gpu。
+Anaconda(https://www.anaconda.com/) 是一个python包的管理软件，他能帮助你一键创建你的python运行环境并管理python相关的第三方模块。
+进入官网安装anaconda Windows版 在anaconda 安装好之后我们在Windows 开始菜单搜索anaconda,我们会发现有两个终端程序可以打开。 第一种是Anaconda Powershell Prompt, 另一个是Anaconda Prompt. Anaconda Powershell Prompt 的指令是类似Linux终端的指令，而Anaconda Prompt是类似Dos系统的操作指令。我一般使用Anaconda Powershell Prompt.
+打开Anaconda Powershell Prompt,开始以下指令 (cheatsheet下载)
+conda create -n 你的环境名 python=你想安装的python版本 #创建环境 conda activate 你的环境名 #进入你的环境  因为现在深度学习相关内容版本更行很快所以导致有很多项目之间版本不兼容，最好的办法就是用以上的指令为不同的项目创建不同的环境
+检查电脑是否有GPU以及是否正确安装好了驱动 nvidia-smi # 检查GPU  如果你的电脑有GPU并且驱动正常，你会得到下面类似的信息,如果没有首先检查电脑有没有安装GPU并且更行GPU驱动。注意到你的右上角有个CUDA version 11.3. 如果我们想要tensorflow支持GPU我们需要下载并且安装两个工具：CUDA toolkit 和cuDNN.
+安装CUDA toolkit 官网下载：https://developer.nvidia.com/cuda-toolkit 选择和你GPU适配的版本，我的是11.3 所以需要安装11.x 版本。 安装选项全选默认即可。
+安装cuDNN库 官网下载 https://developer.nvidia.com/cudnn 下载cuDNN需要注册一个英伟达账户。 下载下来后是一个zip压缩文件包，解压文件包并且复制里面的所有文件到CUDA toolkit 目录下。
+目录位置在
+C:\Program Files\ NVIDIA GPU Computing Toolkit\CUDA\v11.3\  安装tensorflow-gpu 并检查gpu是否用上 conda activate 你的环境名 #进入你的环境 pip install tensorflow-gpu # 使用pip安装tensorflow gpu版本 python # 进入python对话式编程 import tensorflow #导入tensorflow包  如果如下图所示出现了  Successfuly opened dynamic librarry .</description>
+    </item>
+    
+    <item>
+      <title>使用testdisk来回复gopro数据文件</title>
+      <link>https://shengtingcao.top/cn/projects/filerecovery/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/cn/projects/filerecovery/</guid>
+      <description> 在我们日常使用gopro这种使用micro sd卡来进行储存的设备难免会遇上需要将卡格式化的问题。我之前就碰到过这样的问题在网上找来一圈软件都需要付费来解决。但实际上针对硬盘或者sd卡恢复的问题已经就有开源的软件了。我亲自试了试Testdisk这款开源软件。相关的安装包在下面的链接里:
+https://www.cgsecurity.org/wiki/TestDisk
+我这里会写一个大概如何使用的博客来
+首先解压文件夹双击testdis运行程序 创建一个log文件 选择需要恢复的sd卡或者硬盘 选择分区类型，程序会提示哪个类型的储存空间被检测到了 开始恢复，如果是已经删除的文件或者已经将sd卡格式化了。就用analyze进行全盘扫描。如果是没有格式化只不过系统提示要格式化sd卡。这个时候千万不要格式化卡。因为如果格式化之后恢复的文件很有可能是一段一段的，用mp4 格式的文件来举例，恢复出来的是几秒中一段的影像最后还要用其他软件将恢复的小片段拼合。如果没有格式化可以直接通过镜像拷贝的方式将整个文件恢复出来。 </description>
+    </item>
+    
+    <item>
+      <title>Bitnami Wordpress 套件 &#43; AWS ： 一些坑跟一些tips</title>
+      <link>https://shengtingcao.top/cn/projects/wordpresssite/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/cn/projects/wordpresssite/</guid>
+      <description>写在最前面，自己做好的worpdress网站一定要创建一个snapshot来备份，不然就很好玩了！！！！
+有用的插件 ELEMENTOR, Polylang, Profile Builder, Really Simple SSL, Simple Local Avatars, WP Mail SMTP，ninja forms
+用Gmail SMTP 作为邮件发送的host 在创建一个EC2 实例之后Wordpress 默认的是user@example.com 这个显然不能够发邮件，我的解决方法是用WP Mail SMTP插件来通过Gmail发送邮件。
+第一步是要在Google API console 创建一个发送邮件的应用并且记住他的client id和secret key。在插件中setting里面填入就行了。有时候发现在邮件里无法更爱user@example.com这个时候可以改成SMTP来更改邮箱然后再返回Google SMTP 设置。
+SSL Certificate 这个永远是一个很麻烦的问题，我第一个网站就是因为SSL的问题崩了，我第一次使用的是Binami 的Wordpress套件。我用AWS certificate manager 创建SSL。 AWS 的SSL一点都不好用，有时候还乱收费。推荐使用letsencrypt 和 Really Simple SSL 插件来强制使用https来访问。
+重新制作网站之后我使用letsencrypt 工具配合Really Simple SSL 实现了强制https访问。 简单的使用代码如下：
+sudo /opt/bitnami/letsencrypt/scripts/generate-certificate.sh -m YOURMAIL -d YOURDOMAIN  你可以在后面添加多个-d DOMAIN 来进行认证。
+使用Really Simple SSL 你可能需要给wp-config.php文档授予权限。
+sudo chmod 660 /opt/bitnami/apps/wordpress/htdocs/wp-config.</description>
+    </item>
+    
+    <item>
+      <title>如何制作HugoPage</title>
+      <link>https://shengtingcao.top/cn/projects/chinese/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/cn/projects/chinese/</guid>
+      <description>下载Hugo以及安装 工具：Hugo 下载界面 ,Homebrew
+从上面的链接点进去就到来Hugo的下载,我使用的是Mac系统的安装方法。Mac 是通过brew来获取安装工具的所以点击上面Homebrew 链接来进行安装如果你之前没有安装过brew的话。
+brew install hugo hugo version hugo new site yourProject # 你的工程文件名 cd yourProject git init git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke # 自行在github 上找主题，没有主题文件hugo是不能创建网页的。或者你可以自己创作主题。 echo theme = &amp;quot;ananke&amp;quot; &amp;gt;&amp;gt; config.toml #将主题名写入config文件。  在Hugo的下载界面有详细的教程来指导你如何安装并使用Hugo。我这里就不重复的说明了。
+编辑网页 打开文件的structure，每一个主题都会有自己的格式的控制每一个post显示的内容。Hugo的网页内容基本是用.md 后缀的文档来渲染网页的。 首先用hugo new posts/my-first-post.md 这个指令来创建一个新的文章。 用你喜欢的编辑器打开，然后加入文章标题等一些header的信息。我使用的主题的header信息就是以下图片所显示的。
+下面这张截图来告诉我们如何去寻找这种header的信息 在themes &amp;mdash;- yourtheme &amp;mdash;- exampleSite &amp;mdash;- content &amp;mdash;- blog 下找到一个示范的.md文件。通过查看他就可以找到如何为你的文章添加标签。或者你可以直接把content文件夹复制粘贴到yourProject 文件夹下。然后通过修改.md来生成自己想要的内容。
+如何编辑网页内容就需要参考markdown 的各种文档了。
+编辑网页跟渲染 打开terminal在yourProject文件夹下输入指令hugo server 然后你就可以在网页上输入链接 http://localhost:1313 来进入网页的preview。
+使用Github来host你的网站 工具：Github Page</description>
+    </item>
+    
+  </channel>
+</rss>

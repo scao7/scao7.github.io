@@ -13,10 +13,10 @@
     
     <item>
       <title>Probability Basics</title>
-      <link>https://shengtingcao.top/blog/probabilitybasics/</link>
+      <link>https://shengtingcao.top/projects/probabilitybasics/</link>
       <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://shengtingcao.top/blog/probabilitybasics/</guid>
+      <guid>https://shengtingcao.top/projects/probabilitybasics/</guid>
       <description>Probability Documentation PDF, Multivariate Methods PDF
 Recently I have been through a hard time to understand the classification methods in Machine Learning. I feel the probability basics is very important to the Machine Learning. In this post, I will write down the formula about probability calculation. I will combine them with Matlab code expression and Matrix manipulate to help me better understand those concept.
 Bay&#39;s formula Most frequent used theory in probability.</description>
