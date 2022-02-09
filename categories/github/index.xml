@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GitHub on Shengting Cao&#39;s Note Book</title>
+    <link>https://shengtingcao.top/categories/github/</link>
+    <description>Recent content in GitHub on Shengting Cao&#39;s Note Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shengtingcao.top/categories/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GitHub new security config</title>
+      <link>https://shengtingcao.top/projects/github_token/</link>
+      <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/projects/github_token/</guid>
+      <description>Right now the GitHub updated it&amp;rsquo;s authentication protocal from password based to tocken based. It increased the security of the repository but not as convinient as before. I took some note to adopt the new change for github.
+First request a token from github. Instead of put the password when push the code we should use the token as the password of the github account.
+In oder to make the pull and push faster we can config the local environment to remember the user name and email by</description>
+    </item>
+    
+  </channel>
+</rss>
