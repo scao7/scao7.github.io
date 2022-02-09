@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="webGL for Koch snowflake">
-<meta itemprop="description" content="a project in computer graphics class">
-
-
-<meta itemprop="datePublished" content="2019-01-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-01-25T00:00:00&#43;00:00" />
+<meta itemprop="description" content="a project in computer graphics class"><meta itemprop="datePublished" content="2019-01-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-01-25T00:00:00+00:00" />
 <meta itemprop="wordCount" content="157">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="webGL for Koch snowflake" />
 <meta property="og:description" content="a project in computer graphics class" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/snoflake/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/snoflake/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2019-01-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-01-25T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="webGL for Koch snowflake"/>
@@ -228,14 +222,9 @@
 
 
   <div class="content">
-    
-
-<h4 id="problem-description">Problem Description</h4>
-
+    <h4 id="problem-description">Problem Description</h4>
 <p>Draw the Koch snowflake using recursive method!</p>
-
 <h4 id="calculate-the-point-for-the-koch-lines">calculate the point for the Koch lines</h4>
-
 <pre><code>function calculatePoint(center, p){
   var angleInDegrees = 60;
   var angleInRadians = angleInDegrees * Math.PI / 180;
@@ -247,9 +236,7 @@
   return f;
 }
 </code></pre>
-
 <h4 id="divide-line-into-koch-line-and-call-the-function-recursively">divide line into koch line and call the function recursively</h4>
-
 <pre><code>function divideLine(a, b,count)
 {
   if(count === 0){
@@ -273,18 +260,14 @@
     return f;
 }
 </code></pre>
-
 <h4 id="to-draw-a-snowfalke-by-calling-the-divideline-function-three-times">to draw a snowfalke by calling the divideLine function three times</h4>
-
 <pre><code>function snowflake(a,b,c,count){
     divideLine(a,b,count);
     divideLine(b,c,count);
     divideLine(c,a,count);
 }
 </code></pre>
-
 <p><a href="https://scao7.github.io/ComputerGraphics/project1/snowflake.html">Project Link</a></p>
-
 <p>more coming!</p>
 
   </div>
@@ -472,7 +455,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

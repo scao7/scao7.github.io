@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="Classifier Implementation and Problems">
-<meta itemprop="description" content="Talk about Classifier basics and how to implement them in Matlab without use the build-in classifier function">
-
-
-<meta itemprop="datePublished" content="2019-09-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-09-25T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Talk about Classifier basics and how to implement them in Matlab without use the build-in classifier function"><meta itemprop="datePublished" content="2019-09-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-09-25T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1041">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Classifier Implementation and Problems" />
 <meta property="og:description" content="Talk about Classifier basics and how to implement them in Matlab without use the build-in classifier function" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/classifier/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/classifier/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2019-09-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-09-25T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Classifier Implementation and Problems"/>
@@ -241,36 +235,30 @@ So we can implement the basic classifier by find the middle point.</p>
 <p>For example, if we what to know if the a specific room have people inside or not <strong>(This is a binary question only have answer yes or no)</strong>. We can think about different parameters that indicate if there is a person in the room.
 Such as, light, temperature, humidity, CO2 percentage. We can make an assumption: the CO2 percentage in the room is higher, the more chance the room will exist a people inside.
 Then for Machine Learning approach, We have to learning from data to get a threshold of CO2 percentage. I have these Matlab pseudocode to illustrate the process.</p>
-
-<pre><code class="language-matlab">for CO2Percentage = min_value : max_value
-    % compute error on the training set
-    % remember the CO2Percentage that make it have a minimum error rate
-    % not only error rate, you can pick up other judgement
-    %such as Recall, Precision, Specificity,False alarm rate, multi-class confusion Matrix or ROC cure and AUC value.
-    % You can find the information in the pdf Assesses Classifier
-    % the learning process is just optimize those parameters
-end
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#66d9ef">for</span> CO2Percentage = min_value : max_value
+    <span style="color:#75715e">% compute error on the training set</span>
+    <span style="color:#75715e">% remember the CO2Percentage that make it have a minimum error rate</span>
+    <span style="color:#75715e">% not only error rate, you can pick up other judgement</span>
+    <span style="color:#75715e">%such as Recall, Precision, Specificity,False alarm rate, multi-class confusion Matrix or ROC cure and AUC value.</span>
+    <span style="color:#75715e">% You can find the information in the pdf Assesses Classifier</span>
+    <span style="color:#75715e">% the learning process is just optimize those parameters</span>
+<span style="color:#66d9ef">end</span></code></pre></div>
 <p>This is a naive implementation, if we want more accuracy result. We should use the <strong>cross validation</strong> method to find the
 threshold. And it is simply divided the training set into different folds and use one part of them as a validation set. The rest
 are training set. Pseudocode looks like this :</p>
-
-<pre><code class="language-matlab">for feature=1:N
-% split feature vector into folds
-    for folds=1:K
-      % train the classifier on the training set
-       for param=min_value: max_value (e.g. CO2Percentage from 0 to 100)
-            % compute error on the training set
-       end
-       % select value of param  (param*) corresponding to minimal error from the error values computed in the for loop above
-       % apply param* to the validation set, compute error of validation set (error_val)
-    end
-    % compute average values of param* (avg_param*) and error_val (avg_error_val)
-    % apply avg_param* on the test set, compute error (error_test)
-end
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#66d9ef">for</span> feature=<span style="color:#ae81ff">1</span>:N
+<span style="color:#75715e">% split feature vector into folds</span>
+    <span style="color:#66d9ef">for</span> folds=<span style="color:#ae81ff">1</span>:K
+      <span style="color:#75715e">% train the classifier on the training set</span>
+       <span style="color:#66d9ef">for</span> param=min_value: max_value (e.g. CO2Percentage from <span style="color:#ae81ff">0</span> to <span style="color:#ae81ff">100</span>)
+            <span style="color:#75715e">% compute error on the training set</span>
+       <span style="color:#66d9ef">end</span>
+       <span style="color:#75715e">% select value of param  (param*) corresponding to minimal error from the error values computed in the for loop above</span>
+       <span style="color:#75715e">% apply param* to the validation set, compute error of validation set (error_val)</span>
+    <span style="color:#66d9ef">end</span>
+    <span style="color:#75715e">% compute average values of param* (avg_param*) and error_val (avg_error_val)</span>
+    <span style="color:#75715e">% apply avg_param* on the test set, compute error (error_test)</span>
+<span style="color:#66d9ef">end</span></code></pre></div>
 <h4 id="classification-with-probability">Classification with Probability</h4>
 
 <p>We know binary classifier works by find a threshold to distinguish two classes. How we find a classifier that is able to distinguish
@@ -530,7 +518,7 @@ Before go through the concepts, I put the notation here in advance.</p>
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

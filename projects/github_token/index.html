@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="GitHub new security config">
-<meta itemprop="description" content="Github updated security">
-
-
-<meta itemprop="datePublished" content="2022-02-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2022-02-09T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Github updated security"><meta itemprop="datePublished" content="2022-02-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="138">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="GitHub new security config" />
 <meta property="og:description" content="Github updated security" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/github_token/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/github_token/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2022-02-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-02-09T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GitHub new security config"/>
@@ -225,25 +219,15 @@
 
   <div class="content">
     <p>Right now the GitHub updated it&rsquo;s authentication protocal from password based to tocken based. It increased the security of the repository but not as convinient as before. I took some note to adopt the new change for github.</p>
-
 <p>First request a token from github. Instead of put the password when push the code we should use the token as the password of the github account.</p>
-
 <p>In oder to make the pull and push faster we can config the local environment to remember the user name and email by</p>
-
-<p><code>git config --global user.name &quot; &quot;</code></p>
-
+<p><code>git config --global user.name &quot; &quot; </code></p>
 <p><code>git cofig --global user.email &quot; &quot;</code></p>
-
 <p><code>git config -l</code></p>
-
 <p>After you clone or push the repository using the tocken you can use the</p>
-
 <p><code>git config --global credential.helper cache</code></p>
-
 <p>to remember the token</p>
-
 <p>You can clear the tocken by using</p>
-
 <p><code>git config --global --unset credential.helper</code></p>
 
   </div>
@@ -429,7 +413,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

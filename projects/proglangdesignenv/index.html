@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="Programming Language Design">
-<meta itemprop="description" content="Environment design">
-
-
-<meta itemprop="datePublished" content="2019-02-26T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-02-26T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Environment design"><meta itemprop="datePublished" content="2019-02-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-02-26T00:00:00+00:00" />
 <meta itemprop="wordCount" content="274">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Programming Language Design" />
 <meta property="og:description" content="Environment design" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/proglangdesignenv/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/proglangdesignenv/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2019-02-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-02-26T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Programming Language Design"/>
@@ -224,13 +218,9 @@
   
 
   <div class="content">
-    
-
-<h4 id="problem-description">Problem Description</h4>
-
+    <h4 id="problem-description">Problem Description</h4>
 <p>The environment is a tree to store all the value we need for future use.
 In the environment file it will have five basic functions</p>
-
 <ul>
 <li>create</li>
 <li>extend</li>
@@ -238,47 +228,32 @@ In the environment file it will have five basic functions</p>
 <li>insert</li>
 <li>update</li>
 </ul>
-
 <h4 id="functions">functions</h4>
-
-<h5 id="span-style-color-blue-function-define-span"><span style="color:blue"> function define </span></h5>
-
-<pre><code>extern Lexeme *createEnv();
+<h5 id="span-stylecolorblue-function-define-span"><!-- raw HTML omitted --> function define <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>extern Lexeme *createEnv();
 extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals);
 extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals);
 extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env);
 extern int sameVariable(Lexeme *x, Lexeme *y);
 extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env);
 extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
-</code></pre>
-
-<h5 id="span-style-color-blue-create-environment-span"><span style="color:blue">create environment </span></h5>
-
-<pre><code>Lexeme *createEnv()
+</code></pre><h5 id="span-stylecolorbluecreate-environment-span"><!-- raw HTML omitted -->create environment <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *createEnv()
 {
     return extendEnv(NULL, NULL, NULL);
 }
-</code></pre>
-
-<h5 id="span-style-color-blue-extend-environment-span"><span style="color:blue">extend environment </span></h5>
-
-<pre><code>Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals)
+</code></pre><h5 id="span-stylecolorblueextend-environment-span"><!-- raw HTML omitted -->extend environment <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals)
 {
     return cons(ENVIRONMENT, makeTable(vars, vals), env);
 }
-</code></pre>
-
-<h5 id="span-style-color-blue-make-table-span"><span style="color:blue">make table </span></h5>
-
-<pre><code>Lexeme *makeTable(Lexeme *vars, Lexeme *vals)
+</code></pre><h5 id="span-stylecolorbluemake-table-span"><!-- raw HTML omitted -->make table <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *makeTable(Lexeme *vars, Lexeme *vals)
 {
     return cons(TABLE, vars, vals);
 }
-</code></pre>
-
-<h5 id="span-style-color-blue-lookup-environment-span"><span style="color:blue">lookup environment </span></h5>
-
-<pre><code>Lexeme *lookupEnv(Lexeme *var, Lexeme *env)
+</code></pre><h5 id="span-stylecolorbluelookup-environment-span"><!-- raw HTML omitted -->lookup environment <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *lookupEnv(Lexeme *var, Lexeme *env)
 {
     while (env != NULL)
     {
@@ -300,22 +275,16 @@ extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
     fprintf(stderr, &quot;FATAL: variable, %s, is undefined.&quot;, var-&gt;stringVal);
     return NULL;
 }
-</code></pre>
-
-<h5 id="span-style-color-blue-insert-environment-span"><span style="color:blue">insert environment </span></h5>
-
-<pre><code>Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env)
+</code></pre><h5 id="span-stylecolorblueinsert-environment-span"><!-- raw HTML omitted -->insert environment <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env)
 {
     Lexeme *table = car(env);
     setCar(table, cons(GLUE, var, car(table)));
     setCdr(table, cons(GLUE, val, cdr(table)));
     return val;
 }
-</code></pre>
-
-<h5 id="span-style-color-blue-update-environment-span"><span style="color:blue">update environment </span></h5>
-
-<pre><code>Lexeme *updateEnv(Lexeme *var, Lexeme *val, Lexeme *env)
+</code></pre><h5 id="span-stylecolorblueupdate-environment-span"><!-- raw HTML omitted -->update environment <!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>Lexeme *updateEnv(Lexeme *var, Lexeme *val, Lexeme *env)
 {
      while (env != NULL)
     {
@@ -339,7 +308,6 @@ extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
     return NULL;
 }
 </code></pre>
-
   </div>
   <footer>
     <ul class="stats">
@@ -525,7 +493,7 @@ extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

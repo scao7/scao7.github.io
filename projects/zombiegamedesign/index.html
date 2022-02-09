@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="Unreal Zombie Game Development I">
-<meta itemprop="description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it.">
-
-
-<meta itemprop="datePublished" content="2020-03-20T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1108">
-
-
-
+<meta itemprop="description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it."><meta itemprop="datePublished" content="2020-03-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-03-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1106">
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Unreal Zombie Game Development I" />
 <meta property="og:description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/zombiegamedesign/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/zombiegamedesign/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2020-03-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-03-20T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Unreal Zombie Game Development I"/>
@@ -224,180 +218,132 @@
   
 
   <div class="content">
-    
-
-<p>First I will list some resource website I got from the internet:</p>
-
+    <p>First I will list some resource website I got from the internet:</p>
 <p><a href="https://learn.unrealengine.com/">Unreal Engine Official Tutorial Site</a> Need account to access.</p>
-
 <p><a href="https://learn.unrealengine.com/">Mixamo</a> This is the website I got my 3D character and animation, you can upload your own model to get it animated.</p>
-
 <p>This blog is going to illustrate the logic for the game, for other animation or project setup will be described in next blog.</p>
-
 <h3 id="create-a-character">Create a character</h3>
-
 <p>First go to create a project using C++ without any start content. In the C++ Class folder create a &ldquo;BaseCharacter&rdquo; class.</p>
-
-<p><img src="/img/2020/03/pic1.png" alt="" /></p>
-
+<p><img src="/img/2020/03/pic1.png" alt=""></p>
 <p>In the &ldquo;BaseCharacter.h&rdquo; and &ldquo;BaseCharacter.cpp&rdquo;, the unreal engine has already generated some code for us. We can fill the file by using the code following:</p>
-
-<pre><code class="language-cpp">// Fill out your copyright notice in the Description page of Project Settings.
-#pragma once
-
-#include &quot;CoreMinimal.h&quot;
-#include &quot;GameFramework/Character.h&quot;
-#include &quot;BaseCharacter.generated.h&quot;
-
-//Step 1: Make this class avalibale to Blueprint
-UCLASS(Blueprintable)
-class TWISTSHOOTING_API ABaseCharacter : public ACharacter
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Fill out your copyright notice in the Description page of Project Settings.
+</span><span style="color:#75715e"></span><span style="color:#75715e">#pragma once
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CoreMinimal.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;GameFramework/Character.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;BaseCharacter.generated.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//Step 1: Make this class avalibale to Blueprint
+</span><span style="color:#75715e"></span>UCLASS(Blueprintable)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TWISTSHOOTING_API</span> ABaseCharacter : <span style="color:#66d9ef">public</span> ACharacter
 {
 	GENERATED_BODY()
 
-public:
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 
-	//Step 2: Expose a float property
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = &quot;BaseCharacter&quot;)
-		float Health = 100;
+	<span style="color:#75715e">//Step 2: Expose a float property
+</span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+		<span style="color:#66d9ef">float</span> Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
 
-	//Step 3: Expose a boolean property
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = &quot;BaseCharacter&quot;)
-		bool isDead = false;
+	<span style="color:#75715e">//Step 3: Expose a boolean property
+</span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+		<span style="color:#66d9ef">bool</span> isDead <span style="color:#f92672">=</span> false;
 
-	//Step 4: Make a helper function, just because we are lazy
-	virtual void CalculateDead();
+	<span style="color:#75715e">//Step 4: Make a helper function, just because we are lazy
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">CalculateDead</span>();
 
-	//Step 5: Expose a method
-	UFUNCTION(BlueprintCallable, Category = &quot;BaseCharacter&quot;)
-		virtual void CalculateHealth(float delta);
-
-
-	//Step 6: Editor code to make updating values in the editor cleaner
-#if WITH_EDITOR
-	virtual void PostEditChangeProperty(FPropertyChangedEvent&amp; PropertyChangedEvent)
-		override;
-#endif
+	<span style="color:#75715e">//Step 5: Expose a method
+</span><span style="color:#75715e"></span>	UFUNCTION(BlueprintCallable, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+		<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> CalculateHealth(<span style="color:#66d9ef">float</span> delta);
 
 
-	// Sets default values for this character's properties
-	ABaseCharacter();
+	<span style="color:#75715e">//Step 6: Editor code to make updating values in the editor cleaner
+</span><span style="color:#75715e"></span><span style="color:#75715e">#if WITH_EDITOR
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PostEditChangeProperty</span>(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
+		<span style="color:#66d9ef">override</span>;
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;The step3 is create boolean variabel and make it readOnly in the blueprint.
+	<span style="color:#75715e">// Sets default values for this character&#39;s properties
+</span><span style="color:#75715e"></span>	ABaseCharacter();
 
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+<span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+	<span style="color:#75715e">// Called when the game starts or when spawned
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> BeginPlay() <span style="color:#66d9ef">override</span>;The step3 is create boolean variabel and make it readOnly in the blueprint.
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#75715e">// Called every frame
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Tick(<span style="color:#66d9ef">float</span> DeltaTime) <span style="color:#66d9ef">override</span>;
+
+	<span style="color:#75715e">// Called to bind functionality to input
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetupPlayerInputComponent</span>(<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UInputComponent</span><span style="color:#f92672">*</span> PlayerInputComponent) <span style="color:#66d9ef">override</span>;
 
 };
 
 
-</code></pre>
-
-<p>As you can see we used 6 steps, the first one is make this c++ class available for blueprint, second is to expose the health variable to the blueprint and it can be read and writeThe step3 is create boolean variable and make it readOnly in the blueprint. , EditAnywhere and the category is &ldquo;BaseCharacter&rdquo;
+</code></pre></div><p>As you can see we used 6 steps, the first one is make this c++ class available for blueprint, second is to expose the health variable to the blueprint and it can be read and writeThe step3 is create boolean variable and make it readOnly in the blueprint. , EditAnywhere and the category is &ldquo;BaseCharacter&rdquo;
 The step3 is create boolean variable and make it readOnly in the blueprint. Step 4 is just a help function for us to calculate the health. Step 5 will create a method and make it callable in blueprint. Step 6 just say if we edit the variable in blueprint it will override the property in the c++ scripts.</p>
-
 <p>The follow code are those function we have to implement according to the &ldquo;BaseCharacter.h&rdquo; file:</p>
-
-<pre><code class="language-c++">//Step 1: Implement the CalculateHealth function.
-void ABaseCharacter::CalculateHealth(float Delta)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//Step 1: Implement the CalculateHealth function.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateHealth(<span style="color:#66d9ef">float</span> Delta)
 {
-	Health += Delta;
+	Health <span style="color:#f92672">+=</span> Delta;
 	CalculateDead();
 }
-//Step 2: Implement the CalculateDead function.
-void ABaseCharacter::CalculateDead()
+<span style="color:#75715e">//Step 2: Implement the CalculateDead function.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateDead()
 {
-	if (Health &lt;= 0)
-		isDead = true;
-	else
-		isDead = false;
+	<span style="color:#66d9ef">if</span> (Health <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
+		isDead <span style="color:#f92672">=</span> true;
+	<span style="color:#66d9ef">else</span>
+		isDead <span style="color:#f92672">=</span> false;
 
 }
-#if WITH_EDITOR
-//Step 3: Implement the remainder of our helper code, used by the editor when we change values.
-void ABaseCharacter::PostEditChangeProperty(FPropertyChangedEvent&amp; PropertyChangedEvent)
+<span style="color:#75715e">#if WITH_EDITOR
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Step 3: Implement the remainder of our helper code, used by the editor when we change values.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>PostEditChangeProperty(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
 {
-	isDead = false;
-	Health = 100;
-	Super::PostEditChangeProperty(PropertyChangedEvent);
+	isDead <span style="color:#f92672">=</span> false;
+	Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
+	Super<span style="color:#f92672">::</span>PostEditChangeProperty(PropertyChangedEvent);
 	CalculateDead();
 }
-#endif
-
-</code></pre>
-
-<p>This three functions are declared in the .h file so we need to implement it. The first one is the help function CalculateHealth(). Basically, when call this function it will calculate the health and call the function CalculateDead. The CalculateDead is just return true if health less or equal to 0 and return false if larger than 0. The last one is implement the remainder of our helper code, when we change values change valudes.</p>
-
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+</code></pre></div><p>This three functions are declared in the .h file so we need to implement it. The first one is the help function CalculateHealth(). Basically, when call this function it will calculate the health and call the function CalculateDead. The CalculateDead is just return true if health less or equal to 0 and return false if larger than 0. The last one is implement the remainder of our helper code, when we change values change valudes.</p>
 <p>This scripts is the only c++ I used in this project, the rest of the logic are all implemented in blueprint.</p>
-
 <h3 id="character-movement-and-damageable-setup">character movement and damageable setup</h3>
-
 <p>To setup the the character movement first we need go to Edit and project setting to set our input key.</p>
-
 <p>![set input ]
 Right click our c++ class and create a bluprint, we can call it newCharacter</p>
-
-<p><img src="/img/2020/03/pic3.png" alt="newCharacter pic3" /></p>
-
+<p><img src="/img/2020/03/pic3.png" alt="newCharacter pic3"></p>
 <p>This is the blueprint logic for the movement and rotation</p>
-
-<p><img src="/img/2020/03/pic4.png" alt="newCharacter movement and rotation logic pic4" /></p>
-
+<p><img src="/img/2020/03/pic4.png" alt="newCharacter movement and rotation logic pic4"></p>
 <p>This is the blueprint logic for the damage the the character:</p>
-
-<p><img src="/img/2020/03/pic5.png" alt="newCharacter damage pic5" /></p>
-
+<p><img src="/img/2020/03/pic5.png" alt="newCharacter damage pic5"></p>
 <p>The Event Affect Health is the interface we created, the interface we create as below:</p>
-
-<p><img src="/img/2020/03/pic6.png" alt="idamage interface pic6" /></p>
-
+<p><img src="/img/2020/03/pic6.png" alt="idamage interface pic6"></p>
 <p>The interface is a way to communicate between blueprints. Eventually, the interface is convenient for us to indicate the if caused damage or not. In this case we want projectile can communicate with character and zombies.</p>
-
 <p>In the new character blueprint, we need also setup the gameplay stuff as the image shows:</p>
-
-<p><img src="/img/2020/03/pic7.png" alt="game begin pic7" /></p>
-
+<p><img src="/img/2020/03/pic7.png" alt="game begin pic7"></p>
 <p>At the Event Beginplay we need 3 different things happen: spawn weapon, start the HUD Widget and start the game mode (this is just remember the player spawn location since once the character get destroied we lost everything and we need save those information in the game mode.)</p>
-
 <p>Those three are the main blueprint scripts.</p>
-
 <h3 id="enemy-character-blueprint">enemy character blueprint</h3>
-
 <p>First we create a zombie blueprint using the same way that create our main character.
 In this section, we want if the zombie overlapped with the human we need do damage to our main character.</p>
-
-<p><img src="/img/2020/03/pic8.png" alt="pic8 enemy collision" /></p>
-
+<p><img src="/img/2020/03/pic8.png" alt="pic8 enemy collision"></p>
 <p>In the ActorBeginOverlap, we cast to newCharacter which is our main character, and we can save the character in a variable and call a timer function. When it overlapped, the timer will call the customized function DamageTheHero in a time interval. The &ldquo;DamageTheHero&rdquo; function is just call the affect health. After the overlap end it checks if overlap with hero and clear the timer function.</p>
-
 <p>The last one is the affect health interface in enemy blueprint</p>
-
-<p><img src="/img/2020/03/pic9.png" alt="affect health in enemy blueprint pic9" /></p>
-
+<p><img src="/img/2020/03/pic9.png" alt="affect health in enemy blueprint pic9"></p>
 <p>First it will calculate the health and check if zombie dead. If it is dead, we need ignore the collision of the zombie and upgrade the score in game mode. In the end deactivate the movement of zombies and destroy it. We set delay here to play an animation.</p>
-
 <h3 id="weapon-blueprint">weapon blueprint</h3>
-
 <p>For the weapon we need to have three functions: pullTrigger, Release Trigger and Fire:</p>
-
-<p><img src="/img/2020/03/pic10.png" alt="weapon blueprint pic10" /></p>
-
+<p><img src="/img/2020/03/pic10.png" alt="weapon blueprint pic10"></p>
 <p>First, when a fire event triggered spawn a sound and attach to the gun mesh then spawn a projectile out. When pull trigger , we run the set timer by function once to avoid multiple shooting when only pull trigger once.</p>
-
 <h3 id="projectile-blueprint">projectile blueprint</h3>
-
 <p>Projectile is just the bullet that shoot out, we can define some property and behavior of the projectile.</p>
-
-<p><img src="/img/2020/03/pic11.png" alt="projectile pic11" /></p>
-
+<p><img src="/img/2020/03/pic11.png" alt="projectile pic11"></p>
 <p>When projectile overlapped with the actor, call the iDamgeable interface which means the projectile can damage both enemies and our main character. If we don&rsquo;t want to damage friend character, we can setup a tag for the character. For example, I run a check if the actor has tag. If no tag, we can call the damage function and spawn the sound. In the end delete the enemy.</p>
-
 <p>That is all the logic blueprint for enemy and main charcter behavior and our weapon system. Next blog I will talk about animation and how to setup those assets in the game.</p>
 
   </div>
@@ -585,7 +531,7 @@ In this section, we want if the zombie overlapped with the human we need do dama
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

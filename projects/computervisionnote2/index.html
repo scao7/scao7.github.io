@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="Computer vision problem and step by step">
-<meta itemprop="description" content="Pooling">
-
-
-<meta itemprop="datePublished" content="2020-01-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-15T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Pooling"><meta itemprop="datePublished" content="2020-01-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-01-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="322">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Computer vision problem and step by step" />
 <meta property="og:description" content="Pooling" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/computervisionnote2/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/computervisionnote2/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2020-01-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-01-15T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Computer vision problem and step by step"/>
@@ -224,59 +218,32 @@
   
 
   <div class="content">
-    
-
-<h4 id="max-pooling">Max Pooling</h4>
-
+    <h4 id="max-pooling">Max Pooling</h4>
 <p>Hyper-parameters: f = 2 , s = 2</p>
-
 <p>no parameters to learn</p>
-
 <p>$$\begin{bmatrix} 1 &amp; 3 &amp; 2 &amp; 1  \\ 2 &amp; 9 &amp; 1 &amp; 1 \\ 1 &amp; 3 &amp; 2 &amp; 3  \\ 5 &amp; 6 &amp; 1 &amp; 2   \end{bmatrix} =&gt; \begin{bmatrix} 9&amp;2\\ 6&amp;3 \end{bmatrix} $$</p>
-
 <p>Divide the 4*4 to 4 area and pick the largest number to get a 2 * 2 data.</p>
-
 <p>Hyper-parameters: f = 3 , s = 1</p>
-
 <p>no parameters to learn</p>
-
 <p>$$\begin{bmatrix} 1 &amp; 3 &amp; 2 &amp; 1 &amp; 3  \\ 2 &amp; 9 &amp; 1 &amp; 1 &amp; 5\\ 1 &amp; 3 &amp; 2 &amp; 3 &amp;2\\8&amp;3&amp;5&amp;1&amp;0 \\ 5 &amp; 6 &amp; 1 &amp; 2&amp;9   \end{bmatrix} =&gt; \begin{bmatrix} 9&amp;9&amp;5\\ 9&amp;9&amp;5 \\8&amp;6&amp;9 \end{bmatrix} $$</p>
-
 <h4 id="average-pooling">Average pooling</h4>
-
 <p>same as the previous operation just pick average instead of maximum.</p>
-
 <h4 id="hyper-parameters">Hyper-parameters</h4>
-
 <p>f: filter size</p>
-
 <p>s: stride</p>
-
 <p>Max or average pooling</p>
-
 <h4 id="lenet-5">LeNet-5</h4>
-
 <p>Here is a example of neural network:</p>
-
-<p><img src="/img/2020/01/pic04.png" alt="pic04" /></p>
-
+<p><img src="/img/2020/01/pic04.png" alt="pic04"></p>
 <p>First we have a 32 * 32 * 3 input image, we perform a convolute using f = 5 and s = 1 then we do a maxpooling using f = 2 s = 2. This is called first layer. then we apply the same thing as the second layer.
 after go through the second layer we convert the matrix to a vector with 400 numbers and connect it to a fully convolutional layer and then do a second fully convolutional layer. Last step we do a softmax to get the clarification result.</p>
-
 <p>This is a kind of CNN.</p>
-
-<p><img src = "/img/2020/01/pic05.png" width = "100%" /></p>
-
+<!-- raw HTML omitted -->
 <p>This image shows the network learn the most parameters in the fully convolutional part.Activation size go smaller and smaller.</p>
-
 <h4 id="advantages-of-convolutions">advantages of convolutions</h4>
-
 <p>Saving work</p>
-
 <p>Less parameters</p>
-
 <p>Parameter sharing: A feature detector that&rsquo;s useful in one part of the image is probably useful in another part of the image.</p>
-
 <p>Sparsity of connections: in each layer each output value depends only on a small number of inputs</p>
 
   </div>
@@ -464,7 +431,7 @@ after go through the second layer we convert the matrix to a vector with 400 num
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

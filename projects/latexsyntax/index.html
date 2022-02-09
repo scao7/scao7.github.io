@@ -7,25 +7,19 @@
 
 
 
-  <meta name="generator" content="Hugo 0.58.2" />
+  <meta name="generator" content="Hugo 0.89.4" />
   <meta itemprop="name" content="LaTex Tutorial">
-<meta itemprop="description" content="some notes about Latex syntax and how to write formulas in Markdown files.">
-
-
-<meta itemprop="datePublished" content="2019-09-18T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-09-18T00:00:00&#43;00:00" />
+<meta itemprop="description" content="some notes about Latex syntax and how to write formulas in Markdown files."><meta itemprop="datePublished" content="2019-09-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-09-18T00:00:00+00:00" />
 <meta itemprop="wordCount" content="200">
-
-
-
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="LaTex Tutorial" />
 <meta property="og:description" content="some notes about Latex syntax and how to write formulas in Markdown files." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shengtingcao.top/projects/latexsyntax/" />
+<meta property="og:url" content="https://shengtingcao.top/projects/latexsyntax/" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2019-09-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-09-18T00:00:00+00:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="LaTex Tutorial"/>
@@ -227,30 +221,24 @@
     <h4 id="enable-latax-on-webpage">Enable LaTax on webpage</h4>
 
 <p>Add this HTML code into <strong>site-footer.html</strong> file because I use this template for every posts page.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML"><span style="color:#75715e">&lt;!-- enable math in the blog  --&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+<span style="color:#75715e">&lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+  &lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;
 
-<pre><code class="language-HTML">&lt;!-- enable math in the blog  --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&quot; integrity=&quot;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&quot; crossorigin=&quot;anonymous&quot;&gt;
+    <span style="color:#75715e">&lt;!-- The loading of KaTeX is deferred to speed up page rendering --&gt;</span>
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
 
-    &lt;!-- The loading of KaTeX is deferred to speed up page rendering --&gt;
-    &lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js&quot; integrity=&quot;sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-
-    &lt;!-- To automatically render math in text elements, include the auto-render extension: --&gt;
-    &lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js&quot; integrity=&quot;sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI&quot; crossorigin=&quot;anonymous&quot;
-        onload=&quot;renderMathInElement(document.body);&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
+    <span style="color:#75715e">&lt;!-- To automatically render math in text elements, include the auto-render extension: --&gt;</span>
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>
+        <span style="color:#a6e22e">onload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;renderMathInElement(document.body);&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+  &lt;/<span style="color:#f92672">head</span>&gt;
   ...
-&lt;/html&gt;
-</code></pre>
-
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></div>
 <p>Code and the rendered example</p>
-
-<pre><code class="language-Markdown">Embed formulas $$ {\pi=\frac c d} $$ in the text is a example.
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Markdown" data-lang="Markdown">Embed formulas $$ {\pi=\frac c d} $$ in the text is a example.</code></pre></div>
 <p>Embed formulas <span  class="math">\( {\pi=\frac c d} \)</span> in the text is a example.</p>
 
 <p><strong>Notice: to have inline math enable you should have a <a href="https://github.com/miekg/mmark">.mmark</a> file instead of .md file.</strong></p>
@@ -453,7 +441,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.58.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

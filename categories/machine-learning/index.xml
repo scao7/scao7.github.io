@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on Shengting Cao&#39;s Note Book</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Machine Learning on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://shengtingcao.top/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://shengtingcao.top/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Classifier Implementation and Problems</title>
       <link>https://shengtingcao.top/projects/classifier/</link>

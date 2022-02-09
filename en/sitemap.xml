@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
@@ -20,19 +19,13 @@
                 hreflang="en"
                 href="https://shengtingcao.top/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/github/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/github_token/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -50,189 +43,115 @@
                 hreflang="en"
                 href="https://shengtingcao.top/projects/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/game-development/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/zombiegamedesign/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/computer-vision/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/computervisionnote3/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/computervisionnote2/</loc>
     <lastmod>2020-01-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/computervisionnote1/</loc>
     <lastmod>2020-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/classifier/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/machine-learning/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/probability/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/probabilitybasics/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/deep-learning/</loc>
     <lastmod>2019-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/logisticregression/</loc>
     <lastmod>2019-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/latex/</loc>
     <lastmod>2019-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/latexsyntax/</loc>
     <lastmod>2019-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/internet-ssh/</loc>
     <lastmod>2019-08-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/somenotesaboutssh/</loc>
     <lastmod>2019-08-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/android-development/</loc>
     <lastmod>2019-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/kmeanopencv4android/</loc>
     <lastmod>2019-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/opencvbasiclibraryintroandroid/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/ostuthreshold/</loc>
     <lastmod>2019-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/importopencv/</loc>
     <lastmod>2019-05-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/androidcanvas/</loc>
     <lastmod>2019-05-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/computer-graphics/</loc>
     <lastmod>2019-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/graphicstexture/</loc>
     <lastmod>2019-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/graphicslight/</loc>
     <lastmod>2019-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/proglangdesignenv/</loc>
     <lastmod>2019-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/programming-languages/</loc>
     <lastmod>2019-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/modeling/</loc>
     <lastmod>2019-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/proglangdesignparser/</loc>
     <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/proglangdesignlexical/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/buildblock/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/latexinmd/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/programminglanguagedesigngrammar/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/snoflake/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/categories/linux/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/projects/vimnote/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -250,14 +169,7 @@
                 hreflang="en"
                 href="https://shengtingcao.top/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://shengtingcao.top/search/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/contact/</loc>
     <xhtml:link
                 rel="alternate"
@@ -274,9 +186,7 @@
                 hreflang="en"
                 href="https://shengtingcao.top/contact/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://shengtingcao.top/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -294,5 +204,4 @@
                 href="https://shengtingcao.top/tags/"
                 />
   </url>
-  
 </urlset>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming Languages on Shengting Cao&#39;s Note Book</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Programming Languages on Shengting Cao&#39;s Note Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Feb 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://shengtingcao.top/categories/programming-languages/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 26 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://shengtingcao.top/categories/programming-languages/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programming Language Design</title>
       <link>https://shengtingcao.top/projects/proglangdesignenv/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://shengtingcao.top/projects/proglangdesignenv/</guid>
       <description>Problem Description The environment is a tree to store all the value we need for future use. In the environment file it will have five basic functions
- create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable);  create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); }  extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); }  make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); }  lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
+ create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable); create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); } extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); } make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); } lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
     </item>
     
     <item>
