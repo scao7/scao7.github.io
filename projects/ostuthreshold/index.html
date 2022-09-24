@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Android Development -- Ostu threshold">
 <meta itemprop="description" content="Using Ostu threshold measure hight of person"><meta itemprop="datePublished" content="2019-06-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-06-01T00:00:00+00:00" />
@@ -225,208 +225,208 @@
 <h4 id="implementation">implementation</h4>
 <p>First, I tried to implement the basic code for threshold of a certain value for example: 100.
 Here is the Java Code in Android Studio</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span>  <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">converImage</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
-        Bitmap finalImage <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
-        <span style="color:#66d9ef">int</span> colorPixel<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++</span> <span style="color:#f92672">){</span>
-            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0 <span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++){</span>
-                colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">);</span>
-                A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-                R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-                G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-                B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-
-                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>R <span style="color:#f92672">&gt;</span> 100 <span style="color:#f92672">){</span>
-                    R <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
-                    R <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span>
-                G<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
-                B<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
-                finalImage<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">,</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">));</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">return</span> finalImage<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="modify-the-fixed-threshold-into-ostu-threshold">Modify the fixed threshold into Ostu threshold</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span>  <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">converImage</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        Bitmap finalImage <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> colorPixel<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++</span> <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0 <span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>                colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>R <span style="color:#f92672">&gt;</span> 100 <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                    R <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    R <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                G<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                B<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                finalImage<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">,</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> finalImage<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="modify-the-fixed-threshold-into-ostu-threshold">Modify the fixed threshold into Ostu threshold</h4>
 <p>This is the method that applied the Ostu threshold for the colored image</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">ostuConvert</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
-      Bitmap BWimg <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
-      <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
-      <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
-      <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span> R<span style="color:#f92672">,</span> G<span style="color:#f92672">,</span> B<span style="color:#f92672">,</span> colorPixel<span style="color:#f92672">;</span>
-
-      <span style="color:#66d9ef">double</span> Wcv <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> th <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> tPXL <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>256<span style="color:#f92672">];</span>
-      <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> pxl <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>width<span style="color:#f92672">][</span>height<span style="color:#f92672">];</span>
-      <span style="color:#66d9ef">double</span> Bw<span style="color:#f92672">,</span> Bm<span style="color:#f92672">,</span> Bv<span style="color:#f92672">,</span> Fw<span style="color:#f92672">,</span> Fm<span style="color:#f92672">,</span> Fv<span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">int</span> np<span style="color:#f92672">,</span> ImgPix <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> fth <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-
-      <span style="color:#75715e">// pixel check for histogram //
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-
-              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
-
-              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-              R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-              G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-              B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-
-              <span style="color:#66d9ef">int</span> gray <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">2126</span> <span style="color:#f92672">*</span> R<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">7152</span> <span style="color:#f92672">*</span> G<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">0722</span> <span style="color:#f92672">*</span> B<span style="color:#f92672">)</span> <span style="color:#f92672">);</span> <span style="color:#75715e">// (int) ( (0.299 * R) + (0.587 * G) + (0.114 * B) );
-</span><span style="color:#75715e"></span>              pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> gray<span style="color:#f92672">;</span>
-              tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
-              ImgPix <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
-          <span style="color:#f92672">}</span>
-      <span style="color:#f92672">}</span>
-      <span style="color:#75715e">// ----- histo-variance ----- //
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> t <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> t<span style="color:#f92672">++){</span>
-          Bw <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Bm <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Bv <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-          Fw <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Fm <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Fv <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-          np <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-
-          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span> <span style="color:#75715e">// all white/foreground as t0 ----- //
-</span><span style="color:#75715e"></span>              Fw <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-
-              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> d<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//mean
-</span><span style="color:#75715e"></span>                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
-              <span style="color:#f92672">}</span>
-              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
-
-              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//variance
-</span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
-              <span style="color:#f92672">}</span>
-              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
-
-          <span style="color:#f92672">}</span>
-          <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// main thresholding
-</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span>1<span style="color:#f92672">);</span> d<span style="color:#f92672">++){</span> <span style="color:#75715e">// BG weight &amp; mean + BG pixel
-</span><span style="color:#75715e"></span>                  Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
-                  Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
-                  np <span style="color:#f92672">=</span> np <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
-              <span style="color:#f92672">}</span>
-              Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
-              Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
-
-              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span>1<span style="color:#f92672">);</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//BG variance
-</span><span style="color:#75715e"></span>                  Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Bm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
-              <span style="color:#f92672">}</span>
-              Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
-
-              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// FG weight &amp; mean + BG pixel
-</span><span style="color:#75715e"></span>                  Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">]);</span>
-                  np <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">-</span> np<span style="color:#f92672">;</span>
-              <span style="color:#f92672">}</span>
-              Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
-              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
-
-              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> k <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> k<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//FG variance
-</span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>k <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>k<span style="color:#f92672">]);</span>
-              <span style="color:#f92672">}</span>
-              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
-
-          <span style="color:#f92672">}</span>
-
-          <span style="color:#75715e">// within class variance
-</span><span style="color:#75715e"></span>          Wcv <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Bw <span style="color:#f92672">*</span> Bv<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Fw <span style="color:#f92672">*</span> Fv<span style="color:#f92672">);</span>
-
-          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
-              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
-          <span style="color:#f92672">}</span>
-          <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Wcv <span style="color:#f92672">&lt;</span> th<span style="color:#f92672">){</span>
-              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
-              fth <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
-          <span style="color:#f92672">}</span>
-      <span style="color:#f92672">}</span>
-
-      <span style="color:#75715e">// set binarize pixel
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-
-              <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
-              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
-
-              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-
-              <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
-</span><span style="color:#75715e"></span>                  fnpx <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
-                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
-              <span style="color:#f92672">}</span>
-              <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                  fnpx <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
-              <span style="color:#f92672">}</span>
-          <span style="color:#f92672">}</span>
-      <span style="color:#f92672">}</span>
-      <span style="color:#66d9ef">return</span> BWimg<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="height-calculation">Height Calculation</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">ostuConvert</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>      Bitmap BWimg <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span> R<span style="color:#f92672">,</span> G<span style="color:#f92672">,</span> B<span style="color:#f92672">,</span> colorPixel<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">double</span> Wcv <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> th <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> tPXL <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>256<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> pxl <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>width<span style="color:#f92672">][</span>height<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">double</span> Bw<span style="color:#f92672">,</span> Bm<span style="color:#f92672">,</span> Bv<span style="color:#f92672">,</span> Fw<span style="color:#f92672">,</span> Fm<span style="color:#f92672">,</span> Fv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> np<span style="color:#f92672">,</span> ImgPix <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> fth <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// pixel check for histogram //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">int</span> gray <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">2126</span> <span style="color:#f92672">*</span> R<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">7152</span> <span style="color:#f92672">*</span> G<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">0722</span> <span style="color:#f92672">*</span> B<span style="color:#f92672">)</span> <span style="color:#f92672">);</span> <span style="color:#75715e">// (int) ( (0.299 * R) + (0.587 * G) + (0.114 * B) );
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> gray<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              ImgPix <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ----- histo-variance ----- //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> t <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> t<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>          Bw <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Bm <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Bv <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          Fw <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Fm <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> Fv <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          np <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span> <span style="color:#75715e">// all white/foreground as t0 ----- //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              Fw <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> d<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//mean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// main thresholding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span>1<span style="color:#f92672">);</span> d<span style="color:#f92672">++){</span> <span style="color:#75715e">// BG weight &amp; mean + BG pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                  Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>                  np <span style="color:#f92672">=</span> np <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span>1<span style="color:#f92672">);</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//BG variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Bm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// FG weight &amp; mean + BG pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>                  np <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">-</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> k <span style="color:#f92672">&lt;</span> 256<span style="color:#f92672">;</span> k<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//FG variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>k <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>k<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// within class variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          Wcv <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Bw <span style="color:#f92672">*</span> Bv<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Fw <span style="color:#f92672">*</span> Fv<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Wcv <span style="color:#f92672">&lt;</span> th<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              fth <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// set binarize pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  fnpx <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                  fnpx <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> BWimg<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="height-calculation">Height Calculation</h4>
 <p>The Height Calculation is just count the pixel in the height. So we can apply the method above and change a little. In the last for loop: &ldquo;//set binarize pixel&rdquo; we modify the method as following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">float</span> top <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">POSITIVE_INFINITY</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">float</span> bottom <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">NEGATIVE_INFINITY</span><span style="color:#f92672">;</span>
-    <span style="color:#75715e">// set binarize pixel
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-       <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-
-           <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
-           colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
-
-           A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
-
-           <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
-</span><span style="color:#75715e"></span>               fnpx <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
-           <span style="color:#f92672">}</span>
-           <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-               fnpx <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>top <span style="color:#f92672">&gt;</span> y <span style="color:#f92672">){</span>
-                   top <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
-               <span style="color:#f92672">}</span>
-
-               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bottom <span style="color:#f92672">&lt;</span> y<span style="color:#f92672">){</span>
-                   bottom <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
-               <span style="color:#f92672">}</span>
-
-           <span style="color:#f92672">}</span>
-       <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> pointsY <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]{</span> top <span style="color:#f92672">*</span> scaleFactor <span style="color:#f92672">,</span>bottom <span style="color:#f92672">*</span> scaleFactor<span style="color:#f92672">};</span>
-
-    <span style="color:#66d9ef">return</span> pointsY<span style="color:#f92672">;</span>
-</code></pre></div><p>I defined the two float variable initialed as POSITIVE_INFINITY and NEGATIVE_INFINITY. When fnpx &lt;= fth begin to calculate the value. Find the minimun role and the maximum role.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> top <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">POSITIVE_INFINITY</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> bottom <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">NEGATIVE_INFINITY</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// set binarize pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>           colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               fnpx <span style="color:#f92672">=</span> 255<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>               fnpx <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>top <span style="color:#f92672">&gt;</span> y <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                   top <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bottom <span style="color:#f92672">&lt;</span> y<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                   bottom <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> pointsY <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]{</span> top <span style="color:#f92672">*</span> scaleFactor <span style="color:#f92672">,</span>bottom <span style="color:#f92672">*</span> scaleFactor<span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pointsY<span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>I defined the two float variable initialed as POSITIVE_INFINITY and NEGATIVE_INFINITY. When fnpx &lt;= fth begin to calculate the value. Find the minimun role and the maximum role.
 I returned the float arrary represent two height value.
 I should post the picture of processing but because of the privacy issue I won&rsquo;t post it until this research period end.</p>
 <h4 id="draw-line-and-display-pixel-on-the-image-view">Draw line and display pixel on the image view</h4>
 <p>After we have the value of top and bottom. I need to draw a red line on the image and display the pixel value between these two.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawHeight</span><span style="color:#f92672">(</span>ImageView imgView<span style="color:#f92672">,</span> Bitmap imageBitmap<span style="color:#f92672">){</span>
-        Bitmap bitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ARGB_8888</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">float</span> scaleFactor <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> imageBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> points <span style="color:#f92672">=</span>customizeMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">ostuCalculateHeight</span><span style="color:#f92672">(</span>imageBitmap<span style="color:#f92672">,</span> scaleFactor<span style="color:#f92672">);</span>
-
-        Canvas canvas <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Canvas<span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
-        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span>canvas<span style="color:#f92672">);</span>
-
-        Paint paint <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Paint<span style="color:#f92672">();</span>
-        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">RED</span><span style="color:#f92672">);</span>
-        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setStrokeWidth</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
-
-        <span style="color:#66d9ef">float</span> middle <span style="color:#f92672">=</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> 2<span style="color:#f92672">;</span> <span style="color:#75715e">//x value of the image
-</span><span style="color:#75715e"></span>
-        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawLine</span><span style="color:#f92672">(</span>middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span>0<span style="color:#f92672">],</span> middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span>1<span style="color:#f92672">],</span> paint<span style="color:#f92672">);</span>
-        String pixelInfo <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)(</span>points<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> points<span style="color:#f92672">[</span>0<span style="color:#f92672">])</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;pixels&#34;</span><span style="color:#f92672">;</span>
-
-        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">GREEN</span><span style="color:#f92672">);</span>
-        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setTextSize</span><span style="color:#f92672">(</span>40<span style="color:#f92672">);</span>
-        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawText</span><span style="color:#f92672">(</span>pixelInfo<span style="color:#f92672">,</span>middle<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>points<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> points<span style="color:#f92672">[</span>1<span style="color:#f92672">])/</span>2<span style="color:#f92672">,</span> paint<span style="color:#f92672">);</span>
-        <span style="color:#75715e">//draw line on image
-</span><span style="color:#75715e"></span>        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>I create this method to draw the height. There are two variable we need pass in: imgView and imageBitmap. ImageView refers the view you want to put picture, imageBitmap is the original image in Bitmap data structure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawHeight</span><span style="color:#f92672">(</span>ImageView imgView<span style="color:#f92672">,</span> Bitmap imageBitmap<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        Bitmap bitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ARGB_8888</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> scaleFactor <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> imageBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> points <span style="color:#f92672">=</span>customizeMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">ostuCalculateHeight</span><span style="color:#f92672">(</span>imageBitmap<span style="color:#f92672">,</span> scaleFactor<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Canvas canvas <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Canvas<span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span>canvas<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Paint paint <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Paint<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">RED</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setStrokeWidth</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> middle <span style="color:#f92672">=</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> 2<span style="color:#f92672">;</span> <span style="color:#75715e">//x value of the image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawLine</span><span style="color:#f92672">(</span>middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span>0<span style="color:#f92672">],</span> middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span>1<span style="color:#f92672">],</span> paint<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        String pixelInfo <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)(</span>points<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> points<span style="color:#f92672">[</span>0<span style="color:#f92672">])</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;pixels&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">GREEN</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setTextSize</span><span style="color:#f92672">(</span>40<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawText</span><span style="color:#f92672">(</span>pixelInfo<span style="color:#f92672">,</span>middle<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>points<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> points<span style="color:#f92672">[</span>1<span style="color:#f92672">])/</span>2<span style="color:#f92672">,</span> paint<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//draw line on image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>I create this method to draw the height. There are two variable we need pass in: imgView and imageBitmap. ImageView refers the view you want to put picture, imageBitmap is the original image in Bitmap data structure.</p>
 <h4 id="problems-remain-to-solve">Problems remain to solve</h4>
 <h5 id="span-stylecolorblueruntimespan"><!-- raw HTML omitted -->Runtime<!-- raw HTML omitted --></h5>
 <p>So far, my app works for measure the height of a person in most circumstance. But the runtime is very slow because I put all the calculation in one thread. There are two option to make the calculation fast. The first one is parallel computing. The second is to use the alternative OpenCV solution, it might faster than my solution. So next post I will focus on how to do parallel computing on Android software and how to load OpenCV library and apply the method.</p>
@@ -434,18 +434,18 @@ I should post the picture of processing but because of the privacy issue I won&r
 <p>For my application, there still some in accurate value because of the limitation of Ostu threshold method. If a person waring dark cloth and has white hair the output will be inaccurate. Therefore, to increase the accurate of the measurement. I need implement another image processing method called Image gradient. I will introduce the implementation in next blog post.</p>
 <h4 id="update">Update</h4>
 <p>After learning opencv there are a faster way to solve the ostu threshold method. The updated code using OpenCV library. Run time is less than 1s.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ostuThreshold</span><span style="color:#f92672">(){</span>
-    Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
-    Mat Rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-    Mat ostuMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>Rgba<span style="color:#f92672">);</span>
-    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>Rgba<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span>0<span style="color:#f92672">);</span>
-    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>255<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
-    Bitmap outputhBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
-    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>outputhBitmap<span style="color:#f92672">);</span>
-    imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputhBitmap<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ostuThreshold</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>    Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>    Mat Rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Mat ostuMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>Rgba<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>Rgba<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span>0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>255<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Bitmap outputhBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>outputhBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputhBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
   </div>
   <footer>
     <ul class="stats">
@@ -512,22 +512,12 @@ I should post the picture of processing but because of the privacy issue I won&r
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -547,17 +537,12 @@ I should post the picture of processing but because of the privacy issue I won&r
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -631,7 +616,7 @@ I should post the picture of processing but because of the privacy issue I won&r
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

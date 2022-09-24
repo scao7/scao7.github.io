@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="如何制作HugoPage">
 <meta itemprop="description" content="这一篇文章是讲解如何用Hugo网页自动生成器来做一个这样的博客网址。并且部署到Github上。"><meta itemprop="datePublished" content="2019-01-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-01-25T00:00:00+00:00" />
@@ -222,22 +222,21 @@
 <p>工具：<a href="https://gohugo.io/getting-started/quick-start/">Hugo 下载界面</a>
 ,<a href="https://brew.sh/">Homebrew</a></p>
 <p>从上面的链接点进去就到来Hugo的下载,我使用的是Mac系统的安装方法。Mac 是通过brew来获取安装工具的所以点击上面Homebrew 链接来进行安装如果你之前没有安装过brew的话。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-brew install hugo
-
-hugo version
-
-hugo new site yourProject <span style="color:#75715e"># 你的工程文件名</span>
-
-cd yourProject
-
-git init
-
-git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke <span style="color:#75715e"># 自行在github 上找主题，没有主题文件hugo是不能创建网页的。或者你可以自己创作主题。</span>
-
-echo theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ananke&#34;</span> &gt;&gt; config.toml <span style="color:#75715e">#将主题名写入config文件。</span>
-
-</code></pre></div><p>在Hugo的下载界面有详细的教程来指导你如何安装并使用Hugo。我这里就不重复的说明了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>brew install hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hugo version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hugo new site yourProject <span style="color:#75715e"># 你的工程文件名</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd yourProject
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke <span style="color:#75715e"># 自行在github 上找主题，没有主题文件hugo是不能创建网页的。或者你可以自己创作主题。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ananke&#34;</span> &gt;&gt; config.toml <span style="color:#75715e">#将主题名写入config文件。</span>
+</span></span></code></pre></div><p>在Hugo的下载界面有详细的教程来指导你如何安装并使用Hugo。我这里就不重复的说明了。</p>
 <h4 id="编辑网页">编辑网页</h4>
 <p>打开文件的structure，每一个主题都会有自己的格式的控制每一个post显示的内容。Hugo的网页内容基本是用.md 后缀的文档来渲染网页的。
 首先用<code>hugo new posts/my-first-post.md</code> 这个指令来创建一个新的文章。
@@ -255,17 +254,16 @@ echo theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34
 <p>当然你肯定也想保存一下你的工程文件到GitHub。所以最简单的做法就是需要两个Github仓库来分别存放我们的Hugo工程文件和生成的html文件。当你成功的config好这两个文件之后，我写来一个简单的shell文档来实现一键部署你的网站。</p>
 <p>将一下代码复制，创建一个deploy.sh 的文档然后将以下代码放到Hugo工程文件夹下。你可能需要<code>chmod +x deploy.sh</code>来给他权限。
 当每次编辑完你的网站之后你可以使用<code>./deploy.sh</code>来一键上传到github了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo -d ../scao7.github.io/ <span style="color:#75715e"># scao7.github.io 是我的Github Page 通过这个网站也可以访问我的博客。</span>
-git add .
-git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
-git push
-cd ../scao7.github.io/
-git add .
-git commit -m <span style="color:#e6db74">&#34;update by automation&#34;</span>
-git push
-cd ../MyNoteBook/ <span style="color:#75715e">#MyNoteBook 是我的文件夹用来存放所以Hugo工程文件的文件夹。</span>
-
-</code></pre></div><h4 id="让你的网站拥有自定义域名">让你的网站拥有自定义域名</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo -d ../scao7.github.io/ <span style="color:#75715e"># scao7.github.io 是我的Github Page 通过这个网站也可以访问我的博客。</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>cd ../scao7.github.io/
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update by automation&#34;</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>cd ../MyNoteBook/ <span style="color:#75715e">#MyNoteBook 是我的文件夹用来存放所以Hugo工程文件的文件夹。</span>
+</span></span></code></pre></div><h4 id="让你的网站拥有自定义域名">让你的网站拥有自定义域名</h4>
 <p>工具：<a href="https://help.github.com/en/articles/setting-up-an-apex-domain">可用ip Github Page</a></p>
 <p>自定义域名需要你从域名服务商处购买一个域名，我的就是 <a href="https://shengtingcao.top">shengtingcao.top</a>。给域名添加一个ip记录。查看上面网站看有哪些ip可用用于添加记录。我这里列出了一些：</p>
 <pre tabindex="0"><code>185.199.108.153
@@ -414,7 +412,7 @@ cd ../MyNoteBook/ <span style="color:#75715e">#MyNoteBook 是我的文件夹用�
         欢迎来到我博客中文界面
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

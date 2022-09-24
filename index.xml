@@ -33,24 +33,6 @@ Create a character First go to create a project using C++ without any start cont
     
     <item>
       <title>Computer vision problem and step by step</title>
-      <link>https://shengtingcao.top/projects/computervisionnote3/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/projects/computervisionnote3/</guid>
-      <description>This post is review some cases in computer vision problem. How all the method constructed.
-LeNet-5  This network use 60k parameters, relative small network.
-Network get deeper hight, width get smaller, channels larger.
-Note: sigmoid/tanh , non-linear in avg pool, II and III of the paper.
-AlexNet  using Relu
-Multiple GPUs
-local response normalization (doesn&#39;t help much)
-VGG -16  Uniform
-large network
-VGG-19 is a bigger version of network</description>
-    </item>
-    
-    <item>
-      <title>Computer vision problem and step by step</title>
       <link>https://shengtingcao.top/projects/computervisionnote2/</link>
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
@@ -73,51 +55,6 @@ $$\begin{bmatrix} 3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 7 &amp;amp; 4 
     </item>
     
     <item>
-      <title>Classifier Implementation and Problems</title>
-      <link>https://shengtingcao.top/projects/classifier/</link>
-      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/projects/classifier/</guid>
-      <description>Essential Knowledge and PDFs: Probability, Bayesian Decision Theory, Parametric Methods, Multivariate Parametric Methods, Assesses Classifier
-Basic binary classifier If we have one vector of data how to divide it into two separate part? Intuitively, the simplest model is we need find a number to be the middle point to separate the data into two different categories. So we can implement the basic classifier by find the middle point.
-For example, if we what to know if the a specific room have people inside or not (This is a binary question only have answer yes or no).</description>
-    </item>
-    
-    <item>
-      <title>Probability Basics</title>
-      <link>https://shengtingcao.top/projects/probabilitybasics/</link>
-      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/projects/probabilitybasics/</guid>
-      <description>Probability Documentation PDF, Multivariate Methods PDF
-Recently I have been through a hard time to understand the classification methods in Machine Learning. I feel the probability basics is very important to the Machine Learning. In this post, I will write down the formula about probability calculation. I will combine them with Matlab code expression and Matrix manipulate to help me better understand those concept.
-Bay&#39;s formula Most frequent used theory in probability.</description>
-    </item>
-    
-    <item>
-      <title>Neuron Network Basics</title>
-      <link>https://shengtingcao.top/projects/logisticregression/</link>
-      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/projects/logisticregression/</guid>
-      <description>What is logistic regression Logistic regression is the appropriate regression analysis to conduct when the dependent variable is binary.
-Use logistic regression in deep learning: Given an image \( x \) and we want an algorithm to output \(\hat{y}\), 1 represents cat and 0 represents non-cat.
-Given \(x\), want \(\hat{y} = p(y=1|x)\) and \( x \in \R^{\smash{n_x}} \)
-Parameters: \(w \in \R^{\smash{n_x}}\) and \(b \in \R^{\smash{n}}\)
-Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is not a good algorithm for binary classification because you want the \(\hat{y}\) to be the chance that if the image is cat.</description>
-    </item>
-    
-    <item>
-      <title>LaTex Tutorial</title>
-      <link>https://shengtingcao.top/projects/latexsyntax/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shengtingcao.top/projects/latexsyntax/</guid>
-      <description>Enable LaTax on webpage Add this HTML code into site-footer.html file because I use this template for every posts page.
-&amp;lt;!-- enable math in the blog --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly --&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;!-- The loading of KaTeX is deferred to speed up page rendering --&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!</description>
-    </item>
-    
-    <item>
       <title>Notes on SSH and AWS</title>
       <link>https://shengtingcao.top/projects/somenotesaboutssh/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
@@ -125,7 +62,7 @@ Output: \({\hat{y} = w^Tx + b} \) (this one is linear regression, but this is no
       <guid>https://shengtingcao.top/projects/somenotesaboutssh/</guid>
       <description>Connecting the AWS service using BASH on Windows When connecting AWS using BASH, we should notice that the bash program should be run as administrator otherwise it will deny the connection and report 0555 code.
 Root of Ubuntu on Windows The Root of Ubuntu on Windows will be located in
- &amp;quot;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;quot; using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>
+&amp;#34;C:\Users\scao7\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\root&amp;#34; using shadowsocks set up vpn # 获取root权限 sudo -s # 更新apt-get apt-get update # 安装 python 的 包管理工具 pip apt-get install python-pip # 安装shadowsocks pip install shadowsocks # 创建 shadowsocks 目录 mkdir /etc/shadowsocks # 创建并编辑我们的配置文件 vim /etc/shadowsocks/config.</description>
     </item>
     
     <item>
@@ -192,7 +129,7 @@ Create UI First we need have a UI in this project.</description>
       <guid>https://shengtingcao.top/projects/graphicstexture/</guid>
       <description>Problem Description We want to draw three walls and put texture on them.At the same time we want to create a TV that we can change the frame on the screen every 1 second. You are able to turn on and off the TV.
 In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.
-fragment shader  &amp;lt;script id=&amp;#34;fragment-shader&amp;#34; type=&amp;#34;x-shader/x-fragment&amp;#34;&amp;gt; precision mediump float; varying vec4 fColor; varying vec2 fTexCoord; // a texture coordinate uniform sampler2D texture; //2D images  void main() { gl_FragColor = fColor * texture2D( texture, fTexCoord ); } &amp;lt;/script&amp;gt; In the HTML file we also need to include the image that we used.</description>
+fragment shader &amp;lt;script id=&amp;#34;fragment-shader&amp;#34; type=&amp;#34;x-shader/x-fragment&amp;#34;&amp;gt; precision mediump float; varying vec4 fColor; varying vec2 fTexCoord; // a texture coordinate uniform sampler2D texture; //2D images void main() { gl_FragColor = fColor * texture2D( texture, fTexCoord ); } &amp;lt;/script&amp;gt; In the HTML file we also need to include the image that we used.</description>
     </item>
     
     <item>
@@ -212,7 +149,7 @@ Simply saying that, switch from fragment shader to vertex shader just simply do 
       
       <guid>https://shengtingcao.top/projects/proglangdesignenv/</guid>
       <description>Problem Description The environment is a tree to store all the value we need for future use. In the environment file it will have five basic functions
- create extend lookup insert update  functions function define  extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable); create environment  Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); } extend environment  Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); } make table  Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); } lookup environment  Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
+create extend lookup insert update functions function define extern Lexeme *createEnv(); extern Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals); extern Lexeme *makeTable(Lexeme *vars, Lexeme *vals); extern Lexeme *lookupEnv(Lexeme *var, Lexeme *env); extern int sameVariable(Lexeme *x, Lexeme *y); extern Lexeme *insert(Lexeme *var, Lexeme *val, Lexeme *env); extern Lexeme *updateEnv(Lexeme *var, Lexeme *env, Lexeme *newVariable); create environment Lexeme *createEnv() { return extendEnv(NULL, NULL, NULL); } extend environment Lexeme *extendEnv(Lexeme *env, Lexeme *vars, Lexeme *vals) { return cons(ENVIRONMENT, makeTable(vars, vals), env); } make table Lexeme *makeTable(Lexeme *vars, Lexeme *vals) { return cons(TABLE, vars, vals); } lookup environment Lexeme *lookupEnv(Lexeme *var, Lexeme *env) { while (env !</description>
     </item>
     
     <item>
@@ -223,7 +160,7 @@ Simply saying that, switch from fragment shader to vertex shader just simply do 
       <guid>https://shengtingcao.top/projects/modeling/</guid>
       <description>Problem Description In this project, we need to use webGL to model a 3D screen with display a paragrapgh you will be able to rotate the screen either by using the button on the screen or the arrow key on the keyboard.
 Approach using 16 segment display method to display the character.
-left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.75, 0.</description>
+left segment example function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.75, 0.0), s); var t = mult(modelViewMatrix, instanceMatrix); gl.</description>
     </item>
     
     <item>
@@ -233,7 +170,7 @@ left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var insta
       
       <guid>https://shengtingcao.top/projects/proglangdesignparser/</guid>
       <description>Problem Description A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.
-Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; } parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
+Recognizer Approach Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; } parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;#34;Primary not found.</description>
     </item>
     
     <item>
@@ -243,7 +180,7 @@ Recognizer Approach  Recursive descent parsing Transforming grammars Support fun
       
       <guid>https://shengtingcao.top/projects/proglangdesignlexical/</guid>
       <description>Problem Description When implementing a programming language, the first step is reading in the source code of a program written in that language. Typically, the source code is stored as a file of characters. To read in a source code file, one groups the important individual characters into tokens and discards the unimportant characters. For example, consider the Python program:
-print &#39;Hello World!&#39;  There are two tokens in this program, print and &amp;lsquo;Hello World!</description>
+print &#39;Hello World!&#39; There are two tokens in this program, print and &amp;lsquo;Hello World!</description>
     </item>
     
     <item>
@@ -253,7 +190,7 @@ print &#39;Hello World!&#39;  There are two tokens in this program, print and &a
       
       <guid>https://shengtingcao.top/projects/buildblock/</guid>
       <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks.
- Red disk Green disk Blue disk Magenta square Cyan square Yellow square  To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
+Red disk Green disk Blue disk Magenta square Cyan square Yellow square To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
     </item>
     
     <item>
@@ -272,7 +209,7 @@ print &#39;Hello World!&#39;  There are two tokens in this program, print and &a
       
       <guid>https://shengtingcao.top/projects/programminglanguagedesigngrammar/</guid>
       <description>Problem Description The task is to build an interpreter for a general purpose programming language of my own design. The language must - support the following features:
- comments integers and strings dynamically typed (like Scheme and Python) classes/objects arrays with O(1) access time conditionals recursion iteration convenient means to access command line arguments convenient means to print to the console convenient means to read integers from a file an adequate set of operators anonymous functions functions as first-class objects (i.</description>
+comments integers and strings dynamically typed (like Scheme and Python) classes/objects arrays with O(1) access time conditionals recursion iteration convenient means to access command line arguments convenient means to print to the console convenient means to read integers from a file an adequate set of operators anonymous functions functions as first-class objects (i.</description>
     </item>
     
     <item>
@@ -282,7 +219,7 @@ print &#39;Hello World!&#39;  There are two tokens in this program, print and &a
       
       <guid>https://shengtingcao.top/projects/snoflake/</guid>
       <description>Problem Description Draw the Koch snowflake using recursive method!
-calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; }  divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
+calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; } divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
     </item>
     
     <item>
@@ -293,7 +230,7 @@ calculate the point for the Koch lines function calculatePoint(center, p){ var a
       <guid>https://shengtingcao.top/projects/vimnote/</guid>
       <description>reference 1, vim cheat sheet
 reference 2, vim command summary
-multi-window lmuti-window basic operations   :e filename - edit another file :split filename - split window and load another file ctrl-w up arrow - move cursor up a window ctrl-w ctrl-w - move cursor to another window (cycle) ctrl-w_ - maximize current window ctrl-w= - make all equal size 10 ctrl-w+ - increase window size by 10 lines :vsplit file - vertical split :sview file - same as split, but readonly :hide - close current window :only - keep only this window open :ls - show current buffers :b 2 - open buffer #2 in this window :bnext or :bn - go to the next buffer :bprev or :bp - go to the previous buffer :bd - delete a buffer (close a file) :ls - list all open buffers :sp file - open a file in a new buffer and split window :vsp file - open a file in a new buffer and vertically split window Ctrl + ws - split window Ctrl + ww - switch windows Ctrl + wq - quit a window Ctrl + wv - split window vertically Ctrl + wh - move cursor to the left window (vertical split) Ctrl + wl - move cursor to the right window (vertical split) Ctrl + wj - move cursor to the window below (horizontal split) Ctrl + wk - move cursor to the window above (horizontal split) cursor movement cursor movement h - move cursor left j - move cursor down k - move cursor up l - move cursor right H - move to top of screen M - move to middle of screen L - move to bottom of screen w - jump forwards to the start of a word W - jump forwards to the start of a word (words can contain punctuation) e - jump forwards to the end of a word E - jump forwards to the end of a word (words can contain punctuation) b - jump backwards to the start of a word B - jump backwards to the start of a word (words can contain punctuation) % - move to matching character (default supported pairs: &#39;()&#39;, &#39;{}&#39;, &#39;[]&#39; - use &amp;lt;code&amp;gt;:h matchpairs&amp;lt;/code&amp;gt; in vim for more info) 0 - jump to the start of the line ^ - jump to the first non-blank character of the line $ - jump to the end of the line g_ - jump to the last non-blank character of the line gg - go to the first line of the document G - go to the last line of the document 5G - go to line 5 fx - jump to next occurrence of character x tx - jump to before next occurrence of character x Fx - jump to previous occurence of character x Tx - jump to after previous occurence of character x ; - repeat previous f, t, F or T movement , - repeat previous f, t, F or T movement, backwards } - jump to next paragraph (or function/block, when editing code) { - jump to previous paragraph (or function/block, when editing code) zz - center cursor on screen Ctrl + e - move screen down one line (without moving cursor) Ctrl + y - move screen up one line (without moving cursor) Ctrl + b - move back one full screen Ctrl + f - Ctrl + d - Ctrl + u - Search and replace Search and replace /pattern - search for pattern ?</description>
+multi-window lmuti-window basic operations :e filename - edit another file :split filename - split window and load another file ctrl-w up arrow - move cursor up a window ctrl-w ctrl-w - move cursor to another window (cycle) ctrl-w_ - maximize current window ctrl-w= - make all equal size 10 ctrl-w+ - increase window size by 10 lines :vsplit file - vertical split :sview file - same as split, but readonly :hide - close current window :only - keep only this window open :ls - show current buffers :b 2 - open buffer #2 in this window :bnext or :bn - go to the next buffer :bprev or :bp - go to the previous buffer :bd - delete a buffer (close a file) :ls - list all open buffers :sp file - open a file in a new buffer and split window :vsp file - open a file in a new buffer and vertically split window Ctrl + ws - split window Ctrl + ww - switch windows Ctrl + wq - quit a window Ctrl + wv - split window vertically Ctrl + wh - move cursor to the left window (vertical split) Ctrl + wl - move cursor to the right window (vertical split) Ctrl + wj - move cursor to the window below (horizontal split) Ctrl + wk - move cursor to the window above (horizontal split) cursor movement cursor movement h - move cursor left j - move cursor down k - move cursor up l - move cursor right H - move to top of screen M - move to middle of screen L - move to bottom of screen w - jump forwards to the start of a word W - jump forwards to the start of a word (words can contain punctuation) e - jump forwards to the end of a word E - jump forwards to the end of a word (words can contain punctuation) b - jump backwards to the start of a word B - jump backwards to the start of a word (words can contain punctuation) % - move to matching character (default supported pairs: &amp;#39;()&amp;#39;, &amp;#39;{}&amp;#39;, &amp;#39;[]&amp;#39; - use &amp;lt;code&amp;gt;:h matchpairs&amp;lt;/code&amp;gt; in vim for more info) 0 - jump to the start of the line ^ - jump to the first non-blank character of the line $ - jump to the end of the line g_ - jump to the last non-blank character of the line gg - go to the first line of the document G - go to the last line of the document 5G - go to line 5 fx - jump to next occurrence of character x tx - jump to before next occurrence of character x Fx - jump to previous occurence of character x Tx - jump to after previous occurence of character x ; - repeat previous f, t, F or T movement , - repeat previous f, t, F or T movement, backwards } - jump to next paragraph (or function/block, when editing code) { - jump to previous paragraph (or function/block, when editing code) zz - center cursor on screen Ctrl + e - move screen down one line (without moving cursor) Ctrl + y - move screen up one line (without moving cursor) Ctrl + b - move back one full screen Ctrl + f - Ctrl + d - Ctrl + u - Search and replace Search and replace /pattern - search for pattern ?</description>
     </item>
     
   </channel>

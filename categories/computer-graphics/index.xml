@@ -15,7 +15,7 @@
       <guid>https://shengtingcao.top/projects/graphicstexture/</guid>
       <description>Problem Description We want to draw three walls and put texture on them.At the same time we want to create a TV that we can change the frame on the screen every 1 second. You are able to turn on and off the TV.
 In the vertex and fragment shader In the vertex shader we didn&amp;rsquo;t change anything, we only need to add texture variable to the fragment shader.
-fragment shader  &amp;lt;script id=&amp;#34;fragment-shader&amp;#34; type=&amp;#34;x-shader/x-fragment&amp;#34;&amp;gt; precision mediump float; varying vec4 fColor; varying vec2 fTexCoord; // a texture coordinate uniform sampler2D texture; //2D images  void main() { gl_FragColor = fColor * texture2D( texture, fTexCoord ); } &amp;lt;/script&amp;gt; In the HTML file we also need to include the image that we used.</description>
+fragment shader &amp;lt;script id=&amp;#34;fragment-shader&amp;#34; type=&amp;#34;x-shader/x-fragment&amp;#34;&amp;gt; precision mediump float; varying vec4 fColor; varying vec2 fTexCoord; // a texture coordinate uniform sampler2D texture; //2D images void main() { gl_FragColor = fColor * texture2D( texture, fTexCoord ); } &amp;lt;/script&amp;gt; In the HTML file we also need to include the image that we used.</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@ Simply saying that, switch from fragment shader to vertex shader just simply do 
       <guid>https://shengtingcao.top/projects/modeling/</guid>
       <description>Problem Description In this project, we need to use webGL to model a 3D screen with display a paragrapgh you will be able to rotate the screen either by using the button on the screen or the arrow key on the keyboard.
 Approach using 16 segment display method to display the character.
-left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.75, 0.</description>
+left segment example function left1() { var s = scale4(0.25, 1.5, 3); var instanceMatrix = mult(translate(-1.5, 0.75, 0.0), s); var t = mult(modelViewMatrix, instanceMatrix); gl.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ left segment example  function left1() { var s = scale4(0.25, 1.5, 3); var insta
       
       <guid>https://shengtingcao.top/projects/proglangdesignparser/</guid>
       <description>Problem Description A recognizer is like a souped-up scanner; Like a scanner, it repeatedly calls lex to serve up lexemes. Additionally, it checks each lexeme against a grammar that describes the language in the text being scanned. Ultimately, a recognizer reports whether the entire text is syntactically correct or not.
-Recognizer Approach  Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations  Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; } parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;quot;Primary not found.</description>
+Recognizer Approach Recursive descent parsing Transforming grammars Support functions for recursive descent parsing Recognizing expressions Conditionals and iterations Read file and construct parse Lexeme *parse(FILE *inputFile) { Parser *p = malloc(sizeof(Parser)); p-&amp;gt;fIn = inputFile; p-&amp;gt;line = 1; p-&amp;gt;pending = lex(p); p-&amp;gt;tree = program(p); return p-&amp;gt;tree; } parser rule primary Lexeme *primary(Parser *p) { Lexeme *x, *y = NULL; if (literalPending(p)) { return literal(p); } else if (check(p, BREAK)) { return match(p, BREAK); } else if (check(p, OPREN)) { match(p, OPREN); x = expr(p); match(p, CPREN); return x; } else if (lambdaPending(p)) { x = lambda(p); if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } return x; } else if (check(p, NIL)) { return match(p, NIL); } else if (check(p, IDENTIFIER)) { x = match(p, IDENTIFIER); if (check(p, OBRACKET)) { match(p, OBRACKET); y = expr(p); match(p, CBRACKET); return cons(ARRAYACCESS, x, y); } else if (check(p, OPREN)) { match(p, OPREN); y = optParamList(p); match(p, CPREN); return cons(FUNCCALL, x, y); } else if (check(p, DOT)) { y = match(p, DOT); y-&amp;gt;left = x; y-&amp;gt;right = primary(p); return y; } return x; } else { Fatal(&amp;#34;Primary not found.</description>
     </item>
     
     <item>
@@ -56,7 +56,7 @@ Recognizer Approach  Recursive descent parsing Transforming grammars Support fun
       
       <guid>https://shengtingcao.top/projects/buildblock/</guid>
       <description>Problem Description Use WebGL to implement an online program called BuildingBlocks that allows a user to build something meaningful from the following six building blocks.
- Red disk Green disk Blue disk Magenta square Cyan square Yellow square  To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
+Red disk Green disk Blue disk Magenta square Cyan square Yellow square To add a block by holding a number key on the keyboard and left click. To move a block by clicking on a block and drag. To delete a block by holding a shift key and click on the block.</description>
     </item>
     
     <item>
@@ -66,7 +66,7 @@ Recognizer Approach  Recursive descent parsing Transforming grammars Support fun
       
       <guid>https://shengtingcao.top/projects/snoflake/</guid>
       <description>Problem Description Draw the Koch snowflake using recursive method!
-calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; }  divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
+calculate the point for the Koch lines function calculatePoint(center, p){ var angleInDegrees = 60; var angleInRadians = angleInDegrees * Math.PI / 180; var s1 = Math.sin(angleInRadians); var c1 = Math.cos(angleInRadians); var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0]; var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1]; var f = vec2(x1,y1); return f; } divide line into koch line and call the function recursively function divideLine(a, b,count) { if(count === 0){ var left; var right; left = mix(a,b,1/3); right = mix(a,b,2/3); var f = calculatePoint(left,right); drawLine(a,left,f,right,b); } else { var ab = mix (a,b,0.</description>
     </item>
     
   </channel>

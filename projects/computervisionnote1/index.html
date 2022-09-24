@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Computer Vision problem step by step">
 <meta itemprop="description" content="Edge detection,Padding,Striding and Convolution"><meta itemprop="datePublished" content="2020-01-04T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-01-04T00:00:00+00:00" />
@@ -223,13 +223,13 @@
 <p>we can have a convolution operation like this * means convolution:</p>
 <p>$$\begin{bmatrix} 3 &amp; 0 &amp; 1 &amp; 2 &amp; 7 &amp; 4  \\ 1 &amp; 5 &amp; 8 &amp; 9 &amp; 3 &amp; 1 \\ 2 &amp; 7 &amp; 2 &amp; 5 &amp; 1 &amp;3 \\ 0 &amp; 1 &amp; 3 &amp; 1 &amp; 7 &amp; 8 \\ 4 &amp;2&amp;1&amp;6&amp;2&amp;8 \\ 4&amp; 2&amp; 1&amp; 6&amp; 2&amp; 8\\2&amp; 4&amp; 5&amp; 2&amp; 3&amp; 9   \end{bmatrix} * \begin{bmatrix} 1 &amp; 0 &amp;-1 \\ 1 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; -1 \end{bmatrix} = \begin{bmatrix} -5 &amp; -4 &amp; 0 &amp; 8 \\ -10 &amp; -2 &amp; 2 &amp; 3 \\ 0 &amp; -2 &amp; -4 &amp; -7 \\ -3 &amp; -2 &amp; -3 &amp; -16  \end{bmatrix} $$</p>
 <p>The convolution operation is to do a elements wise multiplication for the fist 3<em>3 elements to the filter. And them do the next 3</em>3 filter. For example, the first number -5 is equal to $$3<em>1+0 * 0+1</em>-1+ 1 * 1 + 5 * 0 + 8 * -1 + 2 * 1 + 7 * 0 + 2 * -1$$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#in python the conv operation:</span>
-conv<span style="color:#f92672">-</span>forward()
-<span style="color:#75715e">#in tensorflow</span>
-tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>conv2d()
-<span style="color:#75715e">#in keras</span>
-Conv2D()
-</code></pre></div><p>Why we use the convolution method to detect the vertical edge, let&rsquo;s have a example of vertical image edges</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#in python the conv operation:</span>
+</span></span><span style="display:flex;"><span>conv<span style="color:#f92672">-</span>forward()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#in tensorflow</span>
+</span></span><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>conv2d()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#in keras</span>
+</span></span><span style="display:flex;"><span>Conv2D()
+</span></span></code></pre></div><p>Why we use the convolution method to detect the vertical edge, let&rsquo;s have a example of vertical image edges</p>
 <p>$$ \begin{bmatrix} 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10&amp; 10&amp; 0&amp; 0&amp; 0 \\ 10 &amp;10&amp; 10&amp; 0 &amp;0 &amp;0 \\ 10 &amp;10&amp; 10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0&amp; 0 \\ 10&amp; 10 &amp;10 &amp;0 &amp;0 &amp;0 \end{bmatrix} * \begin{bmatrix} 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \\ 1 &amp;0 &amp;-1 \end{bmatrix} =\begin{bmatrix} 0 &amp;30 &amp;30&amp; 0 \\ 0 &amp;30 &amp;30 &amp;0\\ 0&amp; 30 &amp;30 &amp;0 \end{bmatrix}$$</p>
 <p>By the convolution operation, we see that in the middle is a number of 30s and that means we find the edges.</p>
 <p>We can not only detect the edges but also detect it transact from white to gray or gray to white:</p>
@@ -331,7 +331,7 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
 
 <div class="pagination">
   
-    <a href="/projects/classifier/" class="button big previous"><i class="fas fa-angle-left"></i> Classifier Implementation and Problems</a>
+    <a href="/projects/somenotesaboutssh/" class="button big previous"><i class="fas fa-angle-left"></i> Notes on SSH and AWS</a>
   
   
     <a href="/projects/computervisionnote2/" class="button big next">Computer vision problem and step by step <i class="fas fa-angle-right"></i></a>
@@ -366,22 +366,12 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -401,17 +391,12 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -485,7 +470,7 @@ There are two formulas to denote the process $$z^{[1]} = w^{[1]}a^{[0]}+b^{[1]} 
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

@@ -1,0 +1,136 @@
++++
+author = "Shengting Cao"
+categories = ["Machine Learning"]
+date = "2019-09-25"
+description = "Talk about Classifier basics and how to implement them in Matlab without use the build-in classifier function"
+featured = ""
+featuredalt = "Pic 3"
+featuredpath = "date"
+linktitle = ""
+title = "Classifier Implementation and Problems"
+type = "post"
++++
+
+#### Essential Knowledge and PDFs:
+
+[Probability](/img/2019/09/Probability.pdf),
+[Bayesian Decision Theory](/img/2019/09/BayesianDecisionTheory.pdf),
+[Parametric Methods](/img/2019/09/ParametricMethod.pdf),
+[Multivariate Parametric Methods](/img/2019/09/MultivariateMethod.pdf),
+[Assesses Classifier](/img/2019/09/AssessClassifier.pdf)
+
+#### Basic binary classifier
+If we have one vector of data how to divide it into two separate part?
+Intuitively, the simplest model is we need find a number to be the middle point to separate the data into two different categories.
+So we can implement the basic classifier by find the middle point.
+
+For example, if we what to know if the a specific room have people inside or not **(This is a binary question only have answer yes or no)**. We can think about different parameters that indicate if there is a person in the room.
+Such as, light, temperature, humidity, CO2 percentage. We can make an assumption: the CO2 percentage in the room is higher, the more chance the room will exist a people inside.
+Then for Machine Learning approach, We have to learning from data to get a threshold of CO2 percentage. I have these Matlab pseudocode to illustrate the process.
+
+```matlab
+for CO2Percentage = min_value : max_value
+    % compute error on the training set
+    % remember the CO2Percentage that make it have a minimum error rate
+    % not only error rate, you can pick up other judgement
+    %such as Recall, Precision, Specificity,False alarm rate, multi-class confusion Matrix or ROC cure and AUC value.
+    % You can find the information in the pdf Assesses Classifier
+    % the learning process is just optimize those parameters
+end
+```
+
+This is a naive implementation, if we want more accuracy result. We should use the **cross validation** method to find the
+threshold. And it is simply divided the training set into different folds and use one part of them as a validation set. The rest
+are training set. Pseudocode looks like this :
+
+```matlab
+for feature=1:N
+% split feature vector into folds
+    for folds=1:K
+      % train the classifier on the training set
+       for param=min_value: max_value (e.g. CO2Percentage from 0 to 100)
+            % compute error on the training set
+       end
+       % select value of param  (param*) corresponding to minimal error from the error values computed in the for loop above
+       % apply param* to the validation set, compute error of validation set (error_val)
+    end
+    % compute average values of param* (avg_param*) and error_val (avg_error_val)
+    % apply avg_param* on the test set, compute error (error_test)
+end
+```
+
+#### Classification with Probability
+We know binary classifier works by find a threshold to distinguish two classes. How we find a classifier that is able to distinguish
+among 3 classes or more? Simply by find threshold can't solve this problem. So we need another model that involve probability to solve this problem.
+
+✨✨**Bayesian Decision (classifier)**✨✨
+
+Instead of optimize the threshold, the MultiClass Classifier is trying to predict the probability of output.
+For example, if we want to build a classifier to estimate tomorrow is sunny or rainy. We use different data to calculate the probability. If P(sunny|parameters) > 0.5 we say it's sunny. If P(rainy|parameters)>0.5 we say it will
+Here I need explain several terms in this graph:
+
+<img src = /img/2019/09/pic10.png width = 50% />
+
+Use the [sea bass and salmon](/img/2019/09/AssessClassifier.pdf) example:
+
+**prior(probability)** is the prior knowledge of how likely is to get a sea bass or a salmon.
+
+**evidence(probability density function)** is how frequently we will measure a
+pattern with feature value x. (e.g.,x corresponds to lightness)
+
+**likelihood(conditional probability density function)** is how frequently we
+will measure a pattern with feature value x given that pattern belongs to class $$C_i$$.
+
+**posterior(conditional probability)** is the probability that the fish belongs to class $$C_i$$.
+
+
+**Bayes' Rule: K > 2 Classes**
+
+$$P(C_i | \bold x) = \frac {p(\bold x | C_i) P(C_i)} {p(\bold x)} = \frac {p(\bold x|C_i)P(C_i)}{\sum^k_{k=1}p(\bold x|C_k)P(C_k)} $$
+
+To distinguish more than two classes we need to analysis the losses and risk of the data. We can calculate the risk according to the following formula:
+
+$$R(\alpha_i|\bold x) = \sum_{k=1}^K \lambda_{ik}P(C_k|\bold x)$$
+
+In this formula,$$\alpha_i$$ is the action (assign input to different classes)，$$\lambda_{ik} = \lambda(\alpha_i | C_k)$$. This **Risk Function** says the expected ("average") loss for taking an action(choosing a class) given an input vector, for a given conditional loss function $$\lambda$$
+
+We can define $$\lambda_{ik} = \begin{cases} 0 &\text{if } i = k &\text{Good decisions have no loss}\\ 1 &\text{if } i \not = k &\text{Bad decisions are equally costly}\end{cases}$$. This is called **zero/one loss**. After calculating the risk of each classes, we choose the action that minimizes the risk:
+
+Choose $$\alpha_i $$ if $$ R(\alpha_i | \bold x) = min_k R(\alpha_k | \bold x)$$. In **zero/one loss** we can simplify it like this:
+
+$$R(\alpha_i | \bold x) = \sum_{k=1}^K \lambda_{ik}P(C_k|\bold x) = \sum_{k\not = i}P(C_k|\bold x)=1 - P(C_i|\bold x)$$
+
+We always need a better classifier because misclassifications are costly, one way to reduce the misclassification are add **Reject** to your algorithm.
+We can modify the $$\lambda_{ik}$$ function to achieve this functionality.
+
+
+$$\lambda_{ik} = \begin{cases} 0 &\text{if } i = k \\ \lambda &\text{if } i = K + 1, 0 < \lambda < 1 &\text{Reject action} \ \alpha_{K+1} \\ 1 &\text{otherwise}& \text{Cost of misclassification} \end{cases}$$
+
+We can simply file the risk function by the following:
+
+$$R(\alpha_{k+1}|\bold x) = \sum_{k=1}^K\lambda P(C_k|\bold x) = \lambda$$
+
+$$R(\alpha_i | \bold x) = \sum_{k \not = i}P(C_k|\bold x) = 1 - P(C_i |\bold x)$$
+
+We choose $$C_i$$ if $$P(C_i|\bold x) > P(C_k|\bold x) \forall k \not = i $$ and $$ P(C_i|\bold x)>1-\lambda$$ Otherwise reject.
+
+![pic01](/img/2019/10/pic02.png)
+
+After this we define a function called **Discriminant Function** (notation is $$g_i(\bold x)$$), we choose $$C_i$$ if $$g_i(\bold x) = max_kg_k(\bold x)$$. Therefore we could define a Discriminant Function
+$$g_i(\bold x) = -R(\alpha |\bold x)$$. So we have the max discriminant corresponds to min risk.
+
+As a result, we can get $$g_i(\bold x) = P(C_i|\bold x)$$ for zero/one loss function and finally get $$g_i(\bold x)= p(\bold x|C_i)P(C_i) $$ neglecting common evidence.
+
+✨✨**Parametric Classifier** ✨✨
+
+With those knowledge in Bayesian decision. We understand how the classifier works in the sense of probability.
+Before go through the concepts, I put the notation here in advance.
+
+$$\chi$$ is the sample, $$\chi = \{\bold x^t \}_t$$ where $$\bold x^t \sim p(\bold x)$$, $$\theta$$ defined as an estimate with this form $$p(\bold x | \theta )$$ (e.g.,$$N(\mu, \sigma^2 )$$ where $$\theta = \{\mu,\sigma^2 \}$$)
+
+**likelihood** of $$ \theta$$ given the sample $$\chi$$ $$l(\theta |\chi) = p(\chi |\theta) = \Pi_tp(\bold x^t|\theta)$$
+
+We want to fine $$\theta$$ that make $$\chi$$ most likely to be drawn.t
+
+
+continue...

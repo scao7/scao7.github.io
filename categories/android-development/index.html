@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Android Development">
 <meta itemprop="description" content="">
   <meta property="og:title" content="Android Development" />
@@ -262,18 +262,18 @@
   
 
   
-  <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">imageGradient</span><span style="color:#f92672">(){</span>
-     Mat grayMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Mat sobel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Mat grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Mat abs_grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Mat grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Mat abs_grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
-     Mat originalMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>originalMat<span style="color:#f92672">);</span>
-     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>originalMat<span style="color:#f92672">,</span> grayMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">);</span>
-     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">Sobel</span><span style="color:#f92672">(</span>grayMat<span style="color:#f92672">,</span>grad_x<span style="color:#f92672">,</span>CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_16S</span><span style="color:#f92672">,</span>1<span style="color:#f92672">,</span>0<span style="color:#f92672">,&hellip;</span></code></pre>
+  <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">imageGradient</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>     Mat grayMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat sobel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat abs_grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat abs_grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>     Mat originalMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>originalMat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>originalMat<span style="color:#f92672">,</span> grayMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">Sobel</span><span style="color:#f92672">(</span>grayMat<span style="color:#f92672">,</span>grad_x<span style="color:#f92672">,</span>CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_16S</span><span style="color:#f92672">,</span>1<span style="color:#f92672">,</span>0<span style="color:#f92672">,&hellip;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
   <footer>
     <a href="/projects/opencvbasiclibraryintroandroid/" class="button big">Read more</a>
     <ul class="stats">
@@ -506,22 +506,12 @@ the interface design and interface logic too.</p>
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -541,17 +531,12 @@ the interface design and interface logic too.</p>
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -625,7 +610,7 @@ the interface design and interface logic too.</p>
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

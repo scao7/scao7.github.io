@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Computer Graphics -- Lighting">
 <meta itemprop="description" content="Vertex shader and Fragment shader"><meta itemprop="datePublished" content="2019-02-26T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-02-26T00:00:00+00:00" />
@@ -223,106 +223,103 @@
 <p>Simply saying that, switch from fragment shader to vertex shader just simply do all the calculation in the vertex shader instead of fragment shader by using varying variables.</p>
 <h4 id="vertex-shader-based">vertex shader based</h4>
 <h5 id="span-stylecolorblue-vertex-shader-顶点着色器为主-span"><!-- raw HTML omitted --> vertex shader 顶点着色器为主 <!-- raw HTML omitted --></h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertex-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-vertex&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">a_position</span>;
-  <span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">a_normal</span>;
-
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightWorldPosition</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_viewWorldPosition</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_world</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldViewProjection</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldInverseTranspose</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">fColor</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">u_color</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_shininess</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightDirection</span>;
-  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_innerLimit</span>;          <span style="color:#75715e">// in dot space
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_outerLimit</span>;          <span style="color:#75715e">// in dot space
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">light</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">specular</span>;
-  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#75715e">// Multiply the position by the matrix.
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_worldViewProjection</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>;
-    <span style="color:#75715e">// orient the normals and pass to the fragment shader
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mat3</span>(<span style="color:#a6e22e">u_worldInverseTranspose</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_normal</span>;
-    <span style="color:#75715e">// compute the world position of the surfoace
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceWorldPosition</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">u_world</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>).<span style="color:#a6e22e">xyz</span>;
-    <span style="color:#75715e">// compute the vector of the surface to the light
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// and pass it to the fragment shader
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_surfaceToLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_lightWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
-    <span style="color:#75715e">// compute the vector of the surface to the view/camera
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// and pass it to the fragment shader
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_surfaceToView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_viewWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
-    <span style="color:#75715e">// because v_normal is a varying it&#39;s interpolated
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// we it will not be a uint vector. Normalizing it
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// will make it a unit vector again
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_normal</span>);
-    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceToLightDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_surfaceToLight</span>);
-    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceToViewDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_surfaceToView</span>);
-    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">halfVector</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">surfaceToLightDirection</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">surfaceToViewDirection</span>);
-    <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">dotFromDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">surfaceToLightDirection</span>,
-                                 <span style="color:#f92672">-</span><span style="color:#a6e22e">u_lightDirection</span>);
-    <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">smoothstep</span>(<span style="color:#a6e22e">u_outerLimit</span>, <span style="color:#a6e22e">u_innerLimit</span>, <span style="color:#a6e22e">dotFromDirection</span>);
-    <span style="color:#a6e22e">light</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">normal</span>, <span style="color:#a6e22e">surfaceToLightDirection</span>);
-    <span style="color:#a6e22e">specular</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">pow</span>(<span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">normal</span>, <span style="color:#a6e22e">halfVector</span>), <span style="color:#a6e22e">u_shininess</span>);
-    <span style="color:#a6e22e">fColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_color</span>;
-  }
-<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-<span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">fragment</span> <span style="color:#a6e22e">shader</span> <span style="color:#a6e22e">program</span> <span style="color:#f92672">--&gt;</span>
-<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fragment-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-fragment&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#a6e22e">precision</span> <span style="color:#a6e22e">mediump</span> <span style="color:#66d9ef">float</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">fColor</span>;
-  <span style="color:#75715e">// Passed in from the vertex shader.
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">light</span>;
-  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">specular</span>;
-  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">gl_FragColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fColor</span>;
-    <span style="color:#75715e">// Lets multiply just the color portion (not the alpha)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// by the light
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_FragColor</span>.<span style="color:#a6e22e">rgb</span> <span style="color:#f92672">*=</span> <span style="color:#a6e22e">light</span>;
-    <span style="color:#75715e">// Just add in the specular
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_FragColor</span>.<span style="color:#a6e22e">rgb</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">specular</span>;
-  }
-<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-
-</code></pre></div><h4 id="fragment-shader-based">fragment shader based</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertex-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-vertex&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">a_position</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">a_normal</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightWorldPosition</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_viewWorldPosition</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_world</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldViewProjection</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldInverseTranspose</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">fColor</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">u_color</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_shininess</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightDirection</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_innerLimit</span>;          <span style="color:#75715e">// in dot space
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">uniform</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">u_outerLimit</span>;          <span style="color:#75715e">// in dot space
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">light</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">specular</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Multiply the position by the matrix.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_worldViewProjection</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// orient the normals and pass to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mat3</span>(<span style="color:#a6e22e">u_worldInverseTranspose</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_normal</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// compute the world position of the surfoace
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceWorldPosition</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">u_world</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>).<span style="color:#a6e22e">xyz</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// compute the vector of the surface to the light
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// and pass it to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_surfaceToLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_lightWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// compute the vector of the surface to the view/camera
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// and pass it to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">v_surfaceToView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_viewWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// because v_normal is a varying it&#39;s interpolated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// we it will not be a uint vector. Normalizing it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// will make it a unit vector again
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_normal</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceToLightDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_surfaceToLight</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceToViewDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">v_surfaceToView</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">halfVector</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">surfaceToLightDirection</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">surfaceToViewDirection</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">dotFromDirection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">surfaceToLightDirection</span>,
+</span></span><span style="display:flex;"><span>                                 <span style="color:#f92672">-</span><span style="color:#a6e22e">u_lightDirection</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">smoothstep</span>(<span style="color:#a6e22e">u_outerLimit</span>, <span style="color:#a6e22e">u_innerLimit</span>, <span style="color:#a6e22e">dotFromDirection</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">light</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">normal</span>, <span style="color:#a6e22e">surfaceToLightDirection</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">specular</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inLight</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">pow</span>(<span style="color:#a6e22e">dot</span>(<span style="color:#a6e22e">normal</span>, <span style="color:#a6e22e">halfVector</span>), <span style="color:#a6e22e">u_shininess</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_color</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">fragment</span> <span style="color:#a6e22e">shader</span> <span style="color:#a6e22e">program</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fragment-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-fragment&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">precision</span> <span style="color:#a6e22e">mediump</span> <span style="color:#66d9ef">float</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">fColor</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Passed in from the vertex shader.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">light</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">varying</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">specular</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gl_FragColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fColor</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Lets multiply just the color portion (not the alpha)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// by the light
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_FragColor</span>.<span style="color:#a6e22e">rgb</span> <span style="color:#f92672">*=</span> <span style="color:#a6e22e">light</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Just add in the specular
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">gl_FragColor</span>.<span style="color:#a6e22e">rgb</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">specular</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h4 id="fragment-shader-based">fragment shader based</h4>
 <h5 id="span-stylecolorblue-fragment-shader-片段着色器为主-span"><!-- raw HTML omitted --> fragment shader 片段着色器为主 <!-- raw HTML omitted --></h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertex-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-vertex&#34;</span><span style="color:#f92672">&gt;</span>
-<span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">a_position</span>;
-<span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">a_normal</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">ambientProduct</span>, <span style="color:#a6e22e">diffuseProduct</span>, <span style="color:#a6e22e">specularProduct</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightWorldPosition</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_viewWorldPosition</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_world</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldViewProjection</span>;
-<span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldInverseTranspose</span>;
-<span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
-<span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
-<span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
-  <span style="color:#75715e">// Multiply the position by the matrix.
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_worldViewProjection</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>;
-  <span style="color:#75715e">// orient the normals and pass to the fragment shader
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mat3</span>(<span style="color:#a6e22e">u_worldInverseTranspose</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_normal</span>;
-  <span style="color:#75715e">// compute the world position of the surfoace
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceWorldPosition</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">u_world</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>).<span style="color:#a6e22e">xyz</span>;
-  <span style="color:#75715e">// compute the vector of the surface to the light
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// and pass it to the fragment shader
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_surfaceToLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_lightWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
-  <span style="color:#75715e">// compute the vector of the surface to the view/camera
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// and pass it to the fragment shader
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_surfaceToView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_viewWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
-}
-<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-
-
-</code></pre></div><p>[Reference Page](<a href="https://scao7.github.io/cs435/project4/spotlight.html">Project Link</a>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertex-shader&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-shader/x-vertex&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">a_position</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">attribute</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">a_normal</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec4</span> <span style="color:#a6e22e">ambientProduct</span>, <span style="color:#a6e22e">diffuseProduct</span>, <span style="color:#a6e22e">specularProduct</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_lightWorldPosition</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">u_viewWorldPosition</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_world</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldViewProjection</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uniform</span> <span style="color:#a6e22e">mat4</span> <span style="color:#a6e22e">u_worldInverseTranspose</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_normal</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToLight</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">varying</span> <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">v_surfaceToView</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Multiply the position by the matrix.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">gl_Position</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_worldViewProjection</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// orient the normals and pass to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_normal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mat3</span>(<span style="color:#a6e22e">u_worldInverseTranspose</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_normal</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// compute the world position of the surfoace
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">vec3</span> <span style="color:#a6e22e">surfaceWorldPosition</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">u_world</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">a_position</span>).<span style="color:#a6e22e">xyz</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// compute the vector of the surface to the light
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// and pass it to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_surfaceToLight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_lightWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// compute the vector of the surface to the view/camera
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// and pass it to the fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">v_surfaceToView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u_viewWorldPosition</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">surfaceWorldPosition</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><p>[Reference Page](<a href="https://scao7.github.io/cs435/project4/spotlight.html">Project Link</a>)
 <a href="https://scao7.github.io/cs435/project4/spotlight.html">Project Link</a></p>
 
   </div>
@@ -391,22 +388,12 @@
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -426,17 +413,12 @@
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -510,7 +492,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

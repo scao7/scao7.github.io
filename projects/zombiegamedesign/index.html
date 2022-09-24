@@ -7,11 +7,11 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Unreal Zombie Game Development I">
 <meta itemprop="description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it."><meta itemprop="datePublished" content="2020-03-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-03-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1106">
+<meta itemprop="wordCount" content="1108">
 <meta itemprop="keywords" content="" />
   <meta property="og:title" content="Unreal Zombie Game Development I" />
 <meta property="og:description" content="My first game developed using C&#43;&#43; and Blueprint in Unreal Engine 4, I will list some image for Blureprint and document how I inplemented it." />
@@ -226,91 +226,88 @@
 <p>First go to create a project using C++ without any start content. In the C++ Class folder create a &ldquo;BaseCharacter&rdquo; class.</p>
 <p><img src="/img/2020/03/pic1.png" alt=""></p>
 <p>In the &ldquo;BaseCharacter.h&rdquo; and &ldquo;BaseCharacter.cpp&rdquo;, the unreal engine has already generated some code for us. We can fill the file by using the code following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Fill out your copyright notice in the Description page of Project Settings.
-</span><span style="color:#75715e"></span><span style="color:#75715e">#pragma once
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CoreMinimal.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;GameFramework/Character.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;BaseCharacter.generated.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">//Step 1: Make this class avalibale to Blueprint
-</span><span style="color:#75715e"></span>UCLASS(Blueprintable)
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TWISTSHOOTING_API</span> ABaseCharacter : <span style="color:#66d9ef">public</span> ACharacter
-{
-	GENERATED_BODY()
-
-<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-
-	<span style="color:#75715e">//Step 2: Expose a float property
-</span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
-		<span style="color:#66d9ef">float</span> Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
-
-	<span style="color:#75715e">//Step 3: Expose a boolean property
-</span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
-		<span style="color:#66d9ef">bool</span> isDead <span style="color:#f92672">=</span> false;
-
-	<span style="color:#75715e">//Step 4: Make a helper function, just because we are lazy
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">CalculateDead</span>();
-
-	<span style="color:#75715e">//Step 5: Expose a method
-</span><span style="color:#75715e"></span>	UFUNCTION(BlueprintCallable, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
-		<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> CalculateHealth(<span style="color:#66d9ef">float</span> delta);
-
-
-	<span style="color:#75715e">//Step 6: Editor code to make updating values in the editor cleaner
-</span><span style="color:#75715e"></span><span style="color:#75715e">#if WITH_EDITOR
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PostEditChangeProperty</span>(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
-		<span style="color:#66d9ef">override</span>;
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-
-	<span style="color:#75715e">// Sets default values for this character&#39;s properties
-</span><span style="color:#75715e"></span>	ABaseCharacter();
-
-<span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
-	<span style="color:#75715e">// Called when the game starts or when spawned
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> BeginPlay() <span style="color:#66d9ef">override</span>;The step3 is create boolean variabel and make it readOnly in the blueprint.
-
-<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-	<span style="color:#75715e">// Called every frame
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Tick(<span style="color:#66d9ef">float</span> DeltaTime) <span style="color:#66d9ef">override</span>;
-
-	<span style="color:#75715e">// Called to bind functionality to input
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetupPlayerInputComponent</span>(<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UInputComponent</span><span style="color:#f92672">*</span> PlayerInputComponent) <span style="color:#66d9ef">override</span>;
-
-};
-
-
-</code></pre></div><p>As you can see we used 6 steps, the first one is make this c++ class available for blueprint, second is to expose the health variable to the blueprint and it can be read and writeThe step3 is create boolean variable and make it readOnly in the blueprint. , EditAnywhere and the category is &ldquo;BaseCharacter&rdquo;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Fill out your copyright notice in the Description page of Project Settings.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CoreMinimal.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;GameFramework/Character.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;BaseCharacter.generated.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Step 1: Make this class avalibale to Blueprint
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>UCLASS(Blueprintable)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TWISTSHOOTING_API</span> ABaseCharacter : <span style="color:#66d9ef">public</span> ACharacter
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	GENERATED_BODY()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Step 2: Expose a float property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">float</span> Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Step 3: Expose a boolean property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">bool</span> isDead <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Step 4: Make a helper function, just because we are lazy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">CalculateDead</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Step 5: Expose a method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	UFUNCTION(BlueprintCallable, Category <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BaseCharacter&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> CalculateHealth(<span style="color:#66d9ef">float</span> delta);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Step 6: Editor code to make updating values in the editor cleaner
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#if WITH_EDITOR
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PostEditChangeProperty</span>(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Sets default values for this character&#39;s properties
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	ABaseCharacter();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Called when the game starts or when spawned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> BeginPlay() <span style="color:#66d9ef">override</span>;The step3 is create boolean variabel and make it readOnly in the blueprint.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Called every frame
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> Tick(<span style="color:#66d9ef">float</span> DeltaTime) <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Called to bind functionality to input
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetupPlayerInputComponent</span>(<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UInputComponent</span><span style="color:#f92672">*</span> PlayerInputComponent) <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>As you can see we used 6 steps, the first one is make this c++ class available for blueprint, second is to expose the health variable to the blueprint and it can be read and writeThe step3 is create boolean variable and make it readOnly in the blueprint. , EditAnywhere and the category is &ldquo;BaseCharacter&rdquo;
 The step3 is create boolean variable and make it readOnly in the blueprint. Step 4 is just a help function for us to calculate the health. Step 5 will create a method and make it callable in blueprint. Step 6 just say if we edit the variable in blueprint it will override the property in the c++ scripts.</p>
 <p>The follow code are those function we have to implement according to the &ldquo;BaseCharacter.h&rdquo; file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//Step 1: Implement the CalculateHealth function.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateHealth(<span style="color:#66d9ef">float</span> Delta)
-{
-	Health <span style="color:#f92672">+=</span> Delta;
-	CalculateDead();
-}
-<span style="color:#75715e">//Step 2: Implement the CalculateDead function.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateDead()
-{
-	<span style="color:#66d9ef">if</span> (Health <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
-		isDead <span style="color:#f92672">=</span> true;
-	<span style="color:#66d9ef">else</span>
-		isDead <span style="color:#f92672">=</span> false;
-
-}
-<span style="color:#75715e">#if WITH_EDITOR
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Step 3: Implement the remainder of our helper code, used by the editor when we change values.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>PostEditChangeProperty(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
-{
-	isDead <span style="color:#f92672">=</span> false;
-	Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
-	Super<span style="color:#f92672">::</span>PostEditChangeProperty(PropertyChangedEvent);
-	CalculateDead();
-}
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-</code></pre></div><p>This three functions are declared in the .h file so we need to implement it. The first one is the help function CalculateHealth(). Basically, when call this function it will calculate the health and call the function CalculateDead. The CalculateDead is just return true if health less or equal to 0 and return false if larger than 0. The last one is implement the remainder of our helper code, when we change values change valudes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">//Step 1: Implement the CalculateHealth function.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateHealth(<span style="color:#66d9ef">float</span> Delta)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	Health <span style="color:#f92672">+=</span> Delta;
+</span></span><span style="display:flex;"><span>	CalculateDead();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Step 2: Implement the CalculateDead function.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>CalculateDead()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (Health <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		isDead <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>		isDead <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if WITH_EDITOR
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//Step 3: Implement the remainder of our helper code, used by the editor when we change values.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> ABaseCharacter<span style="color:#f92672">::</span>PostEditChangeProperty(FPropertyChangedEvent<span style="color:#f92672">&amp;</span> PropertyChangedEvent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	isDead <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>	Health <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>	Super<span style="color:#f92672">::</span>PostEditChangeProperty(PropertyChangedEvent);
+</span></span><span style="display:flex;"><span>	CalculateDead();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><p>This three functions are declared in the .h file so we need to implement it. The first one is the help function CalculateHealth(). Basically, when call this function it will calculate the health and call the function CalculateDead. The CalculateDead is just return true if health less or equal to 0 and return false if larger than 0. The last one is implement the remainder of our helper code, when we change values change valudes.</p>
 <p>This scripts is the only c++ I used in this project, the rest of the logic are all implemented in blueprint.</p>
 <h3 id="character-movement-and-damageable-setup">character movement and damageable setup</h3>
 <p>To setup the the character movement first we need go to Edit and project setting to set our input key.</p>
@@ -377,7 +374,7 @@ In this section, we want if the zombie overlapped with the human we need do dama
 
 <div class="pagination">
   
-    <a href="/projects/computervisionnote3/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step</a>
+    <a href="/projects/computervisionnote2/" class="button big previous"><i class="fas fa-angle-left"></i> Computer vision problem and step by step</a>
   
   
     <a href="/projects/github_token/" class="button big next">GitHub new security config <i class="fas fa-angle-right"></i></a>
@@ -412,22 +409,12 @@ In this section, we want if the zombie overlapped with the human we need do dama
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -447,17 +434,12 @@ In this section, we want if the zombie overlapped with the human we need do dama
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -531,7 +513,7 @@ In this section, we want if the zombie overlapped with the human we need do dama
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

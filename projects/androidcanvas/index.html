@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Android Development -- Pick Up Picture">
 <meta itemprop="description" content="pick up picture from gallery"><meta itemprop="datePublished" content="2019-05-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-01T00:00:00+00:00" />
@@ -230,84 +230,84 @@ the interface design and interface logic too.</p>
 <p><img src="https://raw.githubusercontent.com/scao7/dbyll/gh-pages/assets/media/androidRes/UIDir.PNG" alt="UI Directory"></p>
 <h5 id="add-imageview-and-button">Add ImageView and Button</h5>
 <p>In the &ldquo;activity_main.xml&rdquo; add a Button like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">Button</span>
-      <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/open_picture&#34;</span>
-      <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@style/Base.Widget.AppCompat.Button.Colored&#34;</span>
-      <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
-      <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span>
-      <span style="color:#a6e22e">android:text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@string/open_picture&#34;</span> /&gt;
-</code></pre></div><p>Also add the ImageView:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ImageView</span>
-       <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/imageView&#34;</span>
-       <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
-       <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;500dp&#34;</span>
-       <span style="color:#a6e22e">android:scaleType</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fitCenter&#34;</span>
-       <span style="color:#a6e22e">android:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@drawable/sample&#34;</span> /&gt;
-</code></pre></div><h4 id="implement-the-interface-logic-and-pick-up-logic">Implement the interface logic and Pick Up Logic</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">Button</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/open_picture&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@style/Base.Widget.AppCompat.Button.Colored&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@string/open_picture&#34;</span> /&gt;
+</span></span></code></pre></div><p>Also add the ImageView:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ImageView</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/imageView&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;500dp&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:scaleType</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fitCenter&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@drawable/sample&#34;</span> /&gt;
+</span></span></code></pre></div><h4 id="implement-the-interface-logic-and-pick-up-logic">Implement the interface logic and Pick Up Logic</h4>
 <p>Go to Java directory find the &ldquo;MainActivity&rdquo; class to implement the Logic
 First we need define two different code indicate the if the app was granted to open the camera.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> IMAGE_PICK_CODE <span style="color:#f92672">=</span> 1000<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> PERMISSION_CODE <span style="color:#f92672">=</span> 1001<span style="color:#f92672">;</span>
-</code></pre></div><p>We need define a button object called open button and get the UI information on the button object. Use the &ldquo;findViewById&rdquo; function to get the object.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">openBtn <span style="color:#f92672">=</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">open_picture</span><span style="color:#f92672">);</span>
-</code></pre></div><p>After we get the button object, we need add a OnClickListener(). We need check the permission code if the permission was granted to the app.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">openBtn<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-       <span style="color:#a6e22e">@Override</span>
-       <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-           <span style="color:#75715e">//check runtime permission
-</span><span style="color:#75715e"></span>           <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SDK_INT</span> <span style="color:#f92672">&gt;=</span> Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION_CODES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">M</span><span style="color:#f92672">){</span>
-               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>checkSelfPermission<span style="color:#f92672">((</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">))</span>
-                       <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_DENIED</span><span style="color:#f92672">){</span>
-                       <span style="color:#75715e">//permission not granted request
-</span><span style="color:#75715e"></span>                       String<span style="color:#f92672">[]</span> permissions <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">};</span>
-                       <span style="color:#75715e">//show popup for runtime permission
-</span><span style="color:#75715e"></span>                       requestPermissions<span style="color:#f92672">(</span>permissions<span style="color:#f92672">,</span> PERMISSION_CODE<span style="color:#f92672">);</span>
-               <span style="color:#f92672">}</span>
-               <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
-                   <span style="color:#75715e">//permission already granted
-</span><span style="color:#75715e"></span>                   pickImageFromGallery<span style="color:#f92672">();</span>
-               <span style="color:#f92672">}</span>
-           <span style="color:#f92672">}</span>
-           <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
-               <span style="color:#75715e">//system os is less then marshmallow
-</span><span style="color:#75715e"></span>               pickImageFromGallery<span style="color:#f92672">();</span>
-           <span style="color:#f92672">}</span>
-       <span style="color:#f92672">}</span>
-   <span style="color:#f92672">});</span>
-</code></pre></div><p>Notice there is a function called pickImageFromGallery() which is the method that actually pick the image in the gallery. We need create a Intent which is ACTION_PICK intent and set the select type to all the image file. Pass the intent and IMAGE_PICK_CODE into the startActivityForResult() function.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pickImageFromGallery</span><span style="color:#f92672">(){</span>
-       <span style="color:#75715e">//intent to pick image
-</span><span style="color:#75715e"></span>       Intent intent <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Intent<span style="color:#f92672">((</span>Intent<span style="color:#f92672">.</span><span style="color:#a6e22e">ACTION_PICK</span><span style="color:#f92672">));</span>
-       intent<span style="color:#f92672">.</span><span style="color:#a6e22e">setType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;image/*&#34;</span><span style="color:#f92672">);</span>
-       startActivityForResult<span style="color:#f92672">(</span>intent<span style="color:#f92672">,</span> IMAGE_PICK_CODE<span style="color:#f92672">);</span>
-   <span style="color:#f92672">}</span>
-</code></pre></div><p>In the first time to open gallery, we need to ask the user if grant the permission to open the gallery.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onRequestPermissionsResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> String<span style="color:#f92672">[]</span> permissions<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> grantResults<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>requestCode<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">case</span> PERMISSION_CODE<span style="color:#f92672">:</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>grantResults<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">&gt;</span>0 <span style="color:#f92672">&amp;&amp;</span> grantResults<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_GRANTED</span><span style="color:#f92672">){</span>
-                <span style="color:#75715e">// permission granted
-</span><span style="color:#75715e"></span>                pickImageFromGallery<span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
-                <span style="color:#75715e">// permission denied
-</span><span style="color:#75715e"></span>                Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Permission denied!&#34;</span><span style="color:#f92672">,</span>Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>When the Intent get result and the request is the pick up code. We can set the images URI to the image view to display the image on the screen.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
-<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onActivityResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> resultCode<span style="color:#f92672">,</span> Intent data<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>resultCode <span style="color:#f92672">==</span> RESULT_OK <span style="color:#f92672">&amp;&amp;</span> requestCode <span style="color:#f92672">==</span> IMAGE_PICK_CODE<span style="color:#f92672">){</span>
-        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageURI</span><span style="color:#f92672">(</span>data<span style="color:#f92672">.</span><span style="color:#a6e22e">getData</span><span style="color:#f92672">());</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>The last step is to make sure the cell phone not denied you the first add code to the Manifest file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">uses-permission</span> <span style="color:#a6e22e">android:name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;android.permission.READ_EXTERNAL_STORAGE&#34;</span> /&gt;
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> IMAGE_PICK_CODE <span style="color:#f92672">=</span> 1000<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> PERMISSION_CODE <span style="color:#f92672">=</span> 1001<span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>We need define a button object called open button and get the UI information on the button object. Use the &ldquo;findViewById&rdquo; function to get the object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>openBtn <span style="color:#f92672">=</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">open_picture</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>After we get the button object, we need add a OnClickListener(). We need check the permission code if the permission was granted to the app.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>openBtn<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">//check runtime permission
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SDK_INT</span> <span style="color:#f92672">&gt;=</span> Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION_CODES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">M</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>checkSelfPermission<span style="color:#f92672">((</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_DENIED</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e">//permission not granted request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                       String<span style="color:#f92672">[]</span> permissions <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e">//show popup for runtime permission
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                       requestPermissions<span style="color:#f92672">(</span>permissions<span style="color:#f92672">,</span> PERMISSION_CODE<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#75715e">//permission already granted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                   pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#75715e">//system os is less then marshmallow
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">});</span>
+</span></span></code></pre></div><p>Notice there is a function called pickImageFromGallery() which is the method that actually pick the image in the gallery. We need create a Intent which is ACTION_PICK intent and set the select type to all the image file. Pass the intent and IMAGE_PICK_CODE into the startActivityForResult() function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pickImageFromGallery</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//intent to pick image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       Intent intent <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Intent<span style="color:#f92672">((</span>Intent<span style="color:#f92672">.</span><span style="color:#a6e22e">ACTION_PICK</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>       intent<span style="color:#f92672">.</span><span style="color:#a6e22e">setType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;image/*&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>       startActivityForResult<span style="color:#f92672">(</span>intent<span style="color:#f92672">,</span> IMAGE_PICK_CODE<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>In the first time to open gallery, we need to ask the user if grant the permission to open the gallery.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onRequestPermissionsResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> String<span style="color:#f92672">[]</span> permissions<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> grantResults<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>requestCode<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> PERMISSION_CODE<span style="color:#f92672">:</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>grantResults<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">&gt;</span>0 <span style="color:#f92672">&amp;&amp;</span> grantResults<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_GRANTED</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// permission granted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// permission denied
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Permission denied!&#34;</span><span style="color:#f92672">,</span>Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>When the Intent get result and the request is the pick up code. We can set the images URI to the image view to display the image on the screen.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onActivityResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> resultCode<span style="color:#f92672">,</span> Intent data<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>resultCode <span style="color:#f92672">==</span> RESULT_OK <span style="color:#f92672">&amp;&amp;</span> requestCode <span style="color:#f92672">==</span> IMAGE_PICK_CODE<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageURI</span><span style="color:#f92672">(</span>data<span style="color:#f92672">.</span><span style="color:#a6e22e">getData</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The last step is to make sure the cell phone not denied you the first add code to the Manifest file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">uses-permission</span> <span style="color:#a6e22e">android:name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;android.permission.READ_EXTERNAL_STORAGE&#34;</span> /&gt;
+</span></span></code></pre></div>
   </div>
   <footer>
     <ul class="stats">
@@ -374,22 +374,12 @@ First we need define two different code indicate the if the app was granted to o
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -409,17 +399,12 @@ First we need define two different code indicate the if the app was granted to o
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -493,7 +478,7 @@ First we need define two different code indicate the if the app was granted to o
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

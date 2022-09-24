@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Android Development -- K-mean">
 <meta itemprop="description" content="K-mean clustering method for image processing using OpenCV"><meta itemprop="datePublished" content="2019-06-07T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-06-07T00:00:00+00:00" />
@@ -223,69 +223,69 @@
 <h4 id="what-i-use-k-mean-for">What I use K-mean for</h4>
 <p>In my projects, I need to analysis human body shape and get some health information. I need to distinguish the cloth and human body. Therefore, I need use k-mean to cluster the colors.</p>
 <h4 id="code-for-k-mean">Code for k-mean</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">k_Mean</span><span style="color:#f92672">(){</span>
-        Mat rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-        Mat mHSV <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-
-        Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
-        Bitmap outputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
-        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>rgba<span style="color:#f92672">);</span>
-
-        <span style="color:#75715e">//must convert to 3 channel image
-</span><span style="color:#75715e"></span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2RGB</span><span style="color:#f92672">,</span>3<span style="color:#f92672">);</span>
-        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGB2HSV</span><span style="color:#f92672">,</span>3<span style="color:#f92672">);</span>
-        Mat clusters <span style="color:#f92672">=</span> cluster<span style="color:#f92672">(</span>mHSV<span style="color:#f92672">,</span> 3<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>clusters<span style="color:#f92672">,</span>outputBitmap<span style="color:#f92672">);</span>
-
-        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputBitmap<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">cluster</span><span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Mat samples <span style="color:#f92672">=</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">());</span>
-        Mat samples32f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-        samples<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_32F</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
-
-        Mat labels <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-        <span style="color:#75715e">//criteria means the maximum loop
-</span><span style="color:#75715e"></span>        TermCriteria criteria <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TermCriteria<span style="color:#f92672">(</span>TermCriteria<span style="color:#f92672">.</span><span style="color:#a6e22e">COUNT</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
-        Mat centers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-        Core<span style="color:#f92672">.</span><span style="color:#a6e22e">kmeans</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> k<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> criteria<span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> Core<span style="color:#f92672">.</span><span style="color:#a6e22e">KMEANS_PP_CENTERS</span><span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
-
-        <span style="color:#66d9ef">return</span> showClusters<span style="color:#f92672">(</span>cutout<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">showClusters</span> <span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> Mat labels<span style="color:#f92672">,</span> Mat centers<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>centers<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_8UC1</span><span style="color:#f92672">,</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
-        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>labels <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;labels&#34;</span><span style="color:#f92672">);</span>
-
-        List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> clusters <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;();</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Mat<span style="color:#f92672">.</span><span style="color:#a6e22e">zeros</span><span style="color:#f92672">(</span>cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">(),</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">type</span><span style="color:#f92672">()));</span>
-        <span style="color:#f92672">}</span>
-
-        Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> counts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;();</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>i<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
-
-        <span style="color:#66d9ef">int</span> rows <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">();</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">int</span> label <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>labels<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>rows<span style="color:#f92672">,</span> 0<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
-                <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 2<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
-                <span style="color:#66d9ef">int</span> g <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 1<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
-                <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 0<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
-                counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
-                clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">).</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>y<span style="color:#f92672">,</span> x<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> g<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
-                rows<span style="color:#f92672">++;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>counts<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">return</span> clusters<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="limitation">limitation</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">k_Mean</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>        Mat rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Mat mHSV <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>        Bitmap outputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>rgba<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//must convert to 3 channel image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2RGB</span><span style="color:#f92672">,</span>3<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGB2HSV</span><span style="color:#f92672">,</span>3<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Mat clusters <span style="color:#f92672">=</span> cluster<span style="color:#f92672">(</span>mHSV<span style="color:#f92672">,</span> 3<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>clusters<span style="color:#f92672">,</span>outputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">cluster</span><span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Mat samples <span style="color:#f92672">=</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        Mat samples32f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        samples<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_32F</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Mat labels <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//criteria means the maximum loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TermCriteria criteria <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TermCriteria<span style="color:#f92672">(</span>TermCriteria<span style="color:#f92672">.</span><span style="color:#a6e22e">COUNT</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Mat centers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Core<span style="color:#f92672">.</span><span style="color:#a6e22e">kmeans</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> k<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> criteria<span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> Core<span style="color:#f92672">.</span><span style="color:#a6e22e">KMEANS_PP_CENTERS</span><span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> showClusters<span style="color:#f92672">(</span>cutout<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">showClusters</span> <span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> Mat labels<span style="color:#f92672">,</span> Mat centers<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>centers<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_8UC1</span><span style="color:#f92672">,</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>labels <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;labels&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> clusters <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Mat<span style="color:#f92672">.</span><span style="color:#a6e22e">zeros</span><span style="color:#f92672">(</span>cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">(),</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">type</span><span style="color:#f92672">()));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> counts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>i<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> rows <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">();</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> label <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>labels<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>rows<span style="color:#f92672">,</span> 0<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 2<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> g <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 1<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> 0<span style="color:#f92672">)[</span>0<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">).</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>y<span style="color:#f92672">,</span> x<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> g<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                rows<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>counts<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> clusters<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="limitation">limitation</h4>
 <p>These code for k-mean takes a long time to run on the android phone. Probably due to the showClusters function take a two for loop to get a clusters images. I am looking for good way to make the method faster. Once I got a way, I will continue to write in this post.</p>
 
   </div>
@@ -354,22 +354,12 @@
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -389,17 +379,12 @@
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -473,7 +458,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 

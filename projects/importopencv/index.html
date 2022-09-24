@@ -7,7 +7,7 @@
 
 
 
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.104.0" />
   <meta itemprop="name" content="Android Development -- Import OpenCV">
 <meta itemprop="description" content="Make OpenCV works on Android"><meta itemprop="datePublished" content="2019-05-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-17T00:00:00+00:00" />
@@ -239,21 +239,21 @@
 <p>Create a folder named &ldquo;jniLibs&rdquo; and paste the files under the directory</p>
 <p><img src="https://raw.githubusercontent.com/scao7/dbyll/gh-pages/assets/media/androidRes/pic6.PNG" alt="pic6"></p>
 <h4 id="use-the-opencv-library">Use the OpenCV library</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ostu<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            <span style="color:#a6e22e">@Override</span>
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                OpenCVLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">initDebug</span><span style="color:#f92672">();</span>
-                Bitmap originalBitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">drawable</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sample</span><span style="color:#f92672">);</span>
-                Mat resultMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
-                Bitmap ouputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
-                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">);</span>
-                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span>0<span style="color:#f92672">);</span>
-                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>255<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
-                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>ouputBitmap<span style="color:#f92672">);</span>
-                imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>ouputBitmap<span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">});</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ostu<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                OpenCVLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">initDebug</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                Bitmap originalBitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">drawable</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sample</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Mat resultMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                Bitmap ouputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span>0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>255<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>ouputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>ouputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">});</span>
+</span></span></code></pre></div>
   </div>
   <footer>
     <ul class="stats">
@@ -320,22 +320,12 @@
           
           <li>
             
-              <a href="/categories/computer-vision/">computer-vision<span class="count">3</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/programming-languages/">programming-languages<span class="count">3</span></a>
             
           
           <li>
             
-              <a href="/categories/latex/">latex<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/deep-learning/">deep-learning<span class="count">1</span></a>
+              <a href="/categories/computer-vision/">computer-vision<span class="count">2</span></a>
             
           
           <li>
@@ -355,17 +345,12 @@
           
           <li>
             
+              <a href="/categories/latex/">latex<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/machine-learning/">machine-learning<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/probability/">probability<span class="count">1</span></a>
             
           
           </li>
@@ -439,7 +424,7 @@
         Shengting Cao&#39;s Note Book
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.104.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 
