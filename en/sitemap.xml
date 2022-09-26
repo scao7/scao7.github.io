@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://shengtingcao.top/categories/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="jp"
@@ -20,14 +20,14 @@
                 href="https://shengtingcao.top/categories/"
                 />
   </url><url>
-    <loc>https://shengtingcao.top/categories/github/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/categories/computer-vision/</loc>
+    <lastmod>2022-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://shengtingcao.top/projects/github_token/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <loc>https://shengtingcao.top/projects/humanposeestimation/</loc>
+    <lastmod>2022-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://shengtingcao.top/projects/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="jp"
@@ -44,14 +44,17 @@
                 href="https://shengtingcao.top/projects/"
                 />
   </url><url>
+    <loc>https://shengtingcao.top/categories/github/</loc>
+    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://shengtingcao.top/projects/github_token/</loc>
+    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://shengtingcao.top/categories/game-development/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://shengtingcao.top/projects/zombiegamedesign/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://shengtingcao.top/categories/computer-vision/</loc>
-    <lastmod>2020-01-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://shengtingcao.top/projects/computervisionnote2/</loc>
     <lastmod>2020-01-15T00:00:00+00:00</lastmod>

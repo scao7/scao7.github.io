@@ -2,23 +2,28 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>GitHub - Shengting Cao&#39;s Note Book</title>
+<title>Human pose researches: skeleton, SMPL and humannerf - Shengting Cao&#39;s Note Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
   <meta name="generator" content="Hugo 0.104.0" />
-  <meta itemprop="name" content="GitHub">
-<meta itemprop="description" content="">
-  <meta property="og:title" content="GitHub" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shengtingcao.top/categories/github/" />
+  <meta itemprop="name" content="Human pose researches: skeleton, SMPL and humannerf">
+<meta itemprop="description" content="This article is about some useful information about human pose estimation"><meta itemprop="datePublished" content="2022-09-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="555">
+<meta itemprop="keywords" content="" />
+  <meta property="og:title" content="Human pose researches: skeleton, SMPL and humannerf" />
+<meta property="og:description" content="This article is about some useful information about human pose estimation" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/projects/humanposeestimation/" /><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2022-09-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-25T00:00:00+00:00" />
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GitHub"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Human pose researches: skeleton, SMPL and humannerf"/>
+<meta name="twitter:description" content="This article is about some useful information about human pose estimation"/>
 
   
 
@@ -50,7 +55,7 @@
       <a href="/">
         
           
-            Categories
+            projects
           
         
       </a>
@@ -181,36 +186,82 @@
 </section>
 
       <main id="site-main">
-        <h1>GitHub</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2><a href="/projects/github_token/">GitHub new security config</a></h2>
+        <h2><a href="/projects/humanposeestimation/">Human pose researches: skeleton, SMPL and humannerf</a></h2>
     
     
-        <p>Github updated security</p>
+        <p>This article is about some useful information about human pose estimation</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2022-02-09 00:00:00 &#43;0000 UTC">
-      February 9, 2022
+    <time class="published" datetime="2022-09-25 00:00:00 &#43;0000 UTC">
+      September 25, 2022
     </time>
     <span class="author">Shengting Cao</span>
     
-      <p>1 minute read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
 
-  
-  <p>Right now the GitHub updated it&rsquo;s authentication protocal from password based to tocken based. It increased the security of the repository but not as convinient as before. I took some note to adopt the new change for github.</p>
+  <div class="content">
+    <p>Human pose estimation is a widely studied in computer vision areas, this article reviews the detail of popular human pose estimation pipleline and methods.</p>
+<h2 id="openpose">OpenPose</h2>
+<p>OpenPose is a widely used framework for 2D pose estimation. The github link is: <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">https://github.com/CMU-Perceptual-Computing-Lab/openpose</a>.
+From 2016, this team published 4 different paper about how to estimate the 2D poses.</p>
+<h4 id="convolutional-pose-machines">Convolutional pose machines</h4>
+<p>paper link: <a href="https://arxiv.org/pdf/1602.00134.pdf">convolutional pose machines</a></p>
+<p>This paper shows a systematic design of how convolutional network can be incorporate into the pose machine framework.</p>
+<p>Pose Machines problem is defined as following:</p>
+<p><strong>p-th anatomical landmark:</strong>
+$$Y_p \in \mathbb{Z} \subset  \mathbb{R}^2, \mathbb{Z} \ is \ the \ set \ of\ all\ (u,v)\ locations\ in\ an \ image \ Y= (Y_1,&hellip;,Y_P)$$</p>
+<p><strong>Pose machine: multi-class predictors</strong></p>
+<p>$$g_t(\cdot)\ is \ trained \ to \ predict \ the \ locations \ of \ each \ part \ in \ each \ level \ of \ hierachy $$</p>
+<p>Feature extracted from location z denoted by $$\mathbf{x}_z \in \mathbb{R}^d$$ and contextual  information from the precceding clasifier in the neighborhood. the otuput is based on the final belief values.</p>
+<p>$$g_1(\mathbb{x}_z) \rightarrow \{b_1^p (Y_P = z) \}_p $$</p>
+<p>$$ b_1^p (Y_P = z) $$ is the belief of each joints at stage 1.</p>
+<p>respectively the collection of belief is shown below  (P parts include the one for background).</p>
+<p>$$ b_t \in \mathbb{R}^{w \times h \times (P+1)}$$</p>
+<p>All the estimation of joints locations are based on 1. feature of image data and 2. contextural information from the preceeding classier in the neighborhood around each $$Y_p$$</p>
+<p>The final equaiton is <img src="/img/2022/09/posemachineequation.png" alt="equation3"> where the $$\psi_t &gt;1(\cdot)$$ is a mapping from the beliefs $$b_{t-1}$$ to context features.</p>
+<p>The old way to achieve the above  method is using handcrafted feature with boosteed random forest. The method used in this paper replaec the hand crafted feature to convolutional neural networks.</p>
+<p><img src="/img/2022/09/effectiveReceptiveField.png" alt="Effective Receptinve"></p>
+<h4 id="realtime-multi-person-2d-pose-estimation-using-part-affinity-fields">Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</h4>
+<p>Paper link: <a href="https://arxiv.org/pdf/1611.08050.pdf">https://arxiv.org/pdf/1611.08050.pdf</a></p>
+<p>This paper introduce a idea called Part Affinity Fields (PAFs), to learn to associate the body parts with inividuals in the image. This one focused on the mutiperson scenerio. The piepline is to first take entire image as the intput of a two-branch CNN to jointly predict confidence maps for body part deteciton, and then use the affinity fields for parts association. Then the biparite matching associate the body parts candidates. Last, they assemble them into the fully body poses.</p>
+<p>Folowed by the previous paper, a feed-forward network simultaneously predits a set of 2D confidence maps of body part locations and a set of 2D vector feilds L for part affinities. The part affinity fileds preserves both location and orientation information across the region of support of the limb.</p>
+<p><img src="/img/2022/09/pafs.png" alt="PAFs"></p>
+<h4 id="hand-keypoint-detection-in-single-images-using-multiview-bootstrapping">Hand Keypoint Detection in Single Images using Multiview Bootstrapping</h4>
+<p>Paper link: <a href="https://arxiv.org/pdf/1704.07809.pdf">https://arxiv.org/pdf/1704.07809.pdf</a></p>
+<p>This paper is focusing on predict the hand pose.</p>
+<h4 id="openpose-realtime-multi-person-2d-pose-estimation-using-part-affinity-fields">OpenPose: Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</h4>
+<p>Paper link: <a href="https://arxiv.org/pdf/1812.08008.pdf">https://arxiv.org/pdf/1812.08008.pdf</a></p>
+<p>This is the final journal paper for the overall OpenPose framework.</p>
+<h2 id="smpl-human-model">SMPL human model</h2>
+<p>Besides the 2D skeleton estimation, a more advanced pose estimation involving human shapes is proposed by Max Planck Institute called SMPL model.</p>
+<p>The original reserach is here: <a href="https://smpl.is.tue.mpg.de/">https://smpl.is.tue.mpg.de/</a></p>
+<p>The idea is that the 2D skeleton can not represent the fine huamn pose. For example, it couldn&rsquo;t represent the shape of human.
+This article will focus on the newest SMPL prediction models.</p>
+<h4 id="smpl-parameters">SMPL parameters</h4>
+<h4 id="hmr">HMR</h4>
+<h4 id="vibe">VIBE</h4>
+<h4 id="romp">ROMP</h4>
+
+  </div>
   <footer>
-    <a href="/projects/github_token/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -219,7 +270,7 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://shengtingcao.top/categories/github">GitHub</a></li>
+            <li><a class="article-category-link" href="https://shengtingcao.top/categories/computer-vision">Computer vision</a></li>
           
         </ul>
       </li>
@@ -237,16 +288,14 @@
   </footer>
 </article>
 
-        
-        
+
 <div class="pagination">
   
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/projects/github_token/" class="button big previous"><i class="fas fa-angle-left"></i> GitHub new security config</a>
   
-  
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
