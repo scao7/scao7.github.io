@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WebGL for Koch Snowflake | Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </title>
+<meta name="title" content="WebGL for Koch Snowflake" />
+<meta name="description" content="a project in computer graphics class" />
+<meta name="keywords" content="Computer Graphics," />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="WebGL for Koch Snowflake" />
+<meta property="og:description" content="a project in computer graphics class" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/blog/snoflake/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2019-01-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-01-25T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WebGL for Koch Snowflake"/>
+<meta name="twitter:description" content="a project in computer graphics class"/>
+
+
+  
+  <meta itemprop="name" content="WebGL for Koch Snowflake">
+<meta itemprop="description" content="a project in computer graphics class"><meta itemprop="datePublished" content="2019-01-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-01-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="163">
+<meta itemprop="keywords" content="Computer Graphics," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a href="/" class="title"><h1>Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/blog/">Blog</a>
+
+
+<a href="/index.xml">RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main>
+
+<h1>WebGL for Koch Snowflake</h1>
+<p>
+  <i>
+    <time datetime='2019-01-25' pubdate>
+      2019-01-25
+    </time>
+  </i>
+</p>
+
+<content>
+  <h4 id="problem-description">Problem Description</h4>
+<p>Draw the Koch snowflake using recursive method with javascript!</p>
+<h4 id="calculate-the-point-for-the-koch-lines">Calculate the point for the Koch lines</h4>
+<pre><code>function calculatePoint(center, p){
+  var angleInDegrees = 60;
+  var angleInRadians = angleInDegrees * Math.PI / 180;
+  var s1 = Math.sin(angleInRadians);
+  var c1 = Math.cos(angleInRadians);
+  var x1 = (p[0] - center[0]) * c1 - (p[1] - center[1])* s1 + center[0];
+  var y1 = (p[0] - center[0]) * s1 + (p[1] - center[1])* c1 + center[1];
+  var f = vec2(x1,y1);
+  return f;
+}
+</code></pre>
+<h4 id="divide-line-into-koch-line-and-call-the-function-recursively">Divide line into koch line and call the function recursively</h4>
+<pre><code>function divideLine(a, b,count)
+{
+  if(count === 0){
+    var left;
+    var right;
+    left = mix(a,b,1/3);
+    right = mix(a,b,2/3);
+    var f = calculatePoint(left,right);
+    drawLine(a,left,f,right,b);
+  }
+  else {
+    var ab = mix (a,b,0.3333);
+    var ba = mix (b,a,0.3333);
+    var v = calculatePoint(ab, ba);
+    count --;
+    divideLine(a,ab,count);
+    divideLine(ba,b,count);
+    divideLine(ab,v,count);
+    divideLine(v,ba,count);
+  }
+    return f;
+}
+</code></pre>
+<h4 id="draw-a-snowflake-by-calling-the-divideline-function-three-times">Draw a snowflake by calling the divideLine function three times</h4>
+<pre><code>function snowflake(a,b,c,count){
+    divideLine(a,b,count);
+    divideLine(b,c,count);
+    divideLine(c,a,count);
+}
+</code></pre>
+<p><a href="https://scao7.github.io/ComputerGraphics/project1/snowflake.html">Project Link</a></p>
+<p>more coming! Currently reworking on the blogs.</p>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/computer-graphics/">#Computer Graphics</a>&nbsp;&nbsp;
+  
+</p>
+
+  </main>
+  <footer><small>
+   | 
+</small></footer>
+
+    
+</body>
+
+</html>
