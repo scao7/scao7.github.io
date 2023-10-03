@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to do image processing in Android? | Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </title>
+<meta name="title" content="How to do image processing in Android?" />
+<meta name="description" content="It describe how to build an android app and interage image processing in it" />
+<meta name="keywords" content="Android,Image Processing,Datascience," />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="How to do image processing in Android?" />
+<meta property="og:description" content="It describe how to build an android app and interage image processing in it" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/blog/imageprocessinginandroid/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-03T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to do image processing in Android?"/>
+<meta name="twitter:description" content="It describe how to build an android app and interage image processing in it"/>
+
+
+  
+  <meta itemprop="name" content="How to do image processing in Android?">
+<meta itemprop="description" content="It describe how to build an android app and interage image processing in it"><meta itemprop="datePublished" content="2023-10-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-10-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2214">
+<meta itemprop="keywords" content="Android,Image Processing,Datascience," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a href="/" class="title"><h1>Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/blog/">Blog</a>
+
+  <a href="/%E5%8D%9A%E5%AE%A2/">博客</a>
+
+  <a href="/%E5%B0%8F%E8%AF%B4/">小说</a>
+
+
+<a href="/index.xml">RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main>
+
+<h1>How to do image processing in Android?</h1>
+<p>
+  <i>
+    <time datetime='2023-10-03' pubdate>
+      2023-10-03
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>My software is used in this poster</p>
+<p><img src="/2020/12/bodyvolume.png" alt=""></p>
+<h2 id="android-canvas">Android Canvas</h2>
+<p>This section is the design one function in Android: pick up a photo from gallery and desplay in the App.</p>
+<h4 id="tool">Tool</h4>
+<p>I used Android Studio to develop my app. It is a mature technology that helps me to build app easily.</p>
+<h5 id="add-imageview-and-button">Add ImageView and Button</h5>
+<p>In the &ldquo;activity_main.xml&rdquo; add a Button like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">Button</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/open_picture&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@style/Base.Widget.AppCompat.Button.Colored&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@string/open_picture&#34;</span> /&gt;
+</span></span></code></pre></div><p>Also add the ImageView:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ImageView</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@+id/imageView&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:layout_width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:layout_height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;500dp&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:scaleType</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fitCenter&#34;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">android:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@drawable/sample&#34;</span> /&gt;
+</span></span></code></pre></div><h4 id="implement-the-interface-logic-and-pick-up-logic">Implement the interface logic and Pick Up Logic</h4>
+<p>Go to Java directory find the &ldquo;MainActivity&rdquo; class to implement the Logic
+First we need define two different code indicate the if the app was granted to open the camera.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> IMAGE_PICK_CODE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> PERMISSION_CODE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1001</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>We need define a button object called open button and get the UI information on the button object. Use the &ldquo;findViewById&rdquo; function to get the object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>openBtn <span style="color:#f92672">=</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">open_picture</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>After we get the button object, we need add a OnClickListener(). We need check the permission code if the permission was granted to the app.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>openBtn<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">//check runtime permission
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SDK_INT</span> <span style="color:#f92672">&gt;=</span> Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION_CODES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">M</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>checkSelfPermission<span style="color:#f92672">((</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_DENIED</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e">//permission not granted request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                       String<span style="color:#f92672">[]</span> permissions <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Manifest<span style="color:#f92672">.</span><span style="color:#a6e22e">permission</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_EXTERNAL_STORAGE</span><span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#75715e">//show popup for runtime permission
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                       requestPermissions<span style="color:#f92672">(</span>permissions<span style="color:#f92672">,</span> PERMISSION_CODE<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#75715e">//permission already granted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                   pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#75715e">//system os is less then marshmallow
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">});</span>
+</span></span></code></pre></div><p>Notice there is a function called pickImageFromGallery() which is the method that actually pick the image in the gallery. We need create a Intent which is ACTION_PICK intent and set the select type to all the image file. Pass the intent and IMAGE_PICK_CODE into the startActivityForResult() function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pickImageFromGallery</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//intent to pick image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       Intent intent <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Intent<span style="color:#f92672">((</span>Intent<span style="color:#f92672">.</span><span style="color:#a6e22e">ACTION_PICK</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>       intent<span style="color:#f92672">.</span><span style="color:#a6e22e">setType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;image/*&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>       startActivityForResult<span style="color:#f92672">(</span>intent<span style="color:#f92672">,</span> IMAGE_PICK_CODE<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>In the first time to open gallery, we need to ask the user if grant the permission to open the gallery.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onRequestPermissionsResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> String<span style="color:#f92672">[]</span> permissions<span style="color:#f92672">,</span> <span style="color:#a6e22e">@NonNull</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> grantResults<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>requestCode<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> PERMISSION_CODE<span style="color:#f92672">:</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>grantResults<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> grantResults<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> PackageManager<span style="color:#f92672">.</span><span style="color:#a6e22e">PERMISSION_GRANTED</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// permission granted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                pickImageFromGallery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// permission denied
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Permission denied!&#34;</span><span style="color:#f92672">,</span>Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>When the Intent get result and the request is the pick up code. We can set the images URI to the image view to display the image on the screen.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onActivityResult</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> requestCode<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> resultCode<span style="color:#f92672">,</span> Intent data<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>resultCode <span style="color:#f92672">==</span> RESULT_OK <span style="color:#f92672">&amp;&amp;</span> requestCode <span style="color:#f92672">==</span> IMAGE_PICK_CODE<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageURI</span><span style="color:#f92672">(</span>data<span style="color:#f92672">.</span><span style="color:#a6e22e">getData</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The last step is to make sure the cell phone not denied you the first add code to the Manifest file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">uses-permission</span> <span style="color:#a6e22e">android:name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;android.permission.READ_EXTERNAL_STORAGE&#34;</span> /&gt;
+</span></span></code></pre></div><h2 id="import-opencv-to-android">Import OpenCV to Android</h2>
+<h4 id="download-opencv-sdk">Download OpenCV SDK</h4>
+<p><a href="https://opencv.org/releases/">OpenCV Release Page</a></p>
+<h4 id="import-module">Import Module</h4>
+<pre tabindex="0"><code>File --&gt; New -&gt; Import Module
+</code></pre><p>Import the java fold</p>
+<!-- raw HTML omitted -->
+<h4 id="compare-the-configure-information">Compare the configure information</h4>
+<p>Make sure the  minSdkVersion and targetSdkVersion matches</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="add-dependency">Add dependency</h4>
+<pre tabindex="0"><code>File --&gt; Project Structure --&gt; App --&gt; Add dependency --&gt; OpenCV
+</code></pre><h4 id="copy-library-file-to-app-folder">Copy library file to App folder</h4>
+<p>Copy files in this directory</p>
+<!-- raw HTML omitted -->
+<p>Create a folder named &ldquo;jniLibs&rdquo; and paste the files under the directory</p>
+<!-- raw HTML omitted -->
+<h4 id="use-the-opencv-library">Use the OpenCV library</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ostu<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> View<span style="color:#f92672">.</span><span style="color:#a6e22e">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                OpenCVLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">initDebug</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                Bitmap originalBitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">drawable</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sample</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Mat resultMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                Bitmap ouputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>originalBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalBitmap<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>resultMat<span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span><span style="color:#ae81ff">255</span><span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>resultMat<span style="color:#f92672">,</span>ouputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>ouputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">});</span>
+</span></span></code></pre></div><h2 id="available-android-opencv-functions">Available Android OpenCV Functions</h2>
+<h4 id="image-gradient">Image Gradient</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">imageGradient</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>     Mat grayMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat sobel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat abs_grad_x <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat abs_grad_y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>     Mat originalMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>originalMat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>originalMat<span style="color:#f92672">,</span> grayMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">Sobel</span><span style="color:#f92672">(</span>grayMat<span style="color:#f92672">,</span>grad_x<span style="color:#f92672">,</span>CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_16S</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">Sobel</span><span style="color:#f92672">(</span>grayMat<span style="color:#f92672">,</span>grad_y<span style="color:#f92672">,</span>CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_16S</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Core<span style="color:#f92672">.</span><span style="color:#a6e22e">convertScaleAbs</span><span style="color:#f92672">(</span>grad_x<span style="color:#f92672">,</span>abs_grad_x<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Core<span style="color:#f92672">.</span><span style="color:#a6e22e">convertScaleAbs</span><span style="color:#f92672">(</span>grad_y<span style="color:#f92672">,</span>abs_grad_y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Core<span style="color:#f92672">.</span><span style="color:#a6e22e">addWeighted</span><span style="color:#f92672">(</span>abs_grad_x<span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span>abs_grad_y<span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span>sobel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Bitmap currentBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>sobel<span style="color:#f92672">,</span>currentBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>currentBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="canny-contours">Canny Contours</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cannyContours</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>     Bitmap originalbitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>     Mat originalMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">,</span>originalMat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     Mat grayMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat cannyEdges <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     Mat hierarchy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     List<span style="color:#f92672">&lt;</span>MatOfPoint<span style="color:#f92672">&gt;</span> contourList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>MatOfPoint<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>originalMat<span style="color:#f92672">,</span>grayMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">Canny</span><span style="color:#f92672">(</span>grayMat<span style="color:#f92672">,</span>cannyEdges<span style="color:#f92672">,</span><span style="color:#ae81ff">10</span><span style="color:#f92672">,</span><span style="color:#ae81ff">100</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">findContours</span><span style="color:#f92672">(</span>cannyEdges<span style="color:#f92672">,</span>contourList<span style="color:#f92672">,</span>hierarchy<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">RETR_LIST</span><span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">CHAIN_APPROX_SIMPLE</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     Mat contours <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>     contours<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>cannyEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">(),</span>cannyEdges<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">(),</span>CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_8UC3</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Random r <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span> contourList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>i<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>         Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">drawContours</span><span style="color:#f92672">(</span>contours<span style="color:#f92672">,</span>contourList<span style="color:#f92672">,</span>i<span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Scalar<span style="color:#f92672">(</span>r<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span><span style="color:#ae81ff">255</span><span style="color:#f92672">),</span>r<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span><span style="color:#ae81ff">255</span><span style="color:#f92672">),</span>r<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span><span style="color:#ae81ff">255</span><span style="color:#f92672">)),-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     Bitmap currentBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>originalbitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>contours<span style="color:#f92672">,</span>currentBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>currentBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="blur">Blur</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">blur</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>        Bitmap originalbitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>        Mat mat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">,</span>mat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">blur</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>mat<span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Size<span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">,</span><span style="color:#ae81ff">10</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="median-blur">Median Blur</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">medianBlur</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>    Bitmap originalbitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>    Mat mat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">,</span>mat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">medianBlur</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>mat<span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="dilate">Dilate</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dilate</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>    Bitmap originalbitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>    Mat mat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">,</span>mat<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">dilate</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>mat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">getStructuringElement</span><span style="color:#f92672">(</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">MORPH_RECT</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Size<span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)));</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">,</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>originalbitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="ostuthreshold-implementation">OstuThreshold Implementation</h2>
+<h4 id="theory">Theory</h4>
+<p>All the Theory of Ostu Threshold is from this paper: <a href="http://webserver2.tecgraf.puc-rio.br/~mgattass/cg/trbImg/Otsu.pdf">Ostu&rsquo;s paper</a>. And the reference <a href="http://hipersayanx.blogspot.com/2016/08/otsu-threshold.html">JavaScript page</a>.</p>
+<h4 id="implementation">implementation</h4>
+<p>First, I tried to implement the basic code for threshold of a certain value for example: 100.
+Here is the Java Code in Android Studio</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span>  <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">converImage</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        Bitmap finalImage <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> colorPixel<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++</span> <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>                colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>R <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                    R <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    R <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                G<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                B<span style="color:#f92672">=</span> R<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                finalImage<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span>y<span style="color:#f92672">,</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span>R<span style="color:#f92672">,</span>G<span style="color:#f92672">,</span>B<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> finalImage<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="modify-the-fixed-threshold-into-ostu-threshold">Modify the fixed threshold into Ostu threshold</h4>
+<p>This is the method that applied the Ostu threshold for the colored image</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">ostuConvert</span><span style="color:#f92672">(</span>Bitmap original<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>      Bitmap BWimg <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getConfig</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> A<span style="color:#f92672">,</span> R<span style="color:#f92672">,</span> G<span style="color:#f92672">,</span> B<span style="color:#f92672">,</span> colorPixel<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">double</span> Wcv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> th <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> tPXL <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#ae81ff">256</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> pxl <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>width<span style="color:#f92672">][</span>height<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">double</span> Bw<span style="color:#f92672">,</span> Bm<span style="color:#f92672">,</span> Bv<span style="color:#f92672">,</span> Fw<span style="color:#f92672">,</span> Fm<span style="color:#f92672">,</span> Fv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> np<span style="color:#f92672">,</span> ImgPix <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> fth <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// pixel check for histogram //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              R <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">red</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              G <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>              B <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">int</span> gray <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2126</span> <span style="color:#f92672">*</span> R<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span><span style="color:#a6e22e">7152</span> <span style="color:#f92672">*</span> G<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0722</span> <span style="color:#f92672">*</span> B<span style="color:#f92672">)</span> <span style="color:#f92672">);</span> <span style="color:#75715e">// (int) ( (0.299 * R) + (0.587 * G) + (0.114 * B) );
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> gray<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> tPXL<span style="color:#f92672">[</span>gray<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              ImgPix <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ----- histo-variance ----- //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> t <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">;</span> t<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>          Bw <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> Bm <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> Bv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          Fw <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> Fm <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> Fv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          np <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">){</span> <span style="color:#75715e">// all white/foreground as t0 ----- //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              Fw <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">;</span> d<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//mean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">;</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// main thresholding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> d <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">);</span> d<span style="color:#f92672">++){</span> <span style="color:#75715e">// BG weight &amp; mean + BG pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                  Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>d <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>                  np <span style="color:#f92672">=</span> np <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>d<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Bw <span style="color:#f92672">=</span> Bw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              Bm <span style="color:#f92672">=</span> Bm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> e <span style="color:#f92672">&lt;</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">);</span> e<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//BG variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>e <span style="color:#f92672">-</span> Bm<span style="color:#f92672">),</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>e<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Bv <span style="color:#f92672">=</span> Bv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// FG weight &amp; mean + BG pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">+</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                  Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>j<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>                  np <span style="color:#f92672">=</span> ImgPix <span style="color:#f92672">-</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fw <span style="color:#f92672">=</span> Fw <span style="color:#f92672">/</span> ImgPix<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              Fm <span style="color:#f92672">=</span> Fm <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span> k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">;</span> k<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//FG variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">((</span>k <span style="color:#f92672">-</span> Fm<span style="color:#f92672">),</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> tPXL<span style="color:#f92672">[</span>k<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              Fv <span style="color:#f92672">=</span> Fv <span style="color:#f92672">/</span> np<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// within class variance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          Wcv <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Bw <span style="color:#f92672">*</span> Bv<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>Fw <span style="color:#f92672">*</span> Fv<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Wcv <span style="color:#f92672">&lt;</span> th<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>              th <span style="color:#f92672">=</span> Wcv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>              fth <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// set binarize pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>              colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  fnpx <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                  fnpx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                  BWimg<span style="color:#f92672">.</span><span style="color:#a6e22e">setPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">,</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">argb</span><span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">,</span> fnpx<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> BWimg<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="height-calculation">Height Calculation</h4>
+<p>The Height Calculation is just count the pixel in the height. So we can apply the method above and change a little. In the last for loop: &ldquo;//set binarize pixel&rdquo; we modify the method as following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> top <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">POSITIVE_INFINITY</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> bottom <span style="color:#f92672">=</span>  Float<span style="color:#f92672">.</span><span style="color:#a6e22e">NEGATIVE_INFINITY</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// set binarize pixel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> width<span style="color:#f92672">;</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> height<span style="color:#f92672">;</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">int</span> fnpx <span style="color:#f92672">=</span> pxl<span style="color:#f92672">[</span>x<span style="color:#f92672">][</span>y<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>           colorPixel <span style="color:#f92672">=</span> original<span style="color:#f92672">.</span><span style="color:#a6e22e">getPixel</span><span style="color:#f92672">(</span>x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           A <span style="color:#f92672">=</span> Color<span style="color:#f92672">.</span><span style="color:#a6e22e">alpha</span><span style="color:#f92672">(</span>colorPixel<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fnpx <span style="color:#f92672">&gt;</span> fth<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//R &gt; fth
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               fnpx <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>               fnpx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>top <span style="color:#f92672">&gt;</span> y <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                   top <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bottom <span style="color:#f92672">&lt;</span> y<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>                   bottom <span style="color:#f92672">=</span> y<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> pointsY <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]{</span> top <span style="color:#f92672">*</span> scaleFactor <span style="color:#f92672">,</span>bottom <span style="color:#f92672">*</span> scaleFactor<span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pointsY<span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>I defined the two float variable initialed as POSITIVE_INFINITY and NEGATIVE_INFINITY. When fnpx &lt;= fth begin to calculate the value. Find the minimun role and the maximum role.
+I returned the float arrary represent two height value.
+I should post the picture of processing but because of the privacy issue I won&rsquo;t post it until this research period end.</p>
+<h4 id="draw-line-and-display-pixel-on-the-image-view">Draw line and display pixel on the image view</h4>
+<p>After we have the value of top and bottom. I need to draw a red line on the image and display the pixel value between these two.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawHeight</span><span style="color:#f92672">(</span>ImageView imgView<span style="color:#f92672">,</span> Bitmap imageBitmap<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        Bitmap bitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ARGB_8888</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> scaleFactor <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> imageBitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> points <span style="color:#f92672">=</span>customizeMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">ostuCalculateHeight</span><span style="color:#f92672">(</span>imageBitmap<span style="color:#f92672">,</span> scaleFactor<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Canvas canvas <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Canvas<span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span>canvas<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Paint paint <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Paint<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">RED</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setStrokeWidth</span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> middle <span style="color:#f92672">=</span> imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">()</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">;</span> <span style="color:#75715e">//x value of the image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawLine</span><span style="color:#f92672">(</span>middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">],</span> middle<span style="color:#f92672">,</span> points<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">],</span> paint<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        String pixelInfo <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)(</span>points<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span> <span style="color:#f92672">-</span> points<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">])</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;pixels&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>Color<span style="color:#f92672">.</span><span style="color:#a6e22e">GREEN</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        paint<span style="color:#f92672">.</span><span style="color:#a6e22e">setTextSize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">40</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawText</span><span style="color:#f92672">(</span>pixelInfo<span style="color:#f92672">,</span>middle<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>points<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">+</span> points<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">])/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> paint<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//draw line on image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        imgView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>I create this method to draw the height. There are two variable we need pass in: imgView and imageBitmap. ImageView refers the view you want to put picture, imageBitmap is the original image in Bitmap data structure.</p>
+<h4 id="problems-remain-to-solve">Problems remain to solve</h4>
+<h5 id="span-stylecolorblueruntimespan"><!-- raw HTML omitted -->Runtime<!-- raw HTML omitted --></h5>
+<p>So far, my app works for measure the height of a person in most circumstance. But the runtime is very slow because I put all the calculation in one thread. There are two option to make the calculation fast. The first one is parallel computing. The second is to use the alternative OpenCV solution, it might faster than my solution. So next post I will focus on how to do parallel computing on Android software and how to load OpenCV library and apply the method.</p>
+<h5 id="span-stylecolorblueaccurate-of-measurementspan"><!-- raw HTML omitted -->Accurate of measurement<!-- raw HTML omitted --></h5>
+<p>For my application, there still some in accurate value because of the limitation of Ostu threshold method. If a person waring dark cloth and has white hair the output will be inaccurate. Therefore, to increase the accurate of the measurement. I need implement another image processing method called Image gradient. I will introduce the implementation in next blog post.</p>
+<h4 id="update">Update</h4>
+<p>After learning opencv there are a faster way to solve the ostu threshold method. The updated code using OpenCV library. Run time is less than 1s.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ostuThreshold</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>    Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>    Mat Rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Mat ostuMat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>Rgba<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>Rgba<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2GRAY</span><span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">threshold</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>ostuMat<span style="color:#f92672">,</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span><span style="color:#ae81ff">255</span><span style="color:#f92672">,</span>Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">THRESH_OTSU</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Bitmap outputhBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span>Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>ostuMat<span style="color:#f92672">,</span>outputhBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputhBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="kmean-implementation">Kmean Implementation</h2>
+<h4 id="understand-k-mean-algorithms">Understand K-mean Algorithms</h4>
+<p>K-mean clustering method originally from signal processing, this method is the popular for cluster analysis in data mining. The goal of this algorithms is to partition n observations into K clusters in which each observation belongs to the cluster with the nearest mean.</p>
+<h4 id="what-i-use-k-mean-for">What I use K-mean for</h4>
+<p>In my projects, I need to analysis human body shape and get some health information. I need to distinguish the cloth and human body. Therefore, I need use k-mean to cluster the colors.</p>
+<h4 id="code-for-k-mean">Code for k-mean</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">k_Mean</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>        Mat rgba <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Mat mHSV <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Bitmap bitmap <span style="color:#f92672">=</span> BitmapFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">decodeResource</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">(),</span>images<span style="color:#f92672">[</span>current_image<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>        Bitmap outputBitmap <span style="color:#f92672">=</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">createBitmap</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getWidth</span><span style="color:#f92672">(),</span>bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">getHeight</span><span style="color:#f92672">(),</span> Bitmap<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">RGB_565</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">bitmapToMat</span><span style="color:#f92672">(</span>bitmap<span style="color:#f92672">,</span>rgba<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//must convert to 3 channel image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGBA2RGB</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">cvtColor</span><span style="color:#f92672">(</span>rgba<span style="color:#f92672">,</span> mHSV<span style="color:#f92672">,</span> Imgproc<span style="color:#f92672">.</span><span style="color:#a6e22e">COLOR_RGB2HSV</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Mat clusters <span style="color:#f92672">=</span> cluster<span style="color:#f92672">(</span>mHSV<span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">matToBitmap</span><span style="color:#f92672">(</span>clusters<span style="color:#f92672">,</span>outputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        imageView<span style="color:#f92672">.</span><span style="color:#a6e22e">setImageBitmap</span><span style="color:#f92672">(</span>outputBitmap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">cluster</span><span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Mat samples <span style="color:#f92672">=</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        Mat samples32f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        samples<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_32F</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Mat labels <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//criteria means the maximum loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TermCriteria criteria <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TermCriteria<span style="color:#f92672">(</span>TermCriteria<span style="color:#f92672">.</span><span style="color:#a6e22e">COUNT</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Mat centers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Mat<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Core<span style="color:#f92672">.</span><span style="color:#a6e22e">kmeans</span><span style="color:#f92672">(</span>samples32f<span style="color:#f92672">,</span> k<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> criteria<span style="color:#f92672">,</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> Core<span style="color:#f92672">.</span><span style="color:#a6e22e">KMEANS_PP_CENTERS</span><span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> showClusters<span style="color:#f92672">(</span>cutout<span style="color:#f92672">,</span> labels<span style="color:#f92672">,</span> centers<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">showClusters</span> <span style="color:#f92672">(</span>Mat cutout<span style="color:#f92672">,</span> Mat labels<span style="color:#f92672">,</span> Mat centers<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">convertTo</span><span style="color:#f92672">(</span>centers<span style="color:#f92672">,</span> CvType<span style="color:#f92672">.</span><span style="color:#a6e22e">CV_8UC1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        centers<span style="color:#f92672">.</span><span style="color:#a6e22e">reshape</span><span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>labels <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;labels&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;</span> clusters <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Mat<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Mat<span style="color:#f92672">.</span><span style="color:#a6e22e">zeros</span><span style="color:#f92672">(</span>cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">(),</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">type</span><span style="color:#f92672">()));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> counts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> centers<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>i<span style="color:#f92672">,</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> rows <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> y <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">rows</span><span style="color:#f92672">();</span> y<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> cutout<span style="color:#f92672">.</span><span style="color:#a6e22e">cols</span><span style="color:#f92672">();</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> label <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>labels<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>rows<span style="color:#f92672">,</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">)[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> g <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">)[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>centers<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">)[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                counts<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>label<span style="color:#f92672">,</span> counts<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                clusters<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>label<span style="color:#f92672">).</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>y<span style="color:#f92672">,</span> x<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> g<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                rows<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>counts<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> clusters<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+</content>
+<p>
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/android/">#Android</a>&nbsp;&nbsp;
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/image-processing/">#Image Processing</a>&nbsp;&nbsp;
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/datascience/">#Datascience</a>&nbsp;&nbsp;
+  
+</p>
+
+  </main>
+  <footer><small>
+   | 
+</small>
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+</html></footer>
+
+    
+</body>
+
+</html>
