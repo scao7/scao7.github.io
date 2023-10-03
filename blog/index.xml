@@ -6,7 +6,17 @@
     <description>Recent content in Blog on Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://shengtingcao.top/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://shengtingcao.top/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to design your own programming language?</title>
+      <link>https://shengtingcao.top/blog/howtowriteyourprogramminglanguage/</link>
+      <pubDate>Sun, 25 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://shengtingcao.top/blog/howtowriteyourprogramminglanguage/</guid>
+      <description>Programming laguage requirement A typical programming language supports a wide range of features and capabilities that enable developers to write, compile, and execute code to solve various computational problems. While the specific features and capabilities can vary between programming languages, here are some common elements that are typically supported in programming languages:
+Data Types: Programming languages support various data types such as integers, floating-point numbers, characters, strings, booleans, arrays, and more.</description>
+    </item>
+    
     <item>
       <title>GitHub New Security Config</title>
       <link>https://shengtingcao.top/blog/github_token/</link>
@@ -18,7 +28,7 @@ The first step is to request a token directly from GitHub. Instead of inputting 
     </item>
     
     <item>
-      <title>How to Enable Latex in The Blog</title>
+      <title>How to Enable Latex in The Blog?</title>
       <link>https://shengtingcao.top/blog/latexsyntax/</link>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       

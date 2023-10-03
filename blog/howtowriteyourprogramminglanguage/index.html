@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to design your own programming language? | Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </title>
+<meta name="title" content="How to design your own programming language?" />
+<meta name="description" content="This article describe how I create a programming language using c" />
+<meta name="keywords" content="LP," />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="How to design your own programming language?" />
+<meta property="og:description" content="This article describe how I create a programming language using c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/blog/howtowriteyourprogramminglanguage/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-09-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-25T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to design your own programming language?"/>
+<meta name="twitter:description" content="This article describe how I create a programming language using c"/>
+
+
+  
+  <meta itemprop="name" content="How to design your own programming language?">
+<meta itemprop="description" content="This article describe how I create a programming language using c"><meta itemprop="datePublished" content="2022-09-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2191">
+<meta itemprop="keywords" content="LP," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a href="/" class="title"><h1>Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/blog/">Blog</a>
+
+  <a href="/%E5%8D%9A%E5%AE%A2/">博客</a>
+
+  <a href="/%E5%B0%8F%E8%AF%B4/">小说</a>
+
+
+<a href="/index.xml">RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main>
+
+<h1>How to design your own programming language?</h1>
+<p>
+  <i>
+    <time datetime='2022-09-25' pubdate>
+      2022-09-25
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="programming-laguage-requirement">Programming laguage requirement</h2>
+<p>A typical programming language supports a wide range of features and capabilities that enable developers to write, compile, and execute code to solve various computational problems. While the specific features and capabilities can vary between programming languages, here are some common elements that are typically supported in programming languages:</p>
+<ol>
+<li>
+<p><strong>Data Types</strong>: Programming languages support various data types such as integers, floating-point numbers, characters, strings, booleans, arrays, and more. Some languages also allow users to define custom data types.</p>
+</li>
+<li>
+<p><strong>Variables</strong>: You can declare and use variables to store and manipulate data within a program.</p>
+</li>
+<li>
+<p><strong>Operators</strong>: Programming languages provide a set of operators for performing operations on data, such as arithmetic operators (+, -, *, /), comparison operators (==, !=, &gt;, &lt;), and logical operators (&amp;&amp;, ||, !).</p>
+</li>
+<li>
+<p><strong>Control Structures</strong>: This includes features like conditional statements (if, else, switch), loops (for, while, do-while), and branching (goto in some languages).</p>
+</li>
+<li>
+<p><strong>Functions/Methods</strong>: Most languages allow you to define and call functions or methods, which are reusable blocks of code that perform specific tasks.</p>
+</li>
+<li>
+<p><strong>Error Handling</strong>: Support for handling errors and exceptions is essential in programming languages. Try-catch blocks or similar constructs are commonly used for this purpose.</p>
+</li>
+<li>
+<p><strong>Input/Output (I/O)</strong>: Programming languages typically offer mechanisms for reading input from users or external sources (e.g., stdin, files) and outputting results (e.g., stdout, files).</p>
+</li>
+<li>
+<p><strong>Data Structures</strong>: Many languages include built-in data structures like arrays, lists, sets, maps (dictionaries), and others for managing and organizing data efficiently.</p>
+</li>
+<li>
+<p><strong>Object-Oriented Programming (OOP)</strong>: OOP languages provide support for classes and objects, encapsulation, inheritance, and polymorphism.</p>
+</li>
+<li>
+<p><strong>Concurrency and Multithreading</strong>: Some languages have features for concurrent and parallel programming to take advantage of multiple CPU cores.</p>
+</li>
+<li>
+<p><strong>Memory Management</strong>: Languages may offer automatic memory management through features like garbage collection, or they may require manual memory management through concepts like pointers.</p>
+</li>
+<li>
+<p><strong>Libraries and Modules</strong>: Most programming languages provide standard libraries or modules that offer pre-built functions and classes for common tasks, allowing developers to reuse code.</p>
+</li>
+<li>
+<p><strong>Standard Library</strong>: A standard library is a collection of pre-written code modules that provide various functionalities such as file I/O, string manipulation, and networking.</p>
+</li>
+<li>
+<p><strong>Debugging and Profiling Tools</strong>: Debugging features like breakpoints, step-by-step execution, and profiling tools to analyze code performance are often available.</p>
+</li>
+<li>
+<p><strong>IDEs and Development Tools</strong>: Integrated Development Environments (IDEs) and development tools tailored to the language can make coding, debugging, and testing easier.</p>
+</li>
+<li>
+<p><strong>Documentation and Community Support</strong>: A thriving developer community, official documentation, and online resources are essential for learning and using a programming language effectively.</p>
+</li>
+<li>
+<p><strong>Interoperability</strong>: Some languages support interoperability with other languages, allowing you to call functions or use libraries written in other languages.</p>
+</li>
+<li>
+<p><strong>Extensibility</strong>: Extensibility features enable you to add new functionality through plugins, extensions, or custom modules.</p>
+</li>
+<li>
+<p><strong>Platform Independence</strong>: Some languages are platform-independent or support cross-platform development, while others are more tightly tied to specific platforms.</p>
+</li>
+<li>
+<p><strong>Security Features</strong>: Security-oriented languages may include features for safer programming, such as type checking, buffer overflow prevention, and input validation.</p>
+</li>
+</ol>
+<p>In this blog, I introduce the program that I have designed using the C language as the underlying programming language. The supported features are</p>
+<pre tabindex="0"><code>- comments
+- integers and strings
+- dynamically typed (like Scheme and Python)
+- classes/objects
+- arrays with O(1) access time
+- conditionals
+- recursion
+- iteration
+- convenient means to access command line arguments
+- convenient means to print to the console
+- convenient means to read integers from a file
+- an adequate set of operators
+- anonymous functions
+- functions as first-class objects (i.e. functions can be manipulated as in Scheme - e.g. local functions)
+- (graduate only) an inheritance system and detection of variables used before definition
+</code></pre><h2 id="backus-naur-form-bnf-for-programming-language-design">Backus-Naur Form (BNF) for programming language design</h2>
+<p>The Backus-Naur Form (BNF) is a widely used notation for describing the syntax and structure of programming languages, as well as other formal languages. When designing a programming language using BNF, you typically follow a structured approach to define the grammar rules of your language. Here are the key steps and considerations for designing a programming language using BNF notation:</p>
+<ol>
+<li>
+<p><strong>Define Terminals and Non-terminals</strong>:</p>
+<ul>
+<li>Terminals: These are the basic symbols or tokens in your language, such as keywords, operators, literals, and punctuation marks.</li>
+<li>Non-terminals: These are symbols that represent syntactic constructs, such as expressions, statements, functions, and program structures.</li>
+</ul>
+</li>
+<li>
+<p><strong>Start Symbol</strong>: Define a start symbol that represents the entry point of your language&rsquo;s grammar. This is often called &ldquo;program&rdquo; or &ldquo;start.&rdquo;</p>
+</li>
+<li>
+<p><strong>Production Rules</strong>: Use production rules to describe how non-terminals can be derived from other non-terminals and terminals. Each production rule has the form:</p>
+<pre tabindex="0"><code>non-terminal -&gt; replacement
+</code></pre><ul>
+<li>The replacement can consist of a combination of terminals and non-terminals.</li>
+<li>Use &lsquo;|&rsquo; (pipe) to indicate alternatives if multiple rules are possible for a non-terminal.</li>
+<li>Use epsilon (ε) to represent an empty string or an optional part of the grammar.</li>
+</ul>
+</li>
+<li>
+<p><strong>Grouping and Precedence</strong>: Define rules for operator precedence and associativity to ensure that expressions are parsed correctly. This often involves creating non-terminals for different levels of precedence.</p>
+</li>
+<li>
+<p><strong>Syntax Diagrams</strong>: Optionally, you can complement your BNF notation with syntax diagrams or railroad diagrams to provide a visual representation of the grammar.</p>
+</li>
+<li>
+<p><strong>Semantic Actions</strong>: While BNF primarily describes the syntax of the language, you can include comments or annotations within the production rules to describe the intended semantics of each construct.</p>
+</li>
+</ol>
+<p>Here&rsquo;s a simple example of a BNF rule for a basic arithmetic expression in a hypothetical programming language:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">expression</span>&gt; <span style="color:#f92672">::=</span> &lt;<span style="color:#a6e22e">term</span>&gt; | &lt;<span style="color:#a6e22e">expression</span>&gt; &#39;+&#39; &lt;<span style="color:#a6e22e">term</span>&gt; | &lt;<span style="color:#a6e22e">expression</span>&gt; &#39;-&#39; &lt;<span style="color:#a6e22e">term</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">term</span>&gt; <span style="color:#f92672">::=</span> &lt;<span style="color:#a6e22e">factor</span>&gt; | &lt;<span style="color:#a6e22e">term</span>&gt; &#39;*&#39; &lt;<span style="color:#a6e22e">factor</span>&gt; | &lt;<span style="color:#a6e22e">term</span>&gt; &#39;/&#39; &lt;<span style="color:#a6e22e">factor</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">factor</span>&gt; <span style="color:#f92672">::=</span> &lt;<span style="color:#a6e22e">integer</span>&gt; | &#39;(&#39; &lt;<span style="color:#a6e22e">expression</span>&gt; &#39;)&#39;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">integer</span>&gt; <span style="color:#f92672">::=</span> [0-9]+
+</span></span></code></pre></div><p>In this example:</p>
+<ul>
+<li><code>&lt;expression&gt;</code>, <code>&lt;term&gt;</code>, <code>&lt;factor&gt;</code>, and <code>&lt;integer&gt;</code> are non-terminals.</li>
+<li>Operators like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> are terminals.</li>
+<li>Parentheses are used for grouping.</li>
+<li><code>[0-9]+</code> represents a regular expression for an integer.</li>
+</ul>
+<p>Remember that BNF is a high-level notation for defining the syntax of a language. Implementing a parser based on these grammar rules is a separate task, typically done using tools like parser generators (e.g., yacc, ANTLR) or hand-written code.</p>
+<p>When designing a programming language, it&rsquo;s crucial to carefully consider the syntax and semantics to ensure readability, maintainability, and consistency for developers using your language.</p>
+<h2 id="bnf-grammar-design-for-my-language-with-operator-and-symbol-define">BNF grammar design for my language with operator and symbol define:</h2>
+<pre tabindex="0"><code>QUATE              &#34;&#34;&#34;
+ASSIGN             &#34;=&#34;
+OPREN              &#34;(&#34;
+CPPREN             &#34;)&#34;
+OBRACE             &#34;{&#34;
+CBRACE             &#34;}&#34;
+OBRAKET            &#34;[ &#34;  
+CBRAKET            &#34;]&#34;
+SEMICOLON          &#34;;&#34;
+COLON              &#34;:&#34;
+COMMA              &#34;,&#34;
+EQUALS             &#34;==&#34;
+NOTEQUALS          &#34;!=&#34;
+LESSTAN            &#34;&lt;&#34;
+GREATERTHAN        &#34;&gt;&#34;
+LESSOREQUAL        &#34;&lt;=&#34;
+GREATEROREQUAL     &#34;&gt;=&#34;
+PLUS               &#34;+&#34;
+TIMES              &#34;*&#34;
+DIVIDE             &#34;/&#34;
+SUBTRACT           &#34;-&#34;
+MODULUS            &#34;%&#34;
+AND                &#34;&amp;&amp;&#34;
+OR                 &#34;||&#34;
+CARET              &#34;^&#34;
+POUND              &#34;#&#34;
+NOT                &#34;!&#34;
+</code></pre><h5 id="span-stylecolorbluereserved-keywordsspan"><!-- raw HTML omitted -->reserved keywords<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>keywords : show
+         | if
+         | goto
+         | else
+         | until
+         | call
+         | var
+         | func
+         | loop
+         | when
+</code></pre><h5 id="span-stylecolorblueunaryspan"><!-- raw HTML omitted -->unary<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>unary : VARIABLE
+      | NUMBER
+      | OPREN expression CPREN
+      | STRING
+      | VARIABLE OBRAKET optExpression CBRAKET
+      | NULL
+</code></pre><h5 id="span-stylecolorblueoperatorsspan"><!-- raw HTML omitted -->operators<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>operator : PLUS
+         | SUBTRACT
+         | TIMES
+         | DIVIDE
+         | CARET
+         | ASSIGN
+         | condition
+</code></pre><h5 id="span-stylecolorblueconditionspan"><!-- raw HTML omitted -->condition<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>condition : LESSTAN
+          | GREATERTHAN
+          | GREATEROREQUA
+          | LESSOREQUAL
+          | NOT
+          | EQUALS
+          | OR
+          | AND
+</code></pre><h5 id="span-stylecolorblueexpressionspan"><!-- raw HTML omitted -->expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>expression : unary
+           | unary oprator expression
+           | printExp
+           | functionDefExp
+           | functionCallExp
+           | variableDefExp
+</code></pre><h5 id="span-stylecolorblueprint-expressionspan"><!-- raw HTML omitted -->print expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>printExp : show unary 					 
+</code></pre><h5 id="span-stylecolorblueexpression-listspan"><!-- raw HTML omitted -->expression list<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>expressionList : expression
+               | expression COMMA expressionList
+</code></pre><h5 id="span-stylecolorblueoptional-expressionspan"><!-- raw HTML omitted -->optional expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>optExpression : expressionList
+              | *empty*
+</code></pre><h5 id="span-stylecolorbluestatementspan"><!-- raw HTML omitted -->statement<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>statement : expression SEMICOLON
+          | loopStatment
+          | ifStatment
+</code></pre><h5 id="span-stylecolorbluestatementsspan"><!-- raw HTML omitted -->statements<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>statements : statement
+           | statement statements
+</code></pre><h5 id="span-stylecolorblueparameter-listspan"><!-- raw HTML omitted -->parameter list<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>parameterList : unary
+              | unary COMMA parameterList
+</code></pre><h5 id="span-stylecolorblueoptional-parameter-listspan"><!-- raw HTML omitted -->optional parameter list<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>optParameterList : parameterList
+                 | *empty*
+</code></pre><h5 id="span-stylecolorbluefunction-define-expressionspan"><!-- raw HTML omitted -->function define expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>functionDefExp : func VARIABLE OPREN optExpression CPREN block
+</code></pre><h5 id="span-stylecolorbluefunction-call-expressionspan"><!-- raw HTML omitted -->function call expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>functionCallExp : call VARIABLE
+                | call VARIABLE OPREN optExpression CPREN
+</code></pre><h5 id="span-stylecolorbluevariable-define-expressionspan"><!-- raw HTML omitted -->variable define expression<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>variableDefExp : var VARIABLE
+               | var VARIABLE ASSIGN unary
+</code></pre><h5 id="span-stylecolorblueif-statementspan"><!-- raw HTML omitted -->if statement<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>ifStatment : if OPREN expression CPREN block
+           | elseStatement
+</code></pre><h5 id="span-stylecolorblueelse-statementspan"><!-- raw HTML omitted -->else statement<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>elseStatement : else block
+              | else ifStatment
+              | *empty*
+</code></pre><h5 id="span-stylecolorbluereturn-statementspan"><!-- raw HTML omitted -->return statement<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>returnStatement : return SEMICOLON
+                | return unary SEMICOLON
+</code></pre><h5 id="span-stylecolorblueprogramspan"><!-- raw HTML omitted -->program<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>program : statements
+</code></pre><h5 id="span-stylecolorblueblockspan"><!-- raw HTML omitted -->block<!-- raw HTML omitted --></h5>
+<pre tabindex="0"><code>block : OBRACE statements CBRACE
+      | OBRACE *empty* CBRACE
+</code></pre><h2 id="scan-in-souce-code-of-the-programming-language">Scan in souce code of the programming language</h2>
+<p>When implementing a programming language, the first step is reading in the source code of a program written in that language. Typically, the source code is stored as a file of characters. To read in a source code file, one groups the important individual characters into tokens and discards the unimportant characters. For example, consider the Python program:</p>
+<pre><code>print 'Hello World!'
+</code></pre>
+<p>There are two tokens in this program, print and &lsquo;Hello World!&rsquo;. The unimportant characters are the space that follows the token print and the newline that follows the token &lsquo;Hello World&rsquo;. Note that the space within the token &lsquo;Hello World!&rsquo; is important, so the subsystem for reading in source code must be smart enough to distinguish between important and unimportant spaces, among other things. This subsystem is called lexical analysis.</p>
+<pre tabindex="0"><code>- types
+- lexeme
+- lexer
+- scanner
+</code></pre><h4 id="lexical-analysis-approach">Lexical analysis approach</h4>
+<p>The is a program that read the file you have, it will out put a sequence of lexeme until the end of the line.</p>
+<p>This is the .h file to define different token names and corresponding with grammar.
+I put partial example here:</p>
+<h5 id="span-stylecolorbluetypeshspan"><!-- raw HTML omitted -->types.h<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define OPREN &#34;OPREN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FUNCTION_DEF &#34;func&#34;
+</span></span></span></code></pre></div><p>The approach here is to have a lexeme.c data structure to help me solve the problem.</p>
+<h5 id="span-stylecolorbluelexemecspan"><!-- raw HTML omitted -->lexeme.c<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>typdef structure lexeme {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> type;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> string;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> integer;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">double</span> real;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">struct</span> lexeme<span style="color:#f92672">*</span> left; <span style="color:#75715e">// reserved for parsing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">struct</span> lexeme<span style="color:#f92672">*</span> right;<span style="color:#75715e">// reserved for parsing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Another part is the lexer to determine each token</p>
+<h5 id="span-stylecolorbluelexerhspan"><!-- raw HTML omitted -->lexer.h<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lex</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">newLexer</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> file);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">skipWhiteSpace</span>(); <span style="color:#75715e">// for comments
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexNumber</span>();
+</span></span><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexVariable</span>();
+</span></span><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexString</span>();
+</span></span><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexUnknown</span>();
+</span></span></code></pre></div><p>The last part is the main function withc output the lexeme name in a sequence.</p>
+<h5 id="span-stylecolorbluescannercspan"><!-- raw HTML omitted -->scanner.c<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">scanner</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> file){
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">newLexer</span>(file);
+</span></span><span style="display:flex;"><span>  lexeme<span style="color:#f92672">*</span> token <span style="color:#f92672">=</span> <span style="color:#a6e22e">lex</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">strcmp</span>(token <span style="color:#f92672">-&gt;</span> type, ENDOFPOINT)<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strcmp</span>(toke,NUMBER)){
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, token<span style="color:#f92672">-&gt;</span>type, token<span style="color:#f92672">-&gt;</span>integer);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strcmp</span>(token<span style="color:#f92672">-&gt;</span>type, REAL)<span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s %lf</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, token<span style="color:#f92672">-&gt;</span>type, token<span style="color:#f92672">-&gt;</span>real);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s %lf</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, token<span style="color:#f92672">-&gt;</span>type, token<span style="color:#f92672">-&gt;</span>string);
+</span></span><span style="display:flex;"><span>      token <span style="color:#f92672">=</span> <span style="color:#a6e22e">lex</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[]){
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scanner</span>(arv[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>After the reding part and lexical part, we can forward to the parser design.</p>
+<h2 id="parser-design">Parser design</h2>
+<p>Parser is the module that devide the words in the programming language. It can recongnize a certain pattern or a sequence and translate to the logical tree for the lather excecution.</p>
+<p>The below features are supported in my project</p>
+<pre tabindex="0"><code>- Recursive descent parsing
+- Transforming grammars
+- Support functions for recursive descent parsing
+- Recognizing expressions
+- Conditionals and iterations
+</code></pre><h5 id="span-stylecolorblueparsespan"><!-- raw HTML omitted -->parse<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">parse</span>(FILE <span style="color:#f92672">*</span>inputFile)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Parser <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(Parser));
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">-&gt;</span>fIn <span style="color:#f92672">=</span> inputFile;
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">-&gt;</span>line <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">-&gt;</span>pending <span style="color:#f92672">=</span> <span style="color:#a6e22e">lex</span>(p);
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">-&gt;</span>tree <span style="color:#f92672">=</span> <span style="color:#a6e22e">program</span>(p);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> p<span style="color:#f92672">-&gt;</span>tree;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="parser-rule">parser rule</h4>
+<h5 id="span-stylecolorblueprimaryspan"><!-- raw HTML omitted -->primary<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">primary</span>(Parser <span style="color:#f92672">*</span>p)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Lexeme <span style="color:#f92672">*</span>x, <span style="color:#f92672">*</span>y <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">literalPending</span>(p))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">literal</span>(p);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, BREAK))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span>(p, BREAK);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, OPREN))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">match</span>(p, OPREN);
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> <span style="color:#a6e22e">expr</span>(p);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">match</span>(p, CPREN);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">lambdaPending</span>(p))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> <span style="color:#a6e22e">lambda</span>(p);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, OPREN))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, OPREN);
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">=</span> <span style="color:#a6e22e">optParamList</span>(p);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, CPREN);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(FUNCCALL, x, y);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, NIL))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span>(p, NIL);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, IDENTIFIER))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> <span style="color:#a6e22e">match</span>(p, IDENTIFIER);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, OBRACKET))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, OBRACKET);
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">=</span> <span style="color:#a6e22e">expr</span>(p);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, CBRACKET);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(ARRAYACCESS, x, y);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, OPREN))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, OPREN);
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">=</span> <span style="color:#a6e22e">optParamList</span>(p);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">match</span>(p, CPREN);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(FUNCCALL, x, y);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">check</span>(p, DOT))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">=</span> <span style="color:#a6e22e">match</span>(p, DOT);
+</span></span><span style="display:flex;"><span>            y<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>            y<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#a6e22e">primary</span>(p);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> y;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;Primary not found.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The environment is a tree to store all the value we need for future use. The tree stucture ensure the programming
+language has features like functions.</p>
+<p>In the environment file it will have five basic functions:</p>
+<pre tabindex="0"><code>- create
+- extend
+- lookup
+- insert
+- update
+</code></pre><h4 id="functions">functions</h4>
+<h5 id="span-stylecolorblue-function-define-span"><!-- raw HTML omitted --> function define <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">createEnv</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">extendEnv</span>(Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">makeTable</span>(Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">lookupEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>env);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sameVariable</span>(Lexeme <span style="color:#f92672">*</span>x, Lexeme <span style="color:#f92672">*</span>y);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">insert</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">updateEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>newVariable);
+</span></span></code></pre></div><h5 id="span-stylecolorbluecreate-environment-span"><!-- raw HTML omitted -->create environment <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">createEnv</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">extendEnv</span>(NULL, NULL, NULL);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="span-stylecolorblueextend-environment-span"><!-- raw HTML omitted -->extend environment <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">extendEnv</span>(Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(ENVIRONMENT, <span style="color:#a6e22e">makeTable</span>(vars, vals), env);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="span-stylecolorbluemake-table-span"><!-- raw HTML omitted -->make table <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">makeTable</span>(Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(TABLE, vars, vals);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="span-stylecolorbluelookup-environment-span"><!-- raw HTML omitted -->lookup environment <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">lookupEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (env <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>table <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(env);
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>vars <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(table);
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>vals <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(table);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (vars <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sameVariable</span>(var, <span style="color:#a6e22e">car</span>(vars)))
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">car</span>(vals);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//walk the lists in parallel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            vars <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(vars);
+</span></span><span style="display:flex;"><span>            vals <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(vals);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        env <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(env);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;FATAL: variable, %s, is undefined.&#34;</span>, var<span style="color:#f92672">-&gt;</span>stringVal);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="span-stylecolorblueinsert-environment-span"><!-- raw HTML omitted -->insert environment <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">insert</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Lexeme <span style="color:#f92672">*</span>table <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(env);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setCar</span>(table, <span style="color:#a6e22e">cons</span>(GLUE, var, <span style="color:#a6e22e">car</span>(table)));
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setCdr</span>(table, <span style="color:#a6e22e">cons</span>(GLUE, val, <span style="color:#a6e22e">cdr</span>(table)));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> val;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="span-stylecolorblueupdate-environment-span"><!-- raw HTML omitted -->update environment <!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">updateEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">while</span> (env <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>table <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(env);
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>vars <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(table);
+</span></span><span style="display:flex;"><span>        Lexeme <span style="color:#f92672">*</span>vals <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(table);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (vars <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sameVariable</span>(var, <span style="color:#a6e22e">car</span>(vars)))
+</span></span><span style="display:flex;"><span>            {   
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">setCar</span>(var, val);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> val;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//walk the lists in parallel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            vars <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(vars);
+</span></span><span style="display:flex;"><span>            vals <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(vals);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        env <span style="color:#f92672">=</span> <span style="color:#a6e22e">cdr</span>(env);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;FATAL: variable, %s, is undefined.&#34;</span>, var<span style="color:#f92672">-&gt;</span>stringVal);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</content>
+<p>
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/lp/">#LP</a>&nbsp;&nbsp;
+  
+</p>
+
+  </main>
+  <footer><small>
+   | 
+</small>
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+</html></footer>
+
+    
+</body>
+
+</html>
