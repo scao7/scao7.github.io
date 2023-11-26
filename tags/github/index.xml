@@ -6,16 +6,15 @@
     <description>Recent content in GitHub on Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://shengtingcao.top/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shengtingcao.top/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub New Security Config</title>
       <link>https://shengtingcao.top/blog/github_token/</link>
       <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://shengtingcao.top/blog/github_token/</guid>
       <description>GitHub has recently upgraded its authentication protocol, shifting from a password-based approach to a more secure token-based system. While this update certainly boosts repository security, it does come with a slight trade-off in terms of convenience. I&amp;rsquo;ve taken some notes on how to adapt to these changes on GitHub:
 The first step is to request a token directly from GitHub. Instead of inputting your password when pushing code, you should now employ this token as your GitHub account password.</description>
     </item>
-    
   </channel>
 </rss>

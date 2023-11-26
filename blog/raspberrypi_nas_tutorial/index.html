@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buid Home Raspberry Pi NAS | Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </title>
+<meta name="title" content="Buid Home Raspberry Pi NAS" />
+<meta name="description" content="Github updated security" />
+<meta name="keywords" content="Network Atacched Storage,Raspberry Pi," />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="Buid Home Raspberry Pi NAS" />
+<meta property="og:description" content="Github updated security" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shengtingcao.top/blog/raspberrypi_nas_tutorial/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-11-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-26T00:00:00+00:00" />
+
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Buid Home Raspberry Pi NAS"/>
+<meta name="twitter:description" content="Github updated security"/>
+
+
+  
+  <meta itemprop="name" content="Buid Home Raspberry Pi NAS">
+<meta itemprop="description" content="Github updated security"><meta itemprop="datePublished" content="2023-11-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="732">
+<meta itemprop="keywords" content="Network Atacched Storage,Raspberry Pi," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a href="/" class="title"><h1>Shengting Cao&#39;s  Notebook  ᕦʕ •ᴥ•ʔᕤ </h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/blog/">Blog</a>
+
+  <a href="/%E5%8D%9A%E5%AE%A2/">博客</a>
+
+  <a href="/%E5%B0%8F%E8%AF%B4/">小说</a>
+
+
+<a href="/index.xml">RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main>
+
+<h1>Buid Home Raspberry Pi NAS</h1>
+<p>
+  <i>
+    <time datetime='2023-11-26' pubdate>
+      2023-11-26
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>NAS, or Network Attached Storage, is a specialized storage device connected to a network, providing centralized file-level data access to multiple users and devices. It facilitates convenient data sharing, backup, and storage management within a local network environment.</p>
+<p>In this tutorial, I will go trough the process of buding a working NAS using raspberry pi and external drive as well as a plex server for video streaming at home netowrk. I will also explain the neccesarry problems that enconterd and the solution of the problems.</p>
+<p>You will need the following hardware.</p>
+<h3 id="raspberry-pi-4b">Raspberry pi 4B</h3>
+<p><img src="/2023/raspberrypi.png" alt=""></p>
+<p>I used the 4GB version of raspberry pi, other version also works for this project. But a better CPU will help to stream video faster without delay.</p>
+<h3 id="external-drive">External drive</h3>
+<p>I used a 14T external drive with external power.</p>
+<p>You will need to install the following software or operating systems</p>
+<h3 id="debian-bullseye-with-no-desktop-environment">Debian Bullseye with no desktop environment</h3>
+<p><img src="/2023/ossystem.png" alt=""></p>
+<p>You need to chose the no desktop envrironment debian bullseye operation system otherwise you will enconter problems to install the openmediavault.</p>
+<h3 id="openmediavault">Openmediavault</h3>
+<p>OpenMediaVault (OMV) is a free and open-source network-attached storage (NAS) solution. It serves as an operating system for NAS devices, offering a web-based graphical user interface for easy management of storage, file sharing, and other server-related tasks. OMV supports various storage technologies, plugins, and features, making it a versatile platform for creating and managing home or small business NAS systems.</p>
+<p>The github repository to install the the Openmediavault: <a href="https://github.com/OpenMediaVault-Plugin-Developers/installScript">https://github.com/OpenMediaVault-Plugin-Developers/installScript</a></p>
+<p>Before install it update and upgrade your raspberry pi</p>
+<pre tabindex="0"><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre><p>Use the following command to install and you should wait a long time.</p>
+<pre tabindex="0"><code>sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+</code></pre><p>After the installation you should able to access the website using the ip address of the raspberry pi. Then the deault login creditionas are</p>
+<pre tabindex="0"><code>user name: admin
+password: openmediavault
+</code></pre><p>After login, you should able to access the dashboard of the openmediavault. You can change the password after login.</p>
+<p>To create a shared folder that can be access by the computer you will need to do the follow operation in the dashboard:</p>
+<ul>
+<li>mount the driver to the system</li>
+<li>create a shared folder under storage tab</li>
+<li>create a shared folder under the SMB/CIFS service</li>
+</ul>
+<p>After you do above steps, you are able to access the shared folder using windows. Right click the empty space in the directory <code>This PC</code>. And click the <code>add netowrk location</code> type <code>\\your-server-ip</code> and select the shared folder.</p>
+<p>You might enconter some problem about the permission denies when you restart your raspberry pi. That is because by defaut if a external drive newly loaded to the system is umask 0022. You should check two things to give correct access to it.</p>
+<pre tabindex="0"><code>ls -l 
+</code></pre><p>This is showning the the permission setting for the current files. The correct permission should be <code>drwxrwxrwx</code>. If not,try to change the directory permission by using <code>sudo chmod 777 your-directory</code>. Double check the permission agian after you run the command.</p>
+<p>You may enconter the problems that not able to change the permission. In this case, you should check the umask value.Type <code>umask</code> in terminal. If it shows <code>0022</code>, you should modify the settings for the initial umask. Use <code>sudo -e /etc/fstab</code> to open the file and modify the existing driver permission to the following
+<code>UUID=12102C02102CEB83 /media/windows ntfs-3g auto,users,permissions 0 0</code>
+The UUID will be your own ID for the external drive.</p>
+<p>Reboot the raspbeery pi. You will be able to upload file through the network location on windows now.</p>
+<h3 id="plexserver">Plexserver</h3>
+<p>Plex Server is a media server software that enables users to organize, stream, and share their multimedia content, such as movies, TV shows, and music, across different devices. It provides a user-friendly interface and supports various platforms, allowing users to access their media library remotely. Plex Server also offers features like transcoding, which adapts content for optimal playback on different devices, making it a popular choice for creating a personal streaming server at home.</p>
+<p>Before we install he plexserver. We should update the key and repository information for the system</p>
+<pre tabindex="0"><code>sudo apt-get install apt-transport-https
+</code></pre><pre tabindex="0"><code>curl https://downloads.plex.tv/plex-keys/PlexSign.key | gpg --dearmor | sudo tee /usr/share/keyrings/plex-archive-keyring.gpg &gt;/dev/null
+</code></pre><pre tabindex="0"><code>echo deb [signed-by=/usr/share/keyrings/plex-archive-keyring.gpg] https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+</code></pre><pre tabindex="0"><code>sudo apt-get update
+</code></pre><pre tabindex="0"><code>sudo apt install plexmediaserver
+</code></pre><p>After installation you can access the plex web using <code>https://your-ip-adress:32400/web</code></p>
+<p>If you use other smart TV you can connect the plex to the plex server using the ip adress.</p>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/network-atacched-storage/">#Network Atacched Storage</a>&nbsp;&nbsp;
+  
+    <a class="blog-tags" href="https://shengtingcao.top/tags/raspberry-pi/">#Raspberry Pi</a>&nbsp;&nbsp;
+  
+</p>
+
+  </main>
+  <footer><small>
+   | 
+</small>
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+</html></footer>
+
+    
+</body>
+
+</html>
