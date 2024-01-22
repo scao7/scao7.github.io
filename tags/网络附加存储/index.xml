@@ -13,21 +13,7 @@
       <link>https://shengtingcao.top/%E5%8D%9A%E5%AE%A2/nas_tutorial_cn/</link>
       <pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://shengtingcao.top/%E5%8D%9A%E5%AE%A2/nas_tutorial_cn/</guid>
-      <description>NAS，或网络附加存储，是一种连接到网络的专用存储设备，为多个用户和设备提供集中的文件级数据访问。它在本地网络环境中方便地实现数据共享、备份和存储管理。
-在本教程中，我将介绍使用树莓派和外部驱动器构建工作中的NAS的过程，以及用于在家庭网络中进行视频流媒体的 Plex 服务器。我还将解释遇到的一些问题以及问题的解决方案。
-您将需要以下硬件。
-Raspberry pi 4B 我使用的是树莓派的 4GB 版本，其他版本在这个项目中也可以使用。但是更好的 CPU 将有助于更快地流式传输视频而不延迟。
-External drive 我使用了一款14T的外部驱动器，带有外部电源。
-您需要安装以下软件或操作系统
-Debian Bullseye 没有桌面环境 您需要选择没有桌面环境的 Debian Bullseye 操作系统，否则您将在安装 openmediavault 时遇到问题。
-Openmediavault OpenMediaVault（OMV）是一个免费且开源的网络附加存储（NAS）解决方案。它充当NAS设备的操作系统，提供基于Web的图形用户界面，用于轻松管理存储、文件共享和其他与服务器相关的任务。OMV支持各种存储技术、插件和功能，使其成为创建和管理家庭或小型企业NAS系统的多功能平台。
-安装 Openmediavault 的 github 存储库：https://github.com/OpenMediaVault-Plugin-Developers/installScript
-在安装之前，请更新和升级您的树莓派
-sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade 使用以下命令安装，您可能需要等待一段时间。
-sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash 安装完成后，您应该能够使用树莓派的IP地址访问网站。然后默认的登录凭据是
-用户名：admin 密码：openmediavault 登录后，您应该能够访问 openmediavault 的仪表板。您可以在登录后更改密码。
-要创建一个可以被计算机访问的共享文件夹，您需要在仪表板上执行以下操作：
-将驱动器挂载到系统上 在存储选项卡下创建一个共享文件夹 在 SMB/CIFS 服务下创建一个共享文件夹 执行以上步骤后，您就可以使用 Windows 访问共享文件夹。在 &amp;ldquo;This PC&amp;rdquo; 目录中，右键单击空白处，然后单击 &amp;ldquo;添加网络位置&amp;rdquo;，输入 \\your-server-ip，然后选择共享文件夹。</description>
+      <description>NAS，或网络附加存储，是一种连接到网络的专用存储设备，为多个用户和设备提供集中的文件级数据访问。它在本地网络环境中方便地实现数据共享、备份和存储管理。&#xA;在本教程中，我将介绍使用树莓派和外部驱动器构建工作中的NAS的过程，以及用于在家庭网络中进行视频流媒体的 Plex 服务器。我还将解释遇到的一些问题以及问题的解决方案。&#xA;您将需要以下硬件。&#xA;Raspberry pi 4B 我使用的是树莓派的 4GB 版本，其他版本在这个项目中也可以使用。但是更好的 CPU 将有助于更快地流式传输视频而不延迟。&#xA;External drive 我使用了一款14T的外部驱动器，带有外部电源。&#xA;您需要安装以下软件或操作系统&#xA;Debian Bullseye 没有桌面环境 您需要选择没有桌面环境的 Debian Bullseye 操作系统，否则您将在安装 openmediavault 时遇到问题。&#xA;Openmediavault OpenMediaVault（OMV）是一个免费且开源的网络附加存储（NAS）解决方案。它充当NAS设备的操作系统，提供基于Web的图形用户界面，用于轻松管理存储、文件共享和其他与服务器相关的任务。OMV支持各种存储技术、插件和功能，使其成为创建和管理家庭或小型企业NAS系统的多功能平台。&#xA;安装 Openmediavault 的 github 存储库：https://github.com/OpenMediaVault-Plugin-Developers/installScript&#xA;在安装之前，请更新和升级您的树莓派&#xA;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade 使用以下命令安装，您可能需要等待一段时间。&#xA;sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash 安装完成后，您应该能够使用树莓派的IP地址访问网站。然后默认的登录凭据是&#xA;用户名：admin 密码：openmediavault 登录后，您应该能够访问 openmediavault 的仪表板。您可以在登录后更改密码。&#xA;要创建一个可以被计算机访问的共享文件夹，您需要在仪表板上执行以下操作：&#xA;将驱动器挂载到系统上 在存储选项卡下创建一个共享文件夹 在 SMB/CIFS 服务下创建一个共享文件夹 执行以上步骤后，您就可以使用 Windows 访问共享文件夹。在 &amp;ldquo;This PC&amp;rdquo; 目录中，右键单击空白处，然后单击 &amp;ldquo;添加网络位置&amp;rdquo;，输入 \\your-server-ip，然后选择共享文件夹。</description>
     </item>
   </channel>
 </rss>

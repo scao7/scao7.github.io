@@ -13,8 +13,7 @@
       <link>https://shengtingcao.top/blog/raspberrypi_nas_tutorial/</link>
       <pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://shengtingcao.top/blog/raspberrypi_nas_tutorial/</guid>
-      <description>NAS, or Network Attached Storage, is a specialized storage device connected to a network, providing centralized file-level data access to multiple users and devices. It facilitates convenient data sharing, backup, and storage management within a local network environment.
-In this tutorial, I will go trough the process of buding a working NAS using raspberry pi and external drive as well as a plex server for video streaming at home netowrk. I will also explain the neccesarry problems that enconterd and the solution of the problems.</description>
+      <description>NAS, or Network Attached Storage, is a specialized storage device connected to a network, providing centralized file-level data access to multiple users and devices. It facilitates convenient data sharing, backup, and storage management within a local network environment.&#xA;In this tutorial, I will go trough the process of buding a working NAS using raspberry pi and external drive as well as a plex server for video streaming at home netowrk. I will also explain the neccesarry problems that enconterd and the solution of the problems.</description>
     </item>
   </channel>
 </rss>

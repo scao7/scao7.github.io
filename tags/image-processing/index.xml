@@ -13,11 +13,7 @@
       <link>https://shengtingcao.top/blog/imageprocessinginandroid/</link>
       <pubDate>Tue, 03 Oct 2023 00:00:00 +0000</pubDate>
       <guid>https://shengtingcao.top/blog/imageprocessinginandroid/</guid>
-      <description>My software is used in this poster
-Android Canvas This section is the design one function in Android: pick up a photo from gallery and desplay in the App.
-Tool I used Android Studio to develop my app. It is a mature technology that helps me to build app easily.
-Add ImageView and Button In the &amp;ldquo;activity_main.xml&amp;rdquo; add a Button like this:
-&amp;lt;Button android:id=&amp;#34;@+id/open_picture&amp;#34; style=&amp;#34;@style/Base.Widget.AppCompat.Button.Colored&amp;#34; android:layout_width=&amp;#34;match_parent&amp;#34; android:layout_height=&amp;#34;wrap_content&amp;#34; android:text=&amp;#34;@string/open_picture&amp;#34; /&amp;gt; Also add the ImageView:</description>
+      <description>My software is used in this poster&#xA;Android Canvas This section is the design one function in Android: pick up a photo from gallery and desplay in the App.&#xA;Tool I used Android Studio to develop my app. It is a mature technology that helps me to build app easily.&#xA;Add ImageView and Button In the &amp;ldquo;activity_main.xml&amp;rdquo; add a Button like this:&#xA;&amp;lt;Button android:id=&amp;#34;@+id/open_picture&amp;#34; style=&amp;#34;@style/Base.Widget.AppCompat.Button.Colored&amp;#34; android:layout_width=&amp;#34;match_parent&amp;#34; android:layout_height=&amp;#34;wrap_content&amp;#34; android:text=&amp;#34;@string/open_picture&amp;#34; /&amp;gt; Also add the ImageView:</description>
     </item>
   </channel>
 </rss>
