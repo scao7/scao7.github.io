@@ -245,7 +245,7 @@ OR                 &#34;||&#34;
 CARET              &#34;^&#34;
 POUND              &#34;#&#34;
 NOT                &#34;!&#34;
-</code></pre><h5 id="span-stylecolorbluereserved-keywordsspan"><!-- raw HTML omitted -->reserved keywords<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="reserved-keywords"><!-- raw HTML omitted -->reserved keywords<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>keywords : show
          | if
          | goto
@@ -256,14 +256,14 @@ NOT                &#34;!&#34;
          | func
          | loop
          | when
-</code></pre><h5 id="span-stylecolorblueunaryspan"><!-- raw HTML omitted -->unary<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="unary"><!-- raw HTML omitted -->unary<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>unary : VARIABLE
       | NUMBER
       | OPREN expression CPREN
       | STRING
       | VARIABLE OBRAKET optExpression CBRAKET
       | NULL
-</code></pre><h5 id="span-stylecolorblueoperatorsspan"><!-- raw HTML omitted -->operators<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="operators"><!-- raw HTML omitted -->operators<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>operator : PLUS
          | SUBTRACT
          | TIMES
@@ -271,7 +271,7 @@ NOT                &#34;!&#34;
          | CARET
          | ASSIGN
          | condition
-</code></pre><h5 id="span-stylecolorblueconditionspan"><!-- raw HTML omitted -->condition<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="condition"><!-- raw HTML omitted -->condition<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>condition : LESSTAN
           | GREATERTHAN
           | GREATEROREQUA
@@ -280,55 +280,55 @@ NOT                &#34;!&#34;
           | EQUALS
           | OR
           | AND
-</code></pre><h5 id="span-stylecolorblueexpressionspan"><!-- raw HTML omitted -->expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="expression"><!-- raw HTML omitted -->expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>expression : unary
            | unary oprator expression
            | printExp
            | functionDefExp
            | functionCallExp
            | variableDefExp
-</code></pre><h5 id="span-stylecolorblueprint-expressionspan"><!-- raw HTML omitted -->print expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="print-expression"><!-- raw HTML omitted -->print expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>printExp : show unary 					 
-</code></pre><h5 id="span-stylecolorblueexpression-listspan"><!-- raw HTML omitted -->expression list<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="expression-list"><!-- raw HTML omitted -->expression list<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>expressionList : expression
                | expression COMMA expressionList
-</code></pre><h5 id="span-stylecolorblueoptional-expressionspan"><!-- raw HTML omitted -->optional expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="optional-expression"><!-- raw HTML omitted -->optional expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>optExpression : expressionList
               | *empty*
-</code></pre><h5 id="span-stylecolorbluestatementspan"><!-- raw HTML omitted -->statement<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="statement"><!-- raw HTML omitted -->statement<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>statement : expression SEMICOLON
           | loopStatment
           | ifStatment
-</code></pre><h5 id="span-stylecolorbluestatementsspan"><!-- raw HTML omitted -->statements<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="statements"><!-- raw HTML omitted -->statements<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>statements : statement
            | statement statements
-</code></pre><h5 id="span-stylecolorblueparameter-listspan"><!-- raw HTML omitted -->parameter list<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="parameter-list"><!-- raw HTML omitted -->parameter list<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>parameterList : unary
               | unary COMMA parameterList
-</code></pre><h5 id="span-stylecolorblueoptional-parameter-listspan"><!-- raw HTML omitted -->optional parameter list<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="optional-parameter-list"><!-- raw HTML omitted -->optional parameter list<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>optParameterList : parameterList
                  | *empty*
-</code></pre><h5 id="span-stylecolorbluefunction-define-expressionspan"><!-- raw HTML omitted -->function define expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="function-define-expression"><!-- raw HTML omitted -->function define expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>functionDefExp : func VARIABLE OPREN optExpression CPREN block
-</code></pre><h5 id="span-stylecolorbluefunction-call-expressionspan"><!-- raw HTML omitted -->function call expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="function-call-expression"><!-- raw HTML omitted -->function call expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>functionCallExp : call VARIABLE
                 | call VARIABLE OPREN optExpression CPREN
-</code></pre><h5 id="span-stylecolorbluevariable-define-expressionspan"><!-- raw HTML omitted -->variable define expression<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="variable-define-expression"><!-- raw HTML omitted -->variable define expression<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>variableDefExp : var VARIABLE
                | var VARIABLE ASSIGN unary
-</code></pre><h5 id="span-stylecolorblueif-statementspan"><!-- raw HTML omitted -->if statement<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="if-statement"><!-- raw HTML omitted -->if statement<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>ifStatment : if OPREN expression CPREN block
            | elseStatement
-</code></pre><h5 id="span-stylecolorblueelse-statementspan"><!-- raw HTML omitted -->else statement<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="else-statement"><!-- raw HTML omitted -->else statement<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>elseStatement : else block
               | else ifStatment
               | *empty*
-</code></pre><h5 id="span-stylecolorbluereturn-statementspan"><!-- raw HTML omitted -->return statement<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="return-statement"><!-- raw HTML omitted -->return statement<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>returnStatement : return SEMICOLON
                 | return unary SEMICOLON
-</code></pre><h5 id="span-stylecolorblueprogramspan"><!-- raw HTML omitted -->program<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="program"><!-- raw HTML omitted -->program<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>program : statements
-</code></pre><h5 id="span-stylecolorblueblockspan"><!-- raw HTML omitted -->block<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="block"><!-- raw HTML omitted -->block<!-- raw HTML omitted --></h5>
 <pre tabindex="0"><code>block : OBRACE statements CBRACE
       | OBRACE *empty* CBRACE
 </code></pre><h2 id="scan-in-souce-code-of-the-programming-language">Scan in souce code of the programming language</h2>
@@ -344,11 +344,11 @@ NOT                &#34;!&#34;
 <p>The is a program that read the file you have, it will out put a sequence of lexeme until the end of the line.</p>
 <p>This is the .h file to define different token names and corresponding with grammar.
 I put partial example here:</p>
-<h5 id="span-stylecolorbluetypeshspan"><!-- raw HTML omitted -->types.h<!-- raw HTML omitted --></h5>
+<h5 id="typesh"><!-- raw HTML omitted -->types.h<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define OPREN &#34;OPREN&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FUNCTION_DEF &#34;func&#34;
 </span></span></span></code></pre></div><p>The approach here is to have a lexeme.c data structure to help me solve the problem.</p>
-<h5 id="span-stylecolorbluelexemecspan"><!-- raw HTML omitted -->lexeme.c<!-- raw HTML omitted --></h5>
+<h5 id="lexemec"><!-- raw HTML omitted -->lexeme.c<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>typdef structure lexeme {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> type;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> string;
@@ -358,7 +358,7 @@ I put partial example here:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">struct</span> lexeme<span style="color:#f92672">*</span> right;<span style="color:#75715e">// reserved for parsing
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p>Another part is the lexer to determine each token</p>
-<h5 id="span-stylecolorbluelexerhspan"><!-- raw HTML omitted -->lexer.h<!-- raw HTML omitted --></h5>
+<h5 id="lexerh"><!-- raw HTML omitted -->lexer.h<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lex</span>(<span style="color:#66d9ef">void</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">newLexer</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> file);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">skipWhiteSpace</span>(); <span style="color:#75715e">// for comments
@@ -367,7 +367,7 @@ I put partial example here:</p>
 </span></span><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexString</span>();
 </span></span><span style="display:flex;"><span>lexeme<span style="color:#f92672">*</span> <span style="color:#a6e22e">lexUnknown</span>();
 </span></span></code></pre></div><p>The last part is the main function withc output the lexeme name in a sequence.</p>
-<h5 id="span-stylecolorbluescannercspan"><!-- raw HTML omitted -->scanner.c<!-- raw HTML omitted --></h5>
+<h5 id="scannerc"><!-- raw HTML omitted -->scanner.c<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">scanner</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> file){
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">newLexer</span>(file);
 </span></span><span style="display:flex;"><span>  lexeme<span style="color:#f92672">*</span> token <span style="color:#f92672">=</span> <span style="color:#a6e22e">lex</span>();
@@ -399,7 +399,7 @@ I put partial example here:</p>
 - Support functions for recursive descent parsing
 - Recognizing expressions
 - Conditionals and iterations
-</code></pre><h5 id="span-stylecolorblueparsespan"><!-- raw HTML omitted -->parse<!-- raw HTML omitted --></h5>
+</code></pre><h5 id="parse"><!-- raw HTML omitted -->parse<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">parse</span>(FILE <span style="color:#f92672">*</span>inputFile)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Parser <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(Parser));
@@ -410,7 +410,7 @@ I put partial example here:</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> p<span style="color:#f92672">-&gt;</span>tree;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="parser-rule">parser rule</h4>
-<h5 id="span-stylecolorblueprimaryspan"><!-- raw HTML omitted -->primary<!-- raw HTML omitted --></h5>
+<h5 id="primary"><!-- raw HTML omitted -->primary<!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">primary</span>(Parser <span style="color:#f92672">*</span>p)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Lexeme <span style="color:#f92672">*</span>x, <span style="color:#f92672">*</span>y <span style="color:#f92672">=</span> NULL;
@@ -488,7 +488,7 @@ language has features like functions.</p>
 - insert
 - update
 </code></pre><h4 id="functions">functions</h4>
-<h5 id="span-stylecolorblue-function-define-span"><!-- raw HTML omitted --> function define <!-- raw HTML omitted --></h5>
+<h5 id="function-define"><!-- raw HTML omitted --> function define <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">createEnv</span>();
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">extendEnv</span>(Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">makeTable</span>(Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals);
@@ -496,22 +496,22 @@ language has features like functions.</p>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sameVariable</span>(Lexeme <span style="color:#f92672">*</span>x, Lexeme <span style="color:#f92672">*</span>y);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">insert</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">updateEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>newVariable);
-</span></span></code></pre></div><h5 id="span-stylecolorbluecreate-environment-span"><!-- raw HTML omitted -->create environment <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="create-environment"><!-- raw HTML omitted -->create environment <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">createEnv</span>()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">extendEnv</span>(NULL, NULL, NULL);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h5 id="span-stylecolorblueextend-environment-span"><!-- raw HTML omitted -->extend environment <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="extend-environment"><!-- raw HTML omitted -->extend environment <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">extendEnv</span>(Lexeme <span style="color:#f92672">*</span>env, Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(ENVIRONMENT, <span style="color:#a6e22e">makeTable</span>(vars, vals), env);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h5 id="span-stylecolorbluemake-table-span"><!-- raw HTML omitted -->make table <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="make-table"><!-- raw HTML omitted -->make table <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">makeTable</span>(Lexeme <span style="color:#f92672">*</span>vars, Lexeme <span style="color:#f92672">*</span>vals)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cons</span>(TABLE, vars, vals);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h5 id="span-stylecolorbluelookup-environment-span"><!-- raw HTML omitted -->lookup environment <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="lookup-environment"><!-- raw HTML omitted -->lookup environment <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">lookupEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>env)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (env <span style="color:#f92672">!=</span> NULL)
@@ -534,7 +534,7 @@ language has features like functions.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;FATAL: variable, %s, is undefined.&#34;</span>, var<span style="color:#f92672">-&gt;</span>stringVal);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h5 id="span-stylecolorblueinsert-environment-span"><!-- raw HTML omitted -->insert environment <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="insert-environment"><!-- raw HTML omitted -->insert environment <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">insert</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Lexeme <span style="color:#f92672">*</span>table <span style="color:#f92672">=</span> <span style="color:#a6e22e">car</span>(env);
@@ -542,7 +542,7 @@ language has features like functions.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setCdr</span>(table, <span style="color:#a6e22e">cons</span>(GLUE, val, <span style="color:#a6e22e">cdr</span>(table)));
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> val;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h5 id="span-stylecolorblueupdate-environment-span"><!-- raw HTML omitted -->update environment <!-- raw HTML omitted --></h5>
+</span></span></code></pre></div><h5 id="update-environment"><!-- raw HTML omitted -->update environment <!-- raw HTML omitted --></h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Lexeme <span style="color:#f92672">*</span><span style="color:#a6e22e">updateEnv</span>(Lexeme <span style="color:#f92672">*</span>var, Lexeme <span style="color:#f92672">*</span>val, Lexeme <span style="color:#f92672">*</span>env)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">while</span> (env <span style="color:#f92672">!=</span> NULL)

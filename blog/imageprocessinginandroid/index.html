@@ -184,18 +184,13 @@ First we need define two different code indicate the if the app was granted to o
 <h4 id="import-module">Import Module</h4>
 <pre tabindex="0"><code>File --&gt; New -&gt; Import Module
 </code></pre><p>Import the java fold</p>
-<!-- raw HTML omitted -->
 <h4 id="compare-the-configure-information">Compare the configure information</h4>
 <p>Make sure the  minSdkVersion and targetSdkVersion matches</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <h4 id="add-dependency">Add dependency</h4>
 <pre tabindex="0"><code>File --&gt; Project Structure --&gt; App --&gt; Add dependency --&gt; OpenCV
 </code></pre><h4 id="copy-library-file-to-app-folder">Copy library file to App folder</h4>
 <p>Copy files in this directory</p>
-<!-- raw HTML omitted -->
 <p>Create a folder named &ldquo;jniLibs&rdquo; and paste the files under the directory</p>
-<!-- raw HTML omitted -->
 <h4 id="use-the-opencv-library">Use the OpenCV library</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ostu.<span style="color:#a6e22e">setOnClickListener</span>(<span style="color:#66d9ef">new</span> View.<span style="color:#a6e22e">OnClickListener</span>() {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
@@ -497,9 +492,9 @@ I should post the picture of processing but because of the privacy issue I won&r
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>I create this method to draw the height. There are two variable we need pass in: imgView and imageBitmap. ImageView refers the view you want to put picture, imageBitmap is the original image in Bitmap data structure.</p>
 <h4 id="problems-remain-to-solve">Problems remain to solve</h4>
-<h5 id="span-stylecolorblueruntimespan"><!-- raw HTML omitted -->Runtime<!-- raw HTML omitted --></h5>
+<h5 id="runtime"><!-- raw HTML omitted -->Runtime<!-- raw HTML omitted --></h5>
 <p>So far, my app works for measure the height of a person in most circumstance. But the runtime is very slow because I put all the calculation in one thread. There are two option to make the calculation fast. The first one is parallel computing. The second is to use the alternative OpenCV solution, it might faster than my solution. So next post I will focus on how to do parallel computing on Android software and how to load OpenCV library and apply the method.</p>
-<h5 id="span-stylecolorblueaccurate-of-measurementspan"><!-- raw HTML omitted -->Accurate of measurement<!-- raw HTML omitted --></h5>
+<h5 id="accurate-of-measurement"><!-- raw HTML omitted -->Accurate of measurement<!-- raw HTML omitted --></h5>
 <p>For my application, there still some in accurate value because of the limitation of Ostu threshold method. If a person waring dark cloth and has white hair the output will be inaccurate. Therefore, to increase the accurate of the measurement. I need implement another image processing method called Image gradient. I will introduce the implementation in next blog post.</p>
 <h4 id="update">Update</h4>
 <p>After learning opencv there are a faster way to solve the ostu threshold method. The updated code using OpenCV library. Run time is less than 1s.</p>
