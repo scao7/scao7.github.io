@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
-  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>使用树莓派搭建家庭NAS | Shengting Cao&#39;s Page | ᕦʕ •ᴥ•ʔᕤ </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>使用树莓派搭建家庭NAS · Shengting Cao</title>
 <meta name="title" content="使用树莓派搭建家庭NAS" />
 <meta name="description" content="Github 更新安全性" />
 <meta name="keywords" content="网络附加存储,树莓派," />
@@ -17,7 +15,7 @@
 
   
   <meta property="og:url" content="https://shengtingcao.top/%E5%8D%9A%E5%AE%A2/nas_tutorial_cn/">
-  <meta property="og:site_name" content="Shengting Cao&#39;s Page | ᕦʕ •ᴥ•ʔᕤ ">
+  <meta property="og:site_name" content="Shengting Cao">
   <meta property="og:title" content="使用树莓派搭建家庭NAS">
   <meta property="og:description" content="Github 更新安全性">
   <meta property="og:locale" content="en_us">
@@ -27,11 +25,13 @@
     <meta property="article:modified_time" content="2023-11-26T00:00:00+00:00">
     <meta property="article:tag" content="网络附加存储">
     <meta property="article:tag" content="树莓派">
+    <meta property="og:image" content="https://shengtingcao.top/main/logo.jpg">
 
 
   
   
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://shengtingcao.top/main/logo.jpg">
   <meta name="twitter:title" content="使用树莓派搭建家庭NAS">
   <meta name="twitter:description" content="Github 更新安全性">
 
@@ -43,54 +43,67 @@
   <meta itemprop="datePublished" content="2023-11-26T00:00:00+00:00">
   <meta itemprop="dateModified" content="2023-11-26T00:00:00+00:00">
   <meta itemprop="wordCount" content="153">
+  <meta itemprop="image" content="https://shengtingcao.top/main/logo.jpg">
   <meta itemprop="keywords" content="网络附加存储,树莓派">
 
-<meta name="referrer" content="no-referrer-when-downgrade" />
-
+<meta name="referrer" content="no-referrer-when-downgrade">
+  <meta name="theme-color" content="#faf9f6">
   
   <link href="/style.min.css" rel="stylesheet">
-
   
   <link href="/syntax.min.css" rel="stylesheet">
-
   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  
 </head>
-
 <body>
-  <header><a href="/" class="title"><h1>Shengting Cao&#39;s Page | ᕦʕ •ᴥ•ʔᕤ </h1></a>
-<nav>
-  <a href="/">Home</a>
-
-  <a href="/blog/">Blog</a>
-
-  <a href="/%E5%8D%9A%E5%AE%A2/">博客</a>
-
-
-<a href="/index.xml">RSS</a>
-
-
-
-
-
-
-
-</nav>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header"><div class="wrap header-inner">
+  <a href="/" class="brand">
+    <span class="brand-name">Shengting Cao</span>
+    <span class="brand-cn">曹胜庭</span>
+  </a>
+  <nav class="site-nav" aria-label="Main navigation">
+    
+    
+      
+      <a href="/">Home</a>
+    
+      
+      <a href="/research/">Research</a>
+    
+      
+      <a href="/publications/">Publications</a>
+    
+      
+      <a href="/teaching/">Teaching</a>
+    
+      
+      <a href="/news/">News</a>
+    
+      
+      <a href="/blog/">Blog</a>
+    
+      
+      <a href="/%E5%8D%9A%E5%AE%A2/" class="active" aria-current="page">博客</a>
+    
+      
+      <a href="/resume/shengting_cao_cv.pdf" target="_blank" rel="noopener">CV</a>
+    
+  </nav>
+</div>
 </header>
-  <main>
-
-<h1>使用树莓派搭建家庭NAS</h1>
-<p>
-  <i>
-    <time datetime='2023-11-26' pubdate>
-      2023-11-26
-    </time>
-  </i>
-</p>
-
-<content>
-  <p>NAS，或网络附加存储，是一种连接到网络的专用存储设备，为多个用户和设备提供集中的文件级数据访问。它在本地网络环境中方便地实现数据共享、备份和存储管理。</p>
+  <main id="main" class="inner">
+<article class="wrap article">
+  <header class="article-head">
+    <h1>使用树莓派搭建家庭NAS</h1>
+    
+    <p class="meta"><time datetime='2023-11-26'>2023-11-26</time> · 曹胜庭</p>
+    
+  </header>
+  <div class="prose"><p>NAS，或网络附加存储，是一种连接到网络的专用存储设备，为多个用户和设备提供集中的文件级数据访问。它在本地网络环境中方便地实现数据共享、备份和存储管理。</p>
 <p>在本教程中，我将介绍使用树莓派和外部驱动器构建工作中的NAS的过程，以及用于在家庭网络中进行视频流媒体的 Plex 服务器。我还将解释遇到的一些问题以及问题的解决方案。</p>
 <p>您将需要以下硬件。</p>
 <h3 id="raspberry-pi-4b">Raspberry pi 4B</h3>
@@ -137,38 +150,24 @@ UUID 将是您的外部驱动器的ID。</p>
 </code></pre><pre tabindex="0"><code>sudo apt install plexmediaserver
 </code></pre><p>安装完成后，您可以使用 <code>https://your-ip-adress:32400/web</code> 访问 Plex Web。</p>
 <p>如果您使用其他智能电视，您可以通过 IP 地址将 Plex 连接到 Plex 服务器。</p>
-
-</content>
-<p>
-  
-    <a class="blog-tags" href="https://shengtingcao.top/tags/%E7%BD%91%E7%BB%9C%E9%99%84%E5%8A%A0%E5%AD%98%E5%82%A8/">#网络附加存储</a>&nbsp;&nbsp;
-  
-    <a class="blog-tags" href="https://shengtingcao.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">#树莓派</a>&nbsp;&nbsp;
-  
-</p>
+</div>
+  <p class="tags"><a class="tag" href="https://shengtingcao.top/tags/%E7%BD%91%E7%BB%9C%E9%99%84%E5%8A%A0%E5%AD%98%E5%82%A8/">#网络附加存储</a><a class="tag" href="https://shengtingcao.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">#树莓派</a></p>
+</article>
 
   </main>
-  <footer><small>
-   | 
-</small>
-
-
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
-  </head>
-</html></footer>
-
-    
+  <footer class="site-footer"><div class="wrap footer-inner">
+  <span>© 2026 Shengting Cao</span>
+  <span class="bear" aria-hidden="true">ᕦʕ •ᴥ•ʔᕤ</span>
+  <span class="made">Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/clente/hugo-bearcub">Bear Cub</a></span>
+</div>
+</footer><script>
+(function () {
+  var r = function (s) { return s.split('').reverse().join(''); };
+  var n = document.querySelectorAll('.js-email');
+  for (var i = 0; i < n.length; i++) {
+    n[i].textContent = r(n[i].getAttribute('data-u')) + '@' + r(n[i].getAttribute('data-d'));
+  }
+})();
+</script>
 </body>
-
 </html>
